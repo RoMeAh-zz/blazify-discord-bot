@@ -21,28 +21,28 @@ let coinEmbed = new Discord.RichEmbed()
     .setColor("#FF0000")
     .addField("XP Coins", uCoins);
     message.channel.send(coinEmbed)
-    if(ucoins > 999) {
-        let role = message.guild.roles.find(r => r.id === "role id");
+    if(coins > 999) {
+        let role = message.guild.roles.find(r => r.name === "Freshers");
         message.member.addRole(role);
         }
-        if(ucoins > 4999) {
-            let role = message.guild.roles.find(r => r.id === "role id");
+        if(uCoins > 4999) {
+            let role = message.guild.roles.find(r => r.name ="Newbie");
             message.member.addRole(role);
             }
-            if(ucoins > 9999) {
-                let role = message.guild.roles.find(r => r.id === "role id");
+            if(uCoins > 9999) {
+                let role = message.guild.roles.find(r => r.name === "Active Chatters");
                 message.member.addRole(role);
                 }
-                if(ucoins > 19999) {
-                    let role = message.guild.roles.find(r => r.id === "role id");
+                if(uCoins > 19999) {
+                    let role = message.guild.roles.find(r => r.name === "Descent Active Chatters");
                     message.member.addRole(role);
                     }
-                    if(ucoins > 29999) {
-                        let role = message.guild.roles.find(r => r.id === "role id");
+                    if(uCoins > 29999) {
+                        let role = message.guild.roles.find(r => r.name === "Very Active Chatters");
                         message.member.addRole(role);
                         }
-                        if(coins > 49999) {
-                            let role = message.guild.roles.find(r => r.id === "role id");
+                        if(uCoins > 49999) {
+                            let role = message.guild.roles.find(r => r.name === "OP Chatters");
                             message.member.addRole(role);
                             }
 }
