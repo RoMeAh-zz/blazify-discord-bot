@@ -21,7 +21,7 @@ let coinEmbed = new Discord.RichEmbed()
     .setColor("#FF0000")
     .addField("XP Coins", uCoins);
     message.channel.send(coinEmbed)
-    if(coins > 999) {
+    if(uCoins > 999) {
         let role = message.guild.roles.find(r => r.name === "Freshers");
         message.member.addRole(role);
         }
