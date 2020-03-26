@@ -21,5 +21,31 @@ let coinEmbed = new Discord.RichEmbed()
     .setColor("#FF0000")
     .addField("XP Coins", uCoins);
     message.channel.send(coinEmbed)
+    if(ucoins > 999) {
+        let role = message.guild.roles.find(r => r.id === "role id");
+        message.member.addRole(role);
+        }
+        if(ucoins > 4999) {
+            let role = message.guild.roles.find(r => r.id === "role id");
+            message.member.addRole(role);
+            }
+            if(ucoins > 9999) {
+                let role = message.guild.roles.find(r => r.id === "role id");
+                message.member.addRole(role);
+                }
+                if(ucoins > 19999) {
+                    let role = message.guild.roles.find(r => r.id === "role id");
+                    message.member.addRole(role);
+                    }
+                    if(ucoins > 29999) {
+                        let role = message.guild.roles.find(r => r.id === "role id");
+                        message.member.addRole(role);
+                        }
+                        if(coins > 49999) {
+                            let role = message.guild.roles.find(r => r.id === "role id");
+                            message.member.addRole(role);
+                            }
 }
 }
+
+    
