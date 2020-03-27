@@ -1,4 +1,3 @@
-const Discord = require ("discord.js")
 module.exports = {
     name: "help",
     category: "utility",
@@ -6,10 +5,9 @@ module.exports = {
     usage: "<mention, id>",
     run: async (client, message, args) => {
         if (message.deletable) message.delete();
-const embed = new Discord.RichEmbed()
-.setAuthor = ("ROMEAH IS THE MAKER OF THIS BOT")
+const embed = new RichEmbed()
 .setThumbnail = (client.user.avatarURL)
-.setTitle = ("Commands of our Official Bot")
+.setTitle = ('Commands of our Official Bot')
 .addField = ('Moderation', "kick, ban, mute, report, unban, unmute")
 .addField = ('Fun', "xpcoins, meme, gglimgn, love, rps")
 .addField = ('Utility', "help, ping, say, whois")
