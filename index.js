@@ -31,9 +31,9 @@ client.on("ready", () => {
     console.log(`Hi, ${client.user.username} is now online!`);
 
     client.user.setPresence({
-        status: "online",
+        status: "Do Not Disturb",
         game: {
-            name: "ẞL∆Z£•3 ¥T ◥▶_◀◤, I AM MADE BY ROMEAH",
+            name: "ʙʟᴀᴢᴇ 3 ᴏꜰꜰɪᴄɪᴀʟ ꜱᴇʀᴠᴇʀ GETTING DEVELOPED",
             type: "WATCHING"
         }
     }); 
@@ -157,6 +157,21 @@ client.on('guildMemberAdd', member => {
         const newLocal = "WHO IS THE BEST?";
         if (msg.content === newLocal) {
             msg.reply('SIR YOU THE ONE AND ONLY ROMEAH')
+        }
+    })
+client.on('message', message => {
+    let args = message.content.substring(PREFIX.length).split(" ");
+    switch (args[0]) {
+        case 'help':
+            const Embed = new RichEmbed()
+                .setThumbnail = (client.user.avatarURL)
+                .setTitle = ('Commands of our Official Bot')
+                .addField = ('Moderation', "kick, ban, mute, report, unban, unmute")
+                .addField = ('Fun', "xpcoins, meme, gglimgn, love, rps")
+                .addField = ('Utility', "help, ping, say, whois")
+                .setFooter = ("Make sure to use the prefix before these commands. PREFIX IS '_'")
+            message.author.send(Embed)
+            break;
         }
     })
     client.on('message', message => {
