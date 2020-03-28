@@ -87,6 +87,30 @@ client.on("message", message => {
                 }else {
                     money.money = money.money + coinstoadd;
                     money.save().catch(err => console.log(err));
+                    if(money.money > 999) {
+                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        message.member.addRole(role);
+                    }
+                    if(money.money > 4999) {
+                        let role = message.guild.roles.find(r => r.name === "Newbie");
+                        message.member.addRole(role);
+                    }
+                    if(money.money > 9999) {
+                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        message.member.addRole(role);
+                    }
+                    if(money.money > 19999) {
+                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        message.member.addRole(role);
+                    }
+                    if(money.money > 29999) {
+                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        message.member.addRole(role);
+                    }
+                    if(money.money > 49999) {
+                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        message.member.addRole(role);
+                    }
                 }
             });
         })
@@ -173,12 +197,12 @@ client.on('message', message => {
     switch (args[0]) {
         case 'help':
             const Embed = new RichEmbed()
-                .setThumbnail = (client.user.avatarURL)
-                .setTitle = ('Commands of our Official Bot')
-                .addField = ('Moderation', "kick, ban, mute, report, unban, unmute")
-                .addField = ('Fun', "xpcoins, meme, gglimgn, love, rps")
-                .addField = ('Utility', "help, ping, say, whois")
-                .setFooter = ("Make sure to use the prefix before these commands. PREFIX IS '_'")
+                .setThumbnail(client.user.avatarURL)
+                .setTitle('Commands of our Official Bot')
+                .addField('Moderation', "kick, ban, mute, report, unban, unmute")
+                .addField('Fun', "xpcoins, meme, gglimgn, love, rps")
+                .addField('Utility', "help, ping, say, whois")
+                .setFooter("Make sure to use the prefix before these commands. PREFIX IS '_'")
             message.author.send(Embed)
             break;
         }
