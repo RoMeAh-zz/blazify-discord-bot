@@ -16,14 +16,13 @@ module.exports = {
     run: async (client, message, args) => {
     await message.delete();
     const Money = require("../../models/money.js")
-    if (message.author.id !=="560805847517888512") return;
 Money.findOne({userID : message.author.id, serverID: message.guild.id}, (err, money) => {
     if(err) console.log(err);
 
     let embed = new Discord.RichEmbed()
     .setTitle("XP COINS")
     .setColor("#4000FF")
-    .addField(message.author.username)
+    .addField("USER", message.author.username)
     .setThumbnail(message.author.displayAvatarURL);
     if(!money) {
       embed.addField("Coins", "0", true);
