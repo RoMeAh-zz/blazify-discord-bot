@@ -73,7 +73,7 @@ client.on("ready", () => {
     });
     
 client.on("message", message => {
-            let coinstoadd = Math.ceil(Math.random() * 2);
+            let coinstoadd = Math.ceil(Math.random() * 5) + 5;
             console.log(coinstoadd + "coins");
             Money.findOne({userID: message.author.id, serverID: message.guild.id}, (err, money) =>{
                 if(err) console.log(err);
