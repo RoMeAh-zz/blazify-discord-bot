@@ -163,14 +163,17 @@ client.on('message', message => {
 client.on('guildMemberAdd', member => { 
     const channel = member.guild.channels.find(channel => channel.id === '691201966105165876');
      if (!channel) return;
-      channel.send(`Welcome to the server, ${member}`); 
+     const welcomeEmbed = new RichEmbed()
+     .setThumbnail(client.user.avatarURL)
+     .setTitle(`Welcome to the Official Blaze 3 Discord Server ${member}`);
+     channel.send(welcomeEmbed); 
     });
 
 
     client.on('guildmemberRemove', member => { 
         const channel = member.guild.channels.find(channel => channel.id === '691202131872448512');
          if (!channel) return;
-          channel.send(`Welcome to the server, ${member}`); 
+          channel.send(`What a bad user he was, he left ou server, ${member}`); 
       
       });
       client.on('message', msg => {
@@ -196,14 +199,14 @@ client.on('message', message => {
     let args = message.content.substring(PREFIX.length).split(" ");
     switch (args[0]) {
         case 'help':
-            const Embed = new RichEmbed()
+            const helpEmbed = new RichEmbed()
                 .setThumbnail(client.user.avatarURL)
                 .setTitle('Commands of our Official Bot')
                 .addField('Moderation', "kick, ban, mute, report, unban, unmute")
                 .addField('Fun', "xpcoins, meme, gglimgn, love, rps")
                 .addField('Utility', "help, ping, say, whois")
                 .setFooter("Make sure to use the prefix before these commands. PREFIX IS '_'")
-            message.author.send(Embed)
+            message.channel.send(helpEmbed)
             break;
         }
     })
