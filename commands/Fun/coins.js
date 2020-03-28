@@ -23,6 +23,7 @@ Money.findOne({userID : message.author.id, serverID: message.guild.id}, (err, mo
     let embed = new Discord.RichEmbed()
     .setTitle("XP COINS")
     .setColor("#4000FF")
+    .addField(message.author.username)
     .setThumbnail(message.author.displayAvatarURL);
     if(!money) {
       embed.addField("Coins", "0", true);
