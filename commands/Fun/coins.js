@@ -1,51 +1,38 @@
-const Discord = require("discord.js");
-let coins = require ("../../coins.json");
+const Discord = require('discord.js');
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://SecondRomeah:itc12345@mongodbxpcoinsystem-cjqmq.mongodb.net/test?retryWrites=true&w=majority/XPCoins", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("connected to the database")
+  })
+  .catch(err => console.log(err))
 
 module.exports = {
     name: "xpcoins",
     category: "fun",
-    description: "XP coins",
-    usage: "<mention, id>",
-run: async (client, message, args) => {
-if(!coins[message.author.id]){
-    coins[message.author.id] = {
-        coins: 0
-    };
+    description: "XP",
+    run: async (client, message, args) => {
+    await message.delete();
+    const Money = require("../../models/money.js")
+    if (message.author.id !=="560805847517888512") return;
+Money.findOne({userID : message.author.id, serverID: message.guild.id}, (err, money) => {
+    if(err) console.log(err);
+
+    let embed = new Discord.RichEmbed()
+    .setTitle("XP COINS")
+    .setColor("#4000FF")
+    .setThumbnail(message.author.displayAvatarURL);
+    if(!money) {
+      embed.addField("Coins", "0", true);
+      return message.channel.send(embed);
+    }else {
+      embed.addField("Coins", money.money, true)
+      return message.channel.send(embed);
 }
+     
+})
 
-
-let uCoins = coins[message.author.id].coins;
-
-let coinEmbed = new Discord.RichEmbed()
-    .setAuthor(message.author.username)
-    .setColor("#FF0000")
-    .addField("XP Coins", uCoins);
-    message.channel.send(coinEmbed)
-    if(uCoins > 999) {
-        let role = message.guild.roles.find(r => r.name === "Freshers");
-        message.member.addRole(role);
-        }
-        if(uCoins > 4999) {
-            let role = message.guild.roles.find(r => r.name ="Newbie");
-            message.member.addRole(role);
-            }
-            if(uCoins > 9999) {
-                let role = message.guild.roles.find(r => r.name === "Active Chatters");
-                message.member.addRole(role);
-                }
-                if(uCoins > 19999) {
-                    let role = message.guild.roles.find(r => r.name === "Descent Active Chatters");
-                    message.member.addRole(role);
-                    }
-                    if(uCoins > 29999) {
-                        let role = message.guild.roles.find(r => r.name === "Very Active Chatters");
-                        message.member.addRole(role);
-                        }
-                        if(uCoins > 49999) {
-                            let role = message.guild.roles.find(r => r.name === "OP Chatters");
-                            message.member.addRole(role);
-                            }
 }
 }
-
-    

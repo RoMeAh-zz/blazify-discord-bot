@@ -3,7 +3,16 @@ const Discord = require("discord.js")
 const { config } = require("dotenv");
 const fs = require("fs");
 const ms = require("ms");
-let coins = require ("./coins.json");
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://SecondRomeah:itc12345@mongodbxpcoinsystem-cjqmq.mongodb.net/test?retryWrites=true&w=majority/XPCoins", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("connected to the database")
+  })
+  .catch(err => console.log(err))
+const Money = require("./models/money.js")
 
 const client = new Client({
     disableEveryone: true
@@ -61,27 +70,27 @@ client.on("ready", () => {
         // If a command is finally found, run the command
         if (command) 
             command.run(client, message, args);
-            
-})
-client.on("message", async message => {
-    if (!coins[message.author.id]){
-        coins[message.author.id] = {
-            coins: 0
-        }
-    };
-let coinAmt = Math.floor(Math.random() * 5)  + 45;
-let baseAmt = Math.floor(Math.random() * 5)  + 45;
-console.log(`${coinAmt} ; ${baseAmt}`);
-if(coinAmt === baseAmt){
-    coins[message.author.id] = {
-        coins: coins[message.author.id].coins + coinAmt
-    };
-}
-    fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
-        if (err) console.log(err)
     });
-  
-});
+    
+client.on("message", message => {
+            let coinstoadd = Math.ceil(Math.random() * 2);
+            console.log(coinstoadd + "coins");
+            Money.findOne({userID: message.author.id, serverID: message.guild.id}, (err, money) =>{
+                if(err) console.log(err);
+                if(!money){
+                    const newMoney = new Money({
+                        userID: message.author.id,
+                        serverID: message.guild.id,
+                        money: coinstoadd
+                    })
+                    newMoney.save().catch(err => console.log(err));
+                }else {
+                    money.money = money.money + coinstoadd;
+                    money.save().catch(err => console.log(err));
+                }
+            });
+        })
+
 
 
 
