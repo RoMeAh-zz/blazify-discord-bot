@@ -213,7 +213,8 @@ client.on('message', message => {
                 .addField('Donate us', "Wanna Donate us, you like our bot, i even don't even have the money to buy a hoster. Donation link coming soon.")
                 .setColor("#FF0000")
                 .setAuthor('RoMeah made this bot')
-                .addField('Bot Help', "Support Server : https://discord.gg/3JrdUxt , Bot Invite Link : https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847 ")
+                .addField('Support Server', "https://discord.gg/3JrdUxt")
+                .addField('Bot Invite Link', "https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847")
                 .setFooter("Make sure to use the prefix before these commands. PREFIX IS '_'");
             message.author.send(helpEmbed)
             break;
