@@ -164,13 +164,14 @@ client.on('message', message => {
  
 });
 client.on('guildMemberAdd', member => { 
-    const channel = member.guild.channels.find(channel => channel.id === '691201966105165876');
-     channel.send("Welcome to the Blaze 3 Official Server"); 
+    const channel = member.guild.channels.find(channel => channel.name === 'welcome');
+    if (!channel) return;
+     channel.send(`Welcome to the Blaze 3 Official Server ${member}`); 
     });
 
 
     client.on('guildmemberRemove', member => { 
-        const channel = member.guild.channels.find(channel => channel.id === '691202131872448512');
+        const channel = member.guild.channels.find(channel => channel.name === 'leavers');
          if (!channel) return;
           channel.send(`What a bad user he was, he left ou server, ${member}`); 
       
