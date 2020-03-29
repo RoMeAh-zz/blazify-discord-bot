@@ -38,15 +38,17 @@ config({
 
 client.on("ready", () => {
     console.log(`Hi, ${client.user.username} is now online!`);
+    client.channels.get("693785937880285204").edit({name: `${client.guilds.size} Guilds`})
+    client.channels.get("693786407600128120").edit({name: `${client.users.size} Members`})
+        client.user.setPresence({
+            status: "Do Not Disturb",
+            game: {
+                name: `${client.guilds.size} SERVERS AND ${client.users.size} MEMBERS`,
+                type: "WATCHING"
+            }      
+        })
+    });
 
-    client.user.setPresence({
-        status: "Do Not Disturb",
-        game: {
-            name: `OVER ${client.guilds.size} SERVERS AND ${client.users.size} MEMBERS`,
-            type: "WATCHING"
-        }
-    }); 
-})
     client.on("message", async message => {
         const prefix = "_";
     
