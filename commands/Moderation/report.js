@@ -20,7 +20,7 @@ module.exports = {
         if (!args[1])
             return message.channel.send("Please provide a reason for the report").then(m => m.delete(5000));
         
-            const logChannel = message.guild.channels.find(c => c.id === "693689991829782530") || message.channel;
+            const logChannel = message.guild.channels.find(c => c.name === "logs") || message.channel;
             
         if (!channel)
             return message.channel.send("Couldn't find a `#reports` channel").then(m => m.delete(5000));
