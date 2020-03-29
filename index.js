@@ -221,6 +221,28 @@ client.on('message', message => {
         }
     })
     client.on('message', message => {
+        let args = message.content.substring(PREFIX.length).split(" ");
+        switch (args[0]) {
+            case 'support':
+                const supportEmbed = new RichEmbed()
+                .setTitle("Support")
+                .addField('Support Server', "https://discord.gg/3JrdUxt")
+                .setColor("#FF0000");
+                message.channel.send(supportEmbed)
+        }
+    })
+    client.on('message', message => {
+        let args = message.content.substring(PREFIX.length).split(" ");
+        switch (args[0]) {
+            case 'invite':
+                const inviteEmbed = new RichEmbed()
+                .setTitle("Invite the bot")
+                .addField('Invite link', "https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847")
+                .setColor("#FF0000");
+                message.channel.send(inviteEmbed)
+        }
+    })
+    client.on('message', message => {
 
  
 
