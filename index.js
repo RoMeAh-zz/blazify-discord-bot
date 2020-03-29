@@ -42,7 +42,7 @@ client.on("ready", () => {
     client.user.setPresence({
         status: "Do Not Disturb",
         game: {
-            name: `OVER BLAZE 3 OFFICIAL SERVER AND ${client.guilds.size} MORE SERVERS`,
+            name: `OVER ${client.guilds.size} SERVERS AND ${client.users.size} MEMBERS`,
             type: "WATCHING"
         }
     }); 
