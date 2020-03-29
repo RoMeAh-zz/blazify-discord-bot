@@ -42,7 +42,7 @@ client.on("ready", () => {
     client.user.setPresence({
         status: "Do Not Disturb",
         game: {
-            name: "ʙʟᴀᴢᴇ 3 ᴏꜰꜰɪᴄɪᴀʟ ꜱᴇʀᴠᴇʀ GETTING DEVELOPED",
+            name: `OVER BLAZE 3 OFFICIAL SERVER AND ${client.guilds.size} MORE SERVERS`,
             type: "WATCHING"
         }
     }); 
@@ -163,11 +163,7 @@ client.on('message', message => {
 });
 client.on('guildMemberAdd', member => { 
     const channel = member.guild.channels.find(channel => channel.id === '691201966105165876');
-     if (!channel) return;
-     const welcomeEmbed = new RichEmbed()
-     .setThumbnail(client.user.avatarURL)
-     .setTitle(`Welcome to the Official Blaze 3 Discord Server ${member}`);
-     channel.send(welcomeEmbed); 
+     channel.send("Welcome to the Blaze 3 Official Server"); 
     });
 
 
@@ -184,9 +180,9 @@ client.on('guildMemberAdd', member => {
     })
     
     client.on('message', msg => {
-        const newLocal = "What are the current things this bot can do?";
+        const newLocal = "<@690934802940952586>";
         if (msg.content === newLocal) {
-            msg.reply('Sir not much you have done but you have made auto-reply when you or anyone asks a question and you have done the welcome message this is just a bot in which you are learning everything and a server bot is being currently made by !plays')
+            msg.reply("My Prefix is _")
         }
     })
     
@@ -214,6 +210,7 @@ client.on('message', message => {
                 .addField('Donate us', "Wanna Donate us, you like our bot, i even don't even have the money to buy a hoster. Donation link coming soon.")
                 .setColor("#FF0000")
                 .setAuthor('RoMeah made this bot')
+                .addField('Bot Help', "Support Server : https://discord.gg/3JrdUxt , Bot Invite Link : https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847 ")
                 .setFooter("Make sure to use the prefix before these commands. PREFIX IS '_'");
             message.author.send(helpEmbed)
             break;
