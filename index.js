@@ -97,19 +97,19 @@ client.on("message", message => {
                         message.member.addRole(role);
                     }
                     if(money.money > 9999) {
-                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        let role = message.guild.roles.find(r => r.name === "Descent Active Chatters");
                         message.member.addRole(role);
                     }
                     if(money.money > 19999) {
-                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        let role = message.guild.roles.find(r => r.name === "Active Chatters");
                         message.member.addRole(role);
                     }
                     if(money.money > 29999) {
-                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        let role = message.guild.roles.find(r => r.name === "Very Active Chatters");
                         message.member.addRole(role);
                     }
                     if(money.money > 49999) {
-                        let role = message.guild.roles.find(r => r.name === "Freshers");
+                        let role = message.guild.roles.find(r => r.name === "OP Chatters");
                         message.member.addRole(role);
                     }
                 }
@@ -191,9 +191,14 @@ client.on('guildMemberAdd', member => {
     })
     
     client.on('message', msg => {
-        const newLocal = "WHO IS THE BEST?";
+        const newLocal = "_help";
         if (msg.content === newLocal) {
-            msg.reply('SIR YOU THE ONE AND ONLY ROMEAH')
+            const hEmbed = new RichEmbed()
+            .setThumbnail(client.user.avatarURL)
+            .setTitle("Help Command")
+            .setColor("#FF0000")
+            .addField('Help', "The Help Message has been sent to your DM (Direct Message), if you did not receive the message open up ur DM with the bot as it may be closed or you have disabled Direct Message");
+            msg.reply(hEmbed)
         }
     })
 client.on('message', message => {
@@ -204,10 +209,13 @@ client.on('message', message => {
                 .setThumbnail(client.user.avatarURL)
                 .setTitle('Commands of our Official Bot')
                 .addField('Moderation', "kick, ban, mute, report, unban, unmute")
-                .addField('Fun', "xpcoins, meme, gglimgn, love, rps")
+                .addField('Fun', "xpcoins, meme, gglimgn, love, rps, cat, dog")
                 .addField('Utility', "help, ping, say, whois")
-                .setFooter("Make sure to use the prefix before these commands. PREFIX IS '_'")
-            message.channel.send(helpEmbed)
+                .addField('Donate us', "Wanna Donate us, you like our bot, i even don't even have the money to buy a hoster. Donation link coming soon.")
+                .setColor("#FF0000")
+                .setAuthor('RoMeah made this bot')
+                .setFooter("Make sure to use the prefix before these commands. PREFIX IS '_'");
+            message.author.send(helpEmbed)
             break;
         }
     })
