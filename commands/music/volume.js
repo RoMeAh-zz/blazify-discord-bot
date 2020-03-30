@@ -1,12 +1,10 @@
 module.exports = { 
-    config: {
         name: "volume",
         aliases: ["vol", "v"],
         description: "Adjusts the volume of the bot.",
         accessableby: "Member",
         category: "music",
-        usage: "<input>"
-    },
+        usage: "<input>",
     run: async (bot, message, args) => {
         const player = bot.music.players.get(message.guild.id);
         if (!player) return message.channel.send("No song/s currently playing within this guild.");

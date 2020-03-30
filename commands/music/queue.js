@@ -1,13 +1,13 @@
 const { RichEmbed } = require("discord.js")
 
 module.exports = { 
-    config: {
+  
         name: "queue",
         aliases: ["q", "now"],
         description: "Displays what the current queue is.",
         accessableby: "Member",
         category: "music",
-    },
+   
     run: async (bot, message, args) => {
         const player = bot.music.players.get(message.guild.id);
         if(!player || !player.queue[0]) return message.channel.send("No song currently playing in this guild.");

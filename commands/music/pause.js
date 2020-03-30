@@ -1,11 +1,11 @@
 module.exports = { 
-    config: {
+
         name: "pause",
         aliases: ["resume"],
         description: "Makes the bot pause/resume the music currently playing.",
         accessableby: "Member",
         category: "music",
-    },
+    
     run: (bot, message, args) => {
         const player = bot.music.players.get(message.guild.id);
         if (!player) return message.channel.send("No song/s currently playing in this guild.");

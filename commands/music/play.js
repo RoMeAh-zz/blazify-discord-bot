@@ -2,14 +2,14 @@ const { Utils } = require("erela.js")
 const { RichEmbed } = require("discord.js")
 
 module.exports = { 
-    config: {
+
         name: "play",
         description: "Play a song/playlist or search for a song from youtube",
         usage: "<input>",
         category: "music",
         accessableby: "Member",
-        aliases: ["p", "pplay"]
-    },
+        aliases: ["p", "pplay"],
+  
     run: async (bot, message, args) => {
         const { voiceChannel } = message.member;
         if (!voiceChannel) return message.channel.send("You need to be in a voice channel to play music.");

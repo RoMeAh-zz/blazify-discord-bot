@@ -1,12 +1,12 @@
 module.exports = { 
-    config: {
+
         name: "skip",
         aliases: ["next"],
         description: "Skips the song currently playing.",
         accessableby: "Member",
         category: "music",
-        usage: "<input>"
-    },
+        usage: "<input>",
+  
     run: (bot, message, args) => {
         const player = bot.music.players.get(message.guild.id);
         if(!player) return message.channel.send("No song/s currently playing in this guild.");

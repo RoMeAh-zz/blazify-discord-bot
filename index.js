@@ -13,7 +13,8 @@ mongoose.connect("mongodb+srv://SecondRomeah:itc12345@mongodbxpcoinsystem-cjqmq.
   })
   .catch(err => console.log(err))
 const Money = require("./models/money.js");
-
+const { ErelaClient, Utils } = require("erela.js")
+const { nodes } = require("./config.json")
 const client = new Client({
     disableEveryone: true
 })
@@ -38,6 +39,26 @@ config({
 
 client.on("ready", () => {
     console.log(`Hi, ${client.user.username} is now online on ${client.guilds.size} Guilds with ${client.users.size} Members`);
+    
+    client.music = new ErelaClient(client, nodes)
+    .on("nodeError", console.log)
+    .on("nodeConnect", () => console.log("Successfully Created a new Node"))
+    .on("queueEnd", player => {
+        player.textChannel.send("Queue has ended!")
+        return client.music.players.destroy(player.guild.id)
+    })
+    .on("trackStart", ({textChannel}, {title, duration}) => textChannel.send(`Now playing: **${title}** \`${Utils.formatTime(duration, true)}\``).then(m => m.delete(15000)));
+
+    client.levels = new Map()
+        .set("none", 0.0)
+        .set("low", 0.10)
+        .set("medium", 0.15)
+        .set("high", 0.25);
+
+    let activities = [ `${client.guilds.size} servers!`, `${client.channels.size} channels!`, `${client.users.size} users!` ], i = 0;
+    setInterval(() => client.user.setActivity(`${client
+        .PREFIX}help | ${activities[i++ % activities.length]}`, { type: "WATCHING" }), 15000)
+
     client.channels.get("693785937880285204").edit({name: `${client.guilds.size} Guilds`})
     client.channels.get("693786407600128120").edit({name: `${client.users.size} Members`})
         client.user.setPresence({
@@ -48,6 +69,7 @@ client.on("ready", () => {
             }      
         })
     });
+    
 
     client.on("message", async message => {
         const prefix = "_";

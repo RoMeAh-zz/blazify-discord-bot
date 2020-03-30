@@ -1,11 +1,11 @@
 module.exports = { 
-    config: {
+ 
         name: "leave",
         aliases: ["lev", "stop"],
         description: "Makes the bot leave the voice channel.",
         accessableby: "Member",
         category: "music",
-    },
+    
     run: async (bot, message, args) => {
         const { voiceChannel } = message.member;
         const player = bot.music.players.get(message.guild.id);
