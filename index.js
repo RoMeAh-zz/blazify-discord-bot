@@ -9,10 +9,10 @@ mongoose.connect("mongodb+srv://SecondRomeah:itc12345@mongodbxpcoinsystem-cjqmq.
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log("connected to the database")
+    console.log("CONNECTED TO MONGODB")
   })
   .catch(err => console.log(err))
-const Money = require("./models/money.js")
+const Money = require("./models/money.js");
 
 const client = new Client({
     disableEveryone: true
@@ -176,18 +176,8 @@ client.on('guildMemberAdd', member => {
           channel.send(`What a bad user he was, he left ou server, ${member}`); 
       
       });
-      client.on('message', msg => {
-        if (msg.content === "HI MY FIRST BOT") {
-            msg.reply('HI SIR,YAHOO I AM THE FIRST BOT MADE BY YOU!')
-        }
-    })
+      
     
-    client.on('message', msg => {
-        const newLocal = "<@690934802940952586>";
-        if (msg.content === newLocal) {
-            msg.reply("My Prefix is _")
-        }
-    })
     
     client.on('message', msg => {
         const newLocal = "_help";
@@ -209,12 +199,10 @@ client.on('message', message => {
                 .setTitle('Commands of our Official Bot')
                 .addField('Moderation', "kick, ban, mute, report, unban, unmute")
                 .addField('Fun', "xpcoins, meme, gglimgn, love, rps, cat, dog")
-                .addField('Utility', "help, ping, say, whois")
-                .addField('Donate us', "Wanna Donate us, you like our bot, i even don't even have the money to buy a hoster. Donation link coming soon.")
+                .addField('Utility', "help, ping, say, whois, instagram")
                 .setColor("#FF0000")
                 .setAuthor('RoMeah made this bot')
-                .addField('Support Server', "https://discord.gg/3JrdUxt")
-                .addField('Bot Invite Link', "https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847")
+                .addField('Others', `[Support](https://discord.gg/3JrdUxt)   [Invite](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847)   [Vote](https://glennbotlist.xyz/bot/690934802940952586/vote)  [Donate](Comming Soon)`)
                 .setFooter("Make sure to use the prefix before these commands. PREFIX IS '_'");
             message.author.send(helpEmbed)
             break;
@@ -240,6 +228,17 @@ client.on('message', message => {
                 .addField('Invite link', "https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847")
                 .setColor("#FF0000");
                 message.channel.send(inviteEmbed)
+        }
+    })
+    client.on('message', message => {
+        let args = message.content.substring(PREFIX.length).split(" ");
+        switch (args[0]) {
+            case 'vote':
+                const voteEmbed = new RichEmbed()
+                .setTitle("Vote the bot")
+                .addField('Vote link', "1> GlenbotList: https://glennbotlist.xyz/bot/690934802940952586/vote")
+                .setColor("#FF0000");
+                message.channel.send(voteEmbed)
         }
     })
     client.on('message', message => {
