@@ -179,7 +179,7 @@ client.on("message", message => {
         .setColor("#FF0000")
         .addField('Music', "play, pause, resume, nowplaying, queue, skip, forceskip, remove, shuffle, volume, stop, forcestop", true)
         .setAuthor("Blaze 3 Bot - The Ultimate All in One" )
-        .addField("Bot Owner Only", "reload, shutdown")
+        .addField("Bot Owner Only", "eval, reload, shutdown")
         .addField("Others",`[Support Server](https://discord.gg/3JrdUxt) |  [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://www.paypal.me/roahgaming)`, true)
         .setFooter("Make sure to use the prefix before these commands. PREFIX IS 'b3'");
        message.channel.send(helpEmbed);
