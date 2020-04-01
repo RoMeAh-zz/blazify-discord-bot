@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
+  "engines": { "node": "11.13.0" },
   "author": "romeah",
   "license": "ISC",
   "dependencies": {
