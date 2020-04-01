@@ -21,7 +21,7 @@ const Money = require("./models/money.js");
 const client = new Client({
   disableEveryone: true
 });
-const PREFIX = "b!";
+const PREFIX = "b3";
 const cheerio = require("cheerio");
 
 const request = require("request");
@@ -42,8 +42,6 @@ client.on("ready", () => {
     `Hi, ${client.user.username} is now online on ${client.guilds.size} Guilds with ${client.users.size} Members`
   );
 
-
-  
   let activities = [
       `${client.guilds.size} servers!`,
       `${client.channels.size} channels!`,
@@ -71,7 +69,7 @@ client.on("ready", () => {
 });
 
 client.on("message", async message => {
-  const prefix = "b!";
+  const prefix = "b3";
 
   if (message.author.bot) return;
   if (!message.guild) return;
@@ -151,45 +149,6 @@ client.on("message", message => {
   );
 });
 
-client.on("message", message => {
-  let args = message.content.substring(PREFIX.length).split(" ");
-
-  switch (args[0]) {
-    case "mute":
-      var person = message.guild.member(
-        message.mentions.users.first() || message.guild.members.get(args[1])
-      );
-      if (!person) return message.reply("I CANT FIND THE USER " + person);
-
-      let mainrole = message.guild.roles.find(
-        role => role.name === "BLAZE ARMY"
-      );
-      let role = message.guild.roles.find(role => role.name === "Muted");
-
-      if (!role) return message.reply("Couldn't find the mute role.");
-
-      let time = args[2];
-      if (!time) {
-        return message.reply("You didnt specify a time!");
-      }
-
-      person.removeRole(mainrole.id);
-      person.addRole(role.id);
-
-      message.channel.send(
-        `@${person.user.tag} has now been muted for ${ms(ms(time))}`
-      );
-
-      setTimeout(function() {
-        person.addRole(mainrole.id);
-        person.removeRole(role.id);
-        console.log(role.id);
-        message.channel.send(`@${person.user.tag} has been unmuted.`);
-      }, ms(time));
-
-      break;
-  }
-});
 client.on("guildMemberAdd", member => {
   const channel = member.guild.channels.find(
     channel => channel.name === "welcome"
@@ -205,7 +164,7 @@ client.on("guildmemberRemove", member => {
   if (!channel) return;
   channel.send(`What a bad user he was, he left ou server, ${member}`);
 });
- 
+
 client.on("message", message => {
   let args = message.content.substring(PREFIX.length).split(" ");
   switch (args[0]) {
@@ -213,19 +172,21 @@ client.on("message", message => {
       const helpEmbed = new RichEmbed()
         .setThumbnail(client.user.avatarURL)
         .setTitle("Commands of our Official Bot", true)
-        .addField("Moderation", "kick, ban, mute, report, unban, unmute", true)
+        .addField("Moderation", "kick, ban, mute, report, unban, unmute, softban, addrole, removerole", true)
         .addField("Fun", "xpcoins, meme, gglimgn, love, rps, cat, dog", true)
-        .addField("Utility", "help, ping, say, whois, instagram, prefix", true)
+        .addField("Gaming", "apex, fortnite, overwatch, rainbow6")
+        .addField("Utility", "help, ping, say, whois, serverinfo, instagram, prefix", true)
         .setColor("#FF0000")
-        .addField('Music', "play, pause, resume, nowplaying, queue, skip, forceskip, remove, shuffle, volume, stop, forcestop", true) 
+        .addField('Music', "play, pause, resume, nowplaying, queue, skip, forceskip, remove, shuffle, volume, stop, forcestop", true)
         .setAuthor("Blaze 3 Bot - The Ultimate All in One" )
-        .addField("Others",`[Support Server](https://discord.gg/3JrdUxt)   [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847)   [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote)  [Donate](Comming Soon)`, true)
-        .setFooter("Make sure to use the prefix before these commands. PREFIX IS 'b!'");
+        .addField("Bot Owner Only", "reload, shutdown")
+        .addField("Others",`[Support Server](https://discord.gg/3JrdUxt) |  [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://www.paypal.me/roahgaming)`, true)
+        .setFooter("Make sure to use the prefix before these commands. PREFIX IS 'b3'");
        message.channel.send(helpEmbed);
       break;
   }
 });
-  
+
 client.on("message", message => {
   let args = message.content.substring(PREFIX.length).split(" ");
   switch (args[0]) {
@@ -314,4 +275,4 @@ function image(message) {
   });
 }
 
-client.login("NjkwOTM0ODAyOTQwOTUyNTg2.XoNf_Q.RAduG_3-zBnTds-CL01-ZJgiWGc");
+client.login("NjkwOTM0ODAyOTQwOTUyNTg2.XoSuhg.Ym20upWFRFTonZJS4j-LB5Z-5Z4");

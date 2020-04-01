@@ -1,85 +1,40 @@
-  
 const { RichEmbed } = require("discord.js");
+const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
-
-const Client = require("fortnite");
-const ft = new Client(process.env.FORTNITE);
+const fortnite = require("simple-fortnite-api"), client = new fortnite("fd14160a-8e5b-4091-b72d-8b386f7846df");
 
 module.exports = {
-    name: "fortnite",
-    aliases: ["ft"],
-    description: "Display someone's stats, the current store, and challenges!!",
-    usage: "<username | store>",
-    run: async (client, message, args) => {
-        const platforms = ["pc", "xb1", "psn"];
-        
-        if (args[0].toLowerCase() === "store") {
-            const store = await ft.store();
+        name: "fortnite",
+        description: "Displays a user's fortnite stats!",
+        usage: "<user> <platform>",
+        category: "miscellaneous",
+        accessableby: "Members",
+        aliases: ["ftn"], 
+    run: async (bot, message, args) => {
+        if(!args[0]) return message.channel.send("Please supply a username.");
+        if(args[1] && !["lifetime", "solo", "duo", "squad"].includes(args[1])) return message.channel.send("Usage: `!fortnite <username> <gametype>`\nGameTypes: Lifetime, Solo, Duo, Squad");
+        let gametype = args[1] ? args[1].toLowerCase() : "lifetime";
 
-            const embed = new RichEmbed()
-                .setColor("#9d4dbb")
-                .setFooter("Fortnite store", message.author.displayAvatarURL)
-                .setTimestamp();
+        let data = await client.find(args[0])
+        if(data && data.code === 404) return message.channel.send("Unable to find a user with that username.")
+            const { image, url, username } = data;
+            const { scorePerMin, winPercent, kills, score, wins, kd, matches } = data[gametype]
 
-            store.sort((a, b) => {
-                return b.vbucks - a.vbucks;
-            });
+                const embed = new RichEmbed()
+                    .setColor(cyan)
+                    .setAuthor(`Epic Games (Fortnite) | ${username}`, image)
+                    .setThumbnail(image)
+                    .setDescription(stripIndents`**Gamemode:** ${gametype.slice(0, 1).toUpperCase() + gametype.slice(1)}
+                    **Kills:** ${kills || 0}
+                    **Score:** ${score || 0}
+                    **Score Per Min:** ${scorePerMin || 0}
+                    **Wins:** ${wins || 0}
+                    **Win Ratio:** ${winPercent || "0%"}
+                    **Kill/Death Ratio:** ${kd || 0}
+                    **Matches Played:** ${matches || 0}
+                    **Link:** [link to profile](${url})`)
+                    .setTimestamp()
 
-            store.forEach(el => {
-                embed.addField(el.name, stripIndents`**- Rarity:** ${el.rarity}
-                **- Price:** ${el.vbucks} v-bucks
-                **- Image:** [Press Me](${el.image})`, true)
-            });
-
-            message.channel.send(embed);
-        } else {
-            const lastWord = args[args.length - 1].toLowerCase();
-            
-            let platform, username; 
-
-            if (platforms.includes(lastWord)) {
-                username = args.slice(0, args.length - 1).join(" "); 
-                platform = lastWord;
-            } else {    
-                username = args.join(" ");
-                platform = "pc";
-            }
-            
-            const search = await ft.user(username, platform);
-
-            if (!search.username) {
-                return message.channel.send("Couldn't find that person, try again")
-                    .then(m => m.delete(5000));
-            }
-
-            const lifetime = search.stats.lifetime;
-            const solo = search.stats.solo;
-            const duo = search.stats.duo;
-            const squad = search.stats.squad;
-
-            const embed = new RichEmbed()
-                .setTitle(`${search.username} (${search.platform})`)
-                .setURL(search.url)
-                .setColor("#9d4dbb")
-                .setFooter(`Fortnite stats`, message.author.displayAvatarURL)
-                .setTimestamp()
-                .addField("Solo:", stripIndents`**- Wins:** ${solo.wins}
-                **- KD:** ${solo.kd}
-                **- Kills:** ${solo.kills}
-                **- Kills per match:** ${solo.kills_per_match}`, true)
-                .addField("Duo:", stripIndents`**- Wins:** ${duo.wins}
-                **- KD:** ${duo.kd}
-                **- Kills:** ${duo.kills}
-                **- Kills per match:** ${duo.kills_per_match}`, true)
-                .addField("Squad:", stripIndents`**- Wins:** ${squad.wins}
-                **- KD:** ${squad.kd}
-                **- Kills:** ${squad.kills}
-                **- Kills per match:** ${squad.kills_per_match}`, true)
-                .addField("Lifetime:", stripIndents`**- Wins:** ${lifetime.wins}
-                **- KD:** ${lifetime.kd}
-                **- Kills:** ${lifetime.kills}`, false)
-
-            message.channel.send(embed)
-        }
+                    message.channel.send(embed)
     }
 }

@@ -1,25 +1,32 @@
-const Discord = require("discord.js");
-const superagent = require("superagent");
+const { RichEmbed } = require("discord.js")
+const { cyan } = require("../../colours.json");
+const fetch = require('node-fetch');
 
+module.exports = { 
+    config: {
+        name: "cat",
+        description: "sends a picture of a cat!",
+        usage: "!cat",
+        category: "miscellaneous",
+        accessableby: "Members",
+        aliases: ["catto"]
+    },
+    run: async (bot, message, args) => {
+    let msg = await message.channel.send("Generating...")
 
-module.exports = {
-    name: "cat",
-    aliases: ["affinity"],
-    category: "fun",
-    description: "Calculates the love affinity you have for another person.",
-    usage: "[mention | id | username]",
-    run: async (client, message, args) => {
+    fetch(`http://aws.random.cat/meow`)
+    .then(res => res.json()).then(body => {
+        if(!body) return message.reply("whoops! I've broke, try again!")
 
-  let {body} = await superagent
-  .get(`https://www.bing.com/images/search?q=cat&FORM=HDRSC2`);
+        let cEmbed = new RichEmbed()
+        .setColor(cyan)
+        .setAuthor(`${bot.user.username} CATS!`, message.guild.iconURL)
+        .setImage(body.file)
+        .setTimestamp()
+        .setFooter(bot.user.username.toUpperCase(), bot.user.displayAvatarURL)
 
-    let catembed = new Discord.RichEmbed()
-    .setColor("#c3ff00")
-    .setTitle("Me-Meow")
-    .setImage(body.url);
-
-    message.channel.send(catembed);
-
-}
-
+            message.channel.send(cEmbed)
+            msg.delete();
+        })
+    }
 }
