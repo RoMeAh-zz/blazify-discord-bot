@@ -149,7 +149,7 @@ client.on("message", message => {
   );
 });
 
-client.on("guildMemberAdd", member => {
+client.on("", member => {
   const channel = member.guild.channels.find(
     channel => channel.name === "welcome"
   );
@@ -275,4 +275,4 @@ function image(message) {
   });
 }
 
-client.login("NjkwOTM0ODAyOTQwOTUyNTg2.XoSuhg.Ym20upWFRFTonZJS4j-LB5Z-5Z4");
+client.login("NjkwOTM0ODAyOTQwOTUyNTg2.XodzVg.kZPM7X36idb4VOzV77ybzrXk6Kw");
