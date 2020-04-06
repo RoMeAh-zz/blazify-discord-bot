@@ -122,7 +122,7 @@ module.exports = async (client, message) => {
   
     if (mentioned) message.channel.send(`**${mentioned.usertag}** is currently afk. Reason: ${mentioned.reason}`);
   }
-  
+
   if (!message.content.startsWith(prefix)) return;
   const args = message.content
     .slice(prefix.length)

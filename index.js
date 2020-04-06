@@ -30,6 +30,12 @@ const request = require("request");
   require(`./handlers/${handler}`)(client);
 });
 
+let y = process.openStdin()
+y.addListener("data", res => {
+    let x = res.toString().trim().split(/ +/g)
+    client.channels.get("696786895933538435").send(x.join(" "));
+});
+
 client.on("message", message => {
   if (!message.content.startsWith("b3")) return;
   let args = message.content.substring(PREFIX.length).split(" ");
