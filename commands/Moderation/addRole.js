@@ -29,7 +29,7 @@ module.exports= {
     }
 
     let embed = new RichEmbed()
-    .setColor(redlight)
+    .setColor('BLACK')
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .addField("Moderation:", "Addrole")
     .addField("Mutee:", rMember.user.username)

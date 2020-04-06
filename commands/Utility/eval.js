@@ -5,7 +5,7 @@ module.exports = {
         description: "Evaluates code",
         accessableby: "Bot Owner",
         type: "owner",
-        usage: "b3eval <input>",
+        usage: `b3eval <input>`,
     run: async (bot, message, args) => {
     if(message.author.id == "560805847517888512") {
         try {

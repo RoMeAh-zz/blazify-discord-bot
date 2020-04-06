@@ -1,13 +1,6 @@
 const Discord = require('discord.js');
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://SecondRomeah:itc12345@mongodbxpcoinsystem-cjqmq.mongodb.net/test?retryWrites=true&w=majority/XPCoins", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
-    console.log("connected to the database")
-  })
-  .catch(err => console.log(err))
+
 
 module.exports = {
     name: "xpcoins",
@@ -15,20 +8,21 @@ module.exports = {
     description: "XP",
     run: async (client, message, args) => {
     await message.delete();
+      client.mongoose = require("../../utils/mongoose.js");
     const Money = require("../../models/money.js")
 Money.findOne({userID : message.author.id, serverID: message.guild.id}, (err, money) => {
     if(err) console.log(err);
 
     let embed = new Discord.RichEmbed()
-    .setTitle("XP COINS")
+    .setTitle("💸💰XP COINS💰💸")
     .setColor("#4000FF")
     .addField("USER", message.author.username)
     .setThumbnail(message.author.displayAvatarURL);
     if(!money) {
-      embed.addField("Coins", "0", true);
+      embed.addField("💲Coins💲", "0", true);
       return message.channel.send(embed);
     }else {
-      embed.addField("Coins", money.money, true)
+      embed.addField("💲Coins💲", money.money, true)
       return message.channel.send(embed);
 }
      

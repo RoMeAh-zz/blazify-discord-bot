@@ -1,5 +1,10 @@
 {
-    "nodes": [
-        {"host": "localhost", "port": 2333, "password": "youshallnotpass"}
-    ]
+  "prefix": "b3",
+  "logsChannel": "logs",
+  "reportsChannel": "reports",
+
+  "activity": {
+    "streaming": false,
+    "game": "Minekwaft"
+  }
 }

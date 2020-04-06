@@ -3,14 +3,12 @@ const { cyan } = require("../../colours.json");
 const fetch = require('node-fetch');
 
 module.exports = { 
-    config: {
-        name: "cat",
+ name: "cat",
         description: "sends a picture of a cat!",
         usage: "!cat",
         category: "miscellaneous",
         accessableby: "Members",
-        aliases: ["catto"]
-    },
+        aliases: ["catto"],
     run: async (bot, message, args) => {
     let msg = await message.channel.send("Generating...")
 
