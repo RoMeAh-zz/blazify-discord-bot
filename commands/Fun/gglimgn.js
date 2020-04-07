@@ -1,7 +1,7 @@
 const { getImage } = require("../../functions.js");
 
 module.exports = {
-    name: "leaderboard-xp",
+    name: "gglimgn",
     description: "Display's the economy leaderboard for the guild",
     usage: "!leaderboard",
     category: "economy",
