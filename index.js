@@ -1,7 +1,7 @@
 const { Client, Collection, Attachment, RichEmbed } = require("discord.js");
 const Discord = require("discord.js");
 const config = require("./config.json");
-const TOKEN = require("./config.json").TOKEN;
+const TOKEN = require("./config.json").token;
 const fs = require("fs");
 const ms = require("ms");
 const mongoose = require("mongoose");
