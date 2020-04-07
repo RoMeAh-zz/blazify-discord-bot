@@ -20,24 +20,5 @@ const request = require("request");
   require(`./handlers/${handler}`)(client);
 });
 
-let y = process.openStdin()
-y.addListener("data", res => {
-    let x = res.toString().trim().split(/ +/g)
-    client.channels.get("696786895933538435").send(x.join(" "));
-});
-
-client.on("ready", async () => {
-  console.log(`${client.user.username} is ready for action!`);
-  if (config.activity.streaming == true) {
-      client.user.setActivity(config.activity.game, {
-          url: 'https://twitch.tv/username'
-      });
-  } else {
-      client.user.setActivity("b3help", {
-          type: 'WATCHING'
-      }); //PLAYING, LISTENING, WATCHING
-      client.user.setStatus('dnd'); // dnd, idle, online, invisible
-  }
-});
 client.mongoose.init();
 client.login(TOKEN);

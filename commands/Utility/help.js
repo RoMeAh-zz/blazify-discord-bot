@@ -21,18 +21,8 @@ module.exports = {
       .setThumbnail(client.user.avatarURL)
       .setTitle("Commands of our Official Bot")
       .addField(
-        "<a:weedx:652565299668975616> Music Admin Commands",
-        "`setprefix, setdj, settc, setvc`",
-        true
-      )
-      .addField(
         "<a:miscy:690197767057834060> Music",
-        "`play, nowplaying, scssearch, ytsearch, queue, skip, lyrics, playlists, remove, shuffle`",
-        true
-      )
-      .addField(
-        "<a:cd0x:652563392162168856> DJ Commands",
-        "`forceremove, forceskip, movetrack, pause, resume, playnext, repeat, skipto, stop, volume`",
+        "`DEVELOPERS ARE WORKING.`",
         true
       )
       .addField(
@@ -47,7 +37,7 @@ module.exports = {
       )
       .addField(
         "<a:funsx:695011583864078376> Fun",
-        "`love, rps, 8ball, ascii`",
+        "`love, rps, 8ball, ascii, diceroll`",
         true
       )
       .addField(
