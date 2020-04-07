@@ -1,5 +1,6 @@
 const { Client, Collection, Attachment, RichEmbed } = require("discord.js");
 const Discord = require("discord.js");
+const TOKEN = require("./config.json")
 const fs = require("fs");
 const ms = require("ms");
 const mongoose = require("mongoose");
@@ -25,4 +26,4 @@ y.addListener("data", res => {
 });
 
 client.mongoose.init();
-client.login('NjkwOTM0ODAyOTQwOTUyNTg2.XonKmw.WiIOkw7b5hnWx_B6s1ecvLLaTXY');
+client.login(TOKEN);

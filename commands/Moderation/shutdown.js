@@ -8,7 +8,7 @@ module.exports = {
         aliases: ["rs"],
     run: async (bot, message, args) => {
 
-    if(message.author.id != "560805847517888512") return message.channel.send("You are not the bot the owner!")
+        if(message.author.id != "560805847517888512, 312149319769784321, 552052137878880256") return message.channel.send("You are not the bot the owner!")
 
     try {
        await message.channel.send("Bot is restarting...").then(m => {

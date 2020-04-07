@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "apextab-api": "^1.0.5",
+    "ascii-art": "^2.5.0",
     "ascii-table": "0.0.9",
     "async": "^3.2.0",
     "cheerio": "^1.0.0-rc.3",
@@ -38,6 +39,7 @@
     "random-puppy": "^1.1.0",
     "request": "^2.88.2",
     "simple-fortnite-api": "^0.1.9",
+    "snekfetch": "^4.0.4",
     "sudo": "^1.0.3",
     "superagent": "^5.2.2"
   }

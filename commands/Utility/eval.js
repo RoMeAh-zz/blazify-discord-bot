@@ -7,7 +7,7 @@ module.exports = {
         type: "owner",
         usage: `b3eval <input>`,
     run: async (bot, message, args) => {
-    if(message.author.id == "560805847517888512") {
+        if(message.author.id == "560805847517888512, 312149319769784321, 552052137878880256") {
         try {
             let toEval = args.join(" ")
 			let evaluated = inspect(eval(toEval, { depth: 0 }));
