@@ -1,6 +1,7 @@
 const { Client, Collection, Attachment, RichEmbed } = require("discord.js");
 const Discord = require("discord.js");
-const TOKEN = require("./config.json")
+const config = require("./config.json");
+const TOKEN = require("./config.json").TOKEN;
 const fs = require("fs");
 const ms = require("ms");
 const mongoose = require("mongoose");
@@ -25,5 +26,18 @@ y.addListener("data", res => {
     client.channels.get("696786895933538435").send(x.join(" "));
 });
 
+client.on("ready", async () => {
+  console.log(`${client.user.username} is ready for action!`);
+  if (config.activity.streaming == true) {
+      client.user.setActivity(config.activity.game, {
+          url: 'https://twitch.tv/username'
+      });
+  } else {
+      client.user.setActivity("b3help", {
+          type: 'WATCHING'
+      }); //PLAYING, LISTENING, WATCHING
+      client.user.setStatus('dnd'); // dnd, idle, online, invisible
+  }
+});
 client.mongoose.init();
 client.login(TOKEN);
