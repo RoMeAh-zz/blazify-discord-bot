@@ -1,4 +1,4 @@
-const { getImage } = require("./functions.js");
+const { getImage } = require("../../functions.js");
 
 module.exports = {
     name: "leaderboard-xp",
