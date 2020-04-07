@@ -47,8 +47,12 @@ module.exports = {
       )
       .addField(
         "<a:funsx:695011583864078376> Fun",
-        "`meme, gglimgn, love, rps, cat, dog, 8ball, anime, pepe`",
+        "`love, rps, 8ball`",
         true
+      )
+      .addField(
+        "<a:imagex:675626667796070407> Image Commands",
+        "`meme, llama, alpaca, seal, cat, dog, gglimgn, anime, pepe`"
       )
       .addField(
         "<a:moneyx:675403000092688433> Economy",
