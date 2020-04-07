@@ -16,24 +16,11 @@ module.exports = async (client) => {
   console.log(
     `Hi, ${client.user.username} is now online on ${client.guilds.size} Guilds with ${client.users.size} Members`
   );
-  let activities = [
-      `b3invite | Invite Me`,
-      `b3vote | Help Me grow`,
-      `b3role/guild-giveaway-start | Free Required Giveaways`,
-      `b3help | ${client.guilds.size} servers!`,
-      `b3help | ${client.channels.size} channels!`,
-      `b3help | ${client.users.size} users!`,
-      `Users Joining the support server`
-    
-    ],
-    i = 0;
-  setInterval(
-    () =>
-      client.user.setPresence({ game: {name: `${activities[i++ % activities.length]}`},
-                 type: "WATCHING",
-                    status: "IDLE"}),
-    12000
-  );
+  client.user.setActivity(config.activity.game, {
+    type: 'WATCHING'
+}); //PLAYING, LISTENING, WATCHING
+client.user.setStatus('dnd'); // dnd, idle, online, invisible
+
 
   client.channels
     .get("693785937880285204")

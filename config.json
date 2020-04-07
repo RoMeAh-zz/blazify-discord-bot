@@ -2,5 +2,9 @@
   "token": "NjkwOTM0ODAyOTQwOTUyNTg2.XonKmw.WiIOkw7b5hnWx_B6s1ecvLLaTXY",
   "prefix": "b3",
   "logsChannel": "logs",
-  "reportsChannel": "reports"
+  "reportsChannel": "reports",
+  "activity": {
+    "streaming": false,
+    "game": "People Type b3help"
+  }
 }
