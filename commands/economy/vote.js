@@ -25,7 +25,7 @@ module.exports = {
             .setDescription(
               `[Vote for the bot here](https://glennbotlist.xyz/bot/690934802940952586/vote)`
             )
-            .setColor("RANDOM");
+            .setColor("#FF0000");
 
           return message.channel.send(embed);
         } else if (d === true) {

@@ -2,7 +2,7 @@ const { RichEmbed } = require("discord.js");
 const Money = require("../../models/money.js");
 
 module.exports = {
-  name: "leaderboard-xp",
+  name: "leaderboard-xpcoins",
   description: "Display's the economy leaderboard for the guild",
   usage: "!leaderboard",
   category: "economy",

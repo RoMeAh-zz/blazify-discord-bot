@@ -52,7 +52,8 @@ module.exports = {
       )
       .addField(
         "<a:imagex:675626667796070407> Image Commands",
-        "`meme, llama, alpaca, seal, cat, dog, gglimgn, anime, pepe`"
+        "`meme, llama, alpaca, seal, cat, dog, gglimgn, anime, pepe`",
+        true
       )
       .addField(
         "<a:moneyx:675403000092688433> Economy",
