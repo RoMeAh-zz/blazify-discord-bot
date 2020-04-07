@@ -1,3 +1,5 @@
+const ping = require('minecraft-server-util');
+
 module.exports = {
     name: "minecraft",
     description: "Minecraft Server Stats",
