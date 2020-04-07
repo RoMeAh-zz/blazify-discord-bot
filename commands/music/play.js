@@ -51,7 +51,10 @@ module.exports = {
 
                         const track = tracks[Number(m.content) - 1];
                         player.queue.add(track)
-                        message.channel.send(`Enqueuing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\``);
+                        const loadingEmbed = new RichEmbed()
+                        .setTitle("`<a:loadingx2:675621636690542602>`<a:loadingx2:675621636690542602>SONG/PLAYLIST IS BEING LOADED`<a:loadingx2:675621636690542602>`<a:loadingx2:675621636690542602>")
+                        .setDescription(`Enqueuing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\``);
+                        message.channel.send(loadingEmbed).then(message => message.delete(5000));
                         if(!player.playing) player.play();
                     });
 
@@ -63,7 +66,10 @@ module.exports = {
                 case "PLAYLIST_LOADED":
                     res.playlist.tracks.forEach(track => player.queue.add(track));
                     const duration = Utils.formatTime(res.playlist.tracks.reduce((acc, cur) => ({duration: acc.duration + cur.duration})).duration, true);
-                    message.channel.send(`Enqueuing \`${res.playlist.tracks.length}\` \`${duration}\` tracks in playlist \`${res.playlist.info.name}\``);
+                    const PlayingEmbed = new RichEmbed()
+                    .addField("<a:miscy:690197767057834060><a:miscy:690197767057834060>NOW PLAYING<a:miscy:690197767057834060><a:miscy:690197767057834060>")
+                    .setDescription(`Enqueuing \`${res.playlist.tracks.length}\` \`${duration}\` tracks in playlist \`${res.playlist.info.name}\``);
+                    message.channel.send(PlayingEmbed)
                     if(!player.playing) player.play()
                     break;
             }
