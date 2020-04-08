@@ -54,7 +54,7 @@ module.exports = {
                         const loadingEmbed = new RichEmbed()
                         .setTitle("<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>SONG/PLAYLIST IS BEING LOADED<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>")
                         .setDescription(`Enqueuing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\``);
-                        message.channel.send(loadingEmbed).then(message => message.delete(5000));
+                        message.channel.send(loadingEmbed);
                         if(!player.playing) player.play();
                     });
 
