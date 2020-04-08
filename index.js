@@ -1,4 +1,4 @@
-const { Client, Collection, Attachment, RichEmbed, Discord } = require("discord.js");
+const { Client, Collection } = require("discord.js");
 const TOKEN = require("./config.json").token;
 const mongoose = require("mongoose");
 
