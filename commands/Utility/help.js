@@ -22,7 +22,7 @@ module.exports = {
       .setTitle("Commands of our Official Bot")
       .addField(
         "<a:miscy:690197767057834060> Music",
-        "`DEVELOPERS ARE WORKING.`",
+        "`play, pause, queue, skip, volume, nowplaying, leave`",
         true
       )
       .addField(

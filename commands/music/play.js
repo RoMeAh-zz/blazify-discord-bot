@@ -53,7 +53,8 @@ module.exports = {
                         player.queue.add(track)
                         const loadingEmbed = new RichEmbed()
                         .setTitle("<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>SONG/PLAYLIST IS BEING LOADED<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>")
-                        .setDescription(`Enqueuing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\``);
+                        .setDescription(`<a:miscy:690197767057834060><a:miscy:690197767057834060>Playing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\`<a:miscy:690197767057834060><a:miscy:690197767057834060>`)
+                        .setColor("#FF0000");
                         message.channel.send(loadingEmbed);
                         if(!player.playing) player.play();
                     });
