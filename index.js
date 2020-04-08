@@ -1,9 +1,5 @@
-const { Client, Collection, Attachment, RichEmbed } = require("discord.js");
-const Discord = require("discord.js");
-const config = require("./config.json");
+const { Client, Collection, Attachment, RichEmbed, Discord } = require("discord.js");
 const TOKEN = require("./config.json").token;
-const fs = require("fs");
-const ms = require("ms");
 const mongoose = require("mongoose");
 
 const client = new Client({
@@ -11,9 +7,6 @@ const client = new Client({
 });
 client.mongoose = require("./utils/mongoose.js");
 client.afk = new Map();
-const PREFIX = "b3";
-const cheerio = require("cheerio");
-const request = require("request");
 
 ["commands", "aliases"].forEach(x => (client[x] = new Collection()));
 ["command", "event"].forEach(handler => {
