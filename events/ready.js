@@ -1,23 +1,40 @@
 const config = require("../config.json")
 const Coins = require("../models/coin.js")
 const Prefix = require("../models/prefix.js")
-const GBL = require("gblapi.js");
+//const GBL = require("gblapi.js");
 const Settings = require("../models/settings.js");
 const XP = require("../models/xp.js");
 const { ErelaClient, Utils } = require("erela.js");
-const { nodes } = require("../../botconfig.json")
+const { nodes } = require("../botconfig.json")
 module.exports = async (client) => {
   
-  const Glenn = new GBL(client.user.id, 'XA-ff0e30ea1e1446209ef81343adb48558');
+ // const Glenn = new GBL(client.user.id, 'XA-ff0e30ea1e1446209ef81343adb48558');
   
-  setInterval(() => {
-    Glenn.updateStats(client.guilds.size);
-  }, 900000);
+//  setInterval(() => {
+  //  Glenn.updateStats(client.guilds.size);
+ // }, 900000);
   
   console.log(
     `Hi, ${client.user.username} is now online on ${client.guilds.size} Guilds with ${client.users.size} Members`
   );
 
+  client.music = new ErelaClient(client, nodes)
+  .on("nodeError", console.log)
+  .on("nodeConnect", () => console.log("Successfully created a new Node."))
+  .on("queueEnd", player => {
+      player.textChannel.send("Queue has ended.")
+      return client.music.players.destroy(player.guild.id)
+  })
+  .on("trackStart", ({textChannel}, {title, duration}) => textChannel.send(`Now playing: **${title}** \`${Utils.formatTime(duration, true)}\``).then(m => m.delete(15000)));
+
+client.levels = new Map()
+  .set("none", 0.0)
+  .set("low", 0.10)
+  .set("medium", 0.15)
+  .set("high", 0.25);
+
+let activities = [ `${client.guilds.size} servers!`, `${client.channels.size} channels!`, `${client.users.size} users!` ], i = 0;
+setInterval(() => client.user.setActivity(`${Prefix}help | ${activities[i++ % activities.length]}`, { type: "WATCHING" }), 15000)
 
 
   client.channels
@@ -127,23 +144,4 @@ module.exports = async (client) => {
       };
     });
   };
-
-  client.music = new ErelaClient(client, nodes)
-  .on("nodeError", console.log)
-  .on("nodeConnect", () => console.log("Successfully created a new Node."))
-  .on("queueEnd", player => {
-      player.textChannel.send("Queue has ended.")
-      return client.music.players.destroy(player.guild.id)
-  })
-  .on("trackStart", ({textChannel}, {title, duration}) => textChannel.send(`Now playing: **${title}** \`${Utils.formatTime(duration, true)}\``).then(m => m.delete(15000)));
-
-client.levels = new Map()
-  .set("none", 0.0)
-  .set("low", 0.10)
-  .set("medium", 0.15)
-  .set("high", 0.25);
-
-let activities = [ `${client.guilds.size} servers!`, `${client.channels.size} channels!`, `${client.users.size} users!` ], i = 0;
-setInterval(() => client.user.setActivity(`${client.prefix}help | ${activities[i++ % activities.length]}`, { type: "WATCHING" }), 15000)
-
 };
