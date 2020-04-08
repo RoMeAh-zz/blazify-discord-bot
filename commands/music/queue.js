@@ -2,7 +2,7 @@ const { RichEmbed } = require("discord.js")
 
 module.exports = { 
         name: "queue",
-        aliases: ["q", "now"],
+        aliases: ["q", "list", "now"],
         description: "Displays what the current queue is.",
         accessableby: "Member",
         category: "music",
