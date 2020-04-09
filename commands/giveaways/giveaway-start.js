@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+const client = new Discord.Client();
 // Requires Manager from discord-giveaways
 const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways
@@ -13,6 +15,7 @@ const manager = new GiveawaysManager(client, {
 });
 // We now have a giveawaysManager property to access the manager everywhere!
 client.giveawaysManager = manager;
+
 module.exports = {
         name: "giveaway-start",
         aliases: ["gc", "gs"],
@@ -20,9 +23,8 @@ module.exports = {
         accessableby: "Member",
         category: "music",
         usage: "<input>",
-    run: (bot, message, args) => {
+        run: (client, message, args) => {
       const ms = require("ms"); // npm install ms
-    const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
     if(!args[0])return message.channel.send("```Uh-Oh, its b3giveaway-start <time> <winners> <prize>```")
      if(!args[1])return message.channel.send("```Uh-Oh, its b3giveaway-start <time> <winners> <prize>```")
      if(!args[2])return message.channel.send("```Uh-Oh, its b3giveaway-start <time> <winners> <prize>```")

@@ -1,3 +1,6 @@
+const Discord = require("discord.js");
+const client = new Discord.Client();
+// Requires Manager from discord-giveawaysconst client = new Discord.Client()const client = new Discord.Client()
 const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways
 const manager = new GiveawaysManager(client, {
@@ -19,9 +22,8 @@ module.exports = {
         accessableby: "Member",
         category: "music",
         usage: "<input>",
-    run: (bot, message, args) => {
+    run: (client, message, args) => {
       const ms = require("ms"); // npm install ms
-      const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
       // g!start-giveaway 2d 1 Awesome prize!
             // will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
             let messageID = args[0];
