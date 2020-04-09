@@ -1,7 +1,7 @@
 const { Client, Collection } = require("discord.js");
 const TOKEN = require("./config.json").token;
 const mongoose = require("mongoose");
-const client = new Client({ disableEveryone: true});
+const client = new Client
 client.mongoose = require("./utils/mongoose.js");
 client.afk = new Map();
 ["commands", "aliases"].forEach(x => (client[x] = new Collection()));
