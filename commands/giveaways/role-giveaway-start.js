@@ -38,10 +38,12 @@ module.exports = {
         winnerCount: parseInt(args[2]),
         exemptMembers: (member) => !member.roles.some(r => r.name === role.name),
         messages: {
-            giveaway: "\n\n🎉🎉>  **GIVEAWAY** 🎉🎉 ",
+            giveaway: "\n\n🎉🎉  **GIVEAWAY** 🎉🎉 ",
             giveawayEnded: "🎉🎉**GIVEAWAY ENDED**🎉🎉 ",
+            requiredRole: `${role}`,
             timeRemaining: "Time remaining: **{duration}**!",
-            inviteToParticipate: "React with 🎉 to participate!",
+            inviteToParticipate: `React with 🎉 to participate! 
+            You need ${role} to win this giveaway`,
             winMessage: `🎉🎉Congratulations, {winners}! You won **{prize}** CLAIM FROM @${message.author.tag}!🎉🎉`,
             embedFooter: "Giveaways",
             noWinner: "Giveaway cancelled, no valid participations.",
