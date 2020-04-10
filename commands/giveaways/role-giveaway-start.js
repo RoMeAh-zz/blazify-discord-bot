@@ -38,13 +38,12 @@ module.exports = {
         winnerCount: parseInt(args[2]),
         exemptMembers: (member) => !member.roles.some(r => r.name === role.name),
         messages: {
-            giveaway: "\n\n🎉🎉  **GIVEAWAY** 🎉🎉 ",
-            giveawayEnded: "🎉🎉**GIVEAWAY ENDED**🎉🎉 ",
-            requiredRole: `${role}`,
+            giveaway: "\n\n<a:grxz:695226497115619408><a:grxz:695226497115619408> **GIVEAWAY** <a:grxz:695226497115619408><a:grxz:695226497115619408> ",
+            giveawayEnded: "<a:grxz:695226497115619408><a:grxz:695226497115619408>**GIVEAWAY ENDED**<a:grxz:695226497115619408><a:grxz:695226497115619408> ",
             timeRemaining: "Time remaining: **{duration}**!",
             inviteToParticipate: `React with 🎉 to participate! 
             You need ${role} to win this giveaway`,
-            winMessage: `🎉🎉Congratulations, {winners}! You won **{prize}** CLAIM FROM @${message.author.tag}!🎉🎉`,
+            winMessage: `<a:grxz:695226497115619408><a:grxz:695226497115619408>Congratulations, {winners}! You won **{prize}** CLAIM FROM @${message.author.tag}!<a:grxz:695226497115619408><a:grxz:695226497115619408>`,
             embedFooter: "Giveaways",
             noWinner: "Giveaway cancelled, no valid participations.",
             embedColor: "#FF0000",

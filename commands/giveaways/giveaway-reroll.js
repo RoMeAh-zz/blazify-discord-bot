@@ -27,7 +27,7 @@ module.exports = {
       const ms = require("ms"); // npm install ms
       // g!start-giveaway 2d 1 Awesome prize!
             // will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
-          if(!args[1])return message.channel.send("```Uh-Oh, its b3giveaway-reroll <messageID>```")
+          if(!args[0])return message.channel.send("```Uh-Oh, its b3giveaway-reroll <messageID>```")
               let messageID = args[0];
                client.giveawaysManager.reroll(messageID).then(() => {
                    message.channel.send("<a:grxz:695226497115619408><a:grxz:695226497115619408> Success! Giveaway rerolled!<a:grxz:695226497115619408><a:grxz:695226497115619408> ");

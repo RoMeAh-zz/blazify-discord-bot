@@ -17,7 +17,7 @@ const manager = new GiveawaysManager(client, {
 client.giveawaysManager = manager;
 module.exports = {
         name: "giveaway-edit",
-        aliases: ["ge"],
+        aliases: ["gd"],
         description: "Skips the song currently playing.",
         accessableby: "Member",
         category: "music",
