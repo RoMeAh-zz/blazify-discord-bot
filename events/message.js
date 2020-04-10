@@ -68,11 +68,10 @@ module.exports = async (client, message) => {
           xp: addXP,
           level: 1
         });
-        await newXP.save().catch(err => console.log(err));
-      }
+        newXP.save().catch(err => console.log(err));
+      }else {
 
-      xp.xp = +xp.xp + +addXP;
-
+      xp.xp = xp.xp + addXP;
       let nextLevel = xp.level * 300;
 
       if (nextLevel <= xp.xp) {
@@ -83,12 +82,9 @@ module.exports = async (client, message) => {
           message.guild.channels.find(c => c.name === "level-up") || message.channel;
         return channel.send(
           `${message.author.tag} has hit level ${xp.level}`
-        );if(!channel) return channel.send(
-          `@${message.author.tag} has hit level ${xp.level}`
         );
-      }
-
-      xp.save().catch(err => console.log(err));
+            }
+          }
     });
   }
 
@@ -113,6 +109,8 @@ module.exports = async (client, message) => {
       }
     );
   }
+  
+ 
   
   if (message.channel.type === "dm")
     return message.channel.send("You are not supposed to DM Bots");

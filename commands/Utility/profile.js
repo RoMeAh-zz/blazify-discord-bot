@@ -15,11 +15,11 @@ module.exports = {
         
         let xp;
         let level;
-        let coin;
+        let coins;
         let xpcoins;
         let member = message.mentions.members.first();
       
-        await XP.findOne({ userID: member.user.id }, (err, xps) => {
+        await XP.findOne({ userID: member.user.id, guildID: message.guild.id }, (err, xps) => {
           
           if (err) console.log(err);
           
@@ -32,14 +32,14 @@ module.exports = {
           };
         });
         
-        await Coin.findOne({ userID: member.user.id }, (err, coins) => {
+        await Coin.findOne({ userID: member.user.id }, (err, coin) => {
           
           if (err) console.log(err);
           
-          if (!coins) {
-            coin = 0;
+          if (!coin) {
+            coins = 0;
           } else {
-            coin = coins.coins;
+            coins = coin.coins;
           };
         });
         
@@ -55,10 +55,9 @@ module.exports = {
         });
         
         let profile = new RichEmbed()
-        .setThumbnail(message.author.avatarURL)
         .setColor("#FF0000")
         .setTitle(`${member.user.username}'s Profile`)
-        .addField("Coins:", coin);
+        .addField("Coins:", coins);
         
         await Settings.findOne({ guildID: message.guild.id }, async (err, settings) => {
           
@@ -78,9 +77,9 @@ module.exports = {
         
         let xp;
         let level;
-        let coin;
+        let coins;
         let xpcoins;
-        
+      
         await XP.findOne({ userID: message.author.id, guildID: message.guild.id }, (err, xps) => {
           
           if (err) console.log(err);
@@ -91,60 +90,50 @@ module.exports = {
           } else {
             xp = xps.xp;
             level = xps.level;
-          }
+          };
         });
         
-        await Coin.findOne({ userID: message.author.id }, (err, coins) => {
+        await Coin.findOne({ userID: message.author.id }, (err, coin) => {
           
           if (err) console.log(err);
           
-          if (!coins) {
-            coin = 0;
+          if (!coin) {
+            coins = 0;
           } else {
-                coin = coins.coins;
-          }
-          
+            coins = coin.coins;
+          };
         });
         
-        await Money.findOne({ userID: message.author.id, serverID: message.guild.id }, async (err, xpcoin) => {
+        await Money.findOne({ userID: message.author.id, serverID: message.guild.id }, (err, xpcoin) => {
           
           if (err) console.log(err);
           
           if (!xpcoin) {
             xpcoins = 0;
           } else {
-                xpcoins = xpcoin.money;
-          }
-
-        })
+            xpcoins = xpcoin.money;
+          };
+        });
         
         let profile = new RichEmbed()
         .setThumbnail(message.author.avatarURL)
+        .setColor("#FF0000")
+        .setThumbnail(message.author.avatarURL)
         .setTitle(`${message.author.username}'s Profile`)
-        .addField("Coins:", coin)
-        .setColor("#FF0000");
+        .addField("Coins:", coins);
         
         await Settings.findOne({ guildID: message.guild.id }, async (err, settings) => {
           
-          if (err) console.log(err);
+          if (err) console.log(err)
           
-          setTimeout(async () => {
-            
           if (settings.enableXPCoins === true) {
             await profile.addField("XPCoins:", xpcoins)
-          } else
+          };
           if (settings.enableXP === true) {
             await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
             await profile.addField("Level", level)
-          } else if (settings.enableXPCoins === true && settings.enableXP === true) {
-            await profile.addField("XPCoins:", xpcoins)
-            await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
-            await profile.addField("Level", level)
           };
-            
-          }, 1000)
-          
-        })
+        });
         
         return message.channel.send(profile);
       
