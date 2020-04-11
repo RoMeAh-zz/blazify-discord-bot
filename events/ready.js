@@ -6,14 +6,19 @@ const Settings = require("../models/settings.js");
 const XP = require("../models/xp.js");
 const { ErelaClient, Utils } = require("erela.js");
 const { nodes } = require("../botconfig.json")
-module.exports = async (client) => {
+module.exports = async (client, message, invite) => {
   
  // const Glenn = new GBL(client.user.id, 'XA-ff0e30ea1e1446209ef81343adb48558');
   
 //  setInterval(() => {
   //  Glenn.updateStats(client.guilds.size);
  // }, 900000);
-  
+ guildInvites.set(invite.guild.id, await invite.guild.fetchInvites());
+ client.guilds.cache.forEach(guild => {
+  guild.fetchInvites()
+      .then(invites => guildInvites.set(guild.id, invites))
+      .catch(err => console.log(err));
+});
   console.log(
     `Hi, ${client.user.username} is now online on ${client.guilds.size} Guilds with ${client.users.size} Members`
   );
@@ -47,6 +52,8 @@ setInterval(() => client.user.setActivity(`${Prefix}help | ${activities[i++ % ac
     .get("694413926993100830")
     .edit({ name: `${client.channels.size} Channels` });
   
+
+
     // Requires Manager from discord-giveaways
 const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways

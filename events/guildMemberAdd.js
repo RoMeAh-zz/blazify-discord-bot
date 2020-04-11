@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client } = require('discord.js');
+const { Client, RichEmbed } = require('discord.js');
 const client = new Client();
 const createCaptcha = require('./captcha.js');
 const fs = require('fs').promises;
@@ -47,6 +47,21 @@ module.exports = async (client,member ) => {
     catch(err) {
         console.log(err);
     }
-
+    const cachedInvites = guildInvites.get(member.guild.id);
+    const newInvites = await member.guild.fetchInvites();
+    guildInvites.set(member.guild.id, newInvites);
+    try {
+        const usedInvite = newInvites.find(inv => cachedInvites.get(inv.code).uses < inv.uses);
+        const embed = new MessageEmbed()
+            .setDescription(`${member.user.tag} is the ${member.guild.memberCount} to join.\nJoined using ${usedInvite.inviter.tag}\nNumber of uses: ${usedInvite.uses}`)
+            .setTimestamp()
+            .setTitle(`${usedInvite.url}`);
+        if(channel) {
+            channel.send(embed).catch(err => console.log(err));
+        }
+    }
+    catch(err) {
+        console.log(err);
+    }
   
 }
