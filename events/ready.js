@@ -6,19 +6,13 @@ const Settings = require("../models/settings.js");
 const XP = require("../models/xp.js");
 const { ErelaClient, Utils } = require("erela.js");
 const { nodes } = require("../botconfig.json")
-module.exports = async (client, message, invite) => {
+module.exports = async (client, message) => {
   
- // const Glenn = new GBL(client.user.id, 'XA-ff0e30ea1e1446209ef81343adb48558');
+  //const Glenn = new GBL(client.user.id, 'XA-ff0e30ea1e1446209ef81343adb48558');
   
-//  setInterval(() => {
+ // setInterval(() => {
   //  Glenn.updateStats(client.guilds.size);
- // }, 900000);
- guildInvites.set(invite.guild.id, await invite.guild.fetchInvites());
- client.guilds.cache.forEach(guild => {
-  guild.fetchInvites()
-      .then(invites => guildInvites.set(guild.id, invites))
-      .catch(err => console.log(err));
-});
+  //}, 900000);
   console.log(
     `Hi, ${client.user.username} is now online on ${client.guilds.size} Guilds with ${client.users.size} Members`
   );

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Client, RichEmbed } = require('discord.js');
 const client = new Client();
+const guildInvites = new Map();
 const createCaptcha = require('./captcha.js');
 const fs = require('fs').promises;
 const verifiedRole = require("../config.json").vRole;
@@ -31,7 +32,7 @@ module.exports = async (client,member ) => {
             const response = await msg.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time']});
             if(response) {
                 await msg.channel.send('You have verified yourself!');
-                await member.addRole(verifiedRole);
+                await member.addRole("690664505037946951");
                 await fs.unlink(`${__dirname}/captchas/${captcha}.png`)
                     .catch(err => console.log(err));
             }
@@ -47,21 +48,6 @@ module.exports = async (client,member ) => {
     catch(err) {
         console.log(err);
     }
-    const cachedInvites = guildInvites.get(member.guild.id);
-    const newInvites = await member.guild.fetchInvites();
-    guildInvites.set(member.guild.id, newInvites);
-    try {
-        const usedInvite = newInvites.find(inv => cachedInvites.get(inv.code).uses < inv.uses);
-        const embed = new MessageEmbed()
-            .setDescription(`${member.user.tag} is the ${member.guild.memberCount} to join.\nJoined using ${usedInvite.inviter.tag}\nNumber of uses: ${usedInvite.uses}`)
-            .setTimestamp()
-            .setTitle(`${usedInvite.url}`);
-        if(channel) {
-            channel.send(embed).catch(err => console.log(err));
-        }
-    }
-    catch(err) {
-        console.log(err);
-    }
+    
   
 }
