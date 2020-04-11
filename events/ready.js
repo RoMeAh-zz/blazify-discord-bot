@@ -94,13 +94,13 @@ let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway
   
         for (let i = 0; i < allUsers.length; i ++) {
         
-        await XP.findOne({ userID: message.author.id, guildID: message.guild.id }, async (err, user) => {
+        await XP.findOne({ userID: allUsers[i].id, guildID: message.guild.id }, async (err, user) => {
           
           if (err) console.log(err);
           
           if (!user) {
             const newXP = new XP({
-                userID: message.author.id,
+                userID: allUsers[i].id,
                 userName: message.author.username,
                 guildID: message.guild.id,
                 xp: 0,

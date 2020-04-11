@@ -20,18 +20,20 @@ module.exports = {
               userName: message.author.username,
               userID: message.author.id,
               guildID: message.guild.id,
-              warns: warns.warns,
+              warns: "The warnings will be shown down below"
               });
           }
   
-          let warnings = warns.warns;
-  
-          let rip = new RichEmbed()
-            .setTitle(`${member.user.username}'s Warnings`)
+          let embed = new RichEmbed()
+            .setTitle(`${user.username}'s Warnings`)
             .setColor('#ed0e0e')
-            .addField("Warnings", warnings);
-  
-          message.channel.send(rip);
+            if(!warns) {
+              embed.addField("Warnings", "The warnings will be shown down below", true);
+              return message.channel.send(embed);
+            }else {
+              embed.addField("Warnings", warns.warns, true)
+              return message.channel.send(embed);
+        }
         });
       } else {
         await Warn.findOne({ userID: message.author.id, guildID: message.guild.id }, (err, warns) => {
@@ -42,21 +44,22 @@ module.exports = {
               userID: message.author.id,
               userName: message.author.username,
               guildID: message.guild.id,
-              warns: warns.warns + warns.warns,
-              __v: +1
+              warns: "The warnings will be shown down below"
             });
-            console.log("??");
             newWarn.save().catch(err => console.log(err));
           }
+
   
-          let warnings = warns.warns;
-  
-          let rip = new RichEmbed()
+          let embed = new RichEmbed()
             .setTitle(`${message.author.username}'s Warnings`)
             .setColor('#ed0e0e')
-            .addField("Warnings", warnings);
-  
-          message.channel.send(rip);
+            if(!warns) {
+              embed.addField("Warnings", "The warnings will be shown down below", true);             
+               return message.channel.send(embed);
+            }else {
+              embed.addField("Warnings", warns.warns, true)
+              return message.channel.send(embed);
+        }
         });
       }
     }
