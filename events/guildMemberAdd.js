@@ -3,6 +3,7 @@ const { Client } = require('discord.js');
 const client = new Client();
 const createCaptcha = require('./captcha.js');
 const fs = require('fs').promises;
+const verifiedRole = require("../config.json").vRole;
 module.exports = async (client,member ) => {
   
     const channel = member.guild.channels.find(
@@ -30,7 +31,7 @@ module.exports = async (client,member ) => {
             const response = await msg.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time']});
             if(response) {
                 await msg.channel.send('You have verified yourself!');
-                await member.roles.add('BLAZE ARMY');
+                await member.addRole(verifiedRole);
                 await fs.unlink(`${__dirname}/captchas/${captcha}.png`)
                     .catch(err => console.log(err));
             }

@@ -1,6 +1,7 @@
 const { RichEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { promptMessage } = require("../../functions.js");
+const lgc = require("../../config.json").logChannel;
 
 module.exports = {
     name: "ban",
@@ -8,7 +9,7 @@ module.exports = {
     description: "bans the member",
     usage: "<id | mention>",
     run: async (client, message, args) => {
-        const logChannel = message.guild.channels.find(c => c.name === "logs") || message.channel;
+
         if (message.deletable) message.delete();
 
         // No args
@@ -83,7 +84,8 @@ module.exports = {
                         if (err) return message.channel.send(`Well.... the ban didn't work out. Here's the error ${err}`)
                     });
 
-                logChannel.send(embed);
+                    let lChannel = message.guild.channels.find(lgc)
+                    lChannel.send(embed)
             } else if (emoji === "❌") {
                 msg.delete();
 

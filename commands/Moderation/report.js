@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-
+const lgc = require("../../config.json").reportChannel;
 module.exports = {
     name: "report",
     category: "moderation",
@@ -20,7 +20,6 @@ module.exports = {
         if (!args[1])
             return message.channel.send("Please provide a reason for the report").then(m => m.delete(5000));
         
-            const logChannel = message.guild.channels.find(c => c.name === "reports") || message.channel;
             
         if (!channel)
             return message.channel.send("Couldn't find a `#reports` channel").then(m => m.delete(5000));
@@ -34,7 +33,7 @@ module.exports = {
             **> Reported by:** ${message.member}
             **> Reported in:** ${message.channel}
             **> Reason:** ${args.slice(1).join(" ")}`);
-
-        return channel.send(embed);
+            let lChannel = message.guild.channels.find(lgc)
+            lChannel.send(embed)
     }
 }

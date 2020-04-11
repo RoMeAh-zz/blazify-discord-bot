@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const mongoose = require("mongoose");
 const Warn = require("../../models/warn.js")
+const lgc = require("../../config.json").logChannel;
 module.exports = {
     name: "warn",
     category: "fun",
@@ -23,13 +24,15 @@ Warn.findOne(
         warns: rip,
       });
       newWarn.save().catch(err => console.log(err));
-      return message.channel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`);
+      let lChannel = message.guild.channels.find(lgc)
+        return lChannel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
      } else {
         warns.warns += `
         -------------------------------
         **-${rip}**`
         warns.save().catch(err => console.log(err));
-      return message.channel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`);
+        let lChannel = message.guild.channels.find(lgc)
+        return lChannel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
   }
   })
 }

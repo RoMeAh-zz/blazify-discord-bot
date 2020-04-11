@@ -1,4 +1,3 @@
-
 module.exports = {
     name: "createchannel",
     category: "moderation",
