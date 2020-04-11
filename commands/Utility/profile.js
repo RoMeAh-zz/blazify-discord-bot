@@ -2,7 +2,7 @@ const { RichEmbed } = require("discord.js");
 let XP = require("../../models/xp.js");
 let Coin = require("../../models/coin.js");
 let Money = require("../../models/money.js");
-let Settings = require("../../models/settings.js");
+let Settings = require("../../models/configsetting.js");
 
 module.exports = {
     name: "profile",

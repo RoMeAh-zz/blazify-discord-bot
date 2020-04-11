@@ -27,12 +27,12 @@ module.exports = {
       )
       .addField(
         "<a:bannedx:695011172591599728> Moderation",
-        "`kick, ban, warn, mute, createchannel, report, unban, unmute, softban, forceban, addrole, removerole, config, config prefix`",
+        "`kick, ban, warn, mute, createchannel, report, unban, unmute, softban, forceban, addrole, removerole, config, config prefix, config enableinvtracker true, config enablecaptcha true`",
         true
       )
       .addField(
         "<a:snowboy:675400549235032085> Level System",
-        "`profile, xp, xpcoins, settings config true, config enablexpcoins true`",
+        "`profile, xp, xpcoins,config enablexp true, config enablexpcoins true`",
         true
       )
       .addField(

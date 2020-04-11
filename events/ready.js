@@ -2,7 +2,7 @@ const config = require("../config.json")
 const Coins = require("../models/coin.js")
 const Prefix = require("../models/prefix.js")
 //const GBL = require("gblapi.js");
-const Settings = require("../models/settings.js");
+const Settings = require("../models/configsetting.js");
 const XP = require("../models/xp.js");
 const { ErelaClient, Utils } = require("erela.js");
 const { nodes } = require("../botconfig.json")
@@ -94,8 +94,8 @@ let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway
       }
   
         for (let i = 0; i < allUsers.length; i ++) {
-        
-        await XP.findOne({ userID: allUsers[i].id, guildID: message.guild.id }, async (err, user) => {
+          for (let i = 0; i < allGuilds.length; i++) {
+        await XP.findOne({ userID: allUsers[i].id, guildID: allGuilds[i].id }, async (err, user) => {
           
           if (err) console.log(err);
           
@@ -113,7 +113,7 @@ let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway
           }
         })
       }
-
+    }
  await client.guilds.keyArray().forEach(id => {
 
          Prefix.findOne({
@@ -123,11 +123,11 @@ let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway
 
              if (!guild) {
                  const newPrefix = new Prefix({
-                     guildID: id,
-                     prefix: config.prefix
-                 });
+                      guildID: id,
+                      prefix: config.prefix
+   });
 
-                 return newPrefix.save();
+   return newPrefix.save();
  }
                    });
 
@@ -155,18 +155,19 @@ let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway
   
   for (let i = 0; i < allGuilds.length; i++) {
     
-    await Settings.findOne({ guildID: allGuilds[i].id }, async (err, guild) => {
+    await Settings.findOne({ guildID: message.guild.id }, async (err, guild) => {
       
       if (err) console.log(err);
       
       if (!guild) {
         const newGuild = new Settings({
-          guildID: allGuilds[i].id,
+          guildID: message.guild.id,
           enableXPCoins: false,
           enableXP: false,
+          enableCaptcha: false,
         });
         await newGuild.save().catch(err => console.log(err));
-        console.log(`Added the guild: ${allGuilds[i].name} to the database`)
+        console.log(`Added the guild: ${guildID} to the database`)
       };
     });
   };
