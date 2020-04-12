@@ -84,7 +84,7 @@ module.exports = {
                         if (err) return message.channel.send(`Well.... the ban didn't work out. Here's the error ${err}`)
                     });
 
-                    let lChannel = message.guild.channels.find(lgc)
+                    let lChannel = message.guild.channels.find(channel => channel.name === "logs")
                     lChannel.send(embed)
             } else if (emoji === "❌") {
                 msg.delete();

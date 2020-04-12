@@ -33,7 +33,7 @@ module.exports = {
             **> Reported by:** ${message.member}
             **> Reported in:** ${message.channel}
             **> Reason:** ${args.slice(1).join(" ")}`);
-            let lChannel = message.guild.channels.find(lgc)
+            let lChannel = message.guild.channels.find(channel => channel.name === "reports")
             lChannel.send(embed)
     }
 }

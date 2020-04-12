@@ -32,13 +32,12 @@ module.exports= {
     let embed = new RichEmbed()
     .setColor('BLACK')
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
-    .addField("Moderation:", "Addrole")
     .addField("Mutee:", rMember.user.username)
     .addField("Moderator:", message.author.username)
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
 
-        let lChannel = message.guild.channels.find(lgc)
+        let lChannel = message.guild.channels.find(channel => channel.name === "logs")
         lChannel.send(embed)
     }
 }
