@@ -13,19 +13,19 @@ let enableXPS;
 let enableCaptchaS;
 module.exports = async (client, message, member) => {
     
-  /// if (message.content.includes(message.mentions.users.first())) {
-   ///  client.afk.forEach(data => {
-   ///    if (data.id === message.mentions.users.first().id) {
-   ///      message.guild.fetchMember(data.id).then(member => {
-   ////      let usertag = member.user.tag;
-  //       return message.channel.send(`**${usertag}** is AFK. Reason: ${data.reason}`);
- //      }
- //  )}
- //    });
- //  };
+   if (message.content.includes(message.mentions.users.first())) {
+    client.afk.forEach(data => {
+      if (data.id === message.mentions.users.first().id) {
+        message.guild.fetchMember(data.id).then(member => {
+         let usertag = member.user.tag;
+      return message.channel.send(`**${usertag}** is AFK. Reason: ${data.reason}`);
+      }
+  )}
+     });
+   };
 
- //  let checkafk = client.afk.get(message.author.id);
-  // if (checkafk) return [client.afk.delete(message.author.id), message.channel.send(`Your status has been updated, and you are no longer afk.`)]
+   let checkafk = client.afk.get(message.author.id);
+   if (checkafk) return [client.afk.delete(message.author.id), message.channel.send(`Your status has been updated, and you are no longer afk.`)]
   let allGuilds = client.guilds.array();
   for (let i = 0; i < allGuilds.length; i++) {
   if(message.author.bot) return;
