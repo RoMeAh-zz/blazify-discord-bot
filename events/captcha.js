@@ -9,6 +9,6 @@ module.exports = async function createCaptcha() {
     const textWidth = Jimp.measureText(font, captcha);
     const textHeight = Jimp.measureTextHeight(font, captcha);
     image.print(font, (w/2 - textWidth/2), (h/2 - textHeight/2), captcha);
-    image.write(`${__dirname}/captchas/${captcha}.png`);
+    image.write(`Documents/captchas/${captcha}.png`);
     return captcha;
 }
