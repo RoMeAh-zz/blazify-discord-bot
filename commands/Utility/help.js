@@ -26,42 +26,42 @@ module.exports = {
         true
       )
       .addField(
-        "<a:bannedx:695011172591599728> Moderation",
+        "<a:bannedx:695011172591599728>Moderation",
         "`kick, ban, warn, mute, createchannel, report, unban, unmute, softban, forceban, addrole, removerole, config, config prefix, config enableinvtracker true, config enablecaptcha true`",
         true
       )
       .addField(
-        "<a:snowboy:675400549235032085> Level System",
+        "<a:snowboy:675400549235032085>Level System",
         "`profile, xp, xpcoins,config enablexp true, config enablexpcoins true`",
         true
       )
       .addField(
-        "<a:funsx:695011583864078376> Fun",
+        "<a:funsx:695011583864078376>Fun",
         "`love, rps, 8ball, ascii, diceroll`",
         true
       )
       .addField(
-        "<a:imagex:675626667796070407> Image Commands",
+        "<a:imagex:675626667796070407>Image Commands",
         "`meme, llama, alpaca, seal, cat, dog, gglimgn, anime, pepe, triggered`",
         true
       )
       .addField(
-        "<a:moneyx:675403000092688433> Economy",
+        "<a:moneyx:675403000092688433>Economy",
         "`balance, bet, leaderboard-coins, rob, add-money, remove-money, remove-money half, remove-money-all`",
         true
       )
       .addField(
-        "<a:grxz:695226497115619408> Giveaway",
+        "<a:grxz:695226497115619408>Giveaway",
         " `guild-giveaway-start, role-giveaway-start, giveaway-start, giveaway-reroll, giveaway-delete, giveaway-edit`",
         true
       )
       .addField(
-        "<a:gamesx:695011807743574046> Gaming",
+        "<a:gamesx:695011807743574046>Gaming",
         " `apex, fortnite, overwatch, rainbow6`",
         true
       )
       .addField(
-        "<a:utilityx:695012067693953066> Utility",
+        "<a:utilityx:695012067693953066>Utility",
         " `help, ping, say, whois, serverinfo, instagram, uptime`",
         true
       )
@@ -73,7 +73,7 @@ module.exports = {
         true
       )
       .addField(
-        "<a:nitroboost:690090581506261003> Others",
+        "<a:nitroboost:690090581506261003>Others",
         `[Support Server](https://discord.gg/3JrdUxt) |  [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://www.paypal.me/roahgaming)`,
         false
       )

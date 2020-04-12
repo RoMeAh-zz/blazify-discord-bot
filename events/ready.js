@@ -46,6 +46,38 @@ setInterval(() => client.user.setActivity(`${Prefix}help | ${activities[i++ % ac
     .get("694413926993100830")
     .edit({ name: `${client.channels.size} Channels` });
   
+    let allGuilds = client.guilds.array();
+    for (let i = 0; i < allGuilds.length; i++) {
+    
+      await Settings.findOne({ guildID:  allGuilds[i].id }, async (err, guild) => {
+        
+        if (err) console.log(err);
+        
+        if (!guild) {
+          const newGuild = new Settings({
+            guildID:  allGuilds[i].id,
+            enableXPCoins: false,
+            enableXP: false,
+            enableCaptcha: false,
+          });
+          await newGuild.save().catch(err => console.log(err));
+          console.log(`Added the guild: ${ allGuilds[i].id} to the database`)
+        };
+      });
+    await Prefix.findOne({ guildID: allGuilds[i].id }, (err, prefix) => {
+      
+      if (err) console.log(err);
+      
+      if (!prefix) {
+        const newPrefix = new Prefix({
+          guildID: allGuilds[i].id,
+          prefix: "b3"
+        });
+        newPrefix.save().catch(err => console.log(err));
+        console.log(`The guild: '${allGuilds[i].name}' has been added to the prefix database`);
+      };
+    });
+    };
 
 
     // Requires Manager from discord-giveaways
@@ -102,8 +134,8 @@ let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway
           if (!user) {
             const newXP = new XP({
                 userID: allUsers[i].id,
-                userName: message.author.username,
-                guildID: message.guild.id,
+                userName: allUsers[i].username,
+                guildID:allGuilds[i].id,
                 xp: 0,
                 level: 1,
             });
@@ -132,43 +164,4 @@ let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway
                    });
 
      });
-  
-  let allGuilds = client.guilds.array();
-  
-  for (let i = 0; i < allGuilds.length; i++) {
-    
-    await Prefix.findOne({ guildID: allGuilds[i].id }, (err, prefix) => {
-      
-      if (err) console.log(err);
-      
-      if (!prefix) {
-        const newPrefix = new Prefix({
-          guildID: allGuilds[i].id,
-          prefix: "b3"
-        });
-        newPrefix.save().catch(err => console.log(err));
-        console.log(`The guild: '${allGuilds[i].name}' has been added to the prefix database`);
-      };
-    });
-  };
-  
-  
-  for (let i = 0; i < allGuilds.length; i++) {
-    
-    await Settings.findOne({ guildID: message.guild.id }, async (err, guild) => {
-      
-      if (err) console.log(err);
-      
-      if (!guild) {
-        const newGuild = new Settings({
-          guildID: message.guild.id,
-          enableXPCoins: false,
-          enableXP: false,
-          enableCaptcha: false,
-        });
-        await newGuild.save().catch(err => console.log(err));
-        console.log(`Added the guild: ${guildID} to the database`)
-      };
-    });
-  };
-};
+}

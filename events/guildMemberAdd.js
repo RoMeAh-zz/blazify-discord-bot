@@ -5,6 +5,4 @@ module.exports = async (client, member, message ) => {
   );
   if (!channel) return;
   channel.send(`Welcome to the Blaze 3 Official Server ${member}`)
-  
-  
 }

@@ -1,11 +1,11 @@
 require('dotenv').config();
-const { Client } = require('discord.js');
-const createCaptcha = require('./captcha.js');
-const fs = require('fs').promises;
 const Money = require("../models/money.js");
 const config = require("../config.json");
 const Prefix = require("../models/prefix.js");
 const XP = require("../models/xp.js");
+const { Client } = require('discord.js');
+const createCaptcha = require('./captcha.js');
+const fs = require('fs').promises;
 const Settings = require("../models/configsetting.js");
 let prefix;
 let enableXPCoinsS;
@@ -26,11 +26,12 @@ module.exports = async (client, message, member) => {
 
  //  let checkafk = client.afk.get(message.author.id);
   // if (checkafk) return [client.afk.delete(message.author.id), message.channel.send(`Your status has been updated, and you are no longer afk.`)]
-  
+  let allGuilds = client.guilds.array();
+  for (let i = 0; i < allGuilds.length; i++) {
   if(message.author.bot) return;
   Prefix.findOne(
     {
-      guildID: message.guild.id
+      guildID: allGuilds[i].id
     },
     (err, guild) => {
       if (err) console.error(err);
@@ -44,7 +45,7 @@ module.exports = async (client, message, member) => {
   );
 
   await Settings.findOne(
-    { guildID: message.guild.id },
+    { guildID: allGuilds[i].id },
     async (err, settings) => {
       if (err) console.log(err);
 
@@ -57,8 +58,8 @@ module.exports = async (client, message, member) => {
         enableXPS = settings.enableXP;
         enableCaptchaS = settings.enableCaptcha
       }
-    }
-  );
+    })
+  }
   if (enableCaptchaS === true) {
     const captcha = await createCaptcha();
     try {
@@ -153,7 +154,6 @@ module.exports = async (client, message, member) => {
     );
   }
   
- 
   
   if (message.channel.type === "dm")
     return message.channel.send("You are not supposed to DM Bots");

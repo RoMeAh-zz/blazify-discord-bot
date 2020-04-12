@@ -1,7 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const Settings = require("../../models/configsetting.js");
 const Prefix = require("../../models/prefix.js");
-const mongoose = require("mongoose");
 let setting1;
 let setting2;
 let setting3;
@@ -153,6 +152,5 @@ module.exports = {
         return message.channel.send(`Set the guild prefix to: ${cprefix}`);
       }
     }
-    client.mongoose.init();
   }
 };
