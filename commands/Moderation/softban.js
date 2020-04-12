@@ -34,7 +34,7 @@ module.exports = {
     .addField("Moderator:", message.author.username)
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
-    let lChannel = message.guild.channels.find(lgc)
+    let lChannel = message.guild.channels.find(channel => channel.name === "logs")
     lChannel.send(embed)
 }
 }
