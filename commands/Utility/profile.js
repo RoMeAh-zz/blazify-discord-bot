@@ -62,14 +62,23 @@ module.exports = {
         await Settings.findOne({ guildID: message.guild.id }, async (err, settings) => {
           
           if (err) console.log(err)
+
+          if (!settings) {
+            settings.enableXP = false;
+            settings.eanbleXPCoins = false;
+          }
           
           if (settings.enableXPCoins === true) {
             await profile.addField("XPCoins:", xpcoins)
-          };
+          } else 
           if (settings.enableXP === true) {
             await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
             await profile.addField("Level", level)
-          };
+          } else if (settings.enableXP && settings.enableXPCoins === true) {
+            await profile.addField("XPCoins:", xpcoins)
+            await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
+            await profile.addField("Level", level)
+          }
         });
         
         return message.channel.send(profile);
@@ -125,14 +134,23 @@ module.exports = {
         await Settings.findOne({ guildID: message.guild.id }, async (err, settings) => {
           
           if (err) console.log(err)
+
+          if (!settings) {
+            settings.enableXPCoins = false;
+            settings.enableXP = false;
+          }
           
           if (settings.enableXPCoins === true) {
             await profile.addField("XPCoins:", xpcoins)
-          };
+          } else 
           if (settings.enableXP === true) {
             await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
             await profile.addField("Level", level)
-          };
+          } else if (settings.enableXP && settings.eanbleXPCoins === true) {
+            await profile.addField("XPCoins:", xpcoins)
+            await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
+            await profile.addField("Level", level)
+          }
         });
         
         return message.channel.send(profile);
