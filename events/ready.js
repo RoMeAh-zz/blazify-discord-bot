@@ -49,7 +49,7 @@ module.exports = async (client, message) => {
   let allGuilds = client.guilds.array();
   for (let i = 0; i < allGuilds.length; i++) {
 
-await Settings.findOne({ guildID: allGuilds[i].id }, async (err, guild) => {
+ await Settings.findOne({ guildID: allGuilds[i].id }, async (err, guild) => {
 
       if (err) console.log(err);
 
@@ -65,7 +65,7 @@ await Settings.findOne({ guildID: allGuilds[i].id }, async (err, guild) => {
       };
 });
 
-await Prefix.findOne({ guildID: allGuilds[i].id }, (err, prefix) => {
+ await Prefix.findOne({ guildID: allGuilds[i].id }, (err, prefix) => {
 
       if (err) console.log(err);
 
@@ -74,11 +74,11 @@ await Prefix.findOne({ guildID: allGuilds[i].id }, (err, prefix) => {
           guildID: allGuilds[i].id,
           prefix: "b3"
         });
-        await newPrefix.save().catch(err => console.log(err));
+         newPrefix.save().catch(err => console.log(err));
         console.log(`The guild: '${allGuilds[i].name}' has been added to the prefix database`);
       };
     });
-};
+  };
 
 
   // Requires Manager from discord-giveaways
