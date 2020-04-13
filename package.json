@@ -43,6 +43,8 @@
     "request": "^2.88.2",
     "simple-fortnite-api": "^0.1.9",
     "snekfetch": "^4.0.4",
+    "sqlite": "^4.0.7",
+    "sqlite3": "^4.1.1",
     "sudo": "^1.0.3",
     "superagent": "^5.2.2"
   }

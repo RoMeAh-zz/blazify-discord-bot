@@ -7,7 +7,7 @@ module.exports = {
   const botClient = require('discord.js'),
         db = require('quick.db')
   if (message.channel.type === "dm") return message.author.send("Go to your server and try to use");
-  const apa = client.channels.get("693788477216653393")
+  const apa = client.channels.get("698992662300065912")
         const p = client.emojis.find(a => a.name === 'accepted')
 
         const g = args.join(" ")
