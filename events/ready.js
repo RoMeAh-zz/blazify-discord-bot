@@ -82,31 +82,6 @@ module.exports = async (client, message) => {
 
 
   // Requires Manager from discord-giveaways
-const { GiveawaysManager } = require("discord-giveaways");
-  // Starts updating currents giveaways
-const manager = new GiveawaysManager(client, {
-  storage: "./giveaways.json",
-  updateCountdownEvery: 5000,
-  default: {
-    botsCanWin: false,
-    exemptPermissions: [],
-    embedColor: "#FF0000",
-    reaction: "🎉"
-  }
-});
-  // We now have a giveawaysManager property to access the manager everywhere!
-  client.giveawaysManager = manager;
-
-  let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway} ]
-
-  // The list of all the giveaways on the server with ID "1909282092"
-  let onServer = client.giveawaysManager.giveaways.filter((g) => g.guildID === "1909282092");
-
-  // The list of the current giveaways (not ended)
-  let notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended);
-
-  let allUsers = client.users.array();
-
 for (let i = 0; i < allUsers.length; i++) {
 
     await Coins.findOne({ userID: allUsers[i].id }, async (err, user) => {
@@ -145,4 +120,30 @@ for (let i = 0; i < allUsers.length; i++) {
       }
     })
 }
+const { GiveawaysManager } = require("discord-giveaways");
+  // Starts updating currents giveaways
+const manager = new GiveawaysManager(client, {
+  storage: "./giveaways.json",
+  updateCountdownEvery: 5000,
+  default: {
+    botsCanWin: false,
+    exemptPermissions: [],
+    embedColor: "#FF0000",
+    reaction: "🎉"
+  }
+});
+  // We now have a giveawaysManager property to access the manager everywhere!
+  client.giveawaysManager = manager;
+
+  let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway} ]
+
+  // The list of all the giveaways on the server with ID "1909282092"
+  let onServer = client.giveawaysManager.giveaways.filter((g) => g.guildID === "1909282092");
+
+  // The list of the current giveaways (not ended)
+  let notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended);
+
+  let allUsers = client.users.array();
+
+
 }
