@@ -14,7 +14,7 @@ module.exports = async (client, message) => {
   //  Glenn.updateStats(client.guilds.size);
   //}, 900000);
   console.log(
-    `Hi, ${client.user.username} is now online on ${client.guilds.size} Guilds with ${client.users.size} Members`
+    `Hi, ${client.user.username} is now online on ${client.guilds.cache.size} Guilds with ${client.users.cache.size} Members`
   );
 
   client.music = new ErelaClient(client, nodes)
@@ -36,15 +36,15 @@ module.exports = async (client, message) => {
   setInterval(() => client.user.setActivity(`${Prefix}help | ${activities[i++ % activities.length]}`, { type: "WATCHING" }), 15000)
 
 
+  client.channels.cache
+    .some("693785937880285204")
+    .edit({ name: `${client.guilds.cache.size} Servers` });
+  client.channels.cache
+    .some("693786407600128120")
+    .edit({ name: `${client.users.cache.size} Members` });
   client.channels
-    .get("693785937880285204")
-    .edit({ name: `${client.guilds.size} Servers` });
-  client.channels
-    .get("693786407600128120")
-    .edit({ name: `${client.users.size} Members` });
-  client.channels
-    .get("694413926993100830")
-    .edit({ name: `${client.channels.size} Channels` });
+    .some("694413926993100830")
+    .edit({ name: `${client.channels.cache.size} Channels` });
 
   let allGuilds = client.guilds.array();
   for (let i = 0; i < allGuilds.length; i++) {

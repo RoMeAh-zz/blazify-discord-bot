@@ -9,10 +9,8 @@ let enableXPS;
 let enableCaptchaS;
 
 module.exports = async (client, member, message ) => {
-  
-    const channel = member.guild.channels.find(
-    channel => channel.id === "698993173560688741"
-  );
+
+    const channel = member.guild.channels.cache.some('className')(channel => channel.id === "698993173560688741");
   if (!channel) return;
   channel.send(`Welcome to the Blaze 3 Official Server ${member}`)
   let allGuilds = client.guilds.array();
@@ -29,7 +27,7 @@ module.exports = async (client, member, message ) => {
       } else {
         enableXPCoinsS = settings.enableXPCoins;
         enableXPS = settings.enableXP;
-        enableCaptchaS = settings.enableCaptcha
+        enableCaptchaS = settings.enableCaptchaS
       }
     })
   }
@@ -38,7 +36,7 @@ module.exports = async (client, member, message ) => {
     try {
         const msg = await member.send('You have 60 seconds to solve the captcha', {
             files: [{
-                attachment: `${__dirname}/captchas/${captcha}.png`,
+                attachment: `C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`,
                 name: `${captcha}.png`
             }]
         });
@@ -54,7 +52,7 @@ module.exports = async (client, member, message ) => {
             const response = await msg.channel.awaitMessages(filter, { max: 1, time: 3600000, errors: ['time']});
             if(response) {
                 await msg.channel.send('You have verified yourself!');
-                await member.addRole("690664505037946951");
+                await member.roles.add("690664505037946951");
                 await fs.unlink(`C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`)
                     .catch(err => console.log(err));
             }
@@ -63,7 +61,7 @@ module.exports = async (client, member, message ) => {
             console.log(err);
             await msg.channel.send('You did not solve the captcha correctly on time and you were kicked out of the server');
             await member.kick();
-            await fs.unlink(`${__dirname}/captchas/${captcha}.png`)
+            await fs.unlink(`C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`)
                     .catch(err => console.log(err));
         }
     }

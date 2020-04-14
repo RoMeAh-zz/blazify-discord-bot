@@ -12,7 +12,7 @@ let enableXPCoinsS;
 let enableXPS;
 let enableCaptchaS;
 module.exports = async (client, message, member) => {
-    
+
    if (message.content.includes(message.mentions.users.first())) {
     client.afk.forEach(data => {
       if (data.id === message.mentions.users.first().id) {
@@ -24,7 +24,7 @@ module.exports = async (client, message, member) => {
      });
    };
 
-   let checkafk = client.afk.get(message.author.id);
+   let checkafk = client.afk.cache.some(message.author.id);
    if (checkafk) return [client.afk.delete(message.author.id), message.channel.send(`Your status has been updated, and you are no longer afk.`)]
   let allGuilds = client.guilds.array();
   for (let i = 0; i < allGuilds.length; i++) {
@@ -39,7 +39,7 @@ module.exports = async (client, message, member) => {
       if (!guild) {
         prefix = "b3";
       } else {
-        prefix = guild.prefix; 
+        prefix = guild.prefix;
       };
     }
   );
@@ -60,10 +60,10 @@ module.exports = async (client, message, member) => {
       }
     })
   }
-  
+
   if (enableXPS === true) {
     let addXP = Math.floor(Math.random() * 10 + 1);
-
+console.log(`${addXP}`)
     await XP.findOne({ userID: message.author.id, guildID: message.guild.id }, async (err, xp) => {
       if (err) console.log(err);
 
@@ -97,6 +97,7 @@ module.exports = async (client, message, member) => {
 
   if (enableXPCoinsS === true) {
     let coinstoadd = Math.ceil(Math.random() * 5) + 5;
+    console.log(`${coinstoadd}`)
     Money.findOne(
       { userID: message.author.id, userName: message.author.username, serverID: message.guild.id },
       (err, money) => {
@@ -116,14 +117,14 @@ module.exports = async (client, message, member) => {
       }
     );
   }
-  
-  
+
+
   if (message.channel.type === "dm")
-    return message.channel.send("You are not supposed to DM Bots");
-  
+    return message.author.send("You are not supposed to DM Bots");
+
       if (message.content.includes(message.mentions.members.first())) {
     let mentioned = await client.afk.get(message.mentions.users.first().id);
-  
+
     if (mentioned) message.channel.send(`**${mentioned.usertag}** is currently afk. Reason: ${mentioned.reason}`);
   }
 
