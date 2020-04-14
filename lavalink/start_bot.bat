@@ -1,2 +1,2 @@
-node index.js
+java -jar Lavalink.jar
 PAUSE
