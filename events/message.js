@@ -26,7 +26,7 @@ module.exports = async (client, message, member) => {
 
    //let checkafk = client.afk.cache.get(message.author.id);
    //if (checkafk) return [client.afk.delete(message.author.id), message.channel.send(`Your status has been updated, and you are no longer afk.`)]
-  let allGuilds = client.guilds.array();
+  let allGuilds = client.guilds.cache.array();
   for (let i = 0; i < allGuilds.length; i++) {
   if(message.author.bot) return;
   Prefix.findOne(
