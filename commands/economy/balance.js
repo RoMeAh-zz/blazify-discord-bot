@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { redlight } = require("../../colours.json");
 const Coins = require("../../models/coin.js");
 const mongoose = require("mongoose");
@@ -31,7 +31,7 @@ module.exports = {
 
         let balance = coins.coins;
 
-        let bal = new RichEmbed()
+        let bal = new MessageEmbed()
           .setTitle(`${member.user.username}'s Money`)
           .setColor('#ed0e0e')
           .addField("Money", balance);
@@ -54,7 +54,7 @@ module.exports = {
 
         let balance = coins.coins;
 
-        let bal = new RichEmbed()
+        let bal = new MessageEmbed()
           .setTitle(`${message.author.username}'s Money`)
           .setColor('#ed0e0e')
           .addField("Money", balance);

@@ -1,10 +1,10 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const dateFormat = require("dateformat");
 
-module.exports = { 
+module.exports = {
         name: "steam",
         description: "Get steam statistics of a user",
         usage: "<user>",
@@ -31,7 +31,7 @@ module.exports = {
             if(!body.players) return message.channel.send("I was unable to find a steam profile with that name");
             const { NumberOfVACBans, NumberOfGameBans} = body.players[0];
 
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setColor(cyan)
                 .setAuthor(`Steam Services | ${personaname}`, avatarfull)
                 .setThumbnail(avatarfull)

@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json")
 const lgc = require("../../config.json").logChannel;
 
@@ -29,7 +29,7 @@ module.exports= {
         message.channel.send(`The role, ${role.name}, has been added to ${rMember.displayName}.`)
     }
 
-    let embed = new RichEmbed()
+    let embed = new MessageEmbed()
     .setColor('BLACK')
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .addField("Mutee:", rMember.user.username)
@@ -37,7 +37,7 @@ module.exports= {
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
 
-        let lChannel = message.guild.channels.find(channel => channel.name === "logs")
+        let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
         lChannel.send(embed)
     }
 }

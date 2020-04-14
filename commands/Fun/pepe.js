@@ -4,7 +4,7 @@ module.exports = {
   name: "pepe",
   category: "fun",
   run: (client, message) => {
-     let pepe1 = new Discord.RichEmbed()
+     let pepe1 = new MessageEmbed()
     .setColor("f00c0c")
     .setImage("https://cdn.discordapp.com/emojis/428556352915505165.png?v=1");
 

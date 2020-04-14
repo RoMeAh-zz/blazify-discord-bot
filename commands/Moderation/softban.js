@@ -1,5 +1,5 @@
 
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json");
 const lgc = require("../../config.json").logChannel;
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
 
    message.channel.send(`**${banMember.user.tag}** has been banned`).then(m => m.delete(5000))
 
-    let embed = new RichEmbed()
+    let embed = new MessageEmbed()
     .setColor(redlight)
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .addField("Moderation:", "ban")
@@ -34,7 +34,7 @@ module.exports = {
     .addField("Moderator:", message.author.username)
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
-    let lChannel = message.guild.channels.find(channel => channel.name === "logs")
+    let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
     lChannel.send(embed)
 }
 }

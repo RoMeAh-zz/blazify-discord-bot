@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const { cyan } = require("../../colours.json");
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
         accessableby: "Members",
         aliases: ["si", "serverdesc"],
     run: async (bot, message, args) => {
-    let sEmbed = new RichEmbed()
+    let sEmbed = new MessageEmbed()
         .setColor(cyan)
         .setTitle("Server Info")
         .setThumbnail(message.guild.iconURL)

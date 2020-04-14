@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 
 const fetch = require("node-fetch");
@@ -10,7 +10,7 @@ module.exports = {
     description: "Vote for the bot",
     usage: "!vote",
     run: async (client, message, args) => {
-      const voteEmbed = new RichEmbed()
+      const voteEmbed = new MessageEmbed()
         .setTitle("Vote for the bot")
         .addField(
           "Vote link",

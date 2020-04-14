@@ -37,16 +37,16 @@ module.exports = async (client, message) => {
 
 
   client.channels.cache
-    .some("693785937880285204")
+    .get("693785937880285204")
     .edit({ name: `${client.guilds.cache.size} Servers` });
   client.channels.cache
-    .some("693786407600128120")
+    .get("693786407600128120")
     .edit({ name: `${client.users.cache.size} Members` });
-  client.channels
-    .some("694413926993100830")
+  client.channels.cache
+    .get("694413926993100830")
     .edit({ name: `${client.channels.cache.size} Channels` });
 
-  let allGuilds = client.guilds.array();
+  let allGuilds = client.guilds.cache.array();
   for (let i = 0; i < allGuilds.length; i++) {
 
  await Settings.findOne({ guildID: allGuilds[i].id }, async (err, guild) => {
@@ -80,7 +80,7 @@ module.exports = async (client, message) => {
     });
   };
 
-
+let allUsers = client.users.cache.array();
   // Requires Manager from discord-giveaways
 for (let i = 0; i < allUsers.length; i++) {
 
@@ -143,7 +143,7 @@ const manager = new GiveawaysManager(client, {
   // The list of the current giveaways (not ended)
   let notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended);
 
-  let allUsers = client.users.array();
+
 
 
 }

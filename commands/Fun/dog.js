@@ -13,7 +13,7 @@ module.exports = {
   let {body} = await superagent
   .get(`https://random.dog/woof.json`);
 
-    let dogembed = new Discord.RichEmbed()
+    let dogembed = new MessageEmbed()
     .setColor("#c3ff00")
     .setTitle("Da-Dog")
     .setImage(body.url);

@@ -1,5 +1,5 @@
 const Coins = require("../../models/coin.js");
-const { RichEmbed } = require("discord.js"); 
+const { RichEmbed } = require("discord.js");
 const mongoose = require('mongoose');
 
 module.exports = {
@@ -10,18 +10,18 @@ module.exports = {
   accessableby: "Members",
   aliases: ["gamble"],
   run: async (client, message, args) => {
-    
-    let embed = new RichEmbed()
+
+    let embed = new MessageEmbed()
     .setTitle(`${message.author.username}'s Gambling Match`)
     .setFooter(`${message.author.username}'s Gambling results`, message.author.displayAvatarURL)
-    
+
     let chance = Math.random();
     let bet = args[0];
-    
+
     if (!bet) return message.channel.send("You need to bet a valid amount of coins");
-    
+
     await Coins.findOne({ userID: message.author.id }, (err, user) => {
-      
+
       if (err) console.log(err);
 
       if (!user) {
@@ -32,10 +32,10 @@ module.exports = {
         })
         newCoins.save().catch(err => console.log(err));
       };
-      
+
       if (user.coins === 0) return message.channel.send("You don't have enough coins to bet coins!");
       if (bet > user.coins) return message.channel.send("You can't bet more than what you have!");
-      
+
       if (isNaN(bet)) {
         if (bet === "half") {
           bet = Math.round(user.coins / 2);
@@ -45,16 +45,16 @@ module.exports = {
           return message.channel.send("Your bet has to be a number")
         };
       }
-      
+
       if (bet < 1 || !Number.isInteger(Number(bet))) return message.channel.send("You can't bet nothing");
-        
+
       if (chance > 0.90) {
         let winBy = Math.random() + 1;
         let ran = Math.round(Math.random());
-        
+
         winBy = winBy + ran;
         let winnings = Math.round(bet * winBy);
-        
+
         user.coins = user.coins + winnings;
         user.save().catch(err => console.log(err));
         embed.setDescription(`You won ${winnings} coins. You won the bet by ${Math.round(winBy * 100)}%\n\n
@@ -63,7 +63,7 @@ module.exports = {
       } else if (chance > 0.50) {
         let winBy = Math.random() + 0.5;
         let winnings = Math.round(bet * winBy);
-        
+
         user.coins = +user.coins + +winnings;
         user.save().catch(err => console.log(err));
         embed.setDescription(`You won ${winnings} coins. You won the bet by ${Math.round(winBy * 100)}%\n\n
@@ -78,7 +78,7 @@ module.exports = {
       }
         
         message.channel.send(embed)
-      
+
     })
   }
 };

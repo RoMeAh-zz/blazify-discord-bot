@@ -1,4 +1,4 @@
-const {RichEmbed, Discord} = require('discord.js');
+const {MessageEmbed, Discord} = require('discord.js');
 const mongoose = require("mongoose");
 const Warn = require("../../models/warn.js")
 
@@ -10,11 +10,11 @@ module.exports = {
     await message.delete();
     if (args[0]) {
         let member = message.mentions.members.first();
-  
-  
+
+
         await Warn.findOne({ userID: member.user.id, guildID: message.guild.id }, (err, warns) => {
           if (err) console.log(err);
-  
+
           if (!warns) {
             const newWarn = new Warn({
               userName: message.author.username,
@@ -23,8 +23,8 @@ module.exports = {
               warns: "The warnings will be shown down below"
               });
           }
-  
-          let embed = new RichEmbed()
+
+          let embed = new MessageEmbed()
             .setTitle(`${user.username}'s Warnings`)
             .setColor('#ed0e0e')
             if(!warns) {
@@ -38,7 +38,7 @@ module.exports = {
       } else {
         await Warn.findOne({ userID: message.author.id, guildID: message.guild.id }, (err, warns) => {
           if (err) console.log(err);
-  
+
           if (!warns) {
             const newWarn = new Warn({
               userID: message.author.id,
@@ -49,12 +49,12 @@ module.exports = {
             newWarn.save().catch(err => console.log(err));
           }
 
-  
-          let embed = new RichEmbed()
+
+          let embed = new MessageEmbed()
             .setTitle(`${message.author.username}'s Warnings`)
             .setColor('#ed0e0e')
             if(!warns) {
-              embed.addField("Warnings", "The warnings will be shown down below", true);             
+              embed.addField("Warnings", "The warnings will be shown down below", true);
                return message.channel.send(embed);
             }else {
               embed.addField("Warnings", warns.warns, true)

@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 let days = 0;
 let week = 0;
 
-module.exports = { 
+module.exports = {
         name: "uptime",
         description: "Get steam statistics of a user",
         usage: "<user>",
@@ -34,15 +34,15 @@ module.exports = {
     if(minutes > 60){
         minutes = 0;
     }
-   
+
   uptime += `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-    
-    let serverembed = new Discord.RichEmbed()
+
+    let serverembed = new MessageEmbed()
         .setColor("#f00c0c")
         .addField('Uptime Bot', uptime)
         .setTimestamp()
         .setFooter(`Requested by: ${message.author.tag}`)
-  
+
     message.channel.send(serverembed);
 
 }

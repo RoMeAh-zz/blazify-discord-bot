@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const overwatch = require("overwatch-api");
@@ -9,7 +9,7 @@ module.exports = {
         usage: "<user> <platform>",
         category: "miscellaneous",
         accessableby: "Members",
-        aliases: ["ow"], 
+        aliases: ["ow"],
     run: async (bot, message, args) => {
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(!args[1] || (args[1] && !["pc", "xbl", "psn"].includes(args[1]))) return message.channel.send("Please supply a platform to check. `pc`, `xbox` or `psn`");
@@ -22,8 +22,8 @@ module.exports = {
                 const { won, draw, played, lost, win_rate } = json.games.competitive;
 
                 if(private) return message.channel.send("This users stats are private and cant be seen by anyone.");
-                        
-                    const embed = new RichEmbed()
+
+                    const embed = new MessageEmbed()
                         .setColor(cyan)
                         .setAuthor(`Blizzard (Overwatch) | ${username}`, portrait)
                         .setThumbnail(portrait)
@@ -49,7 +49,7 @@ module.exports = {
                         .setTimestamp();
 
                     message.channel.send(embed);
-                            
+
                 })
     }
 }

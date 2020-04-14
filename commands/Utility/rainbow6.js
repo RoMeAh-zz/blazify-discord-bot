@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const R6API = require("r6api.js");
@@ -10,7 +10,7 @@ module.exports = {
         usage: "<user> (platform) (region)",
         category: "miscellaneous",
         accessableby: "Members",
-        aliases: ["rainbow", "rainbow6"] , 
+        aliases: ["rainbow", "rainbow6"] ,
     run: async (bot, message, args) => {
         const platforms = { pc: "UPLAY", xbox: "XBL", ps4: "PSN" };
 		const regions = { eu: "emea", na: "ncsa", as: "apac" };
@@ -42,7 +42,7 @@ module.exports = {
 		platform = Object.keys(platforms).find((key) => platforms[key] === platform).toUpperCase();
 		region = Object.keys(regions).find((key) => regions[key] === region).toUpperCase();
 
-            const embed = new RichEmbed()
+            const embed = new MessageEmbed()
                 .setColor(cyan)
                 .setAuthor(player.username, bot.user.displayAvatarURL)
                 .setDescription(`Stats for the **${region}** region on ${platform}.`)
@@ -53,7 +53,7 @@ module.exports = {
                     **MMR:** ${current.mmr}
                 `)
                 .addField("Statistics:", stripIndents`
-                    **Wins:** ${pvp.general.wins} 
+                    **Wins:** ${pvp.general.wins}
                     **Losses:** ${pvp.general.losses}
                     **Win/Loss Ratio:** ${(pvp.general.wins /  pvp.general.matches * 100).toFixed(2)}%
                     **Kills:** ${pvp.general.kills}
@@ -62,10 +62,10 @@ module.exports = {
                     **Playtime:** ${Math.round(pvp.general.playtime / 3600)} hours
                 `)
                 .addField("Terroist Hunt:", stripIndents`
-                    **Wins:** ${pve.general.wins} 
+                    **Wins:** ${pve.general.wins}
                     **Losses:** ${pve.general.losses}
                     **Win/Loss Ratio:** ${(pve.general.wins / pve.general.matches * 100).toFixed(2)}%
-                    **Kills:** ${pve.general.kills} 
+                    **Kills:** ${pve.general.kills}
                     **Deaths:** ${pve.general.deaths}
                     **Kills/Deaths Ratio:** ${(pve.general.kills / pve.general.deaths).toFixed(2)}
                     **Playtime:** ${Math.round(pve.general.playtime / 3600)} hours

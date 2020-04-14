@@ -1,8 +1,8 @@
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const { cyan } = require("../../colours.json");
 const fetch = require('node-fetch');
 
-module.exports = { 
+module.exports = {
         name: "alpaca",
         description: "sends a picture of a alpaca!",
         usage: "",
@@ -16,7 +16,7 @@ module.exports = {
         .then(res => res.json()).then(body => {
             if(!body) return message.reply(" whoops. I broke, try again!")
 
-            let embed = new RichEmbed()
+            let embed = new MessageEmbed()
             .setColor(cyan)
             .setAuthor(`${bot.user.username} Alpaca!`, message.guild.iconURL)
             .setImage(body.data.file)

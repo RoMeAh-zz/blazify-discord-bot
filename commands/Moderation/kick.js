@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { promptMessage } = require("../../functions.js");
 const lgc = require("../../config.json").logChannel;
@@ -54,8 +54,8 @@ module.exports = {
             return message.reply("I can't kick that person due to role hierarchy, I suppose.")
                 .then(m => m.delete(5000));
         }
-                
-        const embed = new RichEmbed()
+
+        const embed = new MessageEmbed()
             .setColor("#ff0000")
             .setThumbnail(toKick.user.displayAvatarURL)
             .setFooter(message.member.displayName, message.author.displayAvatarURL)
@@ -64,7 +64,7 @@ module.exports = {
             **> Kicked by:** ${message.member} (${message.member.id})
             **> Reason:** ${args.slice(1).join(" ")}`);
 
-        const promptEmbed = new RichEmbed()
+        const promptEmbed = new MessageEmbed()
             .setColor("GREEN")
             .setAuthor(`This verification becomes invalid after 30s.`)
             .setDescription(`Do you want to kick ${toKick}?`)
@@ -83,7 +83,7 @@ module.exports = {
                         if (err) return message.channel.send(`Well.... the kick didn't work out. Here's the error ${err}`)
                     });
 
-                    let lChannel = message.guild.channels.find(channel => channel.name === "logs")
+                    let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
                     lChannel.send(embed)
             } else if (emoji === "❌") {
                 msg.delete();

@@ -10,7 +10,7 @@ let enableCaptchaS;
 
 module.exports = async (client, member, message ) => {
 
-    const channel = member.guild.channels.cache.some('className')(channel => channel.id === "698993173560688741");
+    const channel = member.guild.channels.cache.find(channel => channel.id === "698993173560688741");
   if (!channel) return;
   channel.send(`Welcome to the Blaze 3 Official Server ${member}`)
   let allGuilds = client.guilds.array();

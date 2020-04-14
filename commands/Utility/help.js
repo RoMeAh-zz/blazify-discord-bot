@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 let Prefix = require("../../models/prefix.js");
 let prefix;
 
@@ -14,7 +14,7 @@ module.exports = {
       prefix = prefixes.prefix;
     });
 
-    const helpEmbed = new RichEmbed()
+    const helpEmbed = new MessageEmbed()
       .setImage(
         `https://cdn.discordapp.com/attachments/632098744262721564/633640689955110912/nitro.gif`
       )

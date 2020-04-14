@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { promptMessage } = require("../../functions.js");
 const lgc = require("../../config.json").logChannel;
@@ -28,7 +28,7 @@ module.exports = {
         if (!message.member.hasPermission("BAN_MEMBERS")) {
             return message.reply("❌ You do not have permissions to ban members. Please contact a staff member")
                 .then(m => m.delete(5000));
-        
+
         }
         // No bot permissions
         if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
@@ -55,8 +55,8 @@ module.exports = {
             return message.reply("I can't ban that person due to role hierarchy, I suppose.")
                 .then(m => m.delete(5000));
         }
-        
-        const embed = new RichEmbed()
+
+        const embed = new MessageEmbed()
             .setColor("#ff0000")
             .setThumbnail(toBan.user.displayAvatarURL)
             .setFooter(message.member.displayName, message.author.displayAvatarURL)
@@ -65,7 +65,7 @@ module.exports = {
             **> baned by:** ${message.member} (${message.member.id})
             **> Reason:** ${args.slice(1).join(" ")}`);
 
-        const promptEmbed = new RichEmbed()
+        const promptEmbed = new MessageEmbed()
             .setColor("GREEN")
             .setAuthor(`This verification becomes invalid after 30s.`)
             .setDescription(`Do you want to ban ${toBan}?`)
@@ -84,7 +84,7 @@ module.exports = {
                         if (err) return message.channel.send(`Well.... the ban didn't work out. Here's the error ${err}`)
                     });
 
-                    let lChannel = message.guild.channels.find(channel => channel.name === "logs")
+                    let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
                     lChannel.send(embed)
             } else if (emoji === "❌") {
                 msg.delete();

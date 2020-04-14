@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const API = require("apextab-api"), ApexTab  = API.Apextab_API;
@@ -9,7 +9,7 @@ module.exports = {
         usage: "<user> <platform>",
         category: "miscellaneous",
         accessableby: "Members",
-        aliases: ["apec"], 
+        aliases: ["apec"],
     run: async (bot, message, args) => {
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(!args[1]) return message.channel.send("Please supply a platform to check. `pc`, `xbox` or `ps4`");
@@ -19,12 +19,12 @@ module.exports = {
 
         try {
             const results = await ApexTab.searchPlayer(args[0], platform ? platform : API.Platform.PC)
-            
+
                 for (let playerResult of results.results) {
                     const player = await ApexTab.getPlayerById(playerResult.aid)
                     const { name, skillratio, visits, avatar, legend, level, kills, headshots, matches, globalrank, utime } = player;
 
-                        const embed = new RichEmbed()
+                        const embed = new MessageEmbed()
                             .setColor(cyan)
                             .setAuthor(`Origin (Apex Legends) | ${name}`, avatar)
                             .setThumbnail(avatar)

@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json");
 const lgc = require("../../config.json").logChannel;
 module.exports = {
@@ -52,7 +52,7 @@ mutee.addRole(muterole.id).then(() => {
 })
 
 //send an embed to the modlogs channel
-let embed = new RichEmbed()
+let embed = new MessageEmbed()
     .setColor(redlight)
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .addField("Moderation:", "mute")
@@ -60,7 +60,7 @@ let embed = new RichEmbed()
     .addField("Moderator:", message.author.username)
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
-    let lChannel = message.guild.channels.find(channel => channel.name === "logs")
+    let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
     lChannel.send(embed)
 
     }

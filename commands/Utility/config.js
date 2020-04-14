@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const Settings = require("../../models/configsetting.js");
 const Prefix = require("../../models/prefix.js");
 let setting1;
@@ -13,25 +13,25 @@ module.exports = {
   accessableby: "Members",
   aliases: ["settings"],
   run: async (client, message, args) => {
-    
+
     if (!message.member.hasPermission(["MANAGE_GUILD"]))
       return message.channel.send("You don't have the required permissions!");
-    
+
     await Settings.findOne({ guildID: message.guild.id }, (err, guild) => {
       if (err) console.log(err);
       setting1 = guild.enableXPCoins;
       setting2 = guild.enableXP;
       setting3 = guild.enableCaptcha;
     });
-    
+
     await Prefix.findOne({ guildID: message.guild.id }, async (err, guild) => {
-      
+
       if (err) console.log(err);
-      
+
       setting4 = guild.prefix;
     });
-    
-    let embed = new RichEmbed()
+
+    let embed = new MessageEmbed()
     .setTitle(`Settings for ${message.guild.name}`)
     .setDescription(`To enable or configure a setting, do \`${setting4}config <setting> <true || false || prefix>\`\n\nCurrent settings:`)
     .setThumbnail(message.guild.iconURL)
@@ -71,7 +71,7 @@ module.exports = {
             }
           );
           return message.channel.send("Disabled XP Coin system");
-        } 
+        }
       }
         break;
       case "enablexp": {
@@ -96,7 +96,7 @@ module.exports = {
               settings.save().catch(err => console.log(err));
             }
           );
-          
+
           return message.channel.send("Disabled XP System");
         }
       }
@@ -107,7 +107,7 @@ module.exports = {
               { guildID: message.guild.id },
               (err, settings) => {
                 if (err) console.log(err);
-  
+
                 settings.enableCaptcha = true;
                 settings.save().catch(err => console.log(err));
               }
@@ -118,12 +118,12 @@ module.exports = {
               { guildID: message.guild.id },
               (err, settings) => {
                 if (err) console.log(err);
-  
+
                 settings.enableCaptcha = false;
                 settings.save().catch(err => console.log(err));
               }
             );
-            
+
             return message.channel.send("Disabled Captcha System");
           }
         }
@@ -132,11 +132,11 @@ module.exports = {
           let cprefix = args[1];
 
         await Prefix.findOne({ guildID: message.guild.id }, (err, prefix) => {
-          
+
           if (err) console.log(err);
-          
+
           console.log(prefix);
-          
+
           if (!prefix) {
             const newPrefix = new Prefix({
               guildID: message.guild.id,
@@ -144,9 +144,9 @@ module.exports = {
             })
             newPrefix.save().catch(err => console.log(err));
           };
-          
+
           prefix.prefix = cprefix;
-          
+
           prefix.save().catch(err => console.log(err));
         })
         return message.channel.send(`Set the guild prefix to: ${cprefix}`);

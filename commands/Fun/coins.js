@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const mongoose = require("mongoose");
 
 
@@ -13,7 +13,7 @@ module.exports = {
 Money.findOne({userID : message.author.id, serverID: message.guild.id}, (err, money) => {
     if(err) console.log(err);
 
-    let embed = new Discord.RichEmbed()
+    let embed = new MessageEmbed()
     .setTitle("💸💰XP COINS💰💸")
     .setColor("#4000FF")
     .addField("USER", message.author.username)
@@ -25,7 +25,7 @@ Money.findOne({userID : message.author.id, serverID: message.guild.id}, (err, mo
       embed.addField("💲Coins💲", money.money, true)
       return message.channel.send(embed);
 }
-     
+
 })
 
 }

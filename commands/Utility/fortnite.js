@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const fortnite = require("simple-fortnite-api"), client = new fortnite("fd14160a-8e5b-4091-b72d-8b386f7846df");
@@ -9,7 +9,7 @@ module.exports = {
         usage: "<user> <platform>",
         category: "miscellaneous",
         accessableby: "Members",
-        aliases: ["ftn"], 
+        aliases: ["ftn"],
     run: async (bot, message, args) => {
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(args[1] && !["lifetime", "solo", "duo", "squad"].includes(args[1])) return message.channel.send("Usage: `!fortnite <username> <gametype>`\nGameTypes: Lifetime, Solo, Duo, Squad");
@@ -20,7 +20,7 @@ module.exports = {
             const { image, url, username } = data;
             const { scorePerMin, winPercent, kills, score, wins, kd, matches } = data[gametype]
 
-                const embed = new RichEmbed()
+                const embed = new MessageEmbed()
                     .setColor(cyan)
                     .setAuthor(`Epic Games (Fortnite) | ${username}`, image)
                     .setThumbnail(image)

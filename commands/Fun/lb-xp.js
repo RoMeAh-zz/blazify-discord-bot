@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const Money = require("../../models/money.js");
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
 
         let content = "";
 
-        let embed = new RichEmbed()
+        let embed = new MessageEmbed()
           .setTitle(
             `Leaderboard for ${message.guild.name}`,
             message.guild.iconURL
