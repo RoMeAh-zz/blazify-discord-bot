@@ -8,9 +8,9 @@ const createCaptcha = require('./captcha.js');
 const fs = require('fs').promises;
 const Settings = require("../models/configsetting.js");
 let prefix;
-let enableXPCoinsS;
-let enableXPS;
-let enableCaptchaS;
+let enableXPCoins;
+let enableXP;
+let enableAntiSpam;
 module.exports = async (client, message, member) => {
 
   // if (message.content.includes(message.mentions.users.first())) {
@@ -50,18 +50,18 @@ module.exports = async (client, message, member) => {
       if (err) console.log(err);
 
       if (!settings) {
-        enableXPCoinsS = false;
-        enableXPS = false;
-        enableCaptchaS = false;
+        enableXPCoins = false;
+        enableXP = false;
+        enableAntiSpam = false;
       } else {
         enableXPCoinsS = settings.enableXPCoins;
         enableXPS = settings.enableXP;
-        enableCaptchaS = settings.enableCaptcha
+        enableAntiSpam = settings.enableAntiSpam
       }
     })
   }
 
-  if (enableXPS === true) {
+  if (enableXP === true) {
     let addXP = Math.floor(Math.random() * 10 + 1);
 console.log(`${addXP}`)
     await XP.findOne({ userID: message.author.id, guildID: message.guild.id }, async (err, xp) => {
@@ -95,7 +95,7 @@ console.log(`${addXP}`)
     });
   }
 
-  if (enableXPCoinsS === true) {
+  if (enableXPCoins === true) {
     let coinstoadd = Math.ceil(Math.random() * 5) + 5;
     console.log(`${coinstoadd}`)
     Money.findOne(
@@ -117,16 +117,66 @@ console.log(`${addXP}`)
       }
     );
   }
+  if(enableAntiSpam === true) {
+    const usersMap = new Map();
+const LIMIT = 1;
+const TIME = 1000;
+const DIFF = 1000;
+  if(usersMap.has(message.author.id)) {
+      const userData = usersMap.get(message.author.id);
+      const { lastMessage, timer } = userData;
+      const difference = message.createdTimestamp - lastMessage.createdTimestamp;
+      let msgCount = userData.msgCount;
+      console.log(difference);
+      if(difference > DIFF) {
+        clearTimeout(timer);
+        console.log('Cleared timeout');
+        userData.msgCount = 1;
+        userData.lastMessage = message;
+        userData.timer = setTimeout(() => {
+          usersMap.delete(message.author.id);
+          console.log('Removed from RESET.');
+        }, TIME);
+        usersMap.set(message.author.id, userData);
+      }
+      else {
+        ++msgCount;
+        if(parseInt(msgCount) === LIMIT) {
+          const role = message.guild.roles.cache.find('Muted');
+          message.member.roles.add(role);
+          message.channel.send('You have been muted.');
+          setTimeout(() => {
+            message.member.roles.remove(role);
+            message.channel.send('You have been unmuted');
+          }, TIME);
+        } else {
+          userData.msgCount = msgCount;
+          usersMap.set(message.author.id, userData);
+        }
+      }
+    }
 
+    else {
+      let fn = setTimeout(() => {
+        usersMap.delete(message.author.id);
+        console.log('Removed from map.');
+      }, TIME);
+      usersMap.set(message.author.id, {
+        msgCount: 1,
+        lastMessage: message,
+        timer: fn
+      });
+    }
+}
 
   if (message.channel.type === "dm")
     return message.author.send("You are not supposed to DM Bots");
 
-      if (message.content.includes(message.mentions.members.first())) {
-    let mentioned = await client.afk.get(message.mentions.users.first().id);
+  //    if (message.content.includes(message.mentions.members.first())) {
+  //  let mentioned = await client.afk.get(message.mentions.users.first().id);
 
-    if (mentioned) message.channel.send(`**${mentioned.usertag}** is currently afk. Reason: ${mentioned.reason}`);
-  }
+  //  if (mentioned) message.channel.send(`**${mentioned.usertag}** is currently afk. Reason: ${mentioned.reason}`);
+//  }
 
   if (!message.content.startsWith(prefix)) return;
   const args = message.content
@@ -143,5 +193,5 @@ console.log(`${addXP}`)
   if (command) command.run(client, message, args);
 
   if (!message.member)
-    message.member = await message.guild.fetchMember(message); ///end it
+    message.member = message.guild.fetchMember(message); ///end it
 }

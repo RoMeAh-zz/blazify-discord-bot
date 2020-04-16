@@ -74,10 +74,6 @@ module.exports = {
           if (settings.enableXP === true) {
             await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
             await profile.addField("Level", level)
-          } else if (settings.enableXP && settings.enableXPCoins === true) {
-            await profile.addField("XPCoins:", xpcoins)
-            await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
-            await profile.addField("Level", level)
           }
         });
 
@@ -146,15 +142,12 @@ module.exports = {
           if (settings.enableXP === true) {
             await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
             await profile.addField("Level", level)
-          } else if (settings.enableXP && settings.eanbleXPCoins === true) {
-            await profile.addField("XPCoins:", xpcoins)
-            await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
-            await profile.addField("Level", level)
           }
-        });
-
+        })
         return message.channel.send(profile);
+        };
 
-      };
+
+
+      }
     }
-}

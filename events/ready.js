@@ -37,13 +37,13 @@ module.exports = async (client, message) => {
 
 
   client.channels.cache
-    .get("693785937880285204")
+    .get("700406509707985097")
     .edit({ name: `${client.guilds.cache.size} Servers` });
   client.channels.cache
-    .get("693786407600128120")
+    .get("700406539340480712")
     .edit({ name: `${client.users.cache.size} Members` });
   client.channels.cache
-    .get("694413926993100830")
+    .get("700406572555173889")
     .edit({ name: `${client.channels.cache.size} Channels` });
 
   let allGuilds = client.guilds.cache.array();
@@ -100,16 +100,16 @@ for (let i = 0; i < allUsers.length; i++) {
       }
     })
 }
-
 for (let i = 0; i < allUsers.length; i++) {
-    await XP.findOne({ userID: allUsers[i].id, guildID: allGuilds[i].id }, async (err, user) => {
+  for (let g = 0; i < allUsers.length; i++) {
+    await XP.findOne({ userID: allUsers[i].id, guildID: allGuilds[g].id, userName: allUsers[i].username }, async (err, user) => {
 
       if (err) console.log(err);
 
       if (!user) {
         const newXP = new XP({
           userID: allUsers[i].id,
-          guildID: allGuilds[i].id,
+          guildID: allGuilds[g].id,
           userName: allUsers[i].username,
           xp: 0,
           level: 1,
@@ -119,6 +119,7 @@ for (let i = 0; i < allUsers.length; i++) {
         console.log(`The user: '${allUsers[i].username}' has been added to the XP database`);
       }
     })
+}
 }
 const { GiveawaysManager } = require("discord-giveaways");
   // Starts updating currents giveaways

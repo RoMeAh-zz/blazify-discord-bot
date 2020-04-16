@@ -3,17 +3,14 @@ const { Client } = require('discord.js');
 const createCaptcha = require('./captcha.js');
 const fs = require('fs').promises;
 const Settings = require("../models/configsetting.js");
-let prefix;
-let enableXPCoinsS;
-let enableXPS;
-let enableCaptchaS;
+let enableCaptcha;
 
 module.exports = async (client, member, message ) => {
 
     const channel = member.guild.channels.cache.find(channel => channel.id === "698993173560688741");
   if (!channel) return;
   channel.send(`Welcome to the Blaze 3 Official Server ${member}`)
-  let allGuilds = client.guilds.array();
+  let allGuilds = client.guilds.cache.array();
   for (let i = 0; i < allGuilds.length; i++) {
   await Settings.findOne(
     { guildID: allGuilds[i].id },
@@ -21,20 +18,16 @@ module.exports = async (client, member, message ) => {
       if (err) console.log(err);
 
       if (!settings) {
-        enableXPCoinsS = false;
-        enableXPS = false;
-        enableCaptchaS = false;
+        enableCaptcha = false;
       } else {
-        enableXPCoinsS = settings.enableXPCoins;
-        enableXPS = settings.enableXP;
-        enableCaptchaS = settings.enableCaptchaS
+        enableCaptcha = settings.enableCaptcha
       }
     })
   }
-  if (enableCaptchaS === true) {
+  if (enableCaptcha === true) {
   const captcha = await createCaptcha();
     try {
-        const msg = await member.send('You have 60 seconds to solve the captcha', {
+        const msg = await member.send('You have 5 Minutes to solve the captcha', {
             files: [{
                 attachment: `C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`,
                 name: `${captcha}.png`
@@ -52,7 +45,7 @@ module.exports = async (client, member, message ) => {
             const response = await msg.channel.awaitMessages(filter, { max: 1, time: 3600000, errors: ['time']});
             if(response) {
                 await msg.channel.send('You have verified yourself!');
-                await member.roles.add("690664505037946951");
+                await member.roles.add("700392946863833249");
                 await fs.unlink(`C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`)
                     .catch(err => console.log(err));
             }

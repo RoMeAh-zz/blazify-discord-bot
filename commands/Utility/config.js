@@ -5,6 +5,8 @@ let setting1;
 let setting2;
 let setting3;
 let setting4;
+let setting5;
+let setting6;
 module.exports = {
   name: "config",
   description: "Configures guild settings",
@@ -22,13 +24,15 @@ module.exports = {
       setting1 = guild.enableXPCoins;
       setting2 = guild.enableXP;
       setting3 = guild.enableCaptcha;
+      setting4 = guild.enableVerification;
+      setting5 = guild.enableAntiSpam;
     });
 
     await Prefix.findOne({ guildID: message.guild.id }, async (err, guild) => {
 
       if (err) console.log(err);
 
-      setting4 = guild.prefix;
+      setting6 = guild.prefix;
     });
 
     let embed = new MessageEmbed()
@@ -38,7 +42,9 @@ module.exports = {
     .addField("Enable XP Coins system", setting1)
     .addField("Enable XP System", setting2)
     .addField("Captcha Verification", setting3)
-    .addField("Prefix", setting4)
+    .addField("Verification System", setting4)
+    .addField("Anti-Spam", setting5)
+    .addField("Prefix", setting6)
     .setFooter(`${message.guild.name}`, message.author.displayAvatarURL)
     .setColor("RANDOM");
 
@@ -128,6 +134,60 @@ module.exports = {
           }
         }
           break;
+          case "enableverification": {
+            if (boolean === "true") {
+                        await Settings.findOne(
+                { guildID: message.guild.id },
+                (err, settings) => {
+                  if (err) console.log(err);
+
+                  settings.enableVerification = true;
+                  settings.save().catch(err => console.log(err));
+                }
+              );
+              return message.channel.send("Enabled Verification");
+            } else if (boolean === "false") {
+                        await Settings.findOne(
+                { guildID: message.guild.id },
+                (err, settings) => {
+                  if (err) console.log(err);
+
+                  settings.enableVerification = false;
+                  settings.save().catch(err => console.log(err));
+                }
+              );
+
+              return message.channel.send("Disabled Verification");
+            }
+          }
+            break;
+            case "enableantispam": {
+              if (boolean === "true") {
+                          await Settings.findOne(
+                  { guildID: message.guild.id },
+                  (err, settings) => {
+                    if (err) console.log(err);
+
+                    settings.enableAntiSpam = true;
+                    settings.save().catch(err => console.log(err));
+                  }
+                );
+                return message.channel.send("Enabled Anti-Spam");
+              } else if (boolean === "false") {
+                          await Settings.findOne(
+                  { guildID: message.guild.id },
+                  (err, settings) => {
+                    if (err) console.log(err);
+
+                    settings.enableAntiSpam = false;
+                    settings.save().catch(err => console.log(err));
+                  }
+                );
+
+                return message.channel.send("Disabled Anti-Spam");
+              }
+            }
+              break;
       case "prefix": {
           let cprefix = args[1];
 
