@@ -9,7 +9,6 @@ module.exports = {
     description: "bans the member",
     usage: "<id | mention>",
     run: async (client, message, args) => {
-
         if (message.deletable) message.delete();
 
         // No args
