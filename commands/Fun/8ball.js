@@ -12,7 +12,7 @@ module.exports = {
     const embed = new Discord.RichEmbed()
     .setColor("f00c0c")
     .addField("You asked", reason)
-    .addField("Romeah says", ball[Math.floor(Math.random () * ball.length)])
+    .addField("Blazify says", ball[Math.floor(Math.random () * ball.length)])
     .setThumbnail("http://www.pngmart.com/files/3/8-Ball-Pool-Transparent-PNG.png")
     //.setFooter(`©Copyright | 2020`)
     message.channel.send({embed})
