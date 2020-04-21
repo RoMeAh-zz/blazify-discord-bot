@@ -116,7 +116,7 @@ setTimeout(() => {
 let users = m.reactions.cache.get("🎉").users;
 let list = guild.members.cache.get(users)
 .array()
-.filter();
+.filter(user => user.client.id);
 console.log(list)
     let gFilter = list[Math.floor(Math.random() * list.length)];
     let endEmbed = new MessageEmbed()
