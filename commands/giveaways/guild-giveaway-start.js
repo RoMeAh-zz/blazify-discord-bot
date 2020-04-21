@@ -35,7 +35,7 @@ module.exports = {
         !message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")
       )
 return message.channel.send("**You do not have the manage messages permission**");
-message.channel.send(`**What is the name of the giveaway channel?, dont include #, Example Channel: main-giveaway**`)
+message.channel.send(`**Provide channel ID not name**`)
 .then(msg => {
 message.channel.awaitMessages(filter, {
 max: 1,
@@ -88,7 +88,6 @@ errors: ["time"]
 })
 .then(collected => {
 let reqguild = client.guilds.cache.get(collected.first().content);
-console.log(reqguild);
 if (!reqguild)
 return message.channel.send("**Could not find the guild or the bot isn't present in the guild**")
 msg.delete();
@@ -117,9 +116,8 @@ setTimeout(() => {
 let users = m.reactions.cache.get("🎉").users;
 let list = guild.members.cache.get(users)
 .array()
-.filter(
-user => user.id != client.user.id
-);
+.filter();
+console.log(list)
     let gFilter = list[Math.floor(Math.random() * list.length)];
     let endEmbed = new MessageEmbed()
       .setAuthor(message.author.username,message.author.avatarURL)
