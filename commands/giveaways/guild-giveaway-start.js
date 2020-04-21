@@ -78,7 +78,6 @@ errors: ["time"]
 .then(collected => {
 title = collected.first().content;
 collected.first().delete();
-message.delete();
 msg.edit("**Provide a guild ID**").then(msg => {
 message.channel
 .awaitMessages(filter, {
