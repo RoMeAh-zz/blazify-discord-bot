@@ -8,7 +8,7 @@ module.exports = {
         accessableby: "Member",
         category: "music",
         usage: "<input>",
-        run: (client, message, args) => {
+        run: async(client, message, args) => {
     var time = moment().format("Do MMMM YYYY , hh:mm");
     var room;
     var title;
@@ -35,7 +35,7 @@ module.exports = {
         !message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")
       )
 return message.channel.send("**You do not have the manage messages permission**");
-message.channel.send(`**Provide channel ID not name**`)
+message.channel.send(`**Provide channel ID**`)
 .then(msg => {
 message.channel.awaitMessages(filter, {
 max: 1,
@@ -76,7 +76,7 @@ time: 20000,
 errors: ["time"]
 })
 .then(collected => {
-title = collected.first().content;
+prize = collected.first().content;
 collected.first().delete();
 msg.edit("**Provide a guild ID**").then(msg => {
 message.channel
@@ -85,20 +85,24 @@ max: 1,
 time: 20000,
 errors: ["time"]
 })
-.then(collected => {
-let reqguild = client.guilds.cache.get(collected.first().content);
+.then(async collected => {
+let rguild = client.guilds.cache.get(collected.first().content)
+let reqguild = (await rguild.members.fetch()).map(m => m.id);
 if (!reqguild)
-return message.channel.send("**Could not find the guild or the bot isn't present in the guild**")
+return message.channel.send("**Could not find the guild or the bot isn't present in the guild**");
+console.log(reqguild);
 msg.delete();
 message.delete();
 try {
 let giveEmbed = new MessageEmbed()
 .setDescription(
-`**Item:** ${title}\nReact With <a:grxz:695226497115619408> To Enter! \n**Total Giveaway Duration:** ${duration} \n **Created By:** ${message.member}`
+`**Item:** ${prize}\nReact With <a:grxz:695226497115619408> To Enter! \n**Total Giveaway Duration:** ${duration} \n **Created By:** ${message.member}`
 )
 .addField(
 "Invite link",
 `[Invite Me](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847)`
+)
+.addField("Requirment - Guild"
 )
 .setColor("#FF0000")
 .setFooter("Time Created")
@@ -112,13 +116,15 @@ message.guild.channels.cache.get(room)
 let re = m.react("🎉");
 setTimeout(() => {
   let guild = reqguild
-let users = m.reactions.cache.get("🎉").users;
-let list = guild.members.cache.get(users)
-console.log(list)
-    let gFilter = list[Math.floor(Math.random() * list.length)];
+let users = m.reactions.cache.get("🎉").users.cache.array();
+const exists = [];
+for (const user of users) {
+    if (rguild.members.cache.get(user.id)) exists.push(user);
+}
+const gFilter = exists[Math.floor(Math.random() * exists.length)];
     let endEmbed = new MessageEmbed()
       .setAuthor(message.author.username,message.author.avatarURL)
-      .setTitle("**Item:** " + title)
+      .setTitle("**Item:** " + prize)
 .addField(
 "Giveaway Ended !<a:grxz:695226497115619408><a:grxz:695226497115619408>",
 `**Winner:** ${gFilter}`
@@ -134,9 +140,9 @@ m.edit(
 { embed: endEmbed }
 );
 message.guild.channels.cache
-.find(room)
+.get(room)
 .send(
-`**Congratulations ${gFilter}! contact ${message.author} for more info about The \`${title}\`**`
+`**Congratulations ${gFilter}! contact ${message.author} for more info about The \`${prize}\`**`
 );
 }, ms(duration));
 });

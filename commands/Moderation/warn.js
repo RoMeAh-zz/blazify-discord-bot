@@ -24,7 +24,7 @@ Warn.findOne(
         warns: rip,
       });
       newWarn.save().catch(err => console.log(err));
-      let lChannel = message.guild.channels.find(lgc)
+      let lChannel = message.guild.channels.cache.get(lgc)
         return lChannel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
      } else {
         warns.warns += `
