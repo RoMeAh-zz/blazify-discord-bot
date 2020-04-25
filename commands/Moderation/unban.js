@@ -9,7 +9,20 @@ module.exports = {
         accessableby: "Administrators",
         aliases: ["ub", "unbanish"],
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
 
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
     if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("You dont have permission to perform this command!")
 
 

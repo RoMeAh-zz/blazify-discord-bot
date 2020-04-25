@@ -10,6 +10,20 @@ module.exports = {
         accessableby: "Members",
         aliases: ["catto"],
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         let msg = await message.channel.send("Generating...")
 
         fetch("https://apis.duncte123.me/alpaca")

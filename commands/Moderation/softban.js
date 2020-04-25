@@ -10,7 +10,20 @@ module.exports = {
         accessableby: "Administrators",
         aliases: ["sb", "sbanish", "sremove"],
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
 
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
    if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("You do not have permission to perform this command!")
 
    let banMember = message.mentions.members.first() || message.guild.members.get(args[0])

@@ -9,6 +9,20 @@ module.exports = {
         accessableby: "Members",
         aliases: ["m", "nospeak"],
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
 // check if the command caller has permission to use the command
 if(!message.member.hasPermission("MANAGE_ROLES") || !message.guild.owner) return message.channel.send("You dont have permission to use this command.");
 

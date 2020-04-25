@@ -10,6 +10,20 @@ module.exports = {
   description: "Checks the balance of a user",
   usage: "!balance",
   run: async (client, message, args) => {
+    let allGuilds = client.guilds.cache.array();
+    for (let i = 0; i < allGuilds.length; i++) {
+    Settings.findOne(
+      { guildID: allGuilds[i].id },
+      async (err, settings) => {
+        if (err) console.log(err);
+
+        if (!settings) {
+          enableCaptcha = false;
+        } else {
+          enableCaptcha = settings.enableCaptcha
+        }
+      })
+    }
     if (args[0]) {
       let member = message.mentions.members.first();
 

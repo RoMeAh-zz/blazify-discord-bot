@@ -10,7 +10,20 @@ module.exports = {
   accessableby: "Members",
   aliases: ["gamble"],
   run: async (client, message, args) => {
+    let allGuilds = client.guilds.cache.array();
+    for (let i = 0; i < allGuilds.length; i++) {
+    Settings.findOne(
+      { guildID: allGuilds[i].id },
+      async (err, settings) => {
+        if (err) console.log(err);
 
+        if (!settings) {
+          enableCaptcha = false;
+        } else {
+          enableCaptcha = settings.enableCaptcha
+        }
+      })
+    }
     let embed = new MessageEmbed()
     .setTitle(`${message.author.username}'s Gambling Match`)
     .setFooter(`${message.author.username}'s Gambling results`, message.author.displayAvatarURL)
@@ -76,7 +89,7 @@ module.exports = {
         You now have ${user.coins} coins.`)
         embed.setColor("RED")
       }
-        
+
         message.channel.send(embed)
 
     })

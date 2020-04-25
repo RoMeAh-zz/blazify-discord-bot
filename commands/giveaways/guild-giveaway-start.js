@@ -9,6 +9,20 @@ module.exports = {
         category: "music",
         usage: "<input>",
         run: async(client, message, args) => {
+          let allGuilds = client.guilds.cache.array();
+          for (let i = 0; i < allGuilds.length; i++) {
+          Settings.findOne(
+            { guildID: allGuilds[i].id },
+            async (err, settings) => {
+              if (err) console.log(err);
+
+              if (!settings) {
+                enableCaptcha = false;
+              } else {
+                enableCaptcha = settings.enableCaptcha
+              }
+            })
+          }
     var time = moment().format("Do MMMM YYYY , hh:mm");
     var room;
     var title;
@@ -102,7 +116,7 @@ let giveEmbed = new MessageEmbed()
 "Invite link",
 `[Invite Me](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847)`
 )
-.addField("Requirment - Guild"
+.addField("Requirment", "Guild ||THE LINK SHOULD BE PROVIDED BELOW||"
 )
 .setColor("#FF0000")
 .setFooter("Time Created")
@@ -113,15 +127,15 @@ message.guild.channels.cache.get(room)
 { embed: giveEmbed }
 )
 .then(m => {
+  console.log(m)
 let re = m.react("🎉");
 setTimeout(() => {
   let guild = reqguild
-let users = m.reactions.cache.get("🎉").users.cache.array();
-const exists = [];
-for (const user of users) {
-    if (rguild.members.cache.get(user.id)) exists.push(user);
+let users = m.reactions.cache.get("🎉").users
+for (const user of users.cache.array()){
+    if (!rguild.members.cache.get(user.id)) users.remove(user)
 }
-const gFilter = exists[Math.floor(Math.random() * exists.length)];
+const gFilter = users.cache.random();
     let endEmbed = new MessageEmbed()
       .setAuthor(message.author.username,message.author.avatarURL)
       .setTitle("**Item:** " + prize)

@@ -4,6 +4,20 @@ module.exports = {
     category: "moderation",
     description: "Reports a Bug",
     run: async (client, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
   const botClient = require('discord.js'),
         db = require('quick.db')
   if (message.channel.type === "dm") return message.author.send("Go to your server and try to use");

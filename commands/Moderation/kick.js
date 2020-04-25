@@ -8,7 +8,20 @@ module.exports = {
     description: "Kicks the member",
     usage: "<id | mention>",
     run: async (client, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
 
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         if (message.deletable) message.delete();
 
         // No args

@@ -4,6 +4,20 @@ module.exports = {
   name: "pepe",
   category: "fun",
   run: (client, message) => {
+    let allGuilds = client.guilds.cache.array();
+    for (let i = 0; i < allGuilds.length; i++) {
+    Settings.findOne(
+      { guildID: allGuilds[i].id },
+      async (err, settings) => {
+        if (err) console.log(err);
+
+        if (!settings) {
+          enableCaptcha = false;
+        } else {
+          enableCaptcha = settings.enableCaptcha
+        }
+      })
+    }
      let pepe1 = new MessageEmbed()
     .setColor("f00c0c")
     .setImage("https://cdn.discordapp.com/emojis/428556352915505165.png?v=1");

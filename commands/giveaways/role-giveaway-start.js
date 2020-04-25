@@ -24,6 +24,20 @@ module.exports = {
         category: "music",
         usage: "<input>",
         run: (client, message, args) => {
+          let allGuilds = client.guilds.cache.array();
+          for (let i = 0; i < allGuilds.length; i++) {
+          Settings.findOne(
+            { guildID: allGuilds[i].id },
+            async (err, settings) => {
+              if (err) console.log(err);
+
+              if (!settings) {
+                enableCaptcha = false;
+              } else {
+                enableCaptcha = settings.enableCaptcha
+              }
+            })
+          }
       const ms = require("ms"); // npm install ms
       // g!start-giveaway 2d 1 Awesome prize!
             // will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
@@ -41,7 +55,7 @@ module.exports = {
             giveaway: "\n\n<a:grxz:695226497115619408><a:grxz:695226497115619408> **GIVEAWAY** <a:grxz:695226497115619408><a:grxz:695226497115619408> ",
             giveawayEnded: "<a:grxz:695226497115619408><a:grxz:695226497115619408>**GIVEAWAY ENDED**<a:grxz:695226497115619408><a:grxz:695226497115619408> ",
             timeRemaining: "Time remaining: **{duration}**!",
-            inviteToParticipate: `React with 🎉 to participate! 
+            inviteToParticipate: `React with 🎉 to participate!
             You need ${role} to win this giveaway`,
             winMessage: `<a:grxz:695226497115619408><a:grxz:695226497115619408>Congratulations, {winners}! You won **{prize}** CLAIM FROM @${message.author.tag}!<a:grxz:695226497115619408><a:grxz:695226497115619408>`,
             embedFooter: "Giveaways",

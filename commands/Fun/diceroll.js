@@ -3,6 +3,20 @@ module.exports = {
     description: 'Rolls a dice with a given number of sides, default numebr of sides is 6.',
     usage: '[number of sides]',
     run: async (client, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         if(!args[0]) {
             args[0] = 6;
           }

@@ -4,6 +4,20 @@ module.exports = {
     description: "Kicks the member",
     usage: "<id | mention>",
     run: async (client, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
   try {
     if (!args[1]) return message.reply('You need to input the channel type!');
     if (!args[0]) return message.reply('You need to input the channel name!');

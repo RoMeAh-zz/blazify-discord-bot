@@ -8,6 +8,20 @@ module.exports = {
     description: "Returns user information",
     usage: "[username | id | mention]",
     run: (client, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         const member = getMember(message, args.join(" "));
 
         // Member variables
@@ -35,7 +49,7 @@ module.exports = {
 
             .setTimestamp()
 
-        if (member.user.presence.game) 
+        if (member.user.presence.game)
             embed.addField('Currently playing', stripIndents`**> Name:** ${member.user.presence.game.name}`);
 
         message.channel.send(embed);

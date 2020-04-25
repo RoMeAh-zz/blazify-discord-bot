@@ -7,6 +7,20 @@ module.exports = {
     description: "Reports a member",
     usage: "<mention, id>",
     run: async (client, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         if (message.deletable) message.delete();
 
         let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);

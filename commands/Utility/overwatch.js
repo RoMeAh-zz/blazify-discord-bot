@@ -11,6 +11,20 @@ module.exports = {
         accessableby: "Members",
         aliases: ["ow"],
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(!args[1] || (args[1] && !["pc", "xbl", "psn"].includes(args[1]))) return message.channel.send("Please supply a platform to check. `pc`, `xbox` or `psn`");
         if(args[0].includes("#")) args[0] = args[0].replace(/#/g, "-");

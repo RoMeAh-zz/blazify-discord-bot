@@ -7,7 +7,21 @@ module.exports = {
         if (message.deletable) {
             message.delete();
         }
-    
+        let allGuilds = client.guilds.cache.array();
+        for (let i = 0; i < allGuilds.length; i++) {
+        Settings.findOne(
+          { guildID: allGuilds[i].id },
+          async (err, settings) => {
+            if (err) console.log(err);
+
+            if (!settings) {
+              enableCaptcha = false;
+            } else {
+              enableCaptcha = settings.enableCaptcha
+            }
+          })
+        }
+
         // Member doesn't have permissions
         if (!message.member.hasPermission("MANAGE_MESSAGES")) {
             return message.reply("You can't delete messages....").then(m => m.delete(5000));

@@ -12,6 +12,20 @@ module.exports = {
         accessableby: "Members",
         aliases: ["rainbow", "rainbow6"] ,
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         const platforms = { pc: "UPLAY", xbox: "XBL", ps4: "PSN" };
 		const regions = { eu: "emea", na: "ncsa", as: "apac" };
 

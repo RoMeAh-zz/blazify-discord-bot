@@ -9,6 +9,20 @@ module.exports = {
     description: "Rock Paper Scissors game. React to one of the emojis to play the game.",
     usage: "rps",
     run: async (client, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableCaptcha = false;
+          } else {
+            enableCaptcha = settings.enableCaptcha
+          }
+        })
+      }
         const embed = new MessageEmbed()
             .setColor("#ffffff")
             .setFooter(message.guild.me.displayName, client.user.displayAvatarURL)
