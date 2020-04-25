@@ -18,13 +18,14 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
-    let msg = await message.channel.send("Generating...")
+      if(enableFun === true) {
+        g = await message.channel.send("Generating...")
 
     fetch(`http://aws.random.cat/meow`)
     .then(res => res.json()).then(body => {
@@ -41,4 +42,5 @@ module.exports = {
             msg.delete();
         })
     }
+}
 }

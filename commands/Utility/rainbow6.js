@@ -12,7 +12,7 @@ module.exports = {
         accessableby: "Members",
         aliases: ["rainbow", "rainbow6"] ,
     run: async (bot, message, args) => {
-      let allGuilds = client.guilds.cache.array();
+      let allGuilds = bot.guilds.cache.array();
       for (let i = 0; i < allGuilds.length; i++) {
       Settings.findOne(
         { guildID: allGuilds[i].id },
@@ -20,12 +20,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableGaming = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableGaming = settings.enableGaming
           }
         })
       }
+      if(enableGaming === true) {
         const platforms = { pc: "UPLAY", xbox: "XBL", ps4: "PSN" };
 		const regions = { eu: "emea", na: "ncsa", as: "apac" };
 
@@ -89,4 +90,5 @@ module.exports = {
 
             message.channel.send(embed).catch((e) => message.channel.send(`There was an error: ${e.message}`));
     }
+}
 }

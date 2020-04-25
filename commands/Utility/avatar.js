@@ -12,12 +12,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableUtility = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableUtility = settings.enableUtility
           }
         })
       }
+      if(enableUtility === true) {
         if (!message.mentions.users.size) {
             return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
         }
@@ -30,4 +31,5 @@ module.exports = {
         // by default, discord.js will `.join()` the array with `\n`
         message.channel.send(avatarList);
     },
+  }
 };

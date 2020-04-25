@@ -18,12 +18,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableEconomy = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableEconomy = settings.enableEconomy
         }
       })
     }
+    if(enableEconomy === true) {
     if (args[0]) {
       let member = message.mentions.members.first();
 
@@ -76,5 +77,6 @@ module.exports = {
         message.channel.send(bal);
       });
     }
+  }
   }
 };

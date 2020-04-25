@@ -17,12 +17,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
+      if(enableFun === true) {
         const embed = new MessageEmbed()
             .setColor("#ffffff")
             .setFooter(message.guild.me.displayName, client.user.displayAvatarURL)
@@ -55,4 +56,5 @@ module.exports = {
             }
         }
     }
+}
 }

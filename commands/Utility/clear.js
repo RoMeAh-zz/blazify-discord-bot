@@ -15,12 +15,13 @@ module.exports = {
             if (err) console.log(err);
 
             if (!settings) {
-              enableCaptcha = false;
+              enableUtility = false;
             } else {
-              enableCaptcha = settings.enableCaptcha
+              enableUtility = settings.enableUtility
             }
           })
         }
+        if(enableUtility === true) {
 
         // Member doesn't have permissions
         if (!message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -49,4 +50,5 @@ module.exports = {
             .then(deleted => message.channel.send(`I deleted \`${deleted.size}\` messages.`))
             .catch(err => message.reply(`Something went wrong... ${err}`));
     }
+  }
 }

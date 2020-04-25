@@ -16,12 +16,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableModeration = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableModeration = settings.enableModeration
         }
       })
     }
+    if(enableModeration === true) {
     if (args[0]) {
         let member = message.mentions.members.first();
 
@@ -77,4 +78,5 @@ module.exports = {
         });
       }
     }
+  }
   };

@@ -17,12 +17,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
+      if(enableFun === true) {
 
   let {body} = await superagent
   .get(`https://random.dog/woof.json`);
@@ -35,5 +36,5 @@ module.exports = {
     message.channel.send(dogembed);
 
 }
-
+}
 }

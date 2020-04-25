@@ -1,4 +1,4 @@
-module.exports = { 
+module.exports = {
         name: "skip",
         aliases: ["next", "sk"],
         description: "Skips the song currently playing.",
@@ -6,6 +6,21 @@ module.exports = {
         category: "music",
         usage: "<input>",
     run: (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableMusic = false;
+          } else {
+            enableMusic = settings.enableMusic
+          }
+        })
+      }
+      if(enableMusic === true) {
         const player = bot.music.players.get(message.guild.id);
         if(!player) return message.channel.send("No song/s currently playing in this guild.");
 
@@ -15,4 +30,5 @@ module.exports = {
         player.stop();
         return message.channel.send("Skipped the current song!");
     }
+  }
 }

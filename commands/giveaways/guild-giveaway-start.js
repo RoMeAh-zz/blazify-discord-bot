@@ -17,12 +17,13 @@ module.exports = {
               if (err) console.log(err);
 
               if (!settings) {
-                enableCaptcha = false;
+                enableGiveaway = false;
               } else {
-                enableCaptcha = settings.enableCaptcha
+                enableGiveaway = settings.enableGiveaway
               }
             })
           }
+          if(enableGiveaway === true) {
     var time = moment().format("Do MMMM YYYY , hh:mm");
     var room;
     var title;
@@ -162,6 +163,7 @@ message.guild.channels.cache
 });
 } catch (e) {
 console.error(e)
+}
 }
 })
                           });

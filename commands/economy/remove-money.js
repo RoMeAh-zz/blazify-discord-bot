@@ -19,12 +19,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableEconomy = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableEconomy = settings.enableEconomy
         }
       })
     }
+    if(enableEconomy === true) {
     if (!args[0]) return message.channel.send("You need to specify an amount");
 
     let user = message.mentions.members.first() || message.author;
@@ -60,4 +61,5 @@ module.exports = {
       );
     });
   }
+}
 };

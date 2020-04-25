@@ -16,12 +16,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
+      if(enableFun === true) {
         // Get a member from mention, id, or username
         let person = getMember(message, args[0]);
 
@@ -42,4 +43,5 @@ module.exports = {
 
         message.channel.send(embed);
     }
+  }
 }

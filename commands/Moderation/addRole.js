@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json")
 const lgc = require("../../config.json").logChannel;
-
+const Settings = require("../../configsetting.js")
 module.exports= {
         name: "addrole",
         description: "Adds a role to a member of the guild!",
@@ -18,12 +18,13 @@ module.exports= {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableModeration = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableModeration = settings.enableModeration
           }
         })
       }
+      if(enableModeration === true) {
     if(!message.member.hasPermission(["MANAGE_ROLES", "ADMINISTRATOR"])) return message.channel.send("You dont have permission to perform this command!")
 
     let rMember = message.mentions.members.first() || message.guild.members.find(m => m.user.tag === args[0]) || message.guild.members.get(args[0])
@@ -53,4 +54,5 @@ module.exports= {
         let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
         lChannel.send(embed)
     }
+}
 }

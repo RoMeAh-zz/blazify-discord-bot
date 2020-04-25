@@ -17,12 +17,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
+      if(enableFun === true) {
         let msg = await message.channel.send("Generating...")
 
         fetch("https://apis.duncte123.me/seal")
@@ -39,4 +40,5 @@ module.exports = {
                 msg.edit(embed)
         })
     }
+}
 }

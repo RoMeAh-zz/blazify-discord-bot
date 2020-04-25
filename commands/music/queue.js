@@ -1,12 +1,27 @@
 const { RichEmbed } = require("discord.js")
 
-module.exports = { 
+module.exports = {
         name: "queue",
         aliases: ["q", "list", "now"],
         description: "Displays what the current queue is.",
         accessableby: "Member",
         category: "music",
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableMusic = false;
+          } else {
+            enableMusic = settings.enableMusic
+          }
+        })
+      }
+      if(enableMusic === true) {
         const player = bot.music.players.get(message.guild.id);
         if(!player || !player.queue[0]) return message.channel.send("No song currently playing in this guild.");
 
@@ -23,4 +38,5 @@ module.exports = {
 
         return message.channel.send(embed);
     }
+  }
 }

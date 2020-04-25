@@ -15,12 +15,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
+      if(enableFun === true) {
     await message.delete();
       client.mongoose = require("../../utils/mongoose.js");
     const Money = require("../../models/money.js")
@@ -41,6 +42,6 @@ Money.findOne({userID : message.author.id, serverID: message.guild.id}, (err, mo
 }
 
 })
-
+}
 }
 }

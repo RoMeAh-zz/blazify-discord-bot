@@ -19,12 +19,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableEconomy = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableEconomy = settings.enableEconomy
         }
       })
     }
+    if(enableEconomy === true) {
     if (!args[0]) return message.channel.send("You need to mention someone");
 
     let user = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -120,4 +121,5 @@ module.exports = {
       return message.channel.send(`You stole ${win} coins.`)
     }
   }
+}
 };

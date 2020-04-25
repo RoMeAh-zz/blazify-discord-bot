@@ -16,12 +16,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableUtility = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableUtility = settings.enableUtility
           }
         })
       }
+      if(enableUtility === true) {
         const member = getMember(message, args.join(" "));
 
         // Member variables
@@ -54,4 +55,5 @@ module.exports = {
 
         message.channel.send(embed);
     }
+  }
 }

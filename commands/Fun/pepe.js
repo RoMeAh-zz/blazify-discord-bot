@@ -12,12 +12,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableFun = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableFun = settings.enableFun
         }
       })
     }
+    if(enableFun === true) {
      let pepe1 = new MessageEmbed()
     .setColor("f00c0c")
     .setImage("https://cdn.discordapp.com/emojis/428556352915505165.png?v=1");
@@ -64,4 +65,5 @@ module.exports = {
 
     message.channel.send(pepes[dapepe])
   }
+}
 }

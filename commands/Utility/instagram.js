@@ -18,12 +18,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableUtility = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableUtility = settings.enableUtility
           }
         })
       }
+      if(enableUtility === true) {
         const name = args.join(" ");
 
         if (!name) {
@@ -59,4 +60,5 @@ module.exports = {
 
         message.channel.send(embed);
     }
+  }
 }

@@ -12,12 +12,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableModeration = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableModeration = settings.enableModeration
           }
         })
       }
+      if(enableModeration === true) {
   try {
     if (!args[1]) return message.reply('You need to input the channel type!');
     if (!args[0]) return message.reply('You need to input the channel name!');
@@ -31,4 +32,5 @@ module.exports = {
     message.channel.send('There was an error!\n' + err).catch();
   }
     }
+}
 }

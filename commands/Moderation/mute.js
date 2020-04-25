@@ -17,12 +17,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableModeration = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableModeration = settings.enableModeration
           }
         })
       }
+      if(enableModeration === true) {
 // check if the command caller has permission to use the command
 if(!message.member.hasPermission("MANAGE_ROLES") || !message.guild.owner) return message.channel.send("You dont have permission to use this command.");
 
@@ -76,6 +77,6 @@ let embed = new MessageEmbed()
     .addField("Date:", message.createdAt.toLocaleString())
     let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
     lChannel.send(embed)
-
+}
     }
 }

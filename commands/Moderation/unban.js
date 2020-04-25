@@ -17,12 +17,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableModeration = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableModeration = settings.enableModeration
           }
         })
       }
+      if(enableModeration === true) {
     if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("You dont have permission to perform this command!")
 
 
@@ -53,5 +54,6 @@ module.exports = {
 
     let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
     lChannel.send(embed)
+}
 }
 }

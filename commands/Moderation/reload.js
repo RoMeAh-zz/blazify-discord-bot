@@ -6,7 +6,21 @@ module.exports = {
         accessableby: "Bot Owner",
         aliases: ["creload"],
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
 
+          if (!settings) {
+            enableModeration = false;
+          } else {
+            enableModeration = settings.enableModeration
+          }
+        })
+      }
+      if(enableModeration === true) {
     if(message.author.id != "560805847517888512")
   return message.channel.send("You are not the bot the owner!")
 
@@ -24,6 +38,6 @@ module.exports = {
     }
 
     message.channel.send(`The command \`${args[0].toUpperCase()}\` has been reloaded!`)
-
+}
     }
 }

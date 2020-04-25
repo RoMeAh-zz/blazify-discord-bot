@@ -12,12 +12,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableUtility = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableUtility = settings.enableUtility
           }
         })
       }
+      if(enableUtility === true) {
 
       let reason = args.join(" ") ? args.join(" ") : "AFKING";
       let afks = client.afk.get(message.author.id);

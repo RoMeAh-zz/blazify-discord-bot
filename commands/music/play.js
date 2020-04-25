@@ -1,7 +1,7 @@
 const { Utils } = require("erela.js")
 const { RichEmbed } = require("discord.js")
 
-module.exports = { 
+module.exports = {
         name: "play",
         description: "Play a song/playlist or search for a song from youtube",
         usage: "<input>",
@@ -9,6 +9,21 @@ module.exports = {
         accessableby: "Member",
         aliases: ["p", "pplay"],
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableMusic = false;
+          } else {
+            enableMusic = settings.enableMusic
+          }
+        })
+      }
+      if(enableMusic === true) {
         const { voiceChannel } = message.member;
         if (!voiceChannel) return message.channel.send("You need to be in a voice channel to play music.");
 
@@ -31,7 +46,7 @@ module.exports = {
                     message.channel.send(`Enqueuing \`${res.tracks[0].title}\` \`${Utils.formatTime(res.tracks[0].duration, true)}\``);
                     if (!player.playing) player.play()
                     break;
-                
+
                 case "SEARCH_RESULT":
                     let index = 1;
                     const tracks = res.tracks.slice(0, 5);
@@ -73,4 +88,5 @@ module.exports = {
             }
         }).catch(err => message.channel.send(err.message))
     }
+  }
 }

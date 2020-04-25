@@ -10,20 +10,7 @@ module.exports = {
         accessableby: "Member",
         category: "music",
         usage: "<input>",
-        run: (client, message, args) => {  let allGuilds = client.guilds.cache.array();
-          for (let i = 0; i < allGuilds.length; i++) {
-          Settings.findOne(
-            { guildID: allGuilds[i].id },
-            async (err, settings) => {
-              if (err) console.log(err);
-
-              if (!settings) {
-                enableCaptcha = false;
-              } else {
-                enableCaptcha = settings.enableCaptcha
-              }
-            })
-          }
+        run: (client, message, args) => {
           let allGuilds = client.guilds.cache.array();
           for (let i = 0; i < allGuilds.length; i++) {
           Settings.findOne(
@@ -32,12 +19,13 @@ module.exports = {
               if (err) console.log(err);
 
               if (!settings) {
-                enableCaptcha = false;
+                enableGiveaway = false;
               } else {
-                enableCaptcha = settings.enableCaptcha
+                enableGiveaway = settings.enableGiveaway
               }
             })
           }
+          if(enableGiveaway === true) {
       const ms = require("ms"); // npm install ms
     if(!args[0])return message.channel.send("```Uh-Oh, its b3giveaway-start <time> <winners> <prize>```")
      if(!args[1])return message.channel.send("```Uh-Oh, its b3giveaway-start <time> <winners> <prize>```")
@@ -88,4 +76,5 @@ module.exports = {
      // The list of the current giveaways (not ended)
      let notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended);
     }
+}
 }

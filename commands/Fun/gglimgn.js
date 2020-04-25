@@ -16,12 +16,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
+      if(enableFun === true) {
         image(message);
 function image(message) {
     var options = {
@@ -60,5 +61,6 @@ function image(message) {
       message.channel.send(urls[Math.floor(Math.random() * urls.length)]);
     });
   }
+}
 }
 }

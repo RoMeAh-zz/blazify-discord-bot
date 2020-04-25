@@ -17,12 +17,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableModeration = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableModeration = settings.enableModeration
           }
         })
       }
+      if(enableModeration === true) {
         if (message.deletable) message.delete();
 
         // No args
@@ -107,4 +108,5 @@ module.exports = {
             }
         });
     }
+}
 };

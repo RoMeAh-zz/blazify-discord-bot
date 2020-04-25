@@ -32,12 +32,13 @@ module.exports = {
               if (err) console.log(err);
 
               if (!settings) {
-                enableCaptcha = false;
+                enableGiveaway = false;
               } else {
-                enableCaptcha = settings.enableCaptcha
+                enableGiveaway = settings.enableGiveaway
               }
             })
           }
+          if(enableGiveaway === true) {
       const ms = require("ms"); // npm install ms
       // g!start-giveaway 2d 1 Awesome prize!
             // will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
@@ -49,6 +50,7 @@ module.exports = {
                    message.channel.send("No giveaway found for "+messageID+", please check and try again");
                })
     }
+}
 }
 let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway} ]
 

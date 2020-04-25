@@ -8,7 +8,7 @@ module.exports = {
     accessableby: "Members",
     aliases: ["mc"],
 run: async (bot, message, args) => {
-  let allGuilds = client.guilds.cache.array();
+  let allGuilds = bot.guilds.cache.array();
   for (let i = 0; i < allGuilds.length; i++) {
   Settings.findOne(
     { guildID: allGuilds[i].id },
@@ -16,12 +16,13 @@ run: async (bot, message, args) => {
       if (err) console.log(err);
 
       if (!settings) {
-        enableCaptcha = false;
+        enableGaming = false;
       } else {
-        enableCaptcha = settings.enableCaptcha
+        enableGaming = settings.enableGaming
       }
     })
   }
+  if(enableGaming === true) {
     if(!args[1]) return message.channel.send('You must type a minecraft server ip')
             if(!args[2]) return message.channel.send('You must type a minecraft server port')
 
@@ -38,3 +39,4 @@ run: async (bot, message, args) => {
             })
         }
     }
+  }

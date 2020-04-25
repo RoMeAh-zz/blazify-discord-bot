@@ -15,12 +15,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableModeration = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableModeration = settings.enableModeration
           }
         })
       }
+      if(enableModeration === true) {
     await message.delete();
     let user = message.mentions.members.first() || message.author;
     if(!user)return message.channel.send("You must specify a valid person")
@@ -49,5 +50,6 @@ Warn.findOne(
         return lChannel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
   }
   })
+}
 }
 }

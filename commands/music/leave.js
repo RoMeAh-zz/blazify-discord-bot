@@ -1,10 +1,25 @@
-module.exports = { 
+module.exports = {
         name: "leave",
         aliases: ["lev", "stop"],
         description: "Makes the bot leave the voice channel.",
         accessableby: "Member",
         category: "music",
     run: async (bot, message, args) => {
+      let allGuilds = client.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableMusic = false;
+          } else {
+            enableMusic = settings.enableMusic
+          }
+        })
+      }
+      if(enableMusic === true) {
         const { voiceChannel } = message.member;
         const player = bot.music.players.get(message.guild.id);
 
@@ -14,4 +29,5 @@ module.exports = {
         bot.music.players.destroy(message.guild.id);
         return message.channel.send("Successfully stopped the music.")
     }
+}
 }

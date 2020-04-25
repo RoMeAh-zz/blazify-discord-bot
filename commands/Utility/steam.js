@@ -11,7 +11,7 @@ module.exports = {
         category: "miscellaneous",
         accessableby: "Members",
     run: async (bot, message, args) => {
-      let allGuilds = client.guilds.cache.array();
+      let allGuilds = bot.guilds.cache.array();
       for (let i = 0; i < allGuilds.length; i++) {
       Settings.findOne(
         { guildID: allGuilds[i].id },
@@ -19,12 +19,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableGaming = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableGaming = settings.enableGaming
           }
         })
       }
+      if(enableGaming === true) {
         const token = "steamToken"; //I reset mine.
         if(!args[0]) return message.channel.send("Please provide an account name!");
         const url = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${token}&vanityurl=${args.join(" ")}`;
@@ -61,5 +62,6 @@ module.exports = {
             })
         })
     })
+  }
   }
 }

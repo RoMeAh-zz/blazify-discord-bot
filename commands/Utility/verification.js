@@ -17,7 +17,7 @@ module.exports = {
         enableVerification = settings.enableVerification
         }
       })
-      if(enableVerification === true)
+      if(enableVerification === true) {
     if(message.channel.id === '700401979280719943')
     {
         await message.delete().catch(err => console.log(err));
@@ -37,6 +37,7 @@ module.exports = {
             }
         }
     }
+  }
   }
 }
 }

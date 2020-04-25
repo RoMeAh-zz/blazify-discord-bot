@@ -15,12 +15,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableUtility = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableUtility = settings.enableUtility
           }
         })
       }
+      if(enableUtility === true) {
         if(message.author.id == "560805847517888512, 312149319769784321, 552052137878880256") {
         try {
             let toEval = args.join(" ")
@@ -43,4 +44,5 @@ module.exports = {
         return message.reply(" you are not the bot owner!").then(msg => msg.delete(5000))
       }
     }
+}
 }

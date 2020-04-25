@@ -11,12 +11,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableFun = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableFun = settings.enableFun
           }
         })
       }
+      if(enableFun === true) {
         if(!args[0]) {
             args[0] = 6;
           }
@@ -25,3 +26,4 @@ module.exports = {
           message.channel.send(`I rolled ${result + 1}!`);
     },
 };
+}

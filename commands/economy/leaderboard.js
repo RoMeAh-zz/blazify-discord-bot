@@ -17,12 +17,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableEconomy = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableEconomy = settings.enableEconomy
         }
       })
     }
+    if(enableEconomy === true) {
     let allUsers = message.guild.members
       .filter(m => !m.user.bot)
       .map(m => m.user.id);
@@ -88,4 +89,5 @@ module.exports = {
         message.channel.send(embed);
       });
   }
+}
 };

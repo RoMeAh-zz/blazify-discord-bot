@@ -14,12 +14,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableFun = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableFun = settings.enableFun
         }
       })
     }
+    if(enableFun === true) {
      let reason = args.join(' ');
     if (reason.length < 1) return message.channel.send('You did not give the bot a question');
     var ball = ['It is certain.','No doubt about it.','No chance.','Maybe, time will tell.','No way.','Concentrate and try again.', ' As I see it, yes', 'Outlook good', 'Most likely', 'Better not tell you now', 'My sources say no', 'Signs point to yes', 'Yes definitely', 'It is decidedly so', 'As I see it, yes', 'My sources say no', 'My sources say no', 'Outlook not so good', 'Very doubtful'];
@@ -30,5 +31,6 @@ module.exports = {
     .setThumbnail("http://www.pngmart.com/files/3/8-Ball-Pool-Transparent-PNG.png")
     //.setFooter(`©Copyright | 2020`)
     message.channel.send({embed})
+}
 }
 }

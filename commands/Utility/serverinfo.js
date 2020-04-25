@@ -17,12 +17,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableUtility = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableUtility = settings.enableUtility
           }
         })
       }
+      if(enableUtility === true) {
     let sEmbed = new MessageEmbed()
         .setColor(cyan)
         .setTitle("Server Info")
@@ -35,4 +36,5 @@ module.exports = {
         .setFooter(`TestBot | Footer`, bot.user.displayAvatarURL);
     message.channel.send(sEmbed);
     }
+  }
 }

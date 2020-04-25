@@ -8,18 +8,21 @@ module.exports = {
     run: (client, message, args) => {
       let allGuilds = client.guilds.cache.array();
       for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
+        let allGuilds = client.guilds.cache.array();
+        for (let i = 0; i < allGuilds.length; i++) {
+        Settings.findOne(
+          { guildID: allGuilds[i].id },
+          async (err, settings) => {
+            if (err) console.log(err);
 
-          if (!settings) {
-            enableCaptcha = false;
-          } else {
-            enableCaptcha = settings.enableCaptcha
-          }
-        })
-      }
+            if (!settings) {
+              enableUtility = false;
+            } else {
+              enableUtility = settings.enableUtility
+            }
+          })
+        }
+        if(enableUtility === true) {
         message.delete();
 
         if (!message.member.hasPermission("MANAGE_MESSAGES"))
@@ -40,4 +43,5 @@ module.exports = {
             message.channel.send(args.join(" "));
         }
     }
+}
 }

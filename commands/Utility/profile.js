@@ -18,12 +18,13 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
+            enableUtility = false;
           } else {
-            enableCaptcha = settings.enableCaptcha
+            enableUtility = settings.enableUtility
           }
         })
       }
+      if(enableUtility === true) {
 
       if (args[0]) {
 
@@ -162,6 +163,6 @@ module.exports = {
         };
 
 
-
+}
       }
     }

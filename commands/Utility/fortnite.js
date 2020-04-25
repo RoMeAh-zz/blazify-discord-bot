@@ -11,23 +11,24 @@ module.exports = {
         accessableby: "Members",
         aliases: ["ftn"],
     run: async (bot, message, args) => {
+      let allGuilds = bot.guilds.cache.array();
+      for (let i = 0; i < allGuilds.length; i++) {
+      Settings.findOne(
+        { guildID: allGuilds[i].id },
+        async (err, settings) => {
+          if (err) console.log(err);
+
+          if (!settings) {
+            enableGaming = false;
+          } else {
+            enableGaming = settings.enableGaming
+          }
+        })
+      }
+      if(enableGaming === true) {
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(args[1] && !["lifetime", "solo", "duo", "squad"].includes(args[1])) return message.channel.send("Usage: `!fortnite <username> <gametype>`\nGameTypes: Lifetime, Solo, Duo, Squad");
         let gametype = args[1] ? args[1].toLowerCase() : "lifetime";
-        let allGuilds = client.guilds.cache.array();
-        for (let i = 0; i < allGuilds.length; i++) {
-        Settings.findOne(
-          { guildID: allGuilds[i].id },
-          async (err, settings) => {
-            if (err) console.log(err);
-
-            if (!settings) {
-              enableCaptcha = false;
-            } else {
-              enableCaptcha = settings.enableCaptcha
-            }
-          })
-        }
         let data = await client.find(args[0])
         if(data && data.code === 404) return message.channel.send("Unable to find a user with that username.")
             const { image, url, username } = data;
@@ -50,4 +51,5 @@ module.exports = {
 
                     message.channel.send(embed)
     }
+}
 }

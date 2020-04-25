@@ -18,12 +18,13 @@ module.exports = {
         if (err) console.log(err);
 
         if (!settings) {
-          enableCaptcha = false;
+          enableEconomy = false;
         } else {
-          enableCaptcha = settings.enableCaptcha
+          enableEconomy = settings.enableEconomy
         }
       })
     }
+    if(enableEconomy === true) {
     let embed = new MessageEmbed()
     .setTitle(`${message.author.username}'s Gambling Match`)
     .setFooter(`${message.author.username}'s Gambling results`, message.author.displayAvatarURL)
@@ -94,4 +95,5 @@ module.exports = {
 
     })
   }
+}
 };
