@@ -16,20 +16,6 @@ module.exports = {
           if (err) console.log(err);
 
           if (!settings) {
-            enableCaptcha = false;
-          } else {
-            enableCaptcha = settings.enableCaptcha
-          }
-        })
-      }
-      let allGuilds = client.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
             enableModeration = false;
           } else {
             enableModeration = settings.enableModeration

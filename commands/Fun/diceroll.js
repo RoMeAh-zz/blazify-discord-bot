@@ -24,6 +24,6 @@ module.exports = {
 
           let result = (Math.floor(Math.random() * Math.floor(args[0])));
           message.channel.send(`I rolled ${result + 1}!`);
-    },
-};
+    }
+}
 }
