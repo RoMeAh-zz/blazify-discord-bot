@@ -78,7 +78,7 @@
                     type = value;
                 }
                 this.loader = true;
-                fetch(`http://localhost:3000/api/config/${this.$route.params.id}?locale=${locale}&type=${type}&access_token=${localStorage.getItem("access_token")}`,
+                fetch(`http://www.blazify3.glitch.me/api/config/${this.$route.params.id}?locale=${locale}&type=${type}&access_token=${localStorage.getItem("access_token")}`,
                     {method: "PUT"})
                     .then(res => res.json())
                     .then(body => {
@@ -96,7 +96,7 @@
         },
         mounted() {
             if (!this.$route.params.id || !localStorage.getItem("access_token")) return location.href = "/";
-            fetch(`http://localhost:3000/api/guild/?id=${this.$route.params.id}&access_token=${localStorage.getItem("access_token")}`)
+            fetch(`http://www.blazify3.glitch.me/api/guild/?id=${this.$route.params.id}&access_token=${localStorage.getItem("access_token")}`)
                 .then(res => res.json())
                 .then(body => {
                     if (!body.success) return location.href = "/";

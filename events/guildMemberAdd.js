@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client } = require('discord.js');
 const createCaptcha = require('./captcha.js');
-const fs = require('fs').promises;
+//const fs = require('fs').promises;
 const Settings = require("../models/configsetting.js");
 let enableCaptcha;
 
