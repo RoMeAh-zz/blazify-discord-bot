@@ -1,3 +1,4 @@
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: 'diceroll',
     description: 'Rolls a dice with a given number of sides, default numebr of sides is 6.',

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { redlight } = require("../../colours.json");
+const Settings = require("../../models/configsetting.js");
 const Coins = require("../../models/coin.js");
 const mongoose = require("mongoose");
 

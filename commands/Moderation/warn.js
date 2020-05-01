@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const mongoose = require("mongoose");
 const Warn = require("../../models/warn.js")
 const lgc = require("../../config.json").logChannel;
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "warn",
     category: "fun",

@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
   name: "pepe",
   category: "fun",

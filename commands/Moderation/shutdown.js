@@ -1,4 +1,4 @@
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "restart",
         description: "shuts down the bot!",

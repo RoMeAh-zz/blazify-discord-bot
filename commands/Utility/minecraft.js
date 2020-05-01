@@ -1,5 +1,5 @@
 const ping = require('minecraft-server-util');
-
+const Settings = require("../../models/configsetting.js")
 module.exports = {
     name: "minecraft",
     description: "Minecraft Server Stats",

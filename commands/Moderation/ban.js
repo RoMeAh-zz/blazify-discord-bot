@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { promptMessage } = require("../../functions.js");
 const lgc = require("../../config.json").logChannel;
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "ban",
     category: "moderation",

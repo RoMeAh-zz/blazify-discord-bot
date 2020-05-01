@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 // We now have a giveawaysManager property to access the manager everywhere!
-
+const Settings = require("../../models/configsetting.js");
 
 module.exports = {
         name: "giveaway-start",

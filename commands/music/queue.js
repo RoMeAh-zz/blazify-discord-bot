@@ -1,5 +1,5 @@
 const { RichEmbed } = require("discord.js")
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "queue",
         aliases: ["q", "list", "now"],

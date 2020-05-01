@@ -1,7 +1,7 @@
 const {MessageEmbed, Discord} = require('discord.js');
 const mongoose = require("mongoose");
 const Warn = require("../../models/warn.js")
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "warnings",
     category: "fun",

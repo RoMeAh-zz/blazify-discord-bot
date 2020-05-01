@@ -1,4 +1,4 @@
-
+const Settings = require("../../models/configsetting.js");
 const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json");
 const lgc = require("../../config.json").logChannel;

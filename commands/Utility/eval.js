@@ -1,5 +1,5 @@
 const { inspect } = require("util")
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "eval",
         description: "Evaluates code",

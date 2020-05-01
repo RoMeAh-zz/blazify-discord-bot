@@ -1,7 +1,7 @@
 const Coins = require("../../models/coin.js");
 const { RichEmbed } = require("discord.js");
 const mongoose = require('mongoose');
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
   name: "bet",
   description: "Bets some money",

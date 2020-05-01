@@ -2,7 +2,7 @@ const { RichEmbed } = require("discord.js");
 const Coins = require("../../models/coin.js");
 let stealercoins;
 let victimcoins;
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
   name: "rob",
   description: "Robs another user",

@@ -1,6 +1,7 @@
     const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const lgc = require("../../config.json").reportChannel;
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "report",
     category: "moderation",

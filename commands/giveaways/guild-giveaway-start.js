@@ -1,6 +1,7 @@
 const {MessageEmbed} = require("discord.js");
 const moment = require("moment"); //npm i moment
 const ms = require("ms"); //npm i ms
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "guild-giveaway-start",
     aliases: ["gc", "gs"],

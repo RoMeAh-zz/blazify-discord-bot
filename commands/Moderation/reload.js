@@ -1,3 +1,4 @@
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "reload",
         description: "reloads a bot command!",

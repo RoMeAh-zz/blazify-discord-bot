@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json");
 const lgc = require("../../config.json").logChannel;
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "removerole",
         description: "Removes a role to a member of the guild!",

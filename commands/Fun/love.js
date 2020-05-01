@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { getMember } = require("../../functions.js");
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "love",
     aliases: ["affinity"],

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const overwatch = require("overwatch-api");
-
+const Settings = require("../../models/configsetting.js")
 module.exports = {
         name: "overwatch",
         description: "Displays a user's overwatch stats!",

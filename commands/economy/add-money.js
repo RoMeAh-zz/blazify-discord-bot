@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const Settings = require("../../models/configsetting.js");
 const Coins = require("../../models/coin.js");
 let stealercoins;
 let victimcoins;

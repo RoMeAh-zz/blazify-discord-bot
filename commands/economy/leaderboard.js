@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const Coins = require("../../models/coin.js");
+const Settings = require("../../models/configsetting.js");
 
 module.exports = {
   name: "leaderboard-coins",

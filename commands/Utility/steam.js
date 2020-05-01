@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const dateFormat = require("dateformat");
-
+const Settings = require("../models/configsetting.js");
 module.exports = {
         name: "steam",
         description: "Get steam statistics of a user",

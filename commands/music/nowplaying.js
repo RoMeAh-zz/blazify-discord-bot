@@ -1,7 +1,7 @@
 const { Utils } = require("erela.js")
 const { RichEmbed } = require("discord.js")
 const { stripIndents } = require("common-tags")
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "nowplaying",
         aliases: ["np", "now"],

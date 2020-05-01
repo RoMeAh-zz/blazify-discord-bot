@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+const Settings = require("../../models/configsetting.js");
 module.exports = {
   name: "8ball",
   aliases: [""],

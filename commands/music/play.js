@@ -1,6 +1,6 @@
 const { Utils } = require("erela.js")
 const { RichEmbed } = require("discord.js")
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "play",
         description: "Play a song/playlist or search for a song from youtube",

@@ -1,3 +1,4 @@
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: 'avatar',
     aliases: ['icon', 'logo', 'av'],

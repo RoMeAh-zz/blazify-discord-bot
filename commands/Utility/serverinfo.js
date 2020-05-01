@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js")
 const { cyan } = require("../../colours.json");
-
+const Settings = require("../models/configsetting.js");
 module.exports = {
         name: "serverinfo",
         description: "Pulls the serverinfo of the guild!",

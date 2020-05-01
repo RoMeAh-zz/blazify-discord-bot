@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { promptMessage } = require("../../functions.js");
-
+const Settings = require("../../models/configsetting.js");
 const chooseArr = ["⛰️", "📄", "✂"];
 
 module.exports = {

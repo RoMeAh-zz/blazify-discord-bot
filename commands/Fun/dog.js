@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const superagent = require("superagent");
-
+const Settings = require("../../models/configsetting.js");
 
 module.exports = {
     name: "dog",

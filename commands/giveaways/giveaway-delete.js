@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const Settings = require("../../models/configsetting.js");
 // Requires Manager from discord-giveawaysconst client = new Discord.Client()const client = new Discord.Client()
 const { GiveawaysManager } = require("discord-giveaways");
 // Starts updating currents giveaways

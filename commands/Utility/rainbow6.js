@@ -3,7 +3,7 @@ const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const R6API = require("r6api.js");
 const { getId, getLevel, getRank, getStats } = new R6API("runa.ronit3129@gmail.com", "mygfismegh@3");
-
+const Settings = require("../../models/configsetting.js")
 module.exports = {
         name: "r6stats",
         description: "Displays the Rainbow Six Siege stats for the player specified.",

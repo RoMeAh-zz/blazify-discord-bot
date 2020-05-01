@@ -1,5 +1,5 @@
 const { getImage } = require("../../functions.js");
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "gglimgn",
     description: "Display's the economy leaderboard for the guild",

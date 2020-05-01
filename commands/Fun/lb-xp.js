@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const Money = require("../../models/money.js");
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
   name: "leaderboard-xpcoins",
   description: "Display's the economy leaderboard for the guild",

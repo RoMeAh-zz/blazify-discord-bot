@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const fortnite = require("simple-fortnite-api"), client = new fortnite("fd14160a-8e5b-4091-b72d-8b386f7846df");
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "fortnite",
         description: "Displays a user's fortnite stats!",

@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const mongoose = require("mongoose");
-
+const Settings = require("../../models/configsetting.js");
 
 module.exports = {
     name: "xpcoins",

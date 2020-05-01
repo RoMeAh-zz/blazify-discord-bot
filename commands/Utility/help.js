@@ -74,11 +74,11 @@ module.exports = {
       )
       .addField(
         "Others",
-        `[Support Server](https://discord.gg/3JrdUxt) |  [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://www.paypal.me/roahgaming)`,
+        `[Support Server](https://discord.gg/YtJ6pYu) |  [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=696756322825404416&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://www.paypal.me/roahgaming)`,
         false
       )
       .setFooter(
-        `Make sure to use the prefix before these commands. PREFIX IS '${prefix}'. If you find any bug, feel free to report them using b3contact <bug>`
+        `Make sure to use the prefix before these commands. PREFIX IS '${prefix}'. If you find any bug, feel free to report them using ${prefix}contact <bug>`
       );
     message.channel.send(helpEmbed);
   }

@@ -1,7 +1,7 @@
 
 const { MessageEmbed } = require("discord.js");
 const randomPuppy = require("random-puppy");
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "meme",
     category: "fun",

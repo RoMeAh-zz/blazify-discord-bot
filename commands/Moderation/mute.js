@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json");
 const lgc = require("../../config.json").logChannel;
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "mute",
         description: "Mutes a member in the discord!",

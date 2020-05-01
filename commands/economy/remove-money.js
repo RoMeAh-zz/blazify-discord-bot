@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const Coins = require("../../models/coin.js");
 let stealercoins;
 let victimcoins;
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
   name: "remove-money",
   description: "Robs another user",

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
 const API = require("apextab-api"), ApexTab  = API.Apextab_API;
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "apex",
         description: "Displays a user's apex stats!",

@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const { cyan } = require("../../colours.json");
 const fetch = require('node-fetch');
-
+const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "llama",
         description: "Sends a picture of a llama!",
