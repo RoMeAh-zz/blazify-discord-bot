@@ -1,0 +1,2 @@
+# blazify
+This is a Repository visible only by the ones who are bot developers of blazify and if you want to run the bot after pulling origin. First of all go to the Web/client/src then just start up the start_bot.bat file there. Second go to the lavalink folder there will be another start_bot.bat run that. Then finally just in the home page run the start_bot.bat there and the bot will be online unless there are errors. 
