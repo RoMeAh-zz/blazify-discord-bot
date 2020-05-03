@@ -70,6 +70,9 @@ typings/
 .env
 .env.test
 
+#config because it contains token and client secrert
+config.json
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
