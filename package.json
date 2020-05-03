@@ -15,6 +15,7 @@
     "cheerio": "^1.0.0-rc.3",
     "common-tags": "^1.8.0",
     "cors": "^2.8.5",
+    "cpu-stat": "^2.0.1",
     "dateformat": "^3.0.3",
     "discord-giveaways": "^3.2.3",
     "discord-oauth2": "^2.1.0",

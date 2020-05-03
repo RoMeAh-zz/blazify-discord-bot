@@ -470,7 +470,7 @@ module.exports = {
           prefix.save().catch(err => console.log(err));
         })
         return message.channel.send(`Set the guild prefix to: ${cprefix}`);
-      }
+      };
       break;
       case "logchannel": {
           let lgc = args[1];
