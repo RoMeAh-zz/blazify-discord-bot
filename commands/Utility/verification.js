@@ -4,20 +4,11 @@ let enableVerification;
 module.exports = {
   name: "verify",
   run: async (client, message) => {
-    let allGuilds = client.guilds.cache.array();
-    for (let i = 0; i < allGuilds.length; i++) {
-    await Settings.findOne(
-      { guildID: allGuilds[i].id },
-      async (err, settings) => {
-        if (err) console.log(err);
-
-        if (!settings) {
-        enableVerification = false;
-        } else {
-        enableVerification = settings.enableVerification
-        }
-      })
-      if(enableVerification === true) {
+    const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+      guildID: message.guild.id
+  });
+  const {enableVerification} = guildSettings;
+if(enableVerification) {
     if(message.channel.id === '700401979280719943')
     {
         await message.delete().catch(err => console.log(err));
@@ -40,4 +31,4 @@ module.exports = {
   }
   }
 }
-}
+

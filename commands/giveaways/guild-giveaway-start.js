@@ -10,21 +10,11 @@ module.exports = {
     category: "music",
     usage: "<input>",
     run: async (client, message, args) => {
-        let allGuilds = client.guilds.cache.array();
-        for (let i = 0; i < allGuilds.length; i++) {
-            Settings.findOne(
-                {guildID: allGuilds[i].id},
-                async (err, settings) => {
-                    if (err) console.log(err);
-
-                    if (!settings) {
-                        enableGiveaway = false;
-                    } else {
-                        enableGiveaway = settings.enableGiveaway
-                    }
-                })
-        }
-        if (enableGiveaway === true) {
+        const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+            guildID: message.guild.id
+        });
+        const {enableGiveaway} = guildSettings;
+    if(enableGiveaway) {
             var time = moment().format("Do MMMM YYYY , hh:mm");
             var room;
             var title;

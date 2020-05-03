@@ -7,21 +7,11 @@ module.exports = {
         accessableby: "Member",
         category: "music",
     run: async (bot, message, args) => {
-      let allGuilds = client.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
-            enableMusic = false;
-          } else {
-            enableMusic = settings.enableMusic
-          }
-        })
-      }
-      if(enableMusic === true) {
+ const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableMusic} = guildSettings;
+if(enableMusic) {
         const player = bot.music.players.get(message.guild.id);
         if(!player || !player.queue[0]) return message.channel.send("No song currently playing in this guild.");
 

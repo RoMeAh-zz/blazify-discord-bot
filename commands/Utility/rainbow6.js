@@ -12,21 +12,11 @@ module.exports = {
         accessableby: "Members",
         aliases: ["rainbow", "rainbow6"] ,
     run: async (bot, message, args) => {
-      let allGuilds = bot.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
-            enableGaming = false;
-          } else {
-            enableGaming = settings.enableGaming
-          }
-        })
-      }
-      if(enableGaming === true) {
+       const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableGaming} = guildSettings;
+    if(enableGaming) {
         const platforms = { pc: "UPLAY", xbox: "XBL", ps4: "PSN" };
 		const regions = { eu: "emea", na: "ncsa", as: "apac" };
 

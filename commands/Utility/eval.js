@@ -7,21 +7,11 @@ module.exports = {
         type: "owner",
         usage: `b3eval <input>`,
     run: async (bot, message, args) => {
-      let allGuilds = client.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
-            enableUtility = false;
-          } else {
-            enableUtility = settings.enableUtility
-          }
-        })
-      }
-      if(enableUtility === true) {
+ const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableUtility} = guildSettings;
+if(enableUtility) {
         if(message.author.id == "560805847517888512, 312149319769784321, 552052137878880256") {
         try {
             let toEval = args.join(" ")

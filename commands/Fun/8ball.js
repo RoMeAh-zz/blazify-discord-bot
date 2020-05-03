@@ -7,21 +7,11 @@ module.exports = {
   category: "fun",
   description: "Get a random anime picture",
   run: async (client, message, args) => {
-    let allGuilds = client.guilds.cache.array();
-    for (let i = 0; i < allGuilds.length; i++) {
-    Settings.findOne(
-      { guildID: allGuilds[i].id },
-      async (err, settings) => {
-        if (err) console.log(err);
-
-        if (!settings) {
-          enableFun = false;
-        } else {
-          enableFun = settings.enableFun
-        }
-      })
-    }
-    if(enableFun === true) {
+    const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+      guildID: message.guild.id
+  });
+  const {enableFun} = guildSettings;
+if(enableFun) {
      let reason = args.join(' ');
     if (reason.length < 1) return message.channel.send('You did not give the bot a question');
     var ball = ['It is certain.','No doubt about it.','No chance.','Maybe, time will tell.','No way.','Concentrate and try again.', ' As I see it, yes', 'Outlook good', 'Most likely', 'Better not tell you now', 'My sources say no', 'Signs point to yes', 'Yes definitely', 'It is decidedly so', 'As I see it, yes', 'My sources say no', 'My sources say no', 'Outlook not so good', 'Very doubtful'];

@@ -11,21 +11,11 @@ module.exports = {
   accessableby: "Members",
   aliases: ["board"],
   run: async (client, message, args) => {
-    let allGuilds = client.guilds.cache.array();
-    for (let i = 0; i < allGuilds.length; i++) {
-    Settings.findOne(
-      { guildID: allGuilds[i].id },
-      async (err, settings) => {
-        if (err) console.log(err);
-
-        if (!settings) {
-          enableEconomy = false;
-        } else {
-          enableEconomy = settings.enableEconomy
-        }
-      })
-    }
-    if(enableEconomy === true) {
+     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableEconomy} = guildSettings;
+if(enableEconomy) {
     if (!args[0]) return message.channel.send("You need to mention someone");
 
     let user = message.mentions.members.first() || message.guild.members.get(args[0]);

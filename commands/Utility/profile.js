@@ -10,21 +10,11 @@ module.exports = {
     category: "Utility",
     description: "Shows profile of a user",
     run: async (client, message, args) => {
-      let allGuilds = client.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
-            enableUtility = false;
-          } else {
-            enableUtility = settings.enableUtility
-          }
-        })
-      }
-      if(enableUtility === true) {
+ const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableUtility} = guildSettings;
+if(enableUtility) {
 
       if (args[0]) {
 

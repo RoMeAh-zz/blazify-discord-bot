@@ -10,21 +10,11 @@ module.exports = {
         accessableby: "Moderators",
         aliases: ["rr", "roleremove"],
     run: async (bot, message, args) => {
-      let allGuilds = client.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
-            enableModeration = false;
-          } else {
-            enableModeration = settings.enableModeration
-          }
-        })
-      }
-      if(enableModeration === true) {
+    const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableModeration} = guildSettings;
+if(enableModeration) {
     if(!message.member.hasPermission(["MANAGE_ROLES", "ADMINISTRATOR"])) return message.channel.send("You dont have permission to perform this command!")
 
     let rMember = message.mentions.members.first() || message.guild.members.find(m => m.user.tag === args[0]) || message.guild.members.get(args[0])

@@ -8,21 +8,11 @@ module.exports = {
     description: "XP",
     run: async (client, message, args) => {
     await message.delete();
-    let allGuilds = client.guilds.cache.array();
-    for (let i = 0; i < allGuilds.length; i++) {
-    Settings.findOne(
-      { guildID: allGuilds[i].id },
-      async (err, settings) => {
-        if (err) console.log(err);
-
-        if (!settings) {
-          enableModeration = false;
-        } else {
-          enableModeration = settings.enableModeration
-        }
-      })
-    }
-    if(enableModeration === true) {
+    const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+      guildID: message.guild.id
+  });
+  const {enableModeration} = guildSettings;
+if(enableModeration) {
     if (args[0]) {
         let member = message.mentions.members.first();
 

@@ -7,21 +7,11 @@ module.exports = {
     category: "fun",
     description: "Sends an epic meme",
     run: async (client, message, args) => {
-      let allGuilds = client.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
-            enableFun = false;
-          } else {
-            enableFun = settings.enableFun
-          }
-        })
-      }
-      if(enableFun === true) {
+      const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableFun} = guildSettings;
+  if(enableFun) {
         const subReddits = ["dankmeme", "meme", "me_irl"];
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
 

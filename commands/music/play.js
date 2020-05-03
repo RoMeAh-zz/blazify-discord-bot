@@ -9,21 +9,11 @@ module.exports = {
         accessableby: "Member",
         aliases: ["p", "pplay"],
     run: async (bot, message, args) => {
-      let allGuilds = client.guilds.cache.array();
-      for (let i = 0; i < allGuilds.length; i++) {
-      Settings.findOne(
-        { guildID: allGuilds[i].id },
-        async (err, settings) => {
-          if (err) console.log(err);
-
-          if (!settings) {
-            enableMusic = false;
-          } else {
-            enableMusic = settings.enableMusic
-          }
-        })
-      }
-      if(enableMusic === true) {
+ const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+        guildID: message.guild.id
+    });
+    const {enableMusic} = guildSettings;
+if(enableMusic) {
         const { voiceChannel } = message.member;
         if (!voiceChannel) return message.channel.send("You need to be in a voice channel to play music.");
 
