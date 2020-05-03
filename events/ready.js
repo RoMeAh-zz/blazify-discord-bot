@@ -4,6 +4,9 @@ const Prefix = require("../models/prefix.js")
 const Settings = require("../models/configsetting.js");
 const XP = require("../models/xp.js");
 const startServer = require("../Web/server/server");
+const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js")
+const { nodes } = require("../botconfig.json")
+const ErelaClient = require("erela.js")
 module.exports = async (client, message) => {
 
     startServer(client);
@@ -59,11 +62,20 @@ module.exports = async (client, message) => {
                     enableXPCoins: false,
                     enableXP: false,
                     enableCaptcha: false,
+                    enableVerification: false,
+                    enableAntiSpam: false,
+                    enableModeration: false,
+                    enableFun: false,
+                    enableGiveaway: false,
+                    enableEconomy:  false,
+                    enableMusic: false,
+                    enableGaming: false,
+                    enableUtility: false,
+                    enableWelcome: false,
                 });
                 await newGuild.save().catch(err => console.log(err));
                 console.log(`Added the guild: ${allGuilds[i].id} to the database`)
-            }
-            ;
+            };
         });
 
         await Prefix.findOne({guildID: allGuilds[i].id}, (err, prefix) => {
@@ -80,8 +92,25 @@ module.exports = async (client, message) => {
             }
             ;
         });
-    }
-    ;
+       await PerGuildLogandWelcome.findOne({guildID: allGuilds[i].id}, (err, perguildlogandwelcome) => {
+
+         if(err) console.log(err);
+
+         if(!perguildlogandwelcome) {
+           const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
+             guildID: allGuilds[i].id,
+             logChannel: "logs",
+             reportChannel: "reports",
+             welcomeChannel: "welcome",
+             welcomeMessage: `Welcome {member} to the Server. Don't Dare to leave us please.`,
+             leaverChannel: "leavers",
+             leaverMessage: `Bye Bye ${member.id}. So SAD, we lost one more Member.`
+           });
+           newPerGuildLogandWelcome.save().catch(err => console.log(err));
+           console.log(`The guild: '${allGuilds[i].name}' has been added to the per guild logging, welcoming and leaving database`);
+         }
+       })
+    };
 
     let allUsers = client.users.cache.array();
     // Requires Manager from discord-giveaways

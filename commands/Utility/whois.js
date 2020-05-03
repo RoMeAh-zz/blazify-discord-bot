@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { getMember, formatDate } = require("../../functions.js");
-const Settings = require("../models/configsetting.js");
+const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "whois",
     aliases: ["who", "user", "info"],

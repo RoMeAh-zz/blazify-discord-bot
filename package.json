@@ -50,19 +50,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RoMeAh/blaze3.git"
+    "url": "git+https://github.com/RoMeAh/blazify.git"
   },
   "keywords": [
     "best",
     "bot",
     "discord.js",
+    "webdashboard",
+    "vue",
     "allinone",
     "madebyromeah"
   ],
   "author": "romeah",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RoMeAh/blaze3/issues"
+    "url": "https://github.com/RoMeAh/blazify/issues"
   },
-  "homepage": "https://github.com/RoMeAh/blaze3#readme"
+  "homepage": "https://github.com/RoMeAh/blazify#readme"
 }

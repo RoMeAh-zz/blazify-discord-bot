@@ -29,5 +29,5 @@ module.exports = async (bot) => {
         res.sendFile(require("path").resolve(__dirname + "/../client/dist/index.html"));
     });
 
-    app.listen(3000, () => console.log("Started on port 3000"));
+    app.listen(8080, () => console.log("Started on port 8080"));
 };

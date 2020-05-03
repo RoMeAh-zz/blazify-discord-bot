@@ -125,7 +125,7 @@ module.exports = async (client, message, member) => {
         .split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
-    if (cmd.length === 0) return;
+    if (cmd.length === 0) return message.channel.send(`Yes, I am alive please tell a command and if you dont know any just type ${prefix}`)
 
     let command = client.commands.get(cmd);
     if (!command) command = client.commands.get(client.aliases.get(cmd));

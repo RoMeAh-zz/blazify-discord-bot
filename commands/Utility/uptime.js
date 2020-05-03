@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const Settings = require("../models/configsetting.js");
+const Settings = require("../../models/configsetting.js");
 let days = 0;
 let week = 0;
 

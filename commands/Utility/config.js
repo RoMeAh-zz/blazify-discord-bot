@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const Settings = require("../../models/configsetting.js");
 const Prefix = require("../../models/prefix.js");
+const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js");
 let setting1;
 let setting2;
 let setting3;
@@ -14,6 +15,13 @@ let setting10;
 let setting11;
 let setting12;
 let setting13;
+let setting14;
+let setting15;
+let setting16;
+let setting17;
+let setting18;
+let setting19;
+let setting20;
 module.exports = {
   name: "config",
   description: "Configures guild settings",
@@ -49,6 +57,14 @@ module.exports = {
 
       setting14 = guild.prefix;
     });
+    await PerGuildLogandWelcome.findOne({guildID: message.guild.id}, async (err, perguildlogandwelcome) => {
+    setting15 = guild.logChannel;
+    setting16 = guild.reportChannel;
+    setting17 = guild.welcomeChannel;
+    setting18 = guild.welcomeMessage;
+    setting19 = guild.leaverChannel;
+    setting20 = guild.leaverMessage;
+})
 
     let embed = new MessageEmbed()
     .setTitle(`Settings for ${message.guild.name}`)
@@ -67,6 +83,12 @@ module.exports = {
     .addField("Moderation (Commands)", setting11)
     .addField("Welcoming (Commands)", setting12)
     .addField("Giveaway (Commands)", setting13)
+    .addField("Log Channel", "#" + setting15)
+    .addField("Report Channel", "#" + setting16)
+    .addField("Welcome Channel", "#" + setting17)
+    .addField("Leaver Channel", "#" + setting19)
+    .addField("Leaver Message", "#" + setting20)
+    .addField("Welcome Messgage", "#" + setting18)
     .addField("Prefix", setting14)
     .setFooter(`${message.guild.name}`, message.guild.displayAvatarURL)
     .setColor("RANDOM");
@@ -449,6 +471,142 @@ module.exports = {
         })
         return message.channel.send(`Set the guild prefix to: ${cprefix}`);
       }
+      break;
+      case "logchannel": {
+          let lgc = args[1];
+
+        await PerGuildLogandWelcome.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+
+          if (err) console.log(err);
+
+          console.log(perguildlogandwelcome);
+
+          if (!perguildlogandwelcome) {
+            const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
+              guildID: message.guild.id,
+              logChannel: lgc,
+            })
+            newPerGuildLogandWelcome.save().catch(err => console.log(err));
+          };
+
+          perguildlogandwelcome.save().catch(err => console.log(err));
+        })
+        return message.channel.send(`Set the guild log channel to: ${lgc}`);
     }
+    break;
+    case "reportchannel": {
+        let rgc = args[1];
+
+      await PerGuildLogandWelcome.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+
+        if (err) console.log(err);
+
+        console.log(perguildlogandwelcome);
+
+        if (!perguildlogandwelcome) {
+          const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
+            guildID: message.guild.id,
+            reportChannel: rgc,
+          })
+          newPerGuildLogandWelcome.save().catch(err => console.log(err));
+        };
+
+
+        perguildlogandwelcome.save().catch(err => console.log(err));
+      })
+      return message.channel.send(`Set the guild report channel to: ${rgc}`);
   }
-};
+  break;
+  case "welcomechannel": {
+      let wgc = args[1];
+
+    await PerGuildLogandWelcome.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+
+      if (err) console.log(err);
+
+      console.log(perguildlogandwelcome);
+
+      if (!perguildlogandwelcome) {
+        const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
+          guildID: message.guild.id,
+          welcomeChannel: wgc,
+        })
+        newPerGuildLogandWelcome.save().catch(err => console.log(err));
+      };
+
+      perguildlogandwelcome.save().catch(err => console.log(err));
+    })
+    return message.channel.send(`Set the guild welcome channel to: ${wgc}`);
+}
+break;
+case "welcomeMessage": {
+    let wmsg = args.slice(1).join(" ");
+
+  await Prefix.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+
+    if (err) console.log(err);
+
+    console.log(perguildlogandwelcome);
+
+    if (!perguildlogandwelcome) {
+      const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
+        guildID: message.guild.id,
+        welcomeMessage: wmsg,
+      })
+      newPerGuildLogandWelcome.save().catch(err => console.log(err));
+    };
+
+
+
+    perguildlogandwelcome.save().catch(err => console.log(err));
+  })
+  return message.channel.send(`Set the guild log channel to: ${wmsg}`);
+}
+break;
+case "leaverchannel": {
+    let legc = args[1];
+
+  await Prefix.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+
+    if (err) console.log(err);
+
+    console.log(perguildlogandwelcome);
+
+    if (!perguildlogandwelcome) {
+      const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
+        guildID: message.guild.id,
+        leaverChannel: legc,
+      })
+      newPerGuildLogandWelcome.save().catch(err => console.log(err));
+    };
+
+    perguildlogandwelcome.save().catch(err => console.log(err));
+  })
+  return message.channel.send(`Set the guild leaver channel to: ${legc}`);
+}
+break;
+case "logchannel": {
+    let lmsg = args.slice(1).join(" ");
+
+  await Prefix.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+
+    if (err) console.log(err);
+
+    console.log(perguildlogandwelcome);
+
+    if (!perguildlogandwelcome) {
+      const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
+        guildID: message.guild.id,
+        leaverMessage: lmsg,
+      })
+      newPerGuildLogandWelcome.save().catch(err => console.log(err));
+    };
+
+    perguildlogandwelcome.save().catch(err => console.log(err));
+  })
+  return message.channel.send(`Set the leaver message to: ${lmsg}`);
+}
+break;
+  }
+}
+}
