@@ -542,7 +542,7 @@ break;
 case "welcomeMessage": {
     let wmsg = args.slice(1).join(" ");
 
-  await Prefix.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+  await PerGuildLogandWelcome.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
 
     if (err) console.log(err);
 
@@ -566,7 +566,7 @@ break;
 case "leaverchannel": {
     let legc = args[1];
 
-  await Prefix.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+  await PerGuildLogandWelcome.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
 
     if (err) console.log(err);
 
@@ -585,10 +585,10 @@ case "leaverchannel": {
   return message.channel.send(`Set the guild leaver channel to: ${legc}`);
 }
 break;
-case "logchannel": {
+case "leavermessage": {
     let lmsg = args.slice(1).join(" ");
 
-  await Prefix.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
+  await PerGuildLogandWelcome.findOne({ guildID: message.guild.id }, (err, perguildlogandwelcome) => {
 
     if (err) console.log(err);
 
