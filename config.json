@@ -1,10 +1,5 @@
 {
-<<<<<<< HEAD
-  "token": "your token here plz",
-  "secret": "client secret for dashboard",
-=======
   "token": "token here plz",
   "secret": "client secret for dashboard ",
->>>>>>> 1b5ec5d08588a50c6ad3d4a26dafc045ee149935
   "prefix": "b3"
 }
