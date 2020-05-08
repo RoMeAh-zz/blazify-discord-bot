@@ -22,6 +22,7 @@ const browser = (exports.browser = typeof window !== 'undefined');
  * @property {boolean} [fetchAllMembers=false] Whether to cache all guild members and users upon startup, as well as
  * upon joining a guild (should be avoided whenever possible)
  * @property {DisableMentionType} [disableMentions='none'] Default value for {@link MessageOptions#disableMentions}
+ * @property {MessageMentionOptions} [allowedMentions] Default value for {@link MessageOptions#allowedMentions}
  * @property {PartialType[]} [partials] Structures allowed to be partial. This means events can be emitted even when
  * they're missing all the data for a particular structure. See the "Partials" topic listed in the sidebar for some
  * important usage information, as partials require you to put checks in place when handling data.
@@ -98,9 +99,9 @@ exports.WSCodes = {
   4014: 'DISALLOWED_INTENTS',
 };
 
-const AllowedImageFormats = ['webp', 'png', 'jpg', 'gif'];
+const AllowedImageFormats = ['webp', 'png', 'jpg', 'jpeg', 'gif'];
 
-const AllowedImageSizes = Array.from({ length: 8 }, (e, i) => 2 ** (i + 4));
+const AllowedImageSizes = Array.from({ length: 9 }, (e, i) => 2 ** (i + 4));
 
 function makeImageUrl(root, { format = 'webp', size } = {}) {
   if (format && !AllowedImageFormats.includes(format)) throw new Error('IMAGE_FORMAT', format);
@@ -110,11 +111,11 @@ function makeImageUrl(root, { format = 'webp', size } = {}) {
 /**
  * Options for Image URLs.
  * @typedef {Object} ImageURLOptions
- * @property {string} [format] One of `webp`, `png`, `jpg`, `gif`. If no format is provided,
+ * @property {string} [format] One of `webp`, `png`, `jpg`, `jpeg`, `gif`. If no format is provided,
  * defaults to `webp`.
  * @property {boolean} [dynamic] If true, the format will dynamically change to `gif` for
  * animated avatars; the default is false.
- * @property {number} [size] One of `16`, `32`, `64`, `128`, `256`, `512`, `1024`, `2048`
+ * @property {number} [size] One of `16`, `32`, `64`, `128`, `256`, `512`, `1024`, `2048`, `4096`
  */
 
 exports.Endpoints = {

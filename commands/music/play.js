@@ -14,7 +14,7 @@ module.exports = {
     });
     const {enableMusic} = guildSettings;
 if(enableMusic) {
-        const { voiceChannel } = message.member;
+        const {voiceChannel} = message.member;
         if (!voiceChannel) return message.channel.send("You need to be in a voice channel to play music.");
 
         const permissions = voiceChannel.permissionsFor(bot.user);

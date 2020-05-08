@@ -5,7 +5,7 @@ module.exports = {
         description: "Makes the bot pause/resume the music currently playing.",
         accessableby: "Member",
         category: "music",
-    run: (bot, message, args) => {
+    run: async (bot, message, args) => {
  const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });

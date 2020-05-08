@@ -3,7 +3,7 @@ const Settings = require("../../models/configsetting.js");
 module.exports = {
   name: "pepe",
   category: "fun",
-  run: (client, message) => {
+  run: async (client, message) => {
     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
       guildID: message.guild.id
   });

@@ -7,7 +7,7 @@ module.exports = {
     aliases: ["who", "user", "info"],
     description: "Returns user information",
     usage: "[username | id | mention]",
-    run: (client, message, args) => {
+    run: async (client, message, args) => {
  const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });

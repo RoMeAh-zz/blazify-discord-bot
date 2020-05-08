@@ -67,7 +67,7 @@
             if (access_token) localStorage.setItem("access_token", access_token);
             if (!localStorage.getItem("access_token")) location.href = "/";
 
-            fetch(`http://localhost:8080/api/guilds?access_token=${localStorage.getItem("access_token")}`)
+            fetch(`https://blazify-dashboard.glitch.me/api/guilds?access_token=${localStorage.getItem("access_token")}`)
                 .then(res => res.json())
                 .then(body => {
                     if (!body.success) location.href = "/";

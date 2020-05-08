@@ -10,7 +10,7 @@ module.exports = async (bot) => {
     bot.oauth = new Oauth({
         clientSecret: secret,
         clientId: bot.user.id,
-        redirectUri: "http://localhost:8080/api/callback"
+        redirectUri: "https://blazify-dashboard.glitch.me"
     });
     bot.oauthURL = bot.oauth.generateAuthUrl({
         scope: ["guilds", "identify"]
@@ -29,5 +29,5 @@ module.exports = async (bot) => {
         res.sendFile(require("path").resolve(__dirname + "/../client/dist/index.html"));
     });
 
-    app.listen(8080, () => console.log("Started on port 8080"));
+    app.listen(3000, () => console.log("Started on port 3000"));
 };

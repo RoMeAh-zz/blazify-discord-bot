@@ -1,4 +1,4 @@
-const Discord = require("discord.js") ;
+const { MessageEmbed, Discord } = require("discord.js") ;
 const { version } = require("discord.js");
 const moment = require("moment");
 const m = require("moment-duration-format");
@@ -15,7 +15,7 @@ module.exports = {
    cpuStat.usagePercent(function(err, percent, seconds) {
      if (err) { return console.log(err); }
      const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-     const embedStats = new Discord.RichEmbed()
+     const embedStats = new MessageEmbed()
      .setAuthor(bot.user.username)
      .setTitle("__**Stats:**__")
      .setColor("RANDOM")

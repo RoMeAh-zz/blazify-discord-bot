@@ -10,7 +10,7 @@ module.exports = {
         accessableby: "Member",
         category: "music",
         usage: "<input>",
-        run: (client, message, args) => {
+        run: async (client, message, args) => {
           const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
             guildID: message.guild.id
         });

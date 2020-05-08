@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 module.exports = {
   init: () => {
 
-    mongoose.connect("mongodb+srv://SecondRomeah:itc12345@mongodbxpcoinsystem-cjqmq.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect("create a cluster and put link here", { useNewUrlParser: true, useUnifiedTopology: true });
 
     mongoose.connection.on('connected', () => {
       console.log("Connected to MongoDB Database.");

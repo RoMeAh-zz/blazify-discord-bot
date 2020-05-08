@@ -3,10 +3,10 @@ const Prefix = require("../models/prefix.js")
 //const GBL = require("gblapi.js");
 const Settings = require("../models/configsetting.js");
 const XP = require("../models/xp.js");
-const startServer = require("../Web/server/server");
+const startServer = require("../Web/server/server.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js")
+const { ErelaClient, Utils } = require("erela.js");
 const { nodes } = require("../botconfig.json")
-const ErelaClient = require("erela.js")
 module.exports = async (client, message) => {
 
     startServer(client);
@@ -21,7 +21,7 @@ module.exports = async (client, message) => {
 
   client.music = new ErelaClient(client, nodes)
     .on("nodeError", console.log)
-    .on("nodeConnect", () => console.log("Successfully created a new Node."))
+    .on("nodeConnect", () => console.log("Successfully created a new Lavalink Node."))
     .on("queueEnd", player => {
   player.textChannel.send("Queue has ended.")
   return client.music.players.destroy(player.guild.id)
@@ -34,19 +34,19 @@ module.exports = async (client, message) => {
     .set("medium", 0.15)
     .set("high", 0.25);
 
-    let activities = [`${client.guilds.size} servers!`, `${client.channels.size} channels!`, `${client.users.size} users!`],
+    let activities = [`${client.guilds.cache.size} servers!`, `${client.channels.cache.size} channels!`, `${client.users.cache.size} users!`],
         i = 0;
     setInterval(() => client.user.setActivity(`b3help | ${activities[i++ % activities.length]}`, {type: "WATCHING"}), 15000)
 
 
     client.channels.cache
-        .get("700406509707985097")
+        .get("707274207112724480")
         .edit({name: `${client.guilds.cache.size} Servers`});
     client.channels.cache
-        .get("700406539340480712")
+        .get("707274245423628410")
         .edit({name: `${client.users.cache.size} Members`});
     client.channels.cache
-        .get("700406572555173889")
+        .get("707274279032717313")
         .edit({name: `${client.channels.cache.size} Channels`});
 
     let allGuilds = client.guilds.cache.array();
@@ -102,9 +102,9 @@ module.exports = async (client, message) => {
              logChannel: "logs",
              reportChannel: "reports",
              welcomeChannel: "welcome",
-             welcomeMessage: `Welcome {member} to the Server. Don't Dare to leave us please.`,
+             welcomeMessage: "Welcome {member} to the Server. Don't Dare to leave us please.",
              leaverChannel: "leavers",
-             leaverMessage: `Bye Bye ${member.id}. So SAD, we lost one more Member.`
+             leaverMessage: "Bye Bye ${member.id}. So SAD, we lost one more Member."
            });
            newPerGuildLogandWelcome.save().catch(err => console.log(err));
            console.log(`The guild: '${allGuilds[i].name}' has been added to the per guild logging, welcoming and leaving database`);
@@ -113,7 +113,6 @@ module.exports = async (client, message) => {
     };
 
     let allUsers = client.users.cache.array();
-    // Requires Manager from discord-giveaways
     for (let i = 0; i < allUsers.length; i++) {
 
         await Coins.findOne({userID: allUsers[i].id}, async (err, user) => {
@@ -175,7 +174,7 @@ module.exports = async (client, message) => {
     let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway} ]
 
     // The list of all the giveaways on the server with ID "1909282092"
-    let onServer = client.giveawaysManager.giveaways.filter((g) => g.guildID === "1909282092");
+    let onServer = client.giveawaysManager.giveaways.filter((g) => g.guildID === "694506752603062304");
 
     // The list of the current giveaways (not ended)
     let notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended);
