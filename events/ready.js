@@ -107,7 +107,7 @@ module.exports = async (client, message) => {
              leaverMessage: "Bye Bye ${member.id}. So SAD, we lost one more Member."
            });
            newPerGuildLogandWelcome.save().catch(err => console.log(err));
-           console.log(`The guild: '${allGuilds[i].name}' has been added to the per guild logging, welcoming and leaving database`);
+           console.log(`The guild: '${allGuilds[i]}' has been added to the per guild logging, welcoming and leaving database`);
          }
        })
     };
@@ -127,7 +127,7 @@ module.exports = async (client, message) => {
                 })
 
                 await newCoins.save().catch(err => console.log(err));
-                console.log(`The user: '${allUsers[i].username}' has been added to the mongoDB coins database`);
+                console.log(`The user: '${allUsers[i]}' has been added to the mongoDB coins database`);
             }
         })
     }
@@ -151,7 +151,7 @@ module.exports = async (client, message) => {
                     });
 
                     await newXP.save().catch(err => console.log(err));
-                    console.log(`The user: '${allUsers[i].username}' has been added to the XP database`);
+                    console.log(`The user: '${allUsers[i]}' has been added to the XP database`);
                 }
             })
         }

@@ -15,7 +15,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableGaming} = guildSettings;
-    if(!enableGaming) return message.channel.send("Hmm it seems like the Gaming commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
+    if(!enableGaming) return message.channel.send("Hmm it seems like the Gaming commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
         const token = "steamToken"; //I reset mine.
         if(!args[0]) return message.channel.send("Please provide an account name!");
         const url = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${token}&vanityurl=${args.join(" ")}`;
@@ -54,4 +54,4 @@ module.exports = {
     })
   }
   }
-}
+

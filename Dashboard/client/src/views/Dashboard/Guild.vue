@@ -48,12 +48,12 @@
                     <v-btn v-if="content[1]" color="error"
                            :loading="loader"
                            :disabled="loader"
-                           @click="toggle(content[0], 'enable')">Enable
+                           @click="toggle(content[0], 'disable')">Disable
                     </v-btn>
                     <v-btn v-else color="primary"
                            :loading="loader"
                            :disabled="loader"
-                           @click="toggle(content[0], 'disable')">Disable
+                           @click="toggle(content[0], 'enable')">Enable
                     </v-btn>
                 </v-flex>
             </v-layout>
@@ -78,7 +78,7 @@
                     type = value;
                 }
                 this.loader = true;
-                fetch(`https://blazify-dashboard.glitch.me/api/config/${this.$route.params.id}?locale=${locale}&type=${type}&access_token=${localStorage.getItem("access_token")}`,
+                fetch(`http://localhost:3000/api/config/${this.$route.params.id}?locale=${locale}&type=${type}&access_token=${localStorage.getItem("access_token")}`,
                     {method: "PUT"})
                     .then(res => res.json())
                     .then(body => {
@@ -87,7 +87,7 @@
                             this.contents.find(x => x[0] === body.data.name)[1] = body.data.type;
                         setTimeout(() => {
                             if (body.data.name !== "prefix")
-                                alert(`${body.data.type ? "Disabled" : "Enabled"}: ${body.data.name}`);
+                                alert(`${body.data.type ? "Enabled" : "Disabled"}: ${body.data.name}`);
                             else alert("Changed the prefix!")
                             this.loader = false;
                         }, 2000);
@@ -96,7 +96,7 @@
         },
         mounted() {
             if (!this.$route.params.id || !localStorage.getItem("access_token")) return location.href = "/";
-            fetch(`https://blazify-dashboard.glitch.me/api/guild/?id=${this.$route.params.id}&access_token=${localStorage.getItem("access_token")}`)
+            fetch(`http://localhost:3000/api/guild/?id=${this.$route.params.id}&access_token=${localStorage.getItem("access_token")}`)
                 .then(res => res.json())
                 .then(body => {
                     if (!body.success) return location.href = "/";

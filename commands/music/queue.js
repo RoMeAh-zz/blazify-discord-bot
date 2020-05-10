@@ -11,7 +11,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableMusic} = guildSettings;
-if(!enableMusic) return message.channel.send("Hmm it seems like the Music commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
+if(!enableMusic) return message.channel.send("Hmm it seems like the Music commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
         const player = bot.music.players.get(message.guild.id);
         if(!player || !player.queue[0]) return message.channel.send("No song currently playing in this guild.");
 

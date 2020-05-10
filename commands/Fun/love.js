@@ -12,7 +12,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableFun} = guildSettings;
-  if(!enableFun) return message.channel.send("Hmm it seems like the Fun commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
+  if(!enableFun) return message.channel.send("Hmm it seems like the Fun commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
         // Get a member from mention, id, or username
         let person = getMember(message, args[0]);
 

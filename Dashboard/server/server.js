@@ -10,7 +10,7 @@ module.exports = async (bot) => {
     bot.oauth = new Oauth({
         clientSecret: secret,
         clientId: bot.user.id,
-        redirectUri: "https://blazify-dashboard.glitch.me/api/callback"
+        redirectUri: "http://localhost:3000/api/callback"
     });
     bot.oauthURL = bot.oauth.generateAuthUrl({
         scope: ["guilds", "identify"]
