@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 
 const settingsSchema = new mongoose.Schema({
     guildID: {type: String},
-    enableXPCoins: {type: Boolean, default: false},
-    enableXP: {type: Boolean, default: false},
-    enableCaptcha: {type: Boolean, default: false},
-    enableVerification: {type: Boolean, default: false},
-    enableAntiSpam: {type: Boolean, default: false},
-    enableModeration: {type: Boolean, default: false},
-    enableFun: {type: Boolean, default: false},
-    enableGiveaway: {type: Boolean, default: false},
-    enableEconomy: {type: Boolean, default: false},
-    enableMusic: {type: Boolean, default: false},
-    enableGaming: {type: Boolean, default: false},
-    enableUtility: {type: Boolean, default: false},
-    enableWelcome: {type: Boolean, default: false},
+    enableXPCoins: {type: Boolean, default: true},
+    enableXP: {type: Boolean, default: true},
+    enableCaptcha: {type: Boolean, default: true},
+    enableVerification: {type: Boolean, default: true},
+    enableAntiSpam: {type: Boolean, default: true},
+    enableModeration: {type: Boolean, default: true},
+    enableFun: {type: Boolean, default: true},
+    enableGiveaway: {type: Boolean, default: true},
+    enableEconomy: {type: Boolean, default: true},
+    enableMusic: {type: Boolean, default: true},
+    enableGaming: {type: Boolean, default: true},
+    enableUtility: {type: Boolean, default: true},
+    enableWelcome: {type: Boolean, default: true},
 });
 
 const settingsModel = mongoose.model('Settings', settingsSchema);

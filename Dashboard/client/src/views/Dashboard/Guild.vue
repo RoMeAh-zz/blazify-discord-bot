@@ -48,12 +48,12 @@
                     <v-btn v-if="content[1]" color="error"
                            :loading="loader"
                            :disabled="loader"
-                           @click="toggle(content[0], 'disable')">Disable
+                           @click="toggle(content[0], 'enable')">Enable
                     </v-btn>
                     <v-btn v-else color="primary"
                            :loading="loader"
                            :disabled="loader"
-                           @click="toggle(content[0], 'enable')">Enable
+                           @click="toggle(content[0], 'disable')">Disable
                     </v-btn>
                 </v-flex>
             </v-layout>
@@ -87,7 +87,7 @@
                             this.contents.find(x => x[0] === body.data.name)[1] = body.data.type;
                         setTimeout(() => {
                             if (body.data.name !== "prefix")
-                                alert(`${body.data.type ? "Enabled" : "Disabled"}: ${body.data.name}`);
+                                alert(`${body.data.type ? "Disabled" : "Enabled"}: ${body.data.name}`);
                             else alert("Changed the prefix!")
                             this.loader = false;
                         }, 2000);

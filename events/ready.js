@@ -3,7 +3,7 @@ const Prefix = require("../models/prefix.js")
 //const GBL = require("gblapi.js");
 const Settings = require("../models/configsetting.js");
 const XP = require("../models/xp.js");
-const startServer = require("../Web/server/server.js");
+const startServer = require("../Dashboard/server/server.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js")
 const { ErelaClient, Utils } = require("erela.js");
 const { nodes } = require("../botconfig.json")
@@ -59,19 +59,19 @@ module.exports = async (client, message) => {
             if (!guild) {
                 const newGuild = new Settings({
                     guildID: allGuilds[i].id,
-                    enableXPCoins: false,
-                    enableXP: false,
-                    enableCaptcha: false,
-                    enableVerification: false,
-                    enableAntiSpam: false,
-                    enableModeration: false,
-                    enableFun: false,
-                    enableGiveaway: false,
-                    enableEconomy:  false,
-                    enableMusic: false,
-                    enableGaming: false,
-                    enableUtility: false,
-                    enableWelcome: false,
+                    enableXPCoins: true,
+                    enableXP: true,
+                    enableCaptcha: true,
+                    enableVerification: true,
+                    enableAntiSpam: true,
+                    enableModeration: true,
+                    enableFun: true,
+                    enableGiveaway: true,
+                    enableEconomy:  true,
+                    enableMusic: true,
+                    enableGaming: true,
+                    enableUtility: true,
+                    enableWelcome: true,
                 });
                 await newGuild.save().catch(err => console.log(err));
                 console.log(`Added the guild: ${allGuilds[i].id} to the database`)

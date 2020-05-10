@@ -31,9 +31,9 @@ module.exports = class extends Route {
             let config = await ConfigSettings.findOne({guildID: guild.id}) || new ConfigSettings({
                 guildID: guild.id
             });
-            config["enable" + locale] = type !== "disable";
+            config["disable" + locale] = type !== "enable";
             config.save();
-            return res.json({success: true, data: {name: locale, type: config["enable" + locale]}});
+            return res.json({success: true, data: {name: locale, type: config["disable" + locale]}});
         }
 
         const prefix = await Prefix.findOne({guildID: guild.id}) || new Prefix({
