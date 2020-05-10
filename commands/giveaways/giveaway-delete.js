@@ -28,7 +28,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableGiveaway} = guildSettings;
-if(enableGiveaway) {
+if(!enableGiveaway) return message.channel.send("Hmm it seems like the giveaway commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
       const ms = require("ms"); // npm install ms
       // g!start-giveaway 2d 1 Awesome prize!
             // will create a giveaway with a duration of two days, with one winner and the prize will be "Awesome prize!"
@@ -39,7 +39,6 @@ if(enableGiveaway) {
             message.channel.send("No giveaway found for "+messageID+", please check and try again");
         });
     }
-}
 };
 let allGiveaways = client.giveawaysManager.giveaways; // [ {Giveaway}, {Giveaway} ]
 

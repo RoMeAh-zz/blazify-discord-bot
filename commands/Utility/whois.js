@@ -12,7 +12,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableUtility} = guildSettings;
-if(enableUtility) {
+if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
         const member = getMember(message, args.join(" "));
 
         // Member variables
@@ -46,4 +46,3 @@ if(enableUtility) {
         message.channel.send(embed);
     }
   }
-}

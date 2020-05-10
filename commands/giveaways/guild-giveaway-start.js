@@ -14,7 +14,7 @@ module.exports = {
             guildID: message.guild.id
         });
         const {enableGiveaway} = guildSettings;
-    if(enableGiveaway) {
+    if(!enableGiveaway) return message.channel.send("Hmm it seems like the giveaway commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
             var time = moment().format("Do MMMM YYYY , hh:mm");
             var room;
             var title;
@@ -165,4 +165,3 @@ module.exports = {
                 })
                 }
         }
-    }

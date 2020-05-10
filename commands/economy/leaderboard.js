@@ -14,7 +14,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableEconomy} = guildSettings;
-if(enableEconomy) {
+if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
     let allUsers = message.guild.members
       .filter(m => !m.user.bot)
       .map(m => m.user.id);
@@ -80,5 +80,4 @@ if(enableEconomy) {
         message.channel.send(embed);
       });
   }
-}
 };

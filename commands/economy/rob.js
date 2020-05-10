@@ -15,7 +15,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableEconomy} = guildSettings;
-if(enableEconomy) {
+if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
     if (!args[0]) return message.channel.send("You need to mention someone");
 
     let user = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -111,5 +111,4 @@ if(enableEconomy) {
       return message.channel.send(`You stole ${win} coins.`)
     }
   }
-}
 };

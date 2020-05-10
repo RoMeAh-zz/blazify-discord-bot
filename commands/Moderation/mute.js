@@ -14,7 +14,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableModeration} = guildSettings;
-if(enableModeration) {
+if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)")
 // check if the command caller has permission to use the command
 if(!message.member.hasPermission("MANAGE_ROLES") || !message.guild.owner) return message.channel.send("You dont have permission to use this command.");
 
@@ -70,4 +70,4 @@ let embed = new MessageEmbed()
     lChannel.send(embed)
 }
     }
-}
+

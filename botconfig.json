@@ -1,5 +1,5 @@
 {
     "nodes": [
-        { "host": "167.172.100.255", "port": "3000", "password": "romeahisgod"}
+        { "host": "localhost", "port": "2333", "password": "youshallnotpass"}
     ]
 }

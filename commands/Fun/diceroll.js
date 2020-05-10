@@ -8,7 +8,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableFun} = guildSettings;
-  if(enableFun) {
+  if(!enableFun) return message.channel.send("Hmm it seems like the Fun commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
         if(!args[0]) {
             args[0] = 6;
           }
@@ -16,5 +16,4 @@ module.exports = {
           let result = (Math.floor(Math.random() * Math.floor(args[0])));
           message.channel.send(`I rolled ${result + 1}!`);
     }
-}
 }

@@ -14,7 +14,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableEconomy} = guildSettings;
-if(enableEconomy) {
+if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
     let embed = new MessageEmbed()
     .setTitle(`${message.author.username}'s Gambling Match`)
     .setFooter(`${message.author.username}'s Gambling results`, message.author.displayAvatarURL)
@@ -86,4 +86,4 @@ if(enableEconomy) {
     })
   }
 }
-};
+

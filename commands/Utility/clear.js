@@ -7,22 +7,11 @@ module.exports = {
     run: async (client, message, args) => {
         if (message.deletable) {
             message.delete();
-        }
-        let allGuilds = client.guilds.cache.array();
-        for (let i = 0; i < allGuilds.length; i++) {
-        Settings.findOne(
-          { guildID: allGuilds[i].id },
-          async (err, settings) => {
-            if (err) console.log(err);
-
-            if (!settings) {
-              enableUtility = false;
-            } else {
-              enableUtility = settings.enableUtility
-            }
-          })
-        }
-        if(enableUtility === true) {
+            const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+              guildID: message.guild.id
+          });
+          const {enableUtility} = guildSettings;
+      if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
 
         // Member doesn't have permissions
         if (!message.member.hasPermission("MANAGE_MESSAGES")) {

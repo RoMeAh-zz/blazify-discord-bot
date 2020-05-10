@@ -12,7 +12,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableFun} = guildSettings;
-  if(enableFun) {
+  if(!enableFun) return message.channel.send("Hmm it seems like the Fun commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
         image(message);
 function image(message) {
     var options = {
@@ -53,4 +53,4 @@ function image(message) {
   }
 }
 }
-}
+

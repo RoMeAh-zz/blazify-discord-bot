@@ -11,8 +11,8 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableUtility} = guildSettings;
-if(enableUtility) {
-        if(message.author.id == "560805847517888512, 312149319769784321, 552052137878880256") {
+if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
+        if(message.author.id == "560805847517888512") {
         try {
             let toEval = args.join(" ")
 			let evaluated = inspect(eval(toEval, { depth: 0 }));
@@ -34,5 +34,4 @@ if(enableUtility) {
         return message.reply(" you are not the bot owner!").then(msg => msg.delete(5000))
       }
     }
-}
 }

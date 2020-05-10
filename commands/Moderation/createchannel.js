@@ -9,7 +9,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableModeration} = guildSettings;
-if(enableModeration) {
+if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)")
   try {
     if (!args[1]) return message.reply('You need to input the channel type!');
     if (!args[0]) return message.reply('You need to input the channel name!');
@@ -23,5 +23,4 @@ if(enableModeration) {
     message.channel.send('There was an error!\n' + err).catch();
   }
     }
-}
 }

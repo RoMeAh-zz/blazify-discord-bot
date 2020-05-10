@@ -16,7 +16,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableGaming} = guildSettings;
-    if(enableGaming) {
+    if(!enableGaming) return message.channel.send("Hmm it seems like the Gaming commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
         const platforms = { pc: "UPLAY", xbox: "XBL", ps4: "PSN" };
 		const regions = { eu: "emea", na: "ncsa", as: "apac" };
 
@@ -80,5 +80,4 @@ module.exports = {
 
             message.channel.send(embed).catch((e) => message.channel.send(`There was an error: ${e.message}`));
     }
-}
 }

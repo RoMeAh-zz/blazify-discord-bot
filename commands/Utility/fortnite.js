@@ -15,7 +15,7 @@ module.exports = {
         guildID: message.guild.id
     });
     const {enableGaming} = guildSettings;
-    if(enableGaming) {
+    if(!enableGaming) return message.channel.send("Hmm it seems like the Gaming commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(args[1] && !["lifetime", "solo", "duo", "squad"].includes(args[1])) return message.channel.send("Usage: `!fortnite <username> <gametype>`\nGameTypes: Lifetime, Solo, Duo, Squad");
         let gametype = args[1] ? args[1].toLowerCase() : "lifetime";
@@ -41,5 +41,4 @@ module.exports = {
 
                     message.channel.send(embed)
     }
-}
 }

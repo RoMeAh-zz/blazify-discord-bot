@@ -18,7 +18,7 @@ module.exports = {
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(!args[1] || (args[1] && !["pc", "xbl", "psn"].includes(args[1]))) return message.channel.send("Please supply a platform to check. `pc`, `xbox` or `psn`");
         if(args[0].includes("#")) args[0] = args[0].replace(/#/g, "-");
-if(enableGaming) {
+if(!enableGaming) return message.channel.send("Hmm it seems like the Gaming commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
             overwatch.getProfile(args[1], "global", args[0], (err, json) => {
                 if (err) return message.channel.send("Unable to find a user with that username.");
                 const { games, level, portrait, username, playtime: { competitive, quickplay }, private } = json;
@@ -57,4 +57,3 @@ if(enableGaming) {
                 })
     }
   }
-}
