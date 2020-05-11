@@ -7,11 +7,6 @@ module.exports = {
         type: "owner",
         usage: `b3eval <input>`,
     run: async (bot, message, args) => {
- const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
-        guildID: message.guild.id
-    });
-    const {enableUtility} = guildSettings;
-if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
         if(message.author.id == "560805847517888512") {
         try {
             let toEval = args.join(" ")

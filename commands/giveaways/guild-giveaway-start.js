@@ -99,7 +99,7 @@ module.exports = {
                                                                     console.log(reqguild);
                                                                     msg.delete();
                                                                     message.delete();
-                                                                    try {
+                                                try {
                                                                         let giveEmbed = new MessageEmbed()
                                                                             .setDescription(
                                                                                 `**Item:** ${prize}\nReact With <a:grxz:695226497115619408> To Enter! \n**Total Giveaway Duration:** ${duration} \n **Created By:** ${message.member}`

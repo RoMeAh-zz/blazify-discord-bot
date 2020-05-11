@@ -1,4 +1,5 @@
 require('dotenv').config();
+const Blacklist = require("../models/blacklist.js");
 const Money = require("../models/money.js");
 const Prefix = require("../models/prefix.js");
 const XP = require("../models/xp.js");
@@ -114,7 +115,11 @@ module.exports = async (client, message, member) => {
             });
         }
     }
-
+        const bc = await Blacklist.findOne({userID: message.author.id}) || new Blacklist({
+            userID: message.author.id
+        });
+        const {blacklisted} = bc;
+if (blacklisted) return message.reply("**You have been __Blacklisted__ from the bot**")
     if (message.channel.type === "dm")
         return message.author.send("You are not supposed to DM Bots");
 

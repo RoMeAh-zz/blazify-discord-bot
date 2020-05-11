@@ -78,6 +78,7 @@ module.exports = async (client, message) => {
             };
         });
 
+
         await Prefix.findOne({guildID: allGuilds[i].id}, (err, prefix) => {
 
             if (err) console.log(err);
@@ -114,7 +115,18 @@ module.exports = async (client, message) => {
 
     let allUsers = client.users.cache.array();
     for (let i = 0; i < allUsers.length; i++) {
-
+      await Blacklist.findOne(
+          { userID: allUsers[i].id },
+          (err, blacklist) => {
+            if (err) console.log(err);
+            if (!blacklist) {
+              const newBlacklist = new Blacklist({
+                userID: allUsers[i].id,
+                blacklisted: false,
+              });
+              newBlacklist.save().catch(err => console.log(err));
+            }
+          })
         await Coins.findOne({userID: allUsers[i].id}, async (err, user) => {
 
             if (err) console.log(err);
