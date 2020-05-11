@@ -6,6 +6,7 @@ const XP = require("../models/xp.js");
 const startServer = require("../Dashboard/server/server.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js")
 const { ErelaClient, Utils } = require("erela.js");
+const Blacklist = require("../models/blacklist.js")
 const { nodes } = require("../botconfig.json")
 module.exports = async (client, message) => {
 
