@@ -15,7 +15,7 @@ module.exports = {
             guildID: message.guild.id
         });
         const {enableGiveaway} = guildSettings;
-    if(!enableGiveaway) return message.channel.send("Hmm it seems like the giveaway commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
+    if(!enableGiveaway) return message.channel.send("Hmm it seems like the giveaway commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
       const ms = require("ms"); // npm install ms
     if(!args[0])return message.channel.send("```Uh-Oh, its b3giveaway-start <time> <winners> <prize>```")
      if(!args[1])return message.channel.send("```Uh-Oh, its b3giveaway-start <time> <winners> <prize>```")

@@ -9,4 +9,4 @@ Hello this is a private Discord Bot made in discord.js library which also contai
 
 Facing any problem in setting up the bot?
 
-Well then go forward to http://localhost:3000 and join the support server
+Well then go forward to https://blazify-dashboard.glitch.me and join the support server

@@ -12,7 +12,7 @@ run: async (bot, message, args) => {
     guildID: message.guild.id
 });
 const {enableGaming} = guildSettings;
-if(!enableGaming) return message.channel.send("Hmm it seems like the Gaming commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
+if(!enableGaming) return message.channel.send("Hmm it seems like the Gaming commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
     if(!args[1]) return message.channel.send('You must type a minecraft server ip')
             if(!args[2]) return message.channel.send('You must type a minecraft server port')
 

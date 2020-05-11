@@ -10,7 +10,7 @@ module.exports = {
             guildID: message.guild.id
         });
         const {enableUtility} = guildSettings;
-    if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
+    if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
               message.delete();
 
               if (!message.member.hasPermission("MANAGE_MESSAGES"))
