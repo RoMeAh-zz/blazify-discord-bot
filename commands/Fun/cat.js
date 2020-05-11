@@ -29,7 +29,6 @@ module.exports = {
         .setFooter(bot.user.username.toUpperCase(), bot.user.displayAvatarURL)
 
             message.channel.send(cEmbed)
-            msg.delete();
         })
     }
 }

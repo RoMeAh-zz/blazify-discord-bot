@@ -8,11 +8,11 @@ module.exports = {
       guildID: message.guild.id
   });
   const {enableVerification} = guildSettings;
-if(!enableMusic) return message.channel.send("Hmm it seems like the Verification commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)") 
-    if(message.channel.id === '700401979280719943')
+if(!enableVerification) return message.channel.send("Hmm it seems like the Verification commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)")
+    if(message.channel.id === '709355117639499777')
     {
         await message.delete().catch(err => console.log(err));
-        const role = message.guild.roles.cache.get('700392946863833249');
+        const role = message.guild.roles.cache.get('709359183794798612');
         if(role) {
             try {
                 await message.member.roles.add(role);
@@ -30,4 +30,3 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Verification
     }
   }
   }
-

@@ -18,7 +18,7 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
     if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("You dont have permission to perform this command!")
 
 
-	if(isNaN(args[0])) return message.channel.send("You need to provide an ID.")
+	if(!(args[0])) return message.channel.send("You need to provide an ID.")
     let bannedMember = await bot.fetchUser(args[0])
         if(!bannedMember) return message.channel.send("Please provide a user id to unban someone!")
 
@@ -47,4 +47,3 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
     lChannel.send(embed)
 }
 }
-

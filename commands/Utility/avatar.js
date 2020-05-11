@@ -11,7 +11,7 @@ module.exports = {
     const {enableUtility} = guildSettings;
 if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
         if (!message.mentions.users.size) {
-            return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
+            return message.channel.send(`Your avatar: ${message.author.avatarURL}`);
         }
 
         const avatarList = message.mentions.users.map(user => {

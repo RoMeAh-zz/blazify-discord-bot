@@ -1,5 +1,5 @@
 const Coins = require("../../models/coin.js");
-const { RichEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const mongoose = require('mongoose');
 const Settings = require("../../models/configsetting.js");
 module.exports = {
@@ -86,4 +86,3 @@ if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy co
     })
   }
 }
-

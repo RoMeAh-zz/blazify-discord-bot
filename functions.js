@@ -2,8 +2,8 @@ module.exports = {
     getMember: function(message, toFind = '') {
         toFind = toFind.toLowerCase();
 
-        let target = message.guild.members.get(toFind);
-        
+        let target = message.guild.members.cache.get(toFind);
+
         if (!target && message.mentions.members)
             target = message.mentions.members.first();
 
@@ -13,10 +13,10 @@ module.exports = {
                 member.user.tag.toLowerCase().includes(toFind)
             });
         }
-            
-        if (!target) 
+
+        if (!target)
             target = message.member;
-            
+
         return target;
     },
 
@@ -31,7 +31,7 @@ module.exports = {
         // For every emoji in the function parameters, react in the good order.
         for (const reaction of validReactions) await message.react(reaction);
 
-        // Only allow reactions from the author, 
+        // Only allow reactions from the author,
         // and the emoji must be in the array we provided.
         const filter = (reaction, user) => validReactions.includes(reaction.emoji.name) && user.id === author.id;
 
@@ -40,5 +40,5 @@ module.exports = {
             .awaitReactions(filter, { max: 1, time: time})
             .then(collected => collected.first() && collected.first().emoji.name);
     },
-  
+
 };

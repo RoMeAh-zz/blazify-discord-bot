@@ -17,7 +17,7 @@ if(!enableUtility) return message.channel.send("Hmm it seems like the Utility co
 
         // Member variables
         const joined = formatDate(member.joinedAt);
-        const roles = member.roles
+        const roles = member.roles.cache
             .filter(r => r.id !== message.guild.id)
             .map(r => r).join(", ") || 'none';
 

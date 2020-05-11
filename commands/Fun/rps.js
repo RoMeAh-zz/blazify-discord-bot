@@ -26,8 +26,6 @@ module.exports = {
         const botChoice = chooseArr[Math.floor(Math.random() * chooseArr.length)];
 
         const result = await getResult(reacted, botChoice);
-        await m.clearReactions();
-
         embed
             .setDescription("")
             .addField(result, `${reacted} vs ${botChoice}`);

@@ -31,7 +31,7 @@ module.exports = {
      .addField("� CPU usage", `\`${percent.toFixed(2)}%\``, true)
      .addField("� Arch", `\`${os.arch()}\``, true)
      .addField("� Platform", `\`\`${os.platform()}\`\``, true)
-     .addField("API Latency", `${Math.round(bot.ping)}ms`)
+     .addField("API Latency", `${Math.round(bot.ws.ping)}ms`)
      message.channel.send(embedStats)
    });
  }

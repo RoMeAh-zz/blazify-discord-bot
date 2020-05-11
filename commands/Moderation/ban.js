@@ -19,21 +19,25 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
         // No args
         if (!args[0]) {
             return message.reply("Please provide a person to ban.")
+                      .then(m => m.delete({timeout: 5000}));
         }
 
         // No reason
         if (!args[1]) {
             return message.reply("Please provide a reason to ban.")
+                      .then(m => m.delete({timeout: 5000}));
         }
 
         // No author permissions
         if (!message.member.hasPermission("BAN_MEMBERS")) {
             return message.reply("❌ You do not have permissions to ban members. Please contact a staff member")
+                      .then(m => m.delete({timeout: 5000}));
 
         }
         // No bot permissions
         if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
             return message.reply("❌ I do not have permissions to ban members. Please contact a staff member")
+                      .then(m => m.delete({timeout: 5000}));
         }
 
         const toBan = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -41,16 +45,19 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
         // No member found
         if (!toBan) {
             return message.reply("Couldn't find that member, try again")
+                      .then(m => m.delete({timeout: 5000}));
         }
 
         // Can't ban urself
         if (toBan.id === message.author.id) {
             return message.reply("You can't ban yourself...")
+                      .then(m => m.delete({timeout: 5000}));
         }
 
         // Check if the user's banable
         if (!toBan.bannable) {
             return message.reply("I can't ban that person due to role hierarchy, I suppose.")
+                      .then(m => m.delete({timeout: 5000}));
         }
 
         const embed = new MessageEmbed()
@@ -87,6 +94,7 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
                 msg.delete();
 
                 message.reply(`ban canceled.`)
+                          .then(m => m.delete({timeout: 5000}));
             }
         });
     }

@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const {MessageEmbed} = require('discord.js');
 const Settings = require("../../models/configsetting.js");
 let days = 0;
 let week = 0;
@@ -10,24 +10,10 @@ module.exports = {
         category: "miscellaneous",
         accessableby: "Members",
   run: async (client, message, args) => {
-    let allGuilds = client.guilds.cache.array();
-    for (let i = 0; i < allGuilds.length; i++) {
-    Settings.findOne(
-      { guildID: allGuilds[i].id },
-      async (err, settings) => {
-        if (err) console.log(err);
-
-        if (!settings) {
-          enableCaptcha = false;
-        } else {
-          enableCaptcha = settings.enableCaptcha
-        }
-      })
-    }
-    let uptime = ``;
-    let totalSeconds = (client.uptime / 1000);
-    let hours = Math.floor(totalSeconds / 3600);
-    totalSeconds %= 3600;
+      let uptime = ``;
+      let totalSeconds = (client.uptime / 1000);
+      let hours = Math.floor(totalSeconds / 3600);
+      totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = Math.floor(totalSeconds % 60);
 

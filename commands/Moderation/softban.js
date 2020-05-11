@@ -28,7 +28,8 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
    banMember.send(`Hello, you have been banned from ${message.guild.name} for: ${reason}`).then(() =>
    message.guild.ban(banMember, { days: 1, reason: reason})).then(() => message.guild.unban(banMember.id, { reason: "Softban"})).catch(err => console.log(err))
 
-   message.channel.send(`**${banMember.user.tag}** has been banned`).then(m => m.delete(5000))
+   message.channel.send(`**${banMember.user.tag}** has been banned`)
+             .then(m => m.delete({timeout: 5000}));
 
     let embed = new MessageEmbed()
     .setColor(redlight)
@@ -42,4 +43,3 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
     lChannel.send(embed)
 }
 }
-

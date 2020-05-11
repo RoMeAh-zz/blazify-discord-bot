@@ -14,7 +14,7 @@ module.exports = {
   });
   const {enableXPCoins} = guildSettings;
 if(!enableXPCoins) return message.channel.send("Hmm it seems like the XPCoins commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
-    let allUsers = message.guild.members
+    let allUsers = message.guild.members.cache
       .filter(m => !m.user.bot)
       .map(m => m.user.id);
 
@@ -37,7 +37,7 @@ if(!enableXPCoins) return message.channel.send("Hmm it seems like the XPCoins co
         } else if (res.length < 10) {
           for (let i = 0; i < res.length; i++) {
             let member =
-              message.guild.members.get(res[i].userID) || "User left";
+              message.guild.members.cache.get(res[i].userID) || "User left";
 
             if (res[i].money === 0) {
               content += "";

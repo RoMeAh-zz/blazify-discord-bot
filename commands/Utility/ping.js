@@ -7,6 +7,6 @@ module.exports = {
 
         msg.edit(`🏓 Pong!
         Latency is ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms
-        API Latency is ${Math.round(client.ping)}ms`);
+        API Latency is ${Math.round(client.ws.ping)}ms`);
     }
 }

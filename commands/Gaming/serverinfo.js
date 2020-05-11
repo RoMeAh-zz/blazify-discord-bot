@@ -22,7 +22,7 @@ if(!enableUtility) return message.channel.send("Hmm it seems like the Utility co
         .addField("**Guild Name:**", `${message.guild.name}`, true)
         .addField("**Guild Owner:**", `${message.guild.owner}`, true)
         .addField("**Member Count:**", `${message.guild.memberCount}`, true)
-        .addField("**Role Count:**", `${message.guild.roles.size}`, true)
+        .addField("**Role Count:**", `${message.guild.roles.cache.size}`, true)
         .setFooter(`TestBot | Footer`, bot.user.displayAvatarURL);
     message.channel.send(sEmbed);
     }

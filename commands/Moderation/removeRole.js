@@ -26,10 +26,10 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
 
     if(!message.guild.me.hasPermission(["MANAGE_ROLES", "ADMINISTRATOR"])) return message.channel.send("I don't have permission to perform this command.")
 
-    if(!rMember.roles.has(role.id)) {
+    if(!rMember.roles.cache.has(role.id)) {
         return message.channel.send(`${rMember.displayName}, doesnt have the role!`)
     } else {
-        await rMember.removeRole(role.id).catch(e => console.log(e.message))
+        await rMember.roles.remove(role.id).catch(e => console.log(e.message))
         message.channel.send(`The role, ${role.name}, has been removed from ${rMember.displayName}.`)
     }
 

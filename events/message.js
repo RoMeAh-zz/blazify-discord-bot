@@ -118,8 +118,7 @@ module.exports = async (client, message, member) => {
         const bc = await Blacklist.findOne({userID: message.author.id}) || new Blacklist({
             userID: message.author.id
         });
-        const {blacklisted} = bc;
-if (blacklisted) return message.reply("**You have been __Blacklisted__ from the bot**")
+
     if (message.channel.type === "dm")
         return message.author.send("You are not supposed to DM Bots");
 
@@ -129,7 +128,8 @@ if (blacklisted) return message.reply("**You have been __Blacklisted__ from the 
         .trim()
         .split(/ +/g);
     const cmd = args.shift().toLowerCase();
-
+    const {blacklisted} = bc;
+if (blacklisted) return message.reply("**You have been __Blacklisted__ from the bot**")
     if (cmd.length === 0) return message.channel.send(`Yes, I am alive please tell a command and if you dont know any just type ${prefix}`)
 
     let command = client.commands.get(cmd);

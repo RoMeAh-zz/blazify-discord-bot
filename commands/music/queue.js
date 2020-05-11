@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "queue",
@@ -21,7 +21,7 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
             if(player.queue[0]) string += `__**Currently Playing**__\n ${player.queue[0].title} - **Requested by ${player.queue[0].requester.username}**. \n`;
             if(player.queue[1]) string += `__**Rest of queue:**__\n ${player.queue.slice(1, 10).map(x => `**${index++})** ${x.title} - **Requested by ${x.requester.username}**.`).join("\n")}`;
 
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setAuthor(`Current Queue for ${message.guild.name}`, message.guild.iconURL)
             .setThumbnail(player.queue[0].thumbnail)
             .setDescription(string);
@@ -29,4 +29,3 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
         return message.channel.send(embed);
     }
   }
-

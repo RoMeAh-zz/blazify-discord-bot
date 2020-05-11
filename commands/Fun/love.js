@@ -17,7 +17,7 @@ module.exports = {
         let person = getMember(message, args[0]);
 
         if (!person || message.author.id === person.id) {
-            person = message.guild.members
+            person = message.guild.members.cache
                 .filter(m => m.id !== message.author.id)
                 .random();
         }

@@ -1,5 +1,5 @@
 const { Utils } = require("erela.js")
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const Settings = require("../../models/configsetting.js");
 module.exports = {
         name: "play",
@@ -14,7 +14,7 @@ module.exports = {
     });
     const {enableMusic} = guildSettings;
 if(!enableMusic) return message.channel.send("Hmm it seems like the Music commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)");
-        const {voiceChannel} = message.member;
+      const voiceChannel = message.member.voice.channel
         if (!voiceChannel) return message.channel.send("You need to be in a voice channel to play music.");
 
         const permissions = voiceChannel.permissionsFor(bot.user);
@@ -40,7 +40,7 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
                 case "SEARCH_RESULT":
                     let index = 1;
                     const tracks = res.tracks.slice(0, 5);
-                    const embed = new RichEmbed()
+                    const embed = new MessageEmbed()
                         .setAuthor("Song Selection.", message.author.displayAvatarURL)
                         .setDescription(tracks.map(video => `**${index++} -** ${video.title}`))
                         .setFooter("Your response time closes within the next 30 seconds. Type 'cancel' to cancel the selection");
@@ -56,7 +56,7 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
 
                         const track = tracks[Number(m.content) - 1];
                         player.queue.add(track)
-                        const loadingEmbed = new RichEmbed()
+                        const loadingEmbed = new MessageEmbed()
                         .setTitle("<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>SONG/PLAYLIST IS BEING LOADED<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>")
                         .setDescription(`<a:miscy:690197767057834060><a:miscy:690197767057834060>Playing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\`<a:miscy:690197767057834060><a:miscy:690197767057834060>`)
                         .setColor("#FF0000");
@@ -79,4 +79,3 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
         }).catch(err => message.channel.send(err.message))
     }
   }
-

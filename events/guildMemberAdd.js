@@ -10,21 +10,11 @@ module.exports = async (client, member, message ) => {
     const channel = member.guild.channels.cache.get(channel => channel.id === "698993173560688741");
   if (!channel) return;
   channel.send(`Welcome to the Blaze 3 Official Server ${member}`)
-  let allGuilds = client.guilds.cache.array();
-  for (let i = 0; i < allGuilds.length; i++) {
-  Settings.findOne(
-    { guildID: allGuilds[i].id },
-    async (err, settings) => {
-      if (err) console.log(err);
-
-      if (!settings) {
-        enableCaptcha = false;
-      } else {
-        enableCaptcha = settings.enableCaptcha
-      }
-    })
-  }
-  if (enableCaptcha === true) {
+  const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+    guildID: message.guild.id
+});
+const {enableVerification} = guildSettings;
+if(!enableVerification) return message.channel.send("Hmm it seems like the Verification commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:3000)")
   const captcha = await createCaptcha();
     try {
         const msg = await member.send('You have 5 Minutes to solve the captcha', {
@@ -62,4 +52,3 @@ module.exports = async (client, member, message ) => {
         console.log(err);
     }
   }
-}
