@@ -1,4 +1,4 @@
-const {MessageEmbed, Discord} = require('discord.js');
+const { MessageEmbed, Discord } = require('discord.js');
 const mongoose = require("mongoose");
 const Warn = require("../../models/warn.js")
 const Settings = require("../../models/configsetting.js");
@@ -25,7 +25,7 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
               userName: message.author.username,
               userID: message.author.id,
               guildID: message.guild.id,
-              warns: "The warnings will be shown down below"
+              warns: warns.warns,
               });
           }
 
@@ -49,7 +49,7 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
               userID: message.author.id,
               userName: message.author.username,
               guildID: message.guild.id,
-              warns: "The warnings will be shown down below"
+              warns: warns.warns,
             });
             newWarn.save().catch(err => console.log(err));
           }

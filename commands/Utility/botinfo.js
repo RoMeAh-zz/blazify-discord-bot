@@ -32,6 +32,7 @@ module.exports = {
      .addField("� Arch", `\`${os.arch()}\``, true)
      .addField("� Platform", `\`\`${os.platform()}\`\``, true)
      .addField("API Latency", `${Math.round(bot.ws.ping)}ms`)
+     .setDescription(`[![Discord Bots](https://top.gg/api/widget/696756322825404416.svg)](https://top.gg/bot/696756322825404416)`)
      message.channel.send(embedStats)
    });
  }

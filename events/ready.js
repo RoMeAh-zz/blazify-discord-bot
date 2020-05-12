@@ -8,14 +8,39 @@ const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js")
 const { ErelaClient, Utils } = require("erela.js");
 const Blacklist = require("../models/blacklist.js")
 const { nodes } = require("../botconfig.json")
+const DBL = require("dblapi.js");
+const dbltoken = require("../config.json").DBL;
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const dbl = new DBL(dbltoken, client);
 module.exports = async (client, message) => {
-
+  setInterval(() => {
+          dbl.postStats(client.guilds.cache.size);
+      }, 1800000);
     startServer(client);
-    //const Glenn = new GBL(client.user.id, 'XA-ff0e30ea1e1446209ef81343adb48558');
+    const DBL = require('dblapi.js');
+    const express = require('express');
+    const http = require('http');
 
-    // setInterval(() => {
-    //  Glenn.updateStats(client.guilds.size);
-    //}, 900000);
+    const app = express();
+    const server = http.createServer(app);
+    const dbl = new DBL(dbltoken, { webhookAuth: 'https://discord.com/api/webhooks/709685639892959273/RbiMLXsQWt04Uw4ENCIy8zRyJKQbdmeG-QrU7B2sH0X9xP-cITJkJ_ZVfRvACHYTk3Jr', webhookServer: server})
+    dbl.webhook.on('ready', hook => {
+      console.log(`Webhook running with path ${hook.path}`);
+    });
+    dbl.webhook.on('vote', vote => {
+      console.log(`User with ID ${vote.user} just voted!`);
+       let votehist = client.guild.channels.cache.get("709685606464225361")
+       votehist.send("${vote.user} just voted awesome news. May you get infinite years of good luck")
+    });
+
+    app.get('/', (req, res) => {
+      // ...
+    });
+
+    server.listen(5000, () => {
+      console.log('Listening');
+    });
     console.log(
         `Hi, ${client.user.username} is now online on ${client.guilds.cache.size} Guilds with ${client.users.cache.size} Members`
     );
@@ -60,10 +85,10 @@ module.exports = async (client, message) => {
             if (!guild) {
                 const newGuild = new Settings({
                     guildID: allGuilds[i].id,
-                    enableXPCoins: true,
-                    enableXP: true,
-                    enableCaptcha: true,
-                    enableVerification: true,
+                    enableXPCoins: false,
+                    enableXP: false,
+                    enableCaptcha: false,
+                    enableVerification: false,
                     enableAntiSpam: true,
                     enableModeration: true,
                     enableFun: true,
@@ -72,7 +97,7 @@ module.exports = async (client, message) => {
                     enableMusic: true,
                     enableGaming: true,
                     enableUtility: true,
-                    enableWelcome: true,
+                    enableWelcome: false,
                 });
                 await newGuild.save().catch(err => console.log(err));
                 console.log(`Added the guild: ${allGuilds[i].id} to the database`)
@@ -167,8 +192,26 @@ module.exports = async (client, message) => {
                     console.log(`The user: '${allUsers[i]}' has been added to the XP database`);
                 }
             })
+            await XP.findOne({
+                userID: allUsers[i].id,
+                serverID: allGuilds[g].id,
+                userName: allUsers[i].username
+            }, async (err, user) => {
+
+                if (err) console.log(err);
+
+                if (!user) {
+                    const newXP = new XP({
+                        userID: allUsers[i].id,
+                        serverID: allGuilds[g].id,
+                        userName: allUsers[i].username,
+                        money: 0
+                    });
+
+                    await newXP.save().catch(err => console.log(err));
+                    console.log(`The user: '${allUsers[i]}' has been added to the XPCoins database`);
         }
-    }
+    })
     const {GiveawaysManager} = require("discord-giveaways");
     // Starts updating currents giveaways
     const manager = new GiveawaysManager(client, {
@@ -193,4 +236,6 @@ module.exports = async (client, message) => {
     let notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended);
 
 
+}
+}
 }

@@ -12,6 +12,7 @@ module.exports = {
       if (err) console.log(err);
 
       prefix = prefixes.prefix;
+
     });
 
     const helpEmbed = new MessageEmbed()
@@ -27,12 +28,12 @@ module.exports = {
       )
       .addField(
         "Moderation",
-        "`kick, ban, warn, mute, createchannel, report, unban, unmute, softban, forceban, addrole, removerole, config, config prefix, config enableinvtracker true, config enablecaptcha true`",
+        "`kick, ban, warn, mute, createchannel, report, unban, unmute, softban, forceban, addrole, removerole, config, config prefix, config enablecaptcha true`",
         true
       )
       .addField(
         "Level System",
-        "`profile, xp, xpcoins,config enablexp true, config enablexpcoins true`",
+        "`profile ,config enablexp true, config enablexpcoins true`",
         true
       )
       .addField(
@@ -66,10 +67,10 @@ module.exports = {
         true
       )
       .setColor("#FF0000")
-      .setAuthor("Blaze 3 Bot - The Ultimate All in One (v5)")
+      .setAuthor("Blaze 3 Bot - The Ultimate All in One (Vesion 7)")
       .addField(
         "Bot Owner Only ",
-        "`eval, reload, shutdown`",
+        "`eval, blacklist, reload, shutdown`",
         true
       )
       .addField(

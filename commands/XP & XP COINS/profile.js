@@ -10,12 +10,6 @@ module.exports = {
     category: "Utility",
     description: "Shows profile of a user",
     run: async (client, message, args) => {
- const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
-        guildID: message.guild.id
-    });
-    const {enableUtility} = guildSettings;
-if(!enableUtility) return message.channel.send("Hmm it seems like the Utility commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
-
       if (args[0]) {
 
         let xp;
@@ -62,28 +56,11 @@ if(!enableUtility) return message.channel.send("Hmm it seems like the Utility co
         let profile = new MessageEmbed()
         .setColor("#FF0000")
         .setTitle(`${member.user.username}'s Profile`)
-        .addField("Coins:", coins);
-
-        await Settings.findOne({ guildID: message.guild.id }, async (err, settings) => {
-
-          if (err) console.log(err)
-
-          if (!settings) {
-            settings.enableXP = false;
-            settings.eanbleXPCoins = false;
-          }
-
-          if (settings.enableXPCoins === true) {
-            await profile.addField("XPCoins:", xpcoins)
-          } else
-          if (settings.enableXP === true) {
-            await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
-            await profile.addField("Level", level)
-          }
-        });
-
-        return message.channel.send(profile);
-      } else {
+        .addField("Coins:", coins)
+        .addField("XP", `${xp}/${Math.round(level * 300)}`)
+        .addField("Level", level)
+        message.channel.send(profile);
+          } else {
 
         let xp;
         let level;
@@ -130,29 +107,11 @@ if(!enableUtility) return message.channel.send("Hmm it seems like the Utility co
         .setColor("#FF0000")
         .setThumbnail(message.author.avatarURL)
         .setTitle(`${message.author.username}'s Profile`)
-        .addField("Coins:", coins);
-
-        await Settings.findOne({ guildID: message.guild.id }, async (err, settings) => {
-
-          if (err) console.log(err)
-
-          if (!settings) {
-            settings.enableXPCoins = false;
-            settings.enableXP = false;
-          }
-
-          if (settings.enableXPCoins === true) {
-            await profile.addField("XPCoins:", xpcoins)
-          } else
-          if (settings.enableXP === true) {
-            await profile.addField("XP", `${xp}/${Math.round(level * 300)}`)
-            await profile.addField("Level", level)
-          }
-        })
-        return message.channel.send(profile);
+        .addField("Coins:", coins)
+        .addField("XPCoins:", xpcoins)
+        .addField("XP", `${xp}/${Math.round(level * 300)}`)
+        .addField("Level", level)
+ message.channel.send(profile);
         };
-
-
-}
       }
-  
+    }

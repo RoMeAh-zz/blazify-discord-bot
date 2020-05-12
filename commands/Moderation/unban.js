@@ -43,7 +43,6 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
 
-    let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
-    lChannel.send(embed)
+    message.channel.send(embed)
 }
 }

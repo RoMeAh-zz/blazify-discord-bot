@@ -88,8 +88,7 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
                         if (err) return message.channel.send(`Well.... the ban didn't work out. Here's the error ${err}`)
                     });
 
-                    let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
-                    lChannel.send(embed)
+                    message.channel.send(embed)
             } else if (emoji === "❌") {
                 msg.delete();
 

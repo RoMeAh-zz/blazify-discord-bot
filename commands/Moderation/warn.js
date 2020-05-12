@@ -40,15 +40,13 @@ Warn.findOne(
         warns: rip,
       });
       newWarn.save().catch(err => console.log(err));
-      let lChannel = message.guild.channels.cache.get(lgc)
-        return lChannel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
+      message.channel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
      } else {
         warns.warns += `
         -------------------------------
         **-${rip}**`
         warns.save().catch(err => console.log(err));
-        let lChannel = message.guild.channels.find(channel => channel.name === "logs")
-        return lChannel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
+        message.channel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} a warning for ${rip}.`)
   }
   })
 }

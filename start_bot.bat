@@ -1,2 +1,1 @@
-node index.js
-PAUSE
+nodemon index.js

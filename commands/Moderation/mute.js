@@ -66,8 +66,6 @@ let embed = new MessageEmbed()
     .addField("Moderator:", message.author.username)
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
-    let lChannel = message.guild.channels.cache.find(channel => channel.name === "logs")
-    lChannel.send(embed)
+    message.channel.send(embed)
 }
     }
-

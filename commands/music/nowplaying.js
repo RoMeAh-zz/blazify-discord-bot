@@ -1,5 +1,5 @@
 const { Utils } = require("erela.js")
-const { RichEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const { stripIndents } = require("common-tags")
 const Settings = require("../../models/configsetting.js");
 module.exports = {
@@ -18,7 +18,7 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
         if (!player || !player.queue[0]) return message.channel.send("No song/s currently playing within this guild.");
         const { title, author, duration, thumbnail } = player.queue[0];
 
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setAuthor("Current Song Playing.", message.author.displayAvatarURL)
             .setThumbnail(thumbnail)
             .setDescription(stripIndents`
@@ -28,4 +28,3 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
         return message.channel.send(embed);
     }
   }
-

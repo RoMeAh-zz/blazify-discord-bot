@@ -57,8 +57,8 @@ if(!enableMusic) return message.channel.send("Hmm it seems like the Music comman
                         const track = tracks[Number(m.content) - 1];
                         player.queue.add(track)
                         const loadingEmbed = new MessageEmbed()
-                        .setTitle("<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>SONG/PLAYLIST IS BEING LOADED<a:loadingx2:675621636690542602><a:loadingx2:675621636690542602>")
-                        .setDescription(`<a:miscy:690197767057834060><a:miscy:690197767057834060>Playing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\`<a:miscy:690197767057834060><a:miscy:690197767057834060>`)
+                        .setTitle("SONG/PLAYLIST IS BEING LOADED")
+                        .setDescription(`Playing \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\``)
                         .setColor("#FF0000");
                         message.channel.send(loadingEmbed);
                         if(!player.playing) player.play();

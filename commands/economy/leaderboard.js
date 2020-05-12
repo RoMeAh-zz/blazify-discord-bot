@@ -59,7 +59,7 @@ if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy co
         } else if (res.length >= 10) {
           for (let i = 0; i < 10; i++) {
             let member =
-              message.guild.members.get(res[i].userID) || "User Left";
+              message.guild.members.cache.get(res[i].userID) || "User Left";
             if (res[i].coins === 0) {
               content += "";
             } else if (member === "User Left") {
