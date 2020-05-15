@@ -41,7 +41,7 @@ module.exports = async (client, message, member) => {
 
                     xp.save().catch(err => console.log(err));
                     const channel =
-                        message.guild.channels.find(c => c.name === "level-up") || message.channel;
+                        message.guild.channels.cacche.find(c => c.name === "level-up") || message.channel;
                     return channel.send(
                         `${message.author.tag} has hit level ${xp.level}`
                     );
@@ -114,21 +114,19 @@ module.exports = async (client, message, member) => {
                 timer: fn
             });
         }
-    }
-        const bc = await Blacklist.findOne({userID: message.author.id}) || new Blacklist({
-            userID: message.author.id
-        });
-
-    if (message.channel.type === "dm")
-        return message.author.send("You are not supposed to DM Bots");
-
-    if (!message.content.startsWith(prefix)) return;
+    }    if (!message.content.startsWith(prefix)) return;
     const args = message.content
         .slice(prefix.length)
         .trim()
         .split(/ +/g);
     const cmd = args.shift().toLowerCase();
+    if (!message.content.startsWith(prefix)) return;
+        const bc = await Blacklist.findOne({userID: message.author.id}) || new Blacklist({
+            userID: message.author.id
+        });
     const {blacklisted} = bc;
+    if(message.author.bot) return;
+   if(!message.content.startsWith(prefix)) return;
 if (blacklisted) return message.reply("**You have been __Blacklisted__ from the bot**")
     if (cmd.length === 0) return message.channel.send(`Yes, I am alive please tell a command and if you dont know any just type ${prefix}`)
 

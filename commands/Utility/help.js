@@ -16,9 +16,6 @@ module.exports = {
     });
 
     const helpEmbed = new MessageEmbed()
-      .setImage(
-        `https://cdn.discordapp.com/attachments/632098744262721564/633640689955110912/nitro.gif`
-      )
       .setThumbnail(client.user.avatarURL)
       .setTitle("Commands of our Official Bot")
       .addField(
@@ -28,7 +25,7 @@ module.exports = {
       )
       .addField(
         "Moderation",
-        "`kick, ban, warn, mute, createchannel, report, unban, unmute, softban, forceban, addrole, removerole, config, config prefix, config enablecaptcha true`",
+        "`kick, ban, warn, mute, createchannel, report, unban, unmute, softban, addrole, removerole, config, config prefix, config enablecaptcha true`",
         true
       )
       .addField(
@@ -43,7 +40,7 @@ module.exports = {
       )
       .addField(
         "Image Commands",
-        "`meme, llama, alpaca, seal, cat, dog, gglimgn, anime, pepe, triggered`",
+        "`meme, llama, alpaca, seal, cat, dog, pepe`",
         true
       )
       .addField(

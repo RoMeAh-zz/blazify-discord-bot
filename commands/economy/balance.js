@@ -58,7 +58,8 @@ if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy co
           newCoins.save().catch(err => console.log(err));
         }
 
-        let balance = coins.coins;
+        let balance = coins.coins
+        if(!balance) return message.channel.send("Sed you do not have any money")
 
         let bal = new MessageEmbed()
           .setTitle(`${message.author.username}'s Money`)
@@ -69,5 +70,5 @@ if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy co
       });
     }
   }
-  
+
 };

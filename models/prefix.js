@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//mongoose is used
 const prefixSchema = new mongoose.Schema({
     guildID: {type: String},
     prefix: {type: String}
