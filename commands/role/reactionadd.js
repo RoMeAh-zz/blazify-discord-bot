@@ -3,8 +3,8 @@ const MessageModel = require('../../models/message.js');
 
 let msgCollectorFilter = (newMsg, originalMsg) => newMsg.author.id === originalMsg.author.id;
 module.exports = {
-  name: "reactrolesetup",
-  aliases: ["lev", "stop"],
+  name: "react",
+  aliases: [""],
   description: "Makes the bot leave the voice channel.",
   accessableby: "Member",
   category: "music",
@@ -14,7 +14,7 @@ module.exports = {
            await msg.delete({ timeout: 3500 }).catch(err => console.log(err));
        } else {
             try {
-                let fetchedMessage = await message.channel.messages.fetch(args);
+                let fetchedMessage = await message.channel.messages.fetch(args[0]);
                 if(fetchedMessage) {
                     await message.channel.send("Please provide all of the emoji names with the role name, one by one, separated with a comma.\ne.g: snapchat, snapchat, where the emoji name comes first, role name comes second.");
                     let collector = new MessageCollector(message.channel, msgCollectorFilter.bind(null, message));
@@ -41,7 +41,8 @@ module.exports = {
                                 .catch(err => console.log(err));
                             return;
                         }
-                        fetchedMessage.react(emoji)
+                        console.log(fetchedMessage);
+                        fetchedMessage.react(emoji.id)
                             .then(emoji => console.log("Reacted."))
                             .catch(err => console.log(err));
                         emojiRoleMappings.set(emoji.id, role.id);
