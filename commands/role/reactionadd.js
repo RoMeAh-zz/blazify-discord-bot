@@ -3,7 +3,7 @@ const MessageModel = require('../../models/message.js');
 
 let msgCollectorFilter = (newMsg, originalMsg) => newMsg.author.id === originalMsg.author.id;
 module.exports = {
-  name: "reactrolesetup",
+  name: "react",
   aliases: ["lev", "stop"],
   description: "Makes the bot leave the voice channel.",
   accessableby: "Member",
@@ -21,7 +21,7 @@ module.exports = {
                     let emojiRoleMappings = new Map();
                     collector.on('collect', msg => {
                         let { cache } = msg.guild.emojis;
-                        if(msg.content.toLowerCase() === '?done') {
+                        if(msg.content.toLowerCase() === 'done') {
                             collector.stop('done command was issued.');
                             return;
                         }

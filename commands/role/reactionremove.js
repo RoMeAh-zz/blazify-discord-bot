@@ -1,7 +1,7 @@
 const MessageModel = require('../../models/message.js');
 const { MessageCollector } = require('discord.js');
 module.exports = {
-  name: "reactrolesetup",
+  name: "remove",
   aliases: ["lev", "stop"],
   description: "Makes the bot leave the voice channel.",
   accessableby: "Member",
