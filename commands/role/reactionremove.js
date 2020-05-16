@@ -1,8 +1,13 @@
 const MessageModel = require('../../models/message.js');
 const { MessageCollector } = require('discord.js');
 module.exports = {
+  name: "reactrolesetup",
+  aliases: ["lev", "stop"],
+  description: "Makes the bot leave the voice channel.",
+  accessableby: "Member",
+  category: "music",
     run: async(client, message, args) => {
-        if(args.split(" ").length !== 1) return;
+        if(args.length !== 1) return;
         // Check if the message exists.
         const { channel, author } = message;
         try {
@@ -42,8 +47,6 @@ module.exports = {
             console.log(err);
         }
     },
-    aliases: [],
-    description: 'Edits the role reaction configuration'
 }
 function handleCollector(fetchedMessage, author, channel, msgModel, messageId) {
     return new Promise((resolve, reject) => {
