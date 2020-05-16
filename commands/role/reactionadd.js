@@ -9,7 +9,7 @@ module.exports = {
   accessableby: "Member",
   category: "music",
     run: async(client, message, args) => {
-      if(args.split(/\s+/).length !== 1) {
+      if(args.length !== 1) {
            let msg = await message.channel.send("Too many arguments. Must only provide 1 message id");
            await msg.delete({ timeout: 3500 }).catch(err => console.log(err));
        } else {
