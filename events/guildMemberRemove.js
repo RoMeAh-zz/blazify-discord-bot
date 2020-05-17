@@ -2,11 +2,11 @@ const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 const Settings = require("../models/configsetting.js");
 
 module.exports = async (client, member) => {
-  const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
-    guildID: message.guild.id
+  const guildSettings = await Settings.findOne({guildID: member.guild.id}) || new Settings({
+    guildID: member.guild.id
 });
-  const guildTandC = await PerGuildLogandWelcome.findOne({guildID: message.guild.id}) || new PerGuildLogandWelcome({
-    guildID: message.guild.id
+  const guildTandC = await PerGuildLogandWelcome.findOne({guildID: member.guild.id}) || new PerGuildLogandWelcome({
+    guildID: member.guild.id
   })
 const {enableWelcome} = guildSettings;
 const {leaverChannel, leaverMessage} = guildTandC;

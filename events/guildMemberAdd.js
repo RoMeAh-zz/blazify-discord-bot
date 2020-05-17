@@ -5,11 +5,11 @@ const fs = require('fs').promises;
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 const Settings = require("../models/configsetting.js");
 
-module.exports = async (client, member, message ) => {
-  const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
+module.exports = async (client, member, message) => {
+  const guildSettings = await Settings.findOne({guildID: member.guild.id}) || new Settings({
     guildID: message.guild.id
 });
-  const guildTandC = await PerGuildLogandWelcome.findOne({guildID: message.guild.id}) || new PerGuildLogandWelcome({
+  const guildTandC = await PerGuildLogandWelcome.findOne({guildID: member.guild.id}) || new PerGuildLogandWelcome({
     guildID: message.guild.id
   })
 const {enableCaptcha, enableWelcome} = guildSettings;
