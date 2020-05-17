@@ -49,7 +49,8 @@ module.exports = {
                         errors: ["time"]
                     })
                         .then(collected => {
-                            let room = message.guild.channels.cache.get(collected.first().content);
+                          let chname = collected.first().content
+                            let room = message.guild.channels.cache.get(chname);
                             if (!room)
                                 return message.channel.send("**Could not find the channel**");
                             room = collected.first().content;
@@ -102,26 +103,26 @@ module.exports = {
                                                 try {
                                                                         let giveEmbed = new MessageEmbed()
                                                                             .setDescription(
-                                                                                `**Item:** ${prize}\nReact With <a:grxz:695226497115619408> To Enter! \n**Total Giveaway Duration:** ${duration} \n **Created By:** ${message.member}`
+                                                                                `**Item:** ${prize}\nReact With 🎉 To Enter! \n**Total Giveaway Duration:** ${duration} \n **Created By:** ${message.member}`
                                                                             )
                                                                             .addField(
                                                                                 "Invite link",
                                                                                 `[Invite Me](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847)`
                                                                             )
-                                                                            .addField("Requirment", "Guild ||THE LINK SHOULD BE PROVIDED BELOW||"
+                                                                            .addField("Requirment", "Guild"
                                                                             )
                                                                             .setColor("#FF0000")
                                                                             .setFooter("Time Created")
                                                                             .setTimestamp();
                                                                         message.guild.channels.cache.get(room)
                                                                             .send(
-                                                                                "<a:grxz:695226497115619408><a:grxz:695226497115619408>**Giveaway Created**<a:grxz:695226497115619408><a:grxz:695226497115619408>",
+                                                                                "**Giveaway Created**",
                                                                                 {embed: giveEmbed}
                                                                             )
                                                                             .then(m => {
                                                                                 console.log(m)
-                                                                                let re = m.react("🎉");
-                                                                                setTimeout(() => {
+                                                                        let re = m.react("🎉");
+                                                                         setTimeout(() => {
                                                                                     let guild = reqguild
                                                                                     let users = m.reactions.cache.get("🎉").users
                                                                                     for (const user of users.cache.array()) {
@@ -132,7 +133,7 @@ module.exports = {
                                                                                         .setAuthor(message.author.username, message.author.avatarURL)
                                                                                         .setTitle("**Item:** " + prize)
                                                                                         .addField(
-                                                                                            "Giveaway Ended !<a:grxz:695226497115619408><a:grxz:695226497115619408>",
+                                                                                            "Giveaway Ended !",
                                                                                             `**Winner:** ${gFilter}`
                                                                                         )
                                                                                         .addField(
@@ -142,7 +143,7 @@ module.exports = {
                                                                                         .setColor("#FF0000")
                                                                                         .setTimestamp();
                                                                                     m.edit(
-                                                                                        "** <a:grxz:695226497115619408><a:grxz:695226497115619408> GIVEAWAY ENDED <a:grxz:695226497115619408><a:grxz:695226497115619408>**",
+                                                                                        "**GIVEAWAY ENDED**",
                                                                                         {embed: endEmbed}
                                                                                     );
                                                                                     message.guild.channels.cache

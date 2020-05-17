@@ -8,41 +8,40 @@ const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js")
 const { ErelaClient, Utils } = require("erela.js");
 const Blacklist = require("../models/blacklist.js")
 const { nodes } = require("../botconfig.json")
-//const DBL = require("dblapi.js");
-//const dbltoken = require("../config.json").DBL;
-//const webhook = require("../config.json").WH;
+const DBL = require("dblapi.js");
+const dbltoken = require("../config.json").DBL;
+const webhook = require("../config.json").WH;
 const Discord = require("discord.js");
 const client = new Discord.Client();
-//const dbl = new DBL(dbltoken, client);
+const dbl = new DBL(dbltoken, client);
 module.exports = async (client, message) => {
   startServer(client);
-//for testing dbl has been disabled
-//  setInterval(() => {
-  //        dbl.postStats(client.guilds.cache.size);
-    //  }, 1800000);
-  //  const DBL = require('dblapi.js');
-  //  const express = require('express');
-  //  const http = require('http');
+  setInterval(() => {
+          dbl.postStats(client.guilds.cache.size);
+      }, 1800000);
+    const DBL = require('dblapi.js');
+    const express = require('express');
+    const http = require('http');
 
-    //const app = express();
-  //  const server = http.createServer(app);
-  //  const dbl = new DBL(dbltoken, { webhookAuth: webhook, webhookServer: server})
-  //  dbl.webhook.on('ready', hook => {
-    //  console.log(`Webhook running with path ${hook.path}`);
-  //  });
-    //dbl.webhook.on('vote', vote => {
-    //  console.log(`User with ID ${vote.user} just voted!`);
-      // let votehist = client.guild.channels.cache.get("709685606464225361")
-      // votehist.send("${vote.user} just voted awesome news. May you get infinite years of good luck")
-    //});
+    const app = express();
+    const server = http.createServer(app);
+    const dbl = new DBL(dbltoken, { webhookAuth: webhook, webhookServer: server})
+    dbl.webhook.on('ready', hook => {
+      console.log(`Webhook running with path ${hook.path}`);
+    });
+    dbl.webhook.on('vote', vote => {
+      console.log(`User with ID ${vote.user} just voted!`);
+       let votehist = client.guild.channels.cache.get("709685606464225361")
+       votehist.send("${vote.user} just voted awesome news. May you get infinite years of good luck")
+    });
 
-    //app.get('/', (req, res) => {
-      // ...
-  //  });
+    app.get('/', (req, res) => {
+    // ...
+    });
 
-    //server.listen(5000, () => {
-  //    console.log('Listening');
-    //});
+    server.listen(5000, () => {
+    console.log('Listening');
+    });
     console.log(
         `Hi, ${client.user.username} is now online on ${client.guilds.cache.size} Guilds with ${client.users.cache.size} Members`
     );
@@ -67,15 +66,15 @@ module.exports = async (client, message) => {
     setInterval(() => client.user.setActivity(`b3help | ${activities[i++ % activities.length]}`, {type: "WATCHING"}), 15000)
 
 
-//    client.channels.cache
-  //      .get("707274207112724480")
-    //    .edit({name: `${client.guilds.cache.size} Servers`});
-  //  client.channels.cache
-    //    .get("707274245423628410")
-      //  .edit({name: `${client.users.cache.size} Members`});
-  //  client.channels.cache
-    //    .get("707274279032717313")
-      //  .edit({name: `${client.channels.cache.size} Channels`});
+    client.channels.cache
+        .get("707274207112724480")
+        .edit({name: `${client.guilds.cache.size} Servers`});
+    client.channels.cache
+        .get("707274245423628410")
+        .edit({name: `${client.users.cache.size} Members`});
+    client.channels.cache
+        .get("707274279032717313")
+        .edit({name: `${client.channels.cache.size} Channels`});
 
     let allGuilds = client.guilds.cache.array();
     for (let i = 0; i < allGuilds.length; i++) {
@@ -132,9 +131,9 @@ module.exports = async (client, message) => {
              logChannel: "logs",
              reportChannel: "reports",
              welcomeChannel: "welcome",
-             welcomeMessage: "Welcome {member} to the Server. Don't Dare to leave us please.",
+             welcomeMessage: "Welcome ${member} to ${member.guild.name}. Don't Dare to leave us please.",
              leaverChannel: "leavers",
-             leaverMessage: "Bye Bye ${member.id}. So SAD, we lost one more Member."
+             leaverMessage: "Bye Bye ${member}. So SAD, we lost one more Member from ${member.guild.name}."
            });
            newPerGuildLogandWelcome.save().catch(err => console.log(err));
            console.log(`The guild: '${allGuilds[i]}' has been added to the per guild logging, welcoming and leaving database`);

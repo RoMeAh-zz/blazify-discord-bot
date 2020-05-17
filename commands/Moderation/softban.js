@@ -1,7 +1,7 @@
 const Settings = require("../../models/configsetting.js");
 const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json");
-const lgc = require("../../config.json").logChannel;
+const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js")
 module.exports = {
         name: "softban",
         description: "Softbans a user from the guild!",
@@ -13,6 +13,10 @@ module.exports = {
     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });
+    const guildTandC = await PerGuildLogandWelcome.findOne({guildID: message.guild.id}) || new PerGuildLogandWelcome({
+      guildID: message.guild.id
+    })
+    const {logChannel} = guildTandC;
     const {enableModeration} = guildSettings;
 if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)")
    if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("You do not have permission to perform this command!")
@@ -39,6 +43,11 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
     .addField("Moderator:", message.author.username)
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
-  message.channel.send(embed)
+    const log = message.guild.channels.get(logChannel.id)
+    if(!log) {
+      return message.channel.send(embed)
+    } else {
+      log.send (embed)
+    }
 }
 }

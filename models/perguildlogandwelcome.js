@@ -8,6 +8,8 @@ const perguildlogandwelcomeSchema = new mongoose.Schema({
     welcomeMessage: {type: String},
     leaverChannel: {type: String},
     leaverMessage: {type: String},
+    verifyChannel: {type: String},
+    verifyRole: {type: String},
 });
 
 module.exports = mongoose.model('PerGuildLogandWelcome', perguildlogandwelcomeSchema);

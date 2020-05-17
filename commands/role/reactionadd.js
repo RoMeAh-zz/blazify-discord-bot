@@ -4,11 +4,8 @@ const MessageModel = require('../../models/message.js');
 let msgCollectorFilter = (newMsg, originalMsg) => newMsg.author.id === originalMsg.author.id;
 module.exports = {
   name: "react",
-<<<<<<< HEAD
   aliases: ["lev", "stop"],
-=======
   aliases: [""],
->>>>>>> 42d1b6562cf1bb10d4d18996f162caeb1f9aa9f1
   description: "Makes the bot leave the voice channel.",
   accessableby: "Member",
   category: "music",
@@ -46,7 +43,7 @@ module.exports = {
                             return;
                         }
                         console.log(fetchedMessage);
-                        fetchedMessage.react(emoji.id)
+                        fetchedMessage.react(emoji)
                             .then(emoji => console.log("Reacted."))
                             .catch(err => console.log(err));
                         emojiRoleMappings.set(emoji.id, role.id);

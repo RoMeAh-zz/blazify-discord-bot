@@ -1,6 +1,6 @@
     const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const lgc = require("../../config.json").reportChannel;
+const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js")
 const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "report",
@@ -11,6 +11,10 @@ module.exports = {
         const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
             guildID: message.guild.id
         });
+        const guildTandC = await PerGuildLogandWelcome.findOne({guildID: message.guild.id}) || new PerGuildLogandWelcome({
+          guildID: message.guild.id
+        })
+        const {reportChannel} = guildTandC;
         const {enableModeration} = guildSettings;
     if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
               if (message.deletable) message.delete();
@@ -40,7 +44,11 @@ module.exports = {
             **> Reported by:** ${message.member}
             **> Reported in:** ${message.channel}
             **> Reason:** ${args.slice(1).join(" ")}`);
-              let lChannel = message.guild.channels.cache.find(channel => channel.name === "reports")
-              lChannel.send(embed)
+            const log = message.guild.channels.get(reportChannel.id)
+            if(!log) {
+              return message.channel.send(embed)
+            } else {
+              log.send (embed)
+            }
           }
       }

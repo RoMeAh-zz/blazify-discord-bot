@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 module.exports = {
     name: "contact",
     aliases: "bugreport",
@@ -8,7 +10,7 @@ module.exports = {
 
         const g = args.join(" ")
         if (!g) return message.reply(`Please put the message/bug`)
-        const embed = new botClient.MessageEmbed()
+        const embed = new MessageEmbed()
         .setTitle('Bug reports from people!')
         .setColor('#ff0000')
         .setThumbnail(message.author.displayAvatarURL)

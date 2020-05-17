@@ -1,7 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { promptMessage } = require("../../functions.js");
-const lgc = require("../../config.json").logChannel;
+const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js")
+
 const Settings = require("../../models/configsetting.js");
 module.exports = {
     name: "ban",
@@ -12,6 +13,10 @@ module.exports = {
     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });
+    const guildTandC = await PerGuildLogandWelcome.findOne({guildID: message.guild.id}) || new PerGuildLogandWelcome({
+      guildID: message.guild.id
+    })
+    const {logChannel} = guildTandC;
     const {enableModeration} = guildSettings;
 if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)")
         if (message.deletable) message.delete();
@@ -88,7 +93,12 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
                         if (err) return message.channel.send(`Well.... the ban didn't work out. Here's the error ${err}`)
                     });
 
-                    message.channel.send(embed)
+                    const log = message.guild.channels.get(logChannel.id)
+                    if(!log) {
+                      return message.channel.send(embed)
+                    } else {
+                      log.send (embed)
+                    }
             } else if (emoji === "❌") {
                 msg.delete();
 
