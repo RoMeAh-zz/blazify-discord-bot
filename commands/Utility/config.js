@@ -57,7 +57,7 @@ module.exports = {
 
       setting14 = guild.prefix;
     });
-    await PerGuildLogandWelcome.findOne({guildID: message.guild.id}, async (err, perguildlogandwelcome) => {
+    await PerGuildLogandWelcome.findOne({guildID: message.guild.id}, async (err, guild) => {
     setting15 = guild.logChannel;
     setting16 = guild.reportChannel;
     setting17 = guild.welcomeChannel;
@@ -83,12 +83,12 @@ module.exports = {
     .addField("Moderation (Commands)", setting11)
     .addField("Welcoming (Commands)", setting12)
     .addField("Giveaway (Commands)", setting13)
-    .addField("Log Channel", "#" + setting15)
-    .addField("Report Channel", "#" + setting16)
-    .addField("Welcome Channel", "#" + setting17)
-    .addField("Leaver Channel", "#" + setting19)
-    .addField("Leaver Message", "#" + setting20)
-    .addField("Welcome Messgage", "#" + setting18)
+    .addField("Log Channel", setting15)
+    .addField("Report Channel", setting16)
+    .addField("Welcome Channel", setting17)
+    .addField("Leaver Channel", setting19)
+    .addField("Leaver Message", setting20)
+    .addField("Welcome Messgage", setting18)
     .addField("Prefix", setting14)
     .setFooter(`${message.guild.name}`, message.guild.displayAvatarURL)
     .setColor("RANDOM");
