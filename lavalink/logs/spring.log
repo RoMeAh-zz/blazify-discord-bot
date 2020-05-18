@@ -189,17 +189,3 @@
 2020-05-17 09:43:26.786  INFO 5032 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
 2020-05-17 09:43:55.455  INFO 5032 --- [XNIO-1 task-4] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:50176
 2020-05-17 09:43:55.482  INFO 5032 --- [XNIO-1 task-4] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:50176
-2020-05-17 22:16:45.713  WARN 5032 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 20] [Bucket 20 = 1] [Bucket 50 = 5] [Bucket 200 = 4] [Bucket 500 = 2] [Bucket 2000 = 1] 
-2020-05-17 22:18:46.102  WARN 5032 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 2] [Bucket 20 = 3] [Bucket 50 = 12] [Bucket 200 = 5] [Bucket 500 = 0] [Bucket 2000 = 0] 
-2020-05-17 22:23:58.964  INFO 5032 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:50176 -- CloseStatus[code=1006, reason=]
-2020-05-17 22:24:07.922  INFO 5032 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-17 23:28:27.804  INFO 5032 --- [XNIO-1 task-5] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51472
-2020-05-17 23:28:31.292  INFO 5032 --- [XNIO-1 task-5] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51472
-2020-05-17 23:33:56.995  INFO 5032 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51472 -- CloseStatus[code=1006, reason=]
-2020-05-17 23:33:56.998  INFO 5032 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-17 23:34:23.194  INFO 5032 --- [XNIO-1 task-6] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51508
-2020-05-17 23:34:23.920  INFO 5032 --- [XNIO-1 task-6] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51508
-2020-05-17 23:39:20.764  INFO 5032 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51508 -- CloseStatus[code=1006, reason=]
-2020-05-17 23:39:20.766  INFO 5032 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-17 23:39:46.325  INFO 5032 --- [XNIO-1 task-7] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51542
-2020-05-17 23:39:46.977  INFO 5032 --- [XNIO-1 task-7] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51542
