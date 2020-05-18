@@ -1,21 +1,19 @@
 {
-  "name": "blazifyonvps",
+  "name": "blazify",
   "version": "1.0.0",
   "description": "allinone",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github/blazify"
+    "url": "git+https://github.com/RoMeAh/blazify.git"
   },
-  "keywords": [
-    "yyayy"
-  ],
-  "author": "romeahandchaos",
-  "license": "ISC",
+  "author": "Romeah, Ladrium, MeLike2D",
+  "license": "MIT",
   "dependencies": {
+    "@lavalink/encoding": "^0.1.1",
     "apextab-api": "^1.0.5",
     "ascii-art": "^2.5.0",
     "ascii-art-image": "^1.2.2",
@@ -31,10 +29,10 @@
     "discord-oauth2": "^2.1.0",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
-    "erela.js": "^1.1.7",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "jimp": "^0.10.3",
+    "lavaclient": "^2.0.3-next",
     "minecraft-server-util": "^1.1.1",
     "moment": "^2.25.3",
     "moment-duration-format": "^2.3.2",
