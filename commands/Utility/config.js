@@ -57,7 +57,10 @@ module.exports = {
 
       setting14 = guild.prefix;
     });
-    await PerGuildLogandWelcome.findOne({guildID: message.guild.id}, async (err, guild) => {
+    await PerGuildLogandWelcome.findOne({ guildID: message.guild.id }, async (err, guild) => {
+
+      if (err) console.log(err);
+
     setting15 = guild.logChannel;
     setting16 = guild.reportChannel;
     setting17 = guild.welcomeChannel;
@@ -68,7 +71,7 @@ module.exports = {
 
     let embed = new MessageEmbed()
     .setTitle(`Settings for ${message.guild.name}`)
-    .setDescription(`To enable or configure a setting, do \`${setting4}config <setting> <true || false || prefix>\`\n\nCurrent settings:`)
+    .setDescription(`To enable or configure a setting, do \`${setting14}config <setting> <true || false || prefix>\`\n\nCurrent settings:`)
     .setThumbnail(message.guild.iconURL)
     .addField("Enable XP Coins system", setting1)
     .addField("Enable XP System", setting2)

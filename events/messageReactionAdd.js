@@ -1,5 +1,6 @@
 const MessageModel = require('../models/message.js');
-
+const discord = require("discord.js")
+const client = new discord.Client({ partials: ['MESSAGE', 'REACTION']});
 module.exports = async (reaction, user) => {
   let addMemberRole = (emojiRoleMappings) => {
         if(emojiRoleMappings.hasOwnProperty(reaction.emoji.id)) {
