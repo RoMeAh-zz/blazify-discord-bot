@@ -5,17 +5,22 @@ const { readdirSync } = require("fs");
 const { secret } = require("../../src/config.json");
 const Oauth = require("discord-oauth2");
 
-module.exports = async (bot) => {
+class Server {
+  constructor(client) {
+    this.client = client;
+  }
+  
+ async run(client) {
   const app = express();
 
   /** Setup Discord Oauth */
-  bot.oauth = new Oauth({
+  this.client.oauth = new Oauth({
     clientSecret: secret,
-    clientId: bot.user.id,
+    clientId: this.client.user.id,
     redirectUri: "https://blazify-dashboard.glitch.me/api/callback",
   });
 
-  bot.oauthURL = bot.oauth.generateAuthUrl({
+  this.client.oauthURL = this.client.oauth.generateAuthUrl({
     scope: ["guilds", "identify"],
   });
 
@@ -42,3 +47,5 @@ module.exports = async (bot) => {
 
   app.listen(3000, () => console.log("Started on port 3000"));
 }
+}
+module.exports = Server;

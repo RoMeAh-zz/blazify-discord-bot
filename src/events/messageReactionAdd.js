@@ -1,4 +1,4 @@
-const MessageModel = require('../models/message.js');
+//const MessageModel = require('../models/message.js');
 const discord = require("discord.js")
 const client = new discord.Client({ partials: ['MESSAGE', 'REACTION']});
 class messageReactionAdd {
@@ -6,7 +6,7 @@ class messageReactionAdd {
       this.client = client;
     }
     
-   async run(client, reaction, user) {
+   async run(client, reaction, message, user) {
   let addMemberRole = (emojiRoleMappings) => {
         if(emojiRoleMappings.hasOwnProperty(reaction.emoji.id)) {
             let roleId = emojiRoleMappings[reaction.emoji.id];

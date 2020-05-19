@@ -11,7 +11,6 @@ const Settings = require("../models/configsetting.js");
 const XP = require("../models/xp.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 const Blacklist = require("../models/blacklist.js");
-
 /** Configuration */
 const { dbl: dbltoken, WH: webhook, nodes, mode } = require("../config.json");
 
@@ -21,11 +20,11 @@ class Ready {
   }
   
  async run(client) {
-  await client.lava.init(client.user.id)
+  await this.client.lava.init(this.client.user.id)
   if (mode !== "development") {
-    startServer(client);
+    new startServer(client);
 
-    setInterval(() => dbl.postStats(client.guilds.cache.size), 1800000);
+    setInterval(() => dbl.postStats(this.client.guilds.cache.size), 1800000);
 
     const app = express();
     const server = http.createServer(app);
@@ -41,7 +40,7 @@ class Ready {
       console.log(`User with ID ${vote.user} just voted!`);
       let votehist = client.guild.channels.cache.get("709685606464225361");
       votehist.send(
-        "${vote.user} just voted awesome news. May you get infinite years of good luck"
+        `${vote.user} just voted awesome news. May you get infinite years of good luck`
       );
     });
 
@@ -49,21 +48,21 @@ class Ready {
 
     server.listen(5000, () => console.log("Listening"));
 
-    client.channels.cache
+    this.client.channels.cache
       .get("707274207112724480")
-      .edit({ name: `${client.guilds.cache.size} Servers` });
-    client.channels.cache
+      .edit({ name: `${this.client.guilds.cache.size} Servers` });
+    this.client.channels.cache
       .get("707274245423628410")
-      .edit({ name: `${client.users.cache.size} Members` });
-    client.channels.cache
+      .edit({ name: `${this.client.users.cache.size} Members` });
+    this.client.channels.cache
       .get("707274279032717313")
-      .edit({ name: `${client.channels.cache.size} Channels` });
+      .edit({ name: `${this.client.channels.cache.size} Channels` });
   }
 
   console.log(
-    `Hi, ${client.user.username} is now online.
-    - Serving ${client.guilds.cache.size} Guilds
-    - Saying "hi" to ${client.users.cache.size} Users
+    `Hi, ${this.client.user.username} is now online.
+    - Serving ${this.client.guilds.cache.size} Guilds
+    - Saying "hi" to ${this.client.users.cache.size} Users
     `
   );
 
@@ -85,22 +84,22 @@ class Ready {
   //   );
 
   let activities = [
-      `${client.guilds.cache.size} servers!`,
-      `${client.channels.cache.size} channels!`,
-      `${client.users.cache.size} users!`,
+      `${this.client.guilds.cache.size} servers!`,
+      `${this.client.channels.cache.size} channels!`,
+      `${this.client.users.cache.size} users!`,
     ],
     i = 0;
 
   setInterval(
     () =>
-      client.user.setActivity(
+      this.client.user.setActivity(
         `b3help | ${activities[i++ % activities.length]}`,
         { type: "WATCHING" }
       ),
     15000
   );
 
-  let allGuilds = client.guilds.cache.array();
+  let allGuilds = this.client.guilds.cache.array();
   for (let i = 0; i < allGuilds.length; i++) {
     await Settings.findOne({ guildID: allGuilds[i].id }, async (err, guild) => {
       if (err) console.log(err);
@@ -168,7 +167,7 @@ class Ready {
     );
   }
 
-  let allUsers = client.users.cache.array();
+  let allUsers = this.client.users.cache.array();
   for (let i = 0; i < allUsers.length; i++) {
     await Blacklist.findOne({ userID: allUsers[i].id }, (err, blacklist) => {
       if (err) console.log(err);

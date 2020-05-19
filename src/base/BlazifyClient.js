@@ -1,6 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const { readdir } = require("fs");
-const { token, nodes, path } = require("../config.json");
+const { nodes } = require("../config.json");
 const { Manager } = require("lavaclient");
 const { GiveawaysManager } = require("discord-giveaways");
 
@@ -8,7 +8,7 @@ Manager.use(new (require("../utils/BlazifyMusic"))());
 
 class BlazifyClient extends Client {
   constructor(options) {
-    super({ partials: ["REACTION", "MESSAGE"] }, options.clientOptions || {});
+    super({ partials: ["REACTION", "MESSAGE" ]}, (options.clientOptions || {}));
         this.commands = new Collection();
         this.aliases = new Collection();
         this.config = options.config ? require(`../${options.config}`) : {};
@@ -49,15 +49,18 @@ class BlazifyClient extends Client {
    return this;
 }
 loadCommands(path) {
+  const load = dirs => {
+  ["miscellaneous", "moderation", "owner"].forEach(x => load(x));
   readdir(path, (err, files) => {
       if (err) console.log(err);
       files.forEach(cmd => {
-          const command = new (require(`../${path}/${cmd}`))(this);
+          const command = new (require(`../${path}/${dirs}/${cmd}`))(this);
           this.commands.set(command.help.name, command);
           command.conf.aliases.forEach(a => this.aliases.set(a, command.help.name));
-
       });
   });
+  
+}
   return this;
 }
 loadEvents(path) {

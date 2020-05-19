@@ -6,11 +6,11 @@ const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 const Settings = require("../models/configsetting.js");
 
 class guildMemberAdd {
-  constructor(client) {
-    this.client = client;
+  constructor(member) {
+    this.member = member;
   }
   
- async run(client, member) {
+ async run(member) {
   const guildSettings =
     (await Settings.findOne({ guildID: member.guild.id })) ||
     new Settings({
@@ -33,7 +33,7 @@ class guildMemberAdd {
   }
 
   if (enableCaptcha) {
-    const captcha = await czreateCaptcha();
+    const captcha = await createCaptcha();
     try {
       const msg = await member.send("You have 5 Minutes to solve the captcha", {
         files: [
