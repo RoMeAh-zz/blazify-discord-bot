@@ -4,16 +4,15 @@ const Money = require("../models/money.js");
 const Prefix = require("../models/prefix.js");
 const XP = require("../models/xp.js");
 const Settings = require("../models/configsetting.js");
-module.exports = class {
+module.exports = class async {
   constructor(client) {
       this.client = client;
   }
-  run(message) {
-  if (message.author.bot) return;
+  async run (message) {
   if (!message.member)
-    message.member = await message.guild.members.fetch(message.author);
+    message.member = (await message.guild.members.fetch(message.author));
 
-  const guildPrefix = await Prefix.findOne({ guildID: message.guild.id });
+  const guildPrefix = (await Prefix.findOne({ guildID: message.guild.id }));
   const prefix = (guildPrefix ? guildPrefix.prefix : "b3") || "b3";
 
   const guildSettings =
@@ -142,9 +141,9 @@ module.exports = class {
   if (!message.content.startsWith(prefix)) return;
   if (blacklisted)
     return message.reply("**You have been __Blacklisted__ from the bot**");
-    if (message.author.bot || !message.content.startsWith(this.client.config.prefix)) return;
+    if (message.author.bot || !message.content.startsWith(prefix)) return;
     const args = message.content.split(/\s+/g);
-    const command = args.shift().slice(this.client.config.prefix.length);
+    const command = args.shift().slice(prefix.length);
     const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
     if (!cmd) return;
     if (cmd.cooldown.has(message.author.id)) return message.delete();
