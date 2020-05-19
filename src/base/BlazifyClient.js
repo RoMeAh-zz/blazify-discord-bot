@@ -65,11 +65,10 @@ loadEvents(path) {
       if (err) console.log(err);
       files.forEach(evt => {
           const event = new (require(`../${path}/${evt}`))(this);
-          super.on(evt.split(".")[0], (...args) => event.run(...args));
+        super.on(evt.split(".")[0], (...args) => event.run(...args));
       });
   });
   return this;
-
   }
 }
 module.exports = BlazifyClient;

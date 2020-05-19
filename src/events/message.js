@@ -4,11 +4,12 @@ const Money = require("../models/money.js");
 const Prefix = require("../models/prefix.js");
 const XP = require("../models/xp.js");
 const Settings = require("../models/configsetting.js");
-module.exports = class async {
+class Message {
   constructor(client) {
-      this.client = client;
+    this.client = client;
   }
-  async run (message) {
+  
+ async run(message) {
   if (!message.member)
     message.member = (await message.guild.members.fetch(message.author));
 
@@ -48,7 +49,7 @@ module.exports = class async {
 
             xp.save().catch((err) => console.log(err));
             const channel =
-              message.guild.channels.cacche.find(
+              message.guild.channels.cache.find(
                 (c) => c.name === "level-up"
               ) || message.channel;
             return channel.send(
@@ -152,3 +153,4 @@ module.exports = class async {
     if (cmd.conf.cooldown > 0) cmd.startCooldown(message.author.id);
 }
 };
+module.exports = Message;

@@ -1,11 +1,11 @@
-const BlazifyClient = require("../base/command");
+const BlazifyClient = require("../base/Command");
 
 class Ping extends BlazifyClient {
   constructor(client) {
     super(client, {
       name: "ping",
       description: "Pings the bot.",
-      usage: "",
+      usage: "b3ping",
       category: "Information",
       cooldown: 1000,
       aliases: ["pong"],
