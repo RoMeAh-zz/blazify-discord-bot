@@ -1,3 +1,4 @@
 node_modules/
 lavalink/logs
-config.json
+src/config.json
+captcha
