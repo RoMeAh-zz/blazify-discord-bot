@@ -4,7 +4,11 @@ const Money = require("../models/money.js");
 const Prefix = require("../models/prefix.js");
 const XP = require("../models/xp.js");
 const Settings = require("../models/configsetting.js");
-module.exports = async (client, message, member) => {
+module.exports = class {
+  constructor(client) {
+      this.client = client;
+  }
+  run(message) {
   if (message.author.bot) return;
   if (!message.member)
     message.member = await message.guild.members.fetch(message.author);
@@ -127,10 +131,7 @@ module.exports = async (client, message, member) => {
       });
     }
   }
-  if (!message.content.startsWith(prefix)) return;
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const cmd = args.shift().toLowerCase();
-  if (!message.content.startsWith(prefix)) return;
+
   const bc =
     (await Blacklist.findOne({ userID: message.author.id })) ||
     new Blacklist({
@@ -141,12 +142,14 @@ module.exports = async (client, message, member) => {
   if (!message.content.startsWith(prefix)) return;
   if (blacklisted)
     return message.reply("**You have been __Blacklisted__ from the bot**");
-  if (cmd.length === 0)
-    return message.channel.send(
-      `Yes, I am alive please tell a command and if you dont know any just type ${prefix}`
-    );
-
-  let command = client.commands.find((c) => c.name && c.name === cmd);
-
-  if (command) command.run(client, message, args);
+    if (message.author.bot || !message.content.startsWith(this.client.config.prefix)) return;
+    const args = message.content.split(/\s+/g);
+    const command = args.shift().slice(this.client.config.prefix.length);
+    const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
+    if (!cmd) return;
+    if (cmd.cooldown.has(message.author.id)) return message.delete();
+    cmd.setMessage(message);
+    cmd.run(message, args);
+    if (cmd.conf.cooldown > 0) cmd.startCooldown(message.author.id);
+}
 };

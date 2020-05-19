@@ -1,16 +1,20 @@
 const { Client, Collection } = require("discord.js");
-const { token, nodes } = require("./config.json");
+const { readdir } = require("fs");
+const { token, nodes, path } = require("../config.json");
 const { Manager } = require("lavaclient");
 const { GiveawaysManager } = require("discord-giveaways");
 
-Manager.use(new (require("./utils/BlazifyMusic"))());
+Manager.use(new (require("../utils/BlazifyMusic"))());
 
 class BlazifyClient extends Client {
-  constructor() {
-    super({ partials: ["REACTION", "MESSAGE"] });
-
-    this.commands = new Collection();
-    this.mongoose = require("./utils/mongoose.js");
+  constructor(options) {
+    super({ partials: ["REACTION", "MESSAGE"] }, options.clientOptions || {});
+        this.commands = new Collection();
+        this.aliases = new Collection();
+        this.config = options.config ? require(`../${options.config}`) : {};
+        this.perms = options.perms ? require(`../${options.perms}`) : {};
+        console.log(`Client initialised. You are using node ${process.version}.`);
+    this.mongoose = require("../utils/mongoose.js");
     this.afk = new Map();
     this.levels = new Map([
       ["none", 0],
@@ -19,7 +23,7 @@ class BlazifyClient extends Client {
       ["high", 0.75],
     ]);
     this.giveawaysManager = new GiveawaysManager(this, {
-      storage: "./giveaways.json",
+      storage: "../giveaways.json",
       updateCountdownEvery: 5000,
       default: {
         botsCanWin: false,
@@ -36,20 +40,36 @@ class BlazifyClient extends Client {
         return;
       },
     });
-
     this.mongoose.init();
     this.ws.on("VOICE_SERVER_UPDATE", _ => this.lava.serverUpdate(_));
     this.ws.on("VOICE_STATE_UPDATE", _ => this.lava.stateUpdate(_));
-  }
+  } 
+  login(token) {
+    super.login(token);
+   return this;
+}
+loadCommands(path) {
+  readdir(path, (err, files) => {
+      if (err) console.log(err);
+      files.forEach(cmd => {
+          const command = new (require(`../${path}/${cmd}`))(this);
+          this.commands.set(command.help.name, command);
+          command.conf.aliases.forEach(a => this.aliases.set(a, command.help.name));
 
-  async load() {
-    await Promise.all(
-      ["command", "event"].map(async (b) =>
-        console.log(await require(`./handlers/${b}`)(this, __dirname))
-      )
-    );
-    return this;
+      });
+  });
+  return this;
+}
+loadEvents(path) {
+  readdir(path, (err, files) => {
+      if (err) console.log(err);
+      files.forEach(evt => {
+          const event = new (require(`../${path}/${evt}`))(this);
+          super.on(evt.split(".")[0], (...args) => event.run(...args));
+      });
+  });
+  return this;
+
   }
 }
-
-new BlazifyClient().load().then((client) => client.login(token));
+module.exports = BlazifyClient;
