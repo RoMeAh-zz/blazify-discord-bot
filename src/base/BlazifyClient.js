@@ -1,6 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const { readdir } = require("fs");
-const { nodes } = require("../config.json");
+const { paths, nodes } = require("../config.json");
 const { Manager } = require("lavaclient");
 const { GiveawaysManager } = require("discord-giveaways");
 
