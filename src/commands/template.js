@@ -31,5 +31,6 @@ async run(message, args) {
 //remember client is always this.client not just client
 message.channel.send("It is just a Template for developers");
 }
+}
 module.exports = Template;
 //the class name will be the name for the module.exports
