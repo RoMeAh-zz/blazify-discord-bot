@@ -167,7 +167,8 @@ class Ready {
     );
   }
 
-  let allUsers = this.client.users.cache.array();
+  let allUsers = this.client.users.cache.filter(x => !x.bot).array();
+  
   for (let i = 0; i < allUsers.length; i++) {
     await Blacklist.findOne({ userID: allUsers[i].id }, (err, blacklist) => {
       if (err) console.log(err);

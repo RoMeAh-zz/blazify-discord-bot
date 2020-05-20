@@ -10,6 +10,9 @@ class Message {
   }
   
  async run(message) {
+
+  if (message.author.bot) return;
+
   if (!message.member)
     message.member = (await message.guild.members.fetch(message.author));
 
@@ -138,7 +141,6 @@ class Message {
       userID: message.author.id,
     });
   const { blacklisted } = bc;
-  if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
   if (blacklisted)
     return message.reply("**You have been __Blacklisted__ from the bot**");
