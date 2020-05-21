@@ -4,6 +4,7 @@ const { promptMessage } = require("../../utils/functions.js");
 const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js")
 
 const Settings = require("../../models/configsetting.js");
+const BlazifyClient = require("../../base/Command");
 class Ban extends BlazifyClient {
     constructor(client) {
       super(client, {

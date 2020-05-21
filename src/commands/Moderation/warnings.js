@@ -2,6 +2,7 @@ const { MessageEmbed, Discord } = require('discord.js');
 const mongoose = require("mongoose");
 const Warn = require("../../models/warn.js")
 const Settings = require("../../models/configsetting.js");
+const BlazifyClient = require("../../base/Command")
 class Warnings extends BlazifyClient {
   constructor(client) {
     super(client, {
@@ -78,3 +79,4 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
       }
     }
   };
+module.exports = Warnings;

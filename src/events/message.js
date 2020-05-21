@@ -1,4 +1,3 @@
-require("dotenv").config();
 const Blacklist = require("../models/blacklist.js");
 const Money = require("../models/money.js");
 const Prefix = require("../models/prefix.js");
@@ -11,7 +10,7 @@ class Message {
   
  async run(message) {
 
-  if (message.author.client) return;
+  if (message.author.bot) return;
 
   if (!message.member)
     message.member = (await message.guild.members.fetch(message.author));
@@ -141,17 +140,16 @@ class Message {
       userID: message.author.id,
     });
   const { blacklisted } = bc;
-  if (!message.content.startsWith(prefix)) return;
-  if (blacklisted)
+    if (message.author.bot || !message.content.startsWith(prefix)) return;
+    if (blacklisted)
     return message.reply("**You have been __Blacklisted__ from the client**");
-    if (message.author.client || !message.content.startsWith(prefix)) return;
     const args = message.content.split(/\s+/g);
     const command = args.shift().slice(prefix.length);
     const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
     if (!cmd) return;
     if (cmd.cooldown.has(message.author.id)) return message.channel.send(`Sorry, you need to wait till the cooldown ends as due to our low specification system we have a cooldown but you can can help by donating in [paypal](https://paypal.me/roahgaming)`);
     cmd.setMessage(message);
-    cmd.run(client, message, args);
+    cmd.run(message, args);
     if (cmd.conf.cooldown > 0) cmd.startCooldown(message.author.id);
 }
 };

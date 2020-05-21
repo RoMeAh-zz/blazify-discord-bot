@@ -22,6 +22,7 @@
   "dependencies": {
     "@lavalink/encoding": "^0.1.1",
     "apextab-api": "^1.0.5",
+    "ascii-table": "0.0.9",
     "common-tags": "^1.8.0",
     "cors": "^2.8.5",
     "cpu-stat": "^2.0.1",

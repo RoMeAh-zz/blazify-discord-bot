@@ -3,12 +3,21 @@ const { stripIndents } = require("common-tags");
 const { promptMessage } = require("../../utils/functions.js");
 const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js")
 const Settings = require("../../models/configsetting.js");
-module.exports = {
-    name: "kick",
-    category: "moderation",
-    description: "Kicks the member",
-    usage: "<id | mention>",
-    run: async (client, message, args) => {
+const BlazifyClient = require("../../base/Command");
+class Kick extends BlazifyClient {
+  constructor(client) {
+    super(client, {
+      name: "kick",
+      description: "Kicks a user from the server",
+      usage: "b3kick @noob u are noob",
+      category: "Moderation",
+      cooldown: 1000,
+      aliases: ["ki"],
+      permLevel: 1,
+      permission: "KICK_MEMBERS"
+    });
+  }
+async run(message, args) {
     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });
@@ -107,3 +116,4 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
         });
     }
 };
+module.exports = Kick;

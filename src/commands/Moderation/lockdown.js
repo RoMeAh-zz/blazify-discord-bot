@@ -2,7 +2,7 @@ const validateFlag = f => f === 'true' || f === 'false' || f === 'null';
 const IGNORED = new Set([
   // PLACE YOUR CHANNEL IDS HERE
 ]);
-
+const BlazifyClient = require("../../base/Command")
 class Lockdown extends BlazifyClient {
   constructor(client) {
     super(client, {

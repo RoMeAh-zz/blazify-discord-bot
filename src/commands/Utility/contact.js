@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js")
-
+const BlazifyClient = require("../../base/Command")
 class Bug extends BlazifyClient {
     constructor(client) {
       super(client, {

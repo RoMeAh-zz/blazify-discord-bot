@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const Settings = require("../../models/configsetting.js")
 const fetch = require("node-fetch");
-
+const BlazifyClient = require("../../base/Command")
 class Insta extends BlazifyClient {
     constructor(client) {
       super(client, {

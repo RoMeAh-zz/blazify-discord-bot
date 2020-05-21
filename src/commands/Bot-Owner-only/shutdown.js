@@ -1,6 +1,6 @@
 const Settings = require("../../models/configsetting.js");
 const BlazifyClient = require("../../base/Command");
-class Blacklist extends BlazifyClient {
+class Shutdown extends BlazifyClient {
   constructor(client) {
     super(client, {
       name: "restart",
@@ -32,3 +32,4 @@ async run(message, args) {
 
 }
     }
+module.exports = Shutdown;

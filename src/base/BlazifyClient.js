@@ -1,7 +1,8 @@
 const { Client, Collection } = require("discord.js");
-const { readdir } = require("fs");
+const { readdir, readdirSync } = require("fs");
 const { nodes } = require("../config.json");
 const { Manager } = require("lavaclient");
+const ascii = require("ascii-table");
 
 Manager.use(new (require("../utils/BlazifyMusic"))());
 
@@ -37,21 +38,25 @@ class BlazifyClient extends Client {
     super.login(token);
    return this;
   }
-loadCommands(path) {
-  const load = dirs => {
-  ["Bot-Owner-only", "economy", "Fun", "Gaming", "giveaways", "Moderation", "music", "role", "Utility", "XP & XP COINS"].forEach(x => load(x));
-  
-  readdir(path, (err, files) => {
-      if (err) console.log(err);
-      files.forEach(cmd => {
-          const command = new (require(`../${path}/${load}/${cmd}`))(this);
-          console.log(command)
-          this.commands.set(command.help.name, command);
-          command.conf.aliases.forEach(a => this.aliases.set(a, command.help.name));
-      });
-  });
+loadCommands() {
+  let table = new ascii("Commands");
+  table.setHeading("Command", "Load status");
+  readdirSync("./commands/").forEach(dir => {
+    const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js"));
+    for (let file of commands) {
+        let command = require(`../commands/${dir}/${file}`);
+        if (command.name) {
+            this.commands.set(command.name, command);
+            table.addRow(file, '✅');
+        } else {
+            table.addRow(file, `❌  -> missing a help.name, or help.name is not a string.`);
+            continue;
+        }
+        if (command.aliases && Array.isArray(command.aliases)) command.aliases.forEach(alias => this.aliases.set(alias, command.name))
+    }
+});
+console.log(table.toString());
   return this;
-}
 }
 loadEvents(path) {
   readdir(path, (err, files) => {

@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json")
 const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js")
-const Settings = require("../../models/configsetting.js")
+const Settings = require("../../models/configsetting.js");
 const BlazifyClient = require("../../base/Command");
 class AddRole extends BlazifyClient {
   constructor(client) {

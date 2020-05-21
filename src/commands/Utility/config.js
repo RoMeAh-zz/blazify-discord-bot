@@ -22,6 +22,7 @@ let setting17;
 let setting18;
 let setting19;
 let setting20;
+const BlazifyClient = require("../../base/Command")
 class Config extends BlazifyClient {
   constructor(client) {
     super(client, {

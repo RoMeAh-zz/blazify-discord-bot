@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const Warn = require("../../models/warn.js")
 const lgc = require("../../config.json").logChannel;
 const Settings = require("../../models/configsetting.js");
-class Warn extends BlazifyClient {
+const BlazifyClient = require("../../base/Command")
+class Warn1 extends BlazifyClient {
   constructor(client) {
     super(client, {
       name: "warn",
@@ -60,4 +61,4 @@ Warn.findOne(
   })
 }
 }
-module.exports = Warn;
+module.exports = Warn1;

@@ -1,6 +1,6 @@
 const Blacklist = require("../../models/blacklist.js");
 const BlazifyClient = require("../../base/Command");
-class Blacklist extends BlazifyClient {
+class Blacklist1 extends BlazifyClient {
   constructor(client) {
     super(client, {
       name: "blacklist",
@@ -39,4 +39,4 @@ message.channel.send("<@"+ blacklistid +"> has been blacklisted (" + boolean + "
   })
 }
 }
-module.exports = Blacklist;
+module.exports = Blacklist1;

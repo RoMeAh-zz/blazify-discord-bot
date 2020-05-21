@@ -1,3 +1,4 @@
+const BlazifyClient = require("../../base/Command")
 class Ping extends BlazifyClient {
     constructor(client) {
       super(client, {

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const Settings = require("../../models/configsetting.js")
 let enableVerification;
+const BlazifyClient = require("../../base/Command")
 class Verify extends BlazifyClient {
   constructor(client) {
     super(client, {

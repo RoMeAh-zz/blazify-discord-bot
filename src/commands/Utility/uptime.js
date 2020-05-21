@@ -2,7 +2,7 @@ const {MessageEmbed} = require('discord.js');
 const Settings = require("../../models/configsetting.js");
 let days = 0;
 let week = 0;
-
+const BlazifyClient = require("../../base/Command")
 class Uptime extends BlazifyClient {
     constructor(client) {
       super(client, {

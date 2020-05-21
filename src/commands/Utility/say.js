@@ -1,5 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const Settings = require("../../models/configsetting.js");
+const BlazifyClient = require("../../base/Command")
 class Say extends BlazifyClient {
     constructor(client) {
       super(client, {

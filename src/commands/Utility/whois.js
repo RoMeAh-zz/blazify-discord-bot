@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const { getMember, formatDate } = require("../../utils/functions.js");
 const Settings = require("../../models/configsetting.js");
+const BlazifyClient = require("../../base/Command")
 class Whois extends BlazifyClient {
     constructor(client) {
       super(client, {

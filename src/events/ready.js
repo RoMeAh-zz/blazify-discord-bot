@@ -11,7 +11,7 @@ const Settings = require("../models/configsetting.js");
 const XP = require("../models/xp.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 const Blacklist = require("../models/blacklist.js");
-/** Configuration */
+/** Configuration */ 
 const { dbl: dbltoken, WH: webhook, nodes, mode } = require("../config.json");
 
 class Ready {

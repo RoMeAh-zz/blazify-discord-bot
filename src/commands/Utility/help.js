@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 let Prefix = require("../../models/prefix.js");
 let prefix;
-
+const BlazifyClient = require("../../base/Command")
 class Help extends BlazifyClient {
   constructor(client) {
     super(client, {

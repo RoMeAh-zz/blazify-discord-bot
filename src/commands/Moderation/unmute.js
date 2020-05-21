@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js")
 const { redlight } = require("../../colours.json");
 const PerGuildLogandWelcome = require("../../models/perguildlogandwelcome.js")
 const Settings = require("../../models/configsetting.js");
+const BlazifyClient = require("../../base/Command")
 class UNMute extends BlazifyClient {
   constructor(client) {
     super(client, {
