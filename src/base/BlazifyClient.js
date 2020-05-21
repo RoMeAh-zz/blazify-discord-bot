@@ -59,12 +59,16 @@ console.log(table.toString());
   return this;
 }
 loadEvents(path) {
+  let table1 = new ascii("Event");
+  table1.setHeading("Event", "Load status");
   readdir(path, (err, files) => {
       if (err) console.log(err);
       files.forEach(evt => {
           const event = new (require(`../${path}/${evt}`))(this);
         super.on(evt.split(".")[0], (...args) => event.run(...args));
+        table1.addRow(evt, '✅')
       });
+      console.log(table1.toString());
   });
   return this;
   }

@@ -2,7 +2,7 @@
 const DBL = require("dblapi.js");
 const express = require("express");
 const http = require("http");
-const startServer = require("../../web/backend/server.js");
+//const startServer = require("../../web/backend/server.js");
 
 /** Database */
 const Coins = require("../models/coin.js");
