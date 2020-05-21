@@ -17,7 +17,7 @@ class Server {
   this.client.oauth = new Oauth({
     clientSecret: secret,
     clientId: this.client.user.id,
-    redirectUri: "https://blazify-dashboard.glitch.me/api/callback",
+    redirectUri: "http://localhost:8080/api/callback",
   });
 
   this.client.oauthURL = this.client.oauth.generateAuthUrl({

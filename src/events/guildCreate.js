@@ -3,8 +3,8 @@ const Settings = require("../models/configsetting.js");
 const Prefix = require("../models/prefix.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 class guildCreate {
-  constructor(client) {
-    this.client = client;
+  constructor(guild) {
+    this.guild = guild;
   }
  async run(client, guild) {   // This event triggers when the client joins a guild.
   console.log(

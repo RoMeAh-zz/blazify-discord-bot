@@ -8,7 +8,7 @@
         name: "Home",
         methods: {
             login() {
-                fetch("https://blazify-dashboard.glitch.me/api/auth")
+                fetch("http://localhost:8080/api/auth")
                     .then(res => res.json())
                     .then(body => {
                         if (!body.success) return alert("An error occured!");

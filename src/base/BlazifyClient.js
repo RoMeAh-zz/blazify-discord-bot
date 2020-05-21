@@ -44,7 +44,8 @@ loadCommands(path) {
   readdir(path, (err, files) => {
       if (err) console.log(err);
       files.forEach(cmd => {
-          const command = new (require(`../${path}/${dir}/${cmd}`))(this);
+          const command = new (require(`../${path}/${load}/${cmd}`))(this);
+          console.log(command)
           this.commands.set(command.help.name, command);
           command.conf.aliases.forEach(a => this.aliases.set(a, command.help.name));
       });

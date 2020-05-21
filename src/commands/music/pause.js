@@ -22,7 +22,7 @@ async run(message, args) {
     const { enableMusic } = guildSettings;
     if (!enableMusic)
       return message.channel.send(
-        "Hmm it seems like the Music commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)"
+        "Hmm it seems like the Music commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)"
       );
     const player = bot.lava.players.get(message.guild.id);
     if (!player)

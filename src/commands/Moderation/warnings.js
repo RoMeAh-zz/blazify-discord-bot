@@ -21,7 +21,7 @@ async run(message, args) {
       guildID: message.guild.id
   });
   const {enableModeration} = guildSettings;
-if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
+if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
     if (args[0]) {
         let member = message.mentions.members.first();
 

@@ -21,7 +21,7 @@ async run(message, args) {
             guildID: message.guild.id
         });
         const {enableGiveaway} = guildSettings;
-    if(!enableGiveaway) return message.channel.send("Hmm it seems like the giveaway commands are not enabled if you want to enable them please go to the dashboard. Click [here](https://blazify-dashboard.glitch.me)");
+    if(!enableGiveaway) return message.channel.send("Hmm it seems like the giveaway commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
             var time = moment().format("Do MMMM YYYY , hh:mm");
             var room;
             var title;

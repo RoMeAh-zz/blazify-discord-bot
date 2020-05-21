@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 class guildDelete {
-  constructor(client) {
-    this.client = client;
+  constructor(guild) {
+    this.guild = guild;
   }
   
  async run(client, guild) {  // this event triggers when the client is removed from a guild.
