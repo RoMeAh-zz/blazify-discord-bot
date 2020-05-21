@@ -39,7 +39,7 @@ class BlazifyClient extends Client {
   }
 loadCommands(path) {
   const load = dirs => {
-  ["client-Owner-only", "economy", "Fun", "Gaming", "giveaways", "Moderation", "music", "role", "Utility", "XP & XP COINS"].forEach(x => load(x));
+  ["Bot-Owner-only", "economy", "Fun", "Gaming", "giveaways", "Moderation", "music", "role", "Utility", "XP & XP COINS"].forEach(x => load(x));
   
   readdir(path, (err, files) => {
       if (err) console.log(err);
