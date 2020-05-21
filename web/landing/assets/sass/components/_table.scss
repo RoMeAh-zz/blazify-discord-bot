@@ -40,7 +40,7 @@
 		}
 
 		thead {
-			border-bottom: solid (_size(border-width) * 2) _palette(border);
+			border-clienttom: solid (_size(border-width) * 2) _palette(border);
 		}
 
 		tfoot {
@@ -71,7 +71,7 @@
 			}
 
 			thead {
-				border-bottom: 0;
+				border-clienttom: 0;
 			}
 
 			tfoot {

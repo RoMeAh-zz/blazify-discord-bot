@@ -6,16 +6,16 @@ module.exports = class extends Route {
     super("/api/config/:id", "put");
   }
 
-  async run(bot, app, req, res) {
+  async run(client, app, req, res) {
     const { id } = req.params;
-    if (!id || !bot.guilds.cache.has(id)) return res.json({ success: false });
+    if (!id || !client.guilds.cache.has(id)) return res.json({ success: false });
 
-    const guild = bot.guilds.cache.get(id);
+    const guild = client.guilds.cache.get(id);
     const { access_token, type, locale } = req.query;
 
     if (!access_token || !type || !locale) return res.json({ success: false });
 
-    const user = await bot.oauth.getUser(access_token);
+    const user = await client.oauth.getUser(access_token);
     if (!user || guild.members.cache.has(user))
       return res.json({ success: false });
 

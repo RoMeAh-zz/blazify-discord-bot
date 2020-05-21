@@ -45,7 +45,7 @@ class guildMemberAdd {
       });
       try {
         const filter = (m) => {
-          if (m.author.bot) return;
+          if (m.author.client) return;
           if (m.author.id === member.id && m.content === captcha) return true;
           else {
             m.channel.send("You entered the captcha incorrectly.");

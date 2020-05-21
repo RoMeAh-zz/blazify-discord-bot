@@ -82,7 +82,7 @@
 						$section.scrollex({
 							mode: 'middle',
 							top: '-20vh',
-							bottom: '-20vh',
+							clienttom: '-20vh',
 							initialize: function() {
 
 								// Deactivate section.
@@ -134,7 +134,7 @@
 			.scrollex({
 				mode: 'middle',
 				top: '-10vh',
-				bottom: '-10vh',
+				clienttom: '-10vh',
 				initialize: function() {
 
 					// Deactivate section.
@@ -172,7 +172,7 @@
 			.scrollex({
 				mode: 'middle',
 				top: '-20vh',
-				bottom: '-20vh',
+				clienttom: '-20vh',
 				initialize: function() {
 
 					// Deactivate section.

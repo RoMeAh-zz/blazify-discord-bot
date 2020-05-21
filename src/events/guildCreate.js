@@ -6,7 +6,7 @@ class guildCreate {
   constructor(client) {
     this.client = client;
   }
- async run(client, guild) {   // This event triggers when the bot joins a guild.
+ async run(client, guild) {   // This event triggers when the client joins a guild.
   console.log(
     `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`
   );

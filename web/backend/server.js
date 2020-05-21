@@ -33,9 +33,9 @@ class Server {
   readdirSync(__dirname + "/api").forEach((file) => {
     let route = require(`./api/${file}`);
     route = new route();
-    route.bot = bot;
+    route.client = client;
     route.app = app;
-    app[route.method](route.path, route.run.bind(null, bot, app));
+    app[route.method](route.path, route.run.bind(null, client, app));
   });
 
   /** 404 */

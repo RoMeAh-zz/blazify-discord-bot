@@ -147,17 +147,17 @@ input, select, textarea {
 		}
 
 	a {
-		-moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		-webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+		-moz-transition: color 0.2s ease, border-clienttom-color 0.2s ease;
+		-webkit-transition: color 0.2s ease, border-clienttom-color 0.2s ease;
+		-ms-transition: color 0.2s ease, border-clienttom-color 0.2s ease;
+		transition: color 0.2s ease, border-clienttom-color 0.2s ease;
+		border-clienttom: dotted 1px rgba(255, 255, 255, 0.35);
 		color: inherit;
 		text-decoration: none;
 	}
 
 		a:hover {
-			border-bottom-color: transparent;
+			border-clienttom-color: transparent;
 			color: #ffffff;
 		}
 
@@ -193,7 +193,7 @@ input, select, textarea {
 		h1.major {
 			margin: 0 0 1.3em 0;
 			position: relative;
-			padding-bottom: 0.35em;
+			padding-clienttom: 0.35em;
 		}
 
 			h1.major:after {
@@ -206,7 +206,7 @@ input, select, textarea {
 				-ms-transition: max-width 0.2s ease;
 				transition: max-width 0.2s ease;
 				border-radius: 0.2em;
-				bottom: 0;
+				clienttom: 0;
 				content: '';
 				height: 0.05em;
 				position: absolute;
@@ -307,7 +307,7 @@ input, select, textarea {
 
 	hr {
 		border: 0;
-		border-bottom: solid 1px rgba(255, 255, 255, 0.15);
+		border-clienttom: solid 1px rgba(255, 255, 255, 0.15);
 		margin: 2em 0;
 	}
 
@@ -341,7 +341,7 @@ input, select, textarea {
 		}
 
 		.row.gtr-uniform > * > :last-child {
-			margin-bottom: 0;
+			margin-clienttom: 0;
 		}
 
 		.row.aln-left {
@@ -364,7 +364,7 @@ input, select, textarea {
 			align-items: center;
 		}
 
-		.row.aln-bottom {
+		.row.aln-clienttom {
 			align-items: flex-end;
 		}
 
@@ -584,7 +584,7 @@ input, select, textarea {
 				}
 
 				.row.gtr-uniform > * > :last-child {
-					margin-bottom: 0;
+					margin-clienttom: 0;
 				}
 
 				.row.aln-left {
@@ -607,7 +607,7 @@ input, select, textarea {
 					align-items: center;
 				}
 
-				.row.aln-bottom {
+				.row.aln-clienttom {
 					align-items: flex-end;
 				}
 
@@ -829,7 +829,7 @@ input, select, textarea {
 				}
 
 				.row.gtr-uniform > * > :last-child {
-					margin-bottom: 0;
+					margin-clienttom: 0;
 				}
 
 				.row.aln-left {
@@ -852,7 +852,7 @@ input, select, textarea {
 					align-items: center;
 				}
 
-				.row.aln-bottom {
+				.row.aln-clienttom {
 					align-items: flex-end;
 				}
 
@@ -1074,7 +1074,7 @@ input, select, textarea {
 				}
 
 				.row.gtr-uniform > * > :last-child {
-					margin-bottom: 0;
+					margin-clienttom: 0;
 				}
 
 				.row.aln-left {
@@ -1097,7 +1097,7 @@ input, select, textarea {
 					align-items: center;
 				}
 
-				.row.aln-bottom {
+				.row.aln-clienttom {
 					align-items: flex-end;
 				}
 
@@ -1319,7 +1319,7 @@ input, select, textarea {
 				}
 
 				.row.gtr-uniform > * > :last-child {
-					margin-bottom: 0;
+					margin-clienttom: 0;
 				}
 
 				.row.aln-left {
@@ -1342,7 +1342,7 @@ input, select, textarea {
 					align-items: center;
 				}
 
-				.row.aln-bottom {
+				.row.aln-clienttom {
 					align-items: flex-end;
 				}
 
@@ -1564,7 +1564,7 @@ input, select, textarea {
 				}
 
 				.row.gtr-uniform > * > :last-child {
-					margin-bottom: 0;
+					margin-clienttom: 0;
 				}
 
 				.row.aln-left {
@@ -1587,7 +1587,7 @@ input, select, textarea {
 					align-items: center;
 				}
 
-				.row.aln-bottom {
+				.row.aln-clienttom {
 					align-items: flex-end;
 				}
 
@@ -1800,14 +1800,14 @@ input, select, textarea {
 	.box {
 		border-radius: 0.25em;
 		border: solid 1px rgba(255, 255, 255, 0.15);
-		margin-bottom: 2em;
+		margin-clienttom: 2em;
 		padding: 1.5em;
 	}
 
 		.box > :last-child,
 		.box > :last-child > :last-child,
 		.box > :last-child > :last-child > :last-child {
-			margin-bottom: 0;
+			margin-clienttom: 0;
 		}
 
 		.box.alt {
@@ -2227,7 +2227,7 @@ input, select, textarea {
 	}
 
 		form > :last-child {
-			margin-bottom: 0;
+			margin-clienttom: 0;
 		}
 
 		form > .fields {
@@ -2486,7 +2486,7 @@ input, select, textarea {
 
 	.icon {
 		text-decoration: none;
-		border-bottom: none;
+		border-clienttom: none;
 		position: relative;
 	}
 
@@ -3166,7 +3166,7 @@ input, select, textarea {
 		}
 
 		table thead {
-			border-bottom: solid 2px rgba(255, 255, 255, 0.15);
+			border-clienttom: solid 2px rgba(255, 255, 255, 0.15);
 		}
 
 		table tfoot {
@@ -3192,7 +3192,7 @@ input, select, textarea {
 			}
 
 			table.alt thead {
-				border-bottom: 0;
+				border-clienttom: 0;
 			}
 
 			table.alt tfoot {
@@ -3504,11 +3504,11 @@ input, select, textarea {
 		}
 
 	#footer > .inner a {
-		border-bottom-color: rgba(255, 255, 255, 0.15);
+		border-clienttom-color: rgba(255, 255, 255, 0.15);
 	}
 
 		#footer > .inner a:hover {
-			border-bottom-color: transparent;
+			border-clienttom-color: transparent;
 		}
 
 	#footer > .inner .menu {
@@ -3752,7 +3752,7 @@ input, select, textarea {
 
 			#sidebar nav a:before, #sidebar nav a:after {
 				border-radius: 0.2em;
-				bottom: 0;
+				clienttom: 0;
 				content: '';
 				height: 0.2em;
 				position: absolute;

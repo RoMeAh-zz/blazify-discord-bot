@@ -11,7 +11,7 @@ class Message {
   
  async run(message) {
 
-  if (message.author.bot) return;
+  if (message.author.client) return;
 
   if (!message.member)
     message.member = (await message.guild.members.fetch(message.author));
@@ -143,15 +143,15 @@ class Message {
   const { blacklisted } = bc;
   if (!message.content.startsWith(prefix)) return;
   if (blacklisted)
-    return message.reply("**You have been __Blacklisted__ from the bot**");
-    if (message.author.bot || !message.content.startsWith(prefix)) return;
+    return message.reply("**You have been __Blacklisted__ from the client**");
+    if (message.author.client || !message.content.startsWith(prefix)) return;
     const args = message.content.split(/\s+/g);
     const command = args.shift().slice(prefix.length);
     const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
     if (!cmd) return;
     if (cmd.cooldown.has(message.author.id)) return message.channel.send(`Sorry, you need to wait till the cooldown ends as due to our low specification system we have a cooldown but you can can help by donating in [paypal](https://paypal.me/roahgaming)`);
     cmd.setMessage(message);
-    cmd.run(message, args);
+    cmd.run(client, message, args);
     if (cmd.conf.cooldown > 0) cmd.startCooldown(message.author.id);
 }
 };

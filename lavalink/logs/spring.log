@@ -1,61 +1,70 @@
-2020-05-20 01:09:38.816 ERROR 8320 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Error
+2020-05-21 13:22:52.189  INFO 9532 --- [main] lavalink.server.Launcher                 : 
 
-java.nio.channels.ClosedChannelException: null
-	at io.undertow.server.protocol.framed.AbstractFramedStreamSinkChannel.flush(AbstractFramedStreamSinkChannel.java:347) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
-	at org.xnio.ChannelListeners$14.handleEvent(ChannelListeners.java:413) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
-	at org.xnio.ChannelListeners$14.handleEvent(ChannelListeners.java:409) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
-	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
-	at io.undertow.server.protocol.framed.AbstractFramedStreamSinkChannel$1.run(AbstractFramedStreamSinkChannel.java:214) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
-	at io.undertow.server.protocol.framed.AbstractFramedChannel$1.run(AbstractFramedChannel.java:137) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
-	at org.xnio.nio.WorkerThread.safeRun(WorkerThread.java:582) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
-	at org.xnio.nio.WorkerThread.run(WorkerThread.java:466) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
 
-2020-05-20 01:09:43.815  INFO 8320 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:56124 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.s1kze6ay5nm
-2020-05-20 01:10:43.816  INFO 8320 --- [pool-13-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 01:15:16.924  WARN 8320 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 0] [Bucket 20 = 0] [Bucket 50 = 0] [Bucket 200 = 1] [Bucket 500 = 0] [Bucket 2000 = 0] 
-2020-05-20 11:14:31.034  INFO 8320 --- [XNIO-1 task-13] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:58820
-2020-05-20 11:14:34.217  INFO 8320 --- [XNIO-1 task-13] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:58820
-2020-05-20 11:14:34.532  INFO 8320 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.6hsjffrdls6"}
-2020-05-20 11:15:07.609  WARN 8320 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 0] [Bucket 20 = 0] [Bucket 50 = 0] [Bucket 200 = 1] [Bucket 500 = 0] [Bucket 2000 = 0] 
-2020-05-20 11:16:32.992  INFO 8320 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:58820 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.6hsjffrdls6
-2020-05-20 11:17:33.000  INFO 8320 --- [pool-15-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 11:19:47.433  INFO 8320 --- [XNIO-1 task-14] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:58869
-2020-05-20 11:19:48.115  INFO 8320 --- [XNIO-1 task-14] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:58869
-2020-05-20 11:19:48.257  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.e5hwvnwuha6"}
-2020-05-20 11:20:38.598  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:58869 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.e5hwvnwuha6
-2020-05-20 11:21:38.598  INFO 8320 --- [pool-16-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 11:28:41.731  INFO 8320 --- [XNIO-1 task-15] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:58953
-2020-05-20 11:28:41.985  INFO 8320 --- [XNIO-1 task-15] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:58953
-2020-05-20 11:28:42.131  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.98473ur3l8j"}
-2020-05-20 11:29:07.480  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:58953 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.98473ur3l8j
-2020-05-20 11:29:29.729  INFO 8320 --- [XNIO-1 task-16] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:58977
-2020-05-20 11:29:30.659  INFO 8320 --- [XNIO-1 task-16] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:58977
-2020-05-20 11:29:30.747  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.znx2fntuvv"}
-2020-05-20 11:30:07.481  INFO 8320 --- [pool-17-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 11:34:32.672  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:58977 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.znx2fntuvv
-2020-05-20 11:34:59.363  INFO 8320 --- [XNIO-1 task-17] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59040
-2020-05-20 11:34:59.457  INFO 8320 --- [XNIO-1 task-17] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59040
-2020-05-20 11:34:59.535  INFO 8320 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.jytv6ebp2"}
-2020-05-20 11:35:32.673  INFO 8320 --- [pool-18-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 11:35:33.061  INFO 8320 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59040 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.jytv6ebp2
-2020-05-20 11:36:33.068  INFO 8320 --- [pool-19-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 12:11:35.055  INFO 8320 --- [XNIO-1 task-18] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59245
-2020-05-20 12:11:35.196  INFO 8320 --- [XNIO-1 task-18] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59245
-2020-05-20 12:11:35.274  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.mekefncg8kk"}
-2020-05-20 12:11:48.656  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59245 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.mekefncg8kk
-2020-05-20 12:12:48.668  INFO 8320 --- [pool-20-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 15:34:58.785  INFO 8320 --- [XNIO-1 task-19] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:56825
-2020-05-20 15:35:03.957  INFO 8320 --- [XNIO-1 task-19] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:56825
-2020-05-20 15:35:04.641  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.zayuhxlv4ep"}
-2020-05-20 15:56:18.232  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:56825 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.zayuhxlv4ep
-2020-05-20 15:57:18.006  INFO 8320 --- [pool-21-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 15:58:28.736  INFO 8320 --- [XNIO-1 task-20] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:57018
-2020-05-20 15:58:31.517  INFO 8320 --- [XNIO-1 task-20] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:57018
-2020-05-20 15:58:32.004  INFO 8320 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.p5mqneqqw1"}
-2020-05-20 15:58:40.930  INFO 8320 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:57018 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.p5mqneqqw1
-2020-05-20 15:59:40.930  INFO 8320 --- [pool-22-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
-2020-05-20 16:13:47.966  INFO 8320 --- [XNIO-1 task-21] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:57107
-2020-05-20 16:13:48.203  INFO 8320 --- [XNIO-1 task-21] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:57107
-2020-05-20 16:13:48.468  INFO 8320 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.gc6f2cwu6dq"}
-2020-05-20 16:22:04.560  INFO 8320 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:57107 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.gc6f2cwu6dq
-2020-05-20 16:23:04.562  INFO 8320 --- [pool-23-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+	Version:        e7220eaecb3f1db1cd21a1c1ba47d464358b141f-SNAPSHOT
+	Build:          1002
+	Build time:     28.03.2020 19:31:09 UTC
+	Branch          master
+	Commit:         e7220ea
+	Commit time:    28.03.2020 19:29:10 UTC
+	JVM:            13
+	Lavaplayer      1.3.38
+
+2020-05-21 13:22:53.586  WARN 9532 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-05-21 13:22:54.044  INFO 9532 --- [main] lavalink.server.Launcher                 : Starting Launcher on DESKTOP-MR8GL0C with PID 9532 (C:\Users\runar\Desktop\blazify\lavalink\Lavalink.jar started by runar in C:\Users\runar\Desktop\blazify\lavalink)
+2020-05-21 13:22:54.048  INFO 9532 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2020-05-21 13:23:05.839  WARN 9532 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2020-05-21 13:23:06.490  INFO 9532 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2020-05-21 13:23:06.492  INFO 9532 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 12147 ms
+2020-05-21 13:23:09.016  WARN 9532 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2020-05-21 13:23:09.072  INFO 9532 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Windows 10, Arch: amd64
+2020-05-21 13:23:09.075  INFO 9532 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
+2020-05-21 13:23:09.077  INFO 9532 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
+2020-05-21 13:23:09.080  INFO 9532 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
+2020-05-21 13:23:12.945  INFO 9532 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2020-05-21 13:23:15.386  INFO 9532 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-21 13:23:18.019  INFO 9532 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2020-05-21 13:23:18.103  INFO 9532 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2020-05-21 13:23:19.529  INFO 9532 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
+2020-05-21 13:23:19.586  INFO 9532 --- [main] lavalink.server.Launcher                 : Started Launcher in 34.02 seconds (JVM running for 46.569)
+2020-05-21 15:47:46.719  INFO 5544 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        e7220eaecb3f1db1cd21a1c1ba47d464358b141f-SNAPSHOT
+	Build:          1002
+	Build time:     28.03.2020 19:31:09 UTC
+	Branch          master
+	Commit:         e7220ea
+	Commit time:    28.03.2020 19:29:10 UTC
+	JVM:            13
+	Lavaplayer      1.3.38
+
+2020-05-21 15:47:47.422  INFO 5544 --- [main] lavalink.server.Launcher                 : Starting Launcher on DESKTOP-MR8GL0C with PID 5544 (C:\Users\runar\Desktop\blazify\lavalink\Lavalink.jar started by runar in C:\Users\runar\Desktop\blazify\lavalink)
+2020-05-21 15:47:47.422  INFO 5544 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2020-05-21 15:47:47.578  WARN 5544 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-05-21 15:47:56.359  WARN 5544 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2020-05-21 15:47:56.562  INFO 5544 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2020-05-21 15:47:56.562  INFO 5544 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8781 ms
+2020-05-21 15:47:58.609  WARN 5544 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2020-05-21 15:47:58.656  INFO 5544 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Windows 10, Arch: amd64
+2020-05-21 15:47:58.656  INFO 5544 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
+2020-05-21 15:47:58.656  INFO 5544 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
+2020-05-21 15:47:58.656  INFO 5544 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
+2020-05-21 15:48:01.859  INFO 5544 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2020-05-21 15:48:03.733  INFO 5544 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-21 15:48:05.061  INFO 5544 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2020-05-21 15:48:05.124  INFO 5544 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2020-05-21 15:48:06.280  INFO 5544 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
+2020-05-21 15:48:06.311  INFO 5544 --- [main] lavalink.server.Launcher                 : Started Launcher in 29.827 seconds (JVM running for 36.618)

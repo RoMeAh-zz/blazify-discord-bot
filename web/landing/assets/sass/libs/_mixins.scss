@@ -38,9 +38,9 @@
 }
 
 /// Applies padding to an element, taking the current element-margin value into account.
-/// @param {mixed} $tb Top/bottom padding.
+/// @param {mixed} $tb Top/clienttom padding.
 /// @param {mixed} $lr Left/right padding.
-/// @param {list} $pad Optional extra padding (in the following order top, right, bottom, left)
+/// @param {list} $pad Optional extra padding (in the following order top, right, clienttom, left)
 /// @param {bool} $important If true, adds !important.
 @mixin padding($tb, $lr, $pad: (0,0,0,0), $important: null) {
 

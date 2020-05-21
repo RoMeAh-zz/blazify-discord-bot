@@ -45,8 +45,8 @@
                             <v-btn :href="`/dashboard/guild/${guild.id}`" text elevation="2" v-if="guild.manageable"
                                    style="background-color: #00C853;">Manage
                             </v-btn>
-                            <v-btn href="https://discordapp.com/oauth2/authorize?client_id=696756322825404416&scope=bot&permissions=8"
-                                   text elevation="3" v-else style="background-color: #31779d;">Add Bot
+                            <v-btn href="https://discordapp.com/oauth2/authorize?client_id=696756322825404416&scope=client&permissions=8"
+                                   text elevation="3" v-else style="background-color: #31779d;">Add client
                             </v-btn>
                         </v-card-actions>
                     </v-card>

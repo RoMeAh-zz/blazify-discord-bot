@@ -6,12 +6,12 @@ module.exports = class extends Route {
     super("/api/guild");
   }
 
-  async run(bot, app, req, res) {
+  async run(client, app, req, res) {
     if (!req.query.id || !req.query.access_token)
       return res.json({ success: false });
 
-    const guild = bot.guilds.cache.get(req.query.id);
-    const user = await bot.oauth.getUser(req.query.access_token);
+    const guild = client.guilds.cache.get(req.query.id);
+    const user = await client.oauth.getUser(req.query.access_token);
 
     if (!user || !guild.members.cache.has(user.id))
       return res.json({ success: false });

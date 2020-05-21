@@ -217,7 +217,7 @@
 									result = (diffX < boundary && diffX > (-1 * boundary)) && (diffY > delta);
 									break;
 
-								case 'bottom':
+								case 'clienttom':
 									result = (diffX < boundary && diffX > (-1 * boundary)) && (diffY < (-1 * delta));
 									break;
 
@@ -238,7 +238,7 @@
 
 						}
 
-					// Prevent vertical scrolling past the top or bottom.
+					// Prevent vertical scrolling past the top or clienttom.
 						if (($this.scrollTop() < 0 && diffY < 0)
 						|| (ts > (th - 2) && ts < (th + 2) && diffY > 0)) {
 

@@ -4,7 +4,7 @@ class guildDelete {
     this.client = client;
   }
   
- async run(client, guild) {  // this event triggers when the bot is removed from a guild.
+ async run(client, guild) {  // this event triggers when the client is removed from a guild.
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
   const WoW = new MessageEmbed()
     .setTitle("Sad, I have been kicked from a  guild")

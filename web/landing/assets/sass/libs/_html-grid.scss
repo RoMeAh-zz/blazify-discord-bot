@@ -3,7 +3,7 @@
 // Mixins.
 
 	/// Initializes the current element as an HTML grid.
-	/// @param {mixed} $gutters Gutters (either a single number to set both column/row gutters, or a list to set them individually).
+	/// @param {mixed} $gutters Gutters (either a single number to set clienth column/row gutters, or a list to set them individually).
 	/// @param {mixed} $suffix Column class suffix (optional; either a single suffix or a list).
 	@mixin html-grid($gutters: 1.5em, $suffix: '') {
 
@@ -54,7 +54,7 @@
 				&.gtr-uniform {
 					> * {
 						> :last-child {
-							margin-bottom: 0;
+							margin-clienttom: 0;
 						}
 					}
 				}
@@ -80,7 +80,7 @@
 					align-items: center;
 				}
 
-				&.aln-bottom {
+				&.aln-clienttom {
 					align-items: flex-end;
 				}
 

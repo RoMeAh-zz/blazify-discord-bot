@@ -5,7 +5,7 @@ module.exports = class extends Route {
     super("/api/auth");
   }
 
-  run(bot, app, req, res) {
-    return res.json({ success: true, redirect: bot.oauthURL });
+  run(client, app, req, res) {
+    return res.json({ success: true, redirect: client.oauthURL });
   }
 };

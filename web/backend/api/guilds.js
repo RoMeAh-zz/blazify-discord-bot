@@ -5,17 +5,17 @@ module.exports = class extends Route {
     super("/api/guilds");
   }
 
-  async run(bot, app, req, res) {
+  async run(client, app, req, res) {
     if (!req.query.access_token) return res.json({ success: false });
     try {
-      let guilds = await bot.oauth.getUserGuilds(req.query.access_token);
+      let guilds = await client.oauth.getUserGuilds(req.query.access_token);
       guilds = guilds
         .filter((guild) =>
           new Permissions(guild.permissions).has("MANAGE_GUILD", true)
         )
         .map((guild) => ({
           ...guild,
-          manageable: bot.guilds.cache.has(guild.id),
+          manageable: client.guilds.cache.has(guild.id),
         }));
       res.json({ success: true, data: guilds });
     } catch (e) {

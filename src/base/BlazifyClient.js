@@ -39,17 +39,18 @@ class BlazifyClient extends Client {
   }
 loadCommands(path) {
   const load = dirs => {
-  ["Bot-Owner-only", "economy", "Fun", "Gaming", "giveaways", "Moderation", "music", "role", "Utility", "XP & XP COINS"].forEach(x => load(x));
+  ["client-Owner-only", "economy", "Fun", "Gaming", "giveaways", "Moderation", "music", "role", "Utility", "XP & XP COINS"].forEach(x => load(x));
+  
   readdir(path, (err, files) => {
       if (err) console.log(err);
       files.forEach(cmd => {
-          const command = new (require(`../${path}/${dirs}/${cmd}`))(this);
+          const command = new (require(`../${path}/${cmd}`))(this);
           this.commands.set(command.help.name, command);
           command.conf.aliases.forEach(a => this.aliases.set(a, command.help.name));
       });
   });
-}
   return this;
+}
 }
 loadEvents(path) {
   readdir(path, (err, files) => {
