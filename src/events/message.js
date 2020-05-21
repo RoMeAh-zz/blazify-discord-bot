@@ -149,7 +149,7 @@ class Message {
     const command = args.shift().slice(prefix.length);
     const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
     if (!cmd) return;
-    if (cmd.cooldown.has(message.author.id)) return message.delete();
+    if (cmd.cooldown.has(message.author.id)) return message.channel.send(`Sorry, you need to wait till the cooldown ends as due to our low specification system we have a cooldown but you can can help by donating in [paypal](https://paypal.me/roahgaming)`);
     cmd.setMessage(message);
     cmd.run(message, args);
     if (cmd.conf.cooldown > 0) cmd.startCooldown(message.author.id);

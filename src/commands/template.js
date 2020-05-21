@@ -29,6 +29,9 @@ async run(message, args) {
 //code here 
 //this is just a template for developers who don't have knowledge in Javascript classes
 //remember client is always this.client not just client
+//https://discord.gg/BT4aeJJ
+//I WROTE THIS AS IM GETTING BANNED FROM DISCORD.
+//my account name is ZipZap
 message.channel.send("It is just a Template for developers");
 }
 }

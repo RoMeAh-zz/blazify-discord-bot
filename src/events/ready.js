@@ -66,23 +66,23 @@ class Ready {
     `
   );
 
-  // client.music = new ErelaClient(client, nodes)
-  //   .on("nodeError", console.log)
-  //   .on("nodeConnect", () =>
-  //     console.log("Successfully created a new Lavalink Node.")
-  //   )
-  //   .on("queueEnd", (player) => {
-  //     player.textChannel.send("Queue has ended.");
-  //     return client.music.players.destroy(player.guild.id);
-  //   })
-  //   .on("trackStart", ({ textChannel }, { title, duration }) =>
-  //     textChannel
-  //       .send(
-  //         `Now playing: **${title}** \`${Utils.formatTime(duration, true)}\``
-  //       )
-  //       .then((m) => m.delete({ timeout: 15000 }))
-  //   );
-
+  /* client.music = new ErelaClient(client, nodes)
+     .on("nodeError", console.log)
+     .on("nodeConnect", () =>
+       console.log("Successfully created a new Lavalink Node.")
+     )
+     .on("queueEnd", (player) => {
+       player.textChannel.send("Queue has ended.");
+       return client.music.players.destroy(player.guild.id);
+     })
+     .on("trackStart", ({ textChannel }, { title, duration }) =>
+       textChannel
+         .send(
+           `Now playing: **${title}** \`${Utils.formatTime(duration, true)}\``
+       )
+         .then((m) => m.delete({ timeout: 15000 }))
+     );
+*/
   let activities = [
       `${this.client.guilds.cache.size} servers!`,
       `${this.client.channels.cache.size} channels!`,

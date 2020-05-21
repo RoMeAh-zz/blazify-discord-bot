@@ -9,9 +9,9 @@ THE BOT WAS IN MAINTAINCE AS WE WERE SWITCH TO V12, IT IS COMPLETE BUT IT WILL B
 Hello this is a private Discord Bot made in discord.js library which also contains dashboard which is customizable by you, first of all go ahed to config.json to get your Bot necessary files there and to start the bot the steps are :-
 
 - Please open web/client/README.md on how to setup your dashboard
-- Please go to the lavalink folder and run the start_bot.bat.bat file
-- last at the main directory run that start_bot.bat
+- Please go to the lavalink folder and run the start_lavalink.bat.bat file
+- last at the src directory run that start_bot.bat or just do npm run blazify
 
 Facing any problem in setting up the bot?
 
-Well then go forward to https://blazify-dashboard.glitch.me and join the support server
+Well then go forward to https://blazify-web.glitch.me and join the support server

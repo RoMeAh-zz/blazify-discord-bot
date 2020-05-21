@@ -1,8 +1,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdir } = require("fs");
-const { paths, nodes } = require("../config.json");
+const { nodes } = require("../config.json");
 const { Manager } = require("lavaclient");
-const { GiveawaysManager } = require("discord-giveaways");
 
 Manager.use(new (require("../utils/BlazifyMusic"))());
 
@@ -22,16 +21,6 @@ class BlazifyClient extends Client {
       ["medium", 0.5],
       ["high", 0.75],
     ]);
-    this.giveawaysManager = new GiveawaysManager(this, {
-      storage: "../giveaways.json",
-      updateCountdownEvery: 5000,
-      default: {
-        botsCanWin: false,
-        exemptPermissions: [],
-        embedColor: "#FF0000",
-        reaction: "🎉",
-      },
-    });
     this.lava = new Manager(nodes, {
       shards: this.shard ? this.shard.count : 1,
       send: (id, payload) => {
@@ -47,16 +36,19 @@ class BlazifyClient extends Client {
   login(token) {
     super.login(token);
    return this;
-}
+  }
 loadCommands(path) {
+  const load = dirs => {
+  ["Bot-Owner-only", "economy", "Fun", "Gaming", "giveaways", "Moderation", "music", "role", "Utility", "XP & XP COINS"].forEach(x => load(x));
   readdir(path, (err, files) => {
       if (err) console.log(err);
       files.forEach(cmd => {
-          const command = new (require(`../${path}/${cmd}`))(this);
+          const command = new (require(`../${path}/${dirs}/${cmd}`))(this);
           this.commands.set(command.help.name, command);
           command.conf.aliases.forEach(a => this.aliases.set(a, command.help.name));
       });
   });
+}
   return this;
 }
 loadEvents(path) {

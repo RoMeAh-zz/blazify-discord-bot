@@ -39,3 +39,23 @@ java.nio.channels.ClosedChannelException: null
 2020-05-20 11:35:32.673  INFO 8320 --- [pool-18-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
 2020-05-20 11:35:33.061  INFO 8320 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59040 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.jytv6ebp2
 2020-05-20 11:36:33.068  INFO 8320 --- [pool-19-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-05-20 12:11:35.055  INFO 8320 --- [XNIO-1 task-18] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59245
+2020-05-20 12:11:35.196  INFO 8320 --- [XNIO-1 task-18] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59245
+2020-05-20 12:11:35.274  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.mekefncg8kk"}
+2020-05-20 12:11:48.656  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59245 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.mekefncg8kk
+2020-05-20 12:12:48.668  INFO 8320 --- [pool-20-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-05-20 15:34:58.785  INFO 8320 --- [XNIO-1 task-19] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:56825
+2020-05-20 15:35:03.957  INFO 8320 --- [XNIO-1 task-19] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:56825
+2020-05-20 15:35:04.641  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.zayuhxlv4ep"}
+2020-05-20 15:56:18.232  INFO 8320 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:56825 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.zayuhxlv4ep
+2020-05-20 15:57:18.006  INFO 8320 --- [pool-21-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-05-20 15:58:28.736  INFO 8320 --- [XNIO-1 task-20] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:57018
+2020-05-20 15:58:31.517  INFO 8320 --- [XNIO-1 task-20] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:57018
+2020-05-20 15:58:32.004  INFO 8320 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.p5mqneqqw1"}
+2020-05-20 15:58:40.930  INFO 8320 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:57018 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.p5mqneqqw1
+2020-05-20 15:59:40.930  INFO 8320 --- [pool-22-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-05-20 16:13:47.966  INFO 8320 --- [XNIO-1 task-21] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:57107
+2020-05-20 16:13:48.203  INFO 8320 --- [XNIO-1 task-21] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:57107
+2020-05-20 16:13:48.468  INFO 8320 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : {"op":"configureResuming","key":"0.gc6f2cwu6dq"}
+2020-05-20 16:22:04.560  INFO 8320 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:57107 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.gc6f2cwu6dq
+2020-05-20 16:23:04.562  INFO 8320 --- [pool-23-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.

@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { decode } = require("@lavalink/encoding");
 const Utils = require("./functions");
 
-module.exports = class BlazifyMusicPlugin extends Plugin {
+class BlazifyMusicPlugin extends Plugin {
   preRegister() {
     Structures.extend(
       "player",
@@ -79,3 +79,4 @@ module.exports = class BlazifyMusicPlugin extends Plugin {
     };
   }
 };
+module.exports = BlazifyMusicPlugin;
