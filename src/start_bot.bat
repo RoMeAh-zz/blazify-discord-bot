@@ -1,2 +1,2 @@
 node index.js
-BREAK;
+PAUSE
