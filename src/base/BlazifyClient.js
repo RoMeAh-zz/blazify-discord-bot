@@ -22,14 +22,14 @@ class BlazifyClient extends Client {
       ["medium", 0.5],
       ["high", 0.75],
     ]);
-    // this.lava = new Manager(nodes, {
-    //   shards: this.shard ? this.shard.count : 1,
-    //   send: (id, payload) => {
-    //     const guild = this.guilds.cache.get(id);
-    //     if (guild) guild.shard.send(payload);
-    //     return;
-    //   },
-    // });
+    this.lava = new Manager(nodes, {
+      shards: this.shard ? this.shard.count : 1,
+      send: (id, payload) => {
+        const guild = this.guilds.cache.get(id);
+        if (guild) guild.shard.send(payload);
+        return;
+      },
+    });
     this.mongoose.init();
     this.ws.on("VOICE_SERVER_UPDATE", _ => this.lava.serverUpdate(_));
     this.ws.on("VOICE_STATE_UPDATE", _ => this.lava.stateUpdate(_));
