@@ -35,7 +35,7 @@ async run(client, message, args) {
         "You need to be in a voice channel to play music."
       );
 
-    const permissions = voiceChannel.permissionsFor(bot.user);
+    const permissions = voiceChannel.permissionsFor(client.user);
     if (!permissions.has("CONNECT"))
       return message.channel.send(
         "I cannot connect to your voice channel, make sure I have permission to!"
@@ -50,9 +50,9 @@ async run(client, message, args) {
         "Please provide a song name or link to search."
       );
 
-    let player = bot.lava.players.get(message.guild.id);
+    let player = client.lava.players.get(message.guild.id);
     if (!player) {
-      player = await bot.lava.join(
+      player = await client.lava.join(
         {
           guild: message.guild.id,
           channel: message.member.voice.channel.id,
@@ -71,7 +71,7 @@ async run(client, message, args) {
         : "ytsearch:"
     }${args.join(" ")}`;
 
-    bot.lava
+    client.lava
       .search(search)
       .then(async (res) => {
         switch (res.loadType) {

@@ -2,7 +2,7 @@
 const DBL = require("dblapi.js");
 const express = require("express");
 const http = require("http");
-//const startServer = require("../../web/backend/server.js");
+const Server = require("../../web/backend/server.js");
 
 /** Database */
 const Coins = require("../models/coin.js");
@@ -21,9 +21,8 @@ class Ready {
   
  async run(client) {
   await this.client.lava.init(this.client.user.id)
+  /*  DBL HAS BEEN TEMPORARILY DISABLED AS THE BOT HAS BEEN DELETED FROM THERE
   if (mode !== "development") {
-    new startServer(client);
-
     setInterval(() => dbl.postStats(this.client.guilds.cache.size), 1800000);
 
     const app = express();
@@ -47,7 +46,8 @@ class Ready {
     app.get("/", (req, res) => void 0);
 
     server.listen(5000, () => console.log("Listening"));
-
+  }
+  */
     this.client.channels.cache
       .get("707274207112724480")
       .edit({ name: `${this.client.guilds.cache.size} Servers` });
@@ -57,7 +57,7 @@ class Ready {
     this.client.channels.cache
       .get("707274279032717313")
       .edit({ name: `${this.client.channels.cache.size} Channels` });
-  }
+  
 
   console.log(
     `Hi, ${this.client.user.username} is now online.

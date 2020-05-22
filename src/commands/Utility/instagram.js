@@ -26,7 +26,7 @@ if(!enableUtility) return message.channel.send("Hmm it seems like the Utility co
 
         if (!name) {
             return message.reply("Maybe it's useful to actually search for someone...!")
-                .then(m => m.delete(5000));
+                .then(m => m.delete({timeout: 5000}));
         }
 
         const url = `https://instagram.com/${name}/?__a=1`;
@@ -37,7 +37,7 @@ if(!enableUtility) return message.channel.send("Hmm it seems like the Utility co
             res = await fetch(url).then(url => url.json());
         } catch (e) {
             return message.reply("I couldn't find that account... :(")
-                .then(m => m.delete(5000));
+                .then(m => m.delete({timeout: 5000}));
         }
 
         const account = res.graphql.user;
