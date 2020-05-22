@@ -15,7 +15,7 @@ class Work extends BlazifyClient {
       permission: "READ-MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
 
     const ranLength = Math.floor(Math.random() * 15 + 5);
     const ranString = rs.generate(ranLength);

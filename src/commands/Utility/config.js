@@ -36,7 +36,7 @@ class Config extends BlazifyClient {
       permission: "MANAGE_SERVER"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
 
     if (!message.member.hasPermission(["MANAGE_GUILD"]))
       return message.channel.send("You don't have the required permissions!");

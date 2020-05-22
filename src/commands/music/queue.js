@@ -16,7 +16,7 @@ class Queue extends BlazifyClient {
       permission: "READ_MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
     const guildSettings =
       (await Settings.findOne({ guildID: message.guild.id })) ||
       new Settings({

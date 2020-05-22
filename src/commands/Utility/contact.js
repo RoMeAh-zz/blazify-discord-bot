@@ -13,7 +13,7 @@ class Bug extends BlazifyClient {
         permission: "READ_MESSAGES"
       });
     }
-  async run(message, args) {
+  async run(client, message, args) {
   const apa = client.channels.cache.get("705693646623604788")
 
         const g = args.join(" ")

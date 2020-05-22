@@ -17,7 +17,7 @@ class Kick extends BlazifyClient {
       permission: "KICK_MEMBERS"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });

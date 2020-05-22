@@ -19,7 +19,7 @@ class BotInfo extends BlazifyClient {
       permission: "READ_MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
    let cpuLol;
    cpuStat.usagePercent(function(err, percent, seconds) {
      if (err) { return console.log(err); }

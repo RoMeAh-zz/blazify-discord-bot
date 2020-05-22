@@ -16,7 +16,7 @@ class React extends BlazifyClient {
       permission: "READ_MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
       if(args.length !== 1) {
            let msg = await message.channel.send("Too many arguments. Must only provide 1 message id");
            await msg.delete({ timeout: 3500 }).catch(err => console.log(err));

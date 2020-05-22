@@ -22,14 +22,14 @@ class BlazifyClient extends Client {
       ["medium", 0.5],
       ["high", 0.75],
     ]);
-    this.lava = new Manager(nodes, {
-      shards: this.shard ? this.shard.count : 1,
-      send: (id, payload) => {
-        const guild = this.guilds.cache.get(id);
-        if (guild) guild.shard.send(payload);
-        return;
-      },
-    });
+    // this.lava = new Manager(nodes, {
+    //   shards: this.shard ? this.shard.count : 1,
+    //   send: (id, payload) => {
+    //     const guild = this.guilds.cache.get(id);
+    //     if (guild) guild.shard.send(payload);
+    //     return;
+    //   },
+    // });
     this.mongoose.init();
     this.ws.on("VOICE_SERVER_UPDATE", _ => this.lava.serverUpdate(_));
     this.ws.on("VOICE_STATE_UPDATE", _ => this.lava.stateUpdate(_));
@@ -44,7 +44,7 @@ loadCommands() {
   readdirSync("./commands/").forEach(dir => {
     const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js"));
     for (let file of commands) {
-        let command = require(`../commands/${dir}/${file}`);
+        let command = new (require(`../commands/${dir}/${file}`))(this);
         if (command.help.name) {
             this.commands.set(command.help.name, command);
             table.addRow(file, '✅');

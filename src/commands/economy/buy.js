@@ -15,7 +15,7 @@ class Buy extends BlazifyClient {
       permission: "READ-MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
 
         if (!args[0]) return message.channel.send("You need to specify an item name!");
 

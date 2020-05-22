@@ -17,7 +17,7 @@ class Warn1 extends BlazifyClient {
       permission: "MANAGE_MEMBERS"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });

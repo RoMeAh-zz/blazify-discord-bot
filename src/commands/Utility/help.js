@@ -15,7 +15,7 @@ class Help extends BlazifyClient {
       permission: "READ_MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
     await Prefix.findOne({ guildID: message.guild.id }, (err, prefixes) => {
       if (err) console.log(err);
 

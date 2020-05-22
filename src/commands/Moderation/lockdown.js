@@ -16,8 +16,7 @@ class Lockdown extends BlazifyClient {
       permission: "BAN_MEMBERS"
     });
   }
-async run(message, args) {
-  run: async(client, message, args) => {
+async run(client, message, args) {
     if(args.length !== 2)
       return message.channel.send('No Role ID and true or false not provided');
     let [ roleId, flag ] = args.split(' ');
@@ -49,7 +48,6 @@ async run(message, args) {
         message.channel.send('Invalid Role.');
       }
     }
-  }
 }
 }
 module.exports = Lockdown;

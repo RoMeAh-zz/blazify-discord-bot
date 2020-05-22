@@ -16,7 +16,7 @@ class Inventory extends BlazifyClient {
       permission: "READ-MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
 
         let content = "";
 

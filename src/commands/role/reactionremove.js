@@ -14,7 +14,7 @@ class UNReact extends BlazifyClient {
       permission: "READ_MESSAGES"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
         if(args.length !== 1) return;
         // Check if the message exists.
         const { channel, author } = message;

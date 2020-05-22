@@ -16,7 +16,7 @@ class Uptime extends BlazifyClient {
         permission: "READ_MESSAGES"
       });
     }
-  async run(message, args) {
+  async run(client, message, args) {
       let uptime = ``;
       let totalSeconds = (client.uptime / 1000);
       let hours = Math.floor(totalSeconds / 3600);

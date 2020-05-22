@@ -18,7 +18,7 @@ class Ban extends BlazifyClient {
         permission: "BAN_MEMBERS"
       });
     }
-  async run(message, args) {
+  async run(client, message, args) {
     const guildSettings = await Settings.findOne({guildID: message.guild.id}) || new Settings({
         guildID: message.guild.id
     });

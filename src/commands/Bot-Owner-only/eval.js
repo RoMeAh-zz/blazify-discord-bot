@@ -14,7 +14,7 @@ class Eval extends BlazifyClient {
       permission: "BOT_OWNER"
     });
   }
-async run(message, args) {
+async run(client, message, args) {
     if (
       ["560805847517888512", "396096412116320258"].includes(message.author.id)
     ) {
