@@ -45,14 +45,14 @@ loadCommands() {
     const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js"));
     for (let file of commands) {
         let command = require(`../commands/${dir}/${file}`);
-        if (command.name) {
-            this.commands.set(command.name, command);
+        if (command.help.name) {
+            this.commands.set(command.help.name, command);
             table.addRow(file, '✅');
         } else {
             table.addRow(file, `❌  -> missing a help.name, or help.name is not a string.`);
             continue;
         }
-        if (command.aliases && Array.isArray(command.aliases)) command.aliases.forEach(alias => this.aliases.set(alias, command.name))
+        if (command.conf.aliases && Array.isArray(command.conf.aliases)) command.conf.aliases.forEach(alias => this.aliases.set(alias, command.help.name))
     }
 });
 console.log(table.toString());
