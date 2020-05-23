@@ -1,9 +1,3 @@
-/** Backend and Web */
-const DBL = require("dblapi.js");
-const express = require("express");
-const http = require("http");
-const Server = require("../../web/backend/server.js");
-
 /** Database */
 const Coins = require("../models/coin.js");
 const Prefix = require("../models/prefix.js");
@@ -11,43 +5,14 @@ const Settings = require("../models/configsetting.js");
 const XP = require("../models/xp.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 const Blacklist = require("../models/blacklist.js");
-/** Configuration */ 
-const { dbl: dbltoken, WH: webhook, nodes, mode } = require("../config.json");
 
 class Ready {
   constructor(client) {
     this.client = client;
   }
   
- async run(client) {
+ async run() {
   await this.client.lava.init(this.client.user.id)
-  /*  DBL HAS BEEN TEMPORARILY DISABLED AS THE BOT HAS BEEN DELETED FROM THERE
-  if (mode !== "development") {
-    setInterval(() => dbl.postStats(this.client.guilds.cache.size), 1800000);
-
-    const app = express();
-    const server = http.createServer(app);
-    const dbl = new DBL(dbltoken, {
-      webhookAuth: webhook,
-      webhookServer: server,
-    });
-
-    dbl.webhook.on("ready", (hook) =>
-      console.log(`Webhook running with path ${hook.path}`)
-    );
-    dbl.webhook.on("vote", (vote) => {
-      console.log(`User with ID ${vote.user} just voted!`);
-      let votehist = client.guild.channels.cache.get("709685606464225361");
-      votehist.send(
-        `${vote.user} just voted awesome news. May you get infinite years of good luck`
-      );
-    });
-
-    app.get("/", (req, res) => void 0);
-
-    server.listen(5000, () => console.log("Listening"));
-  }
-  */
     this.client.channels.cache
       .get("707274207112724480")
       .edit({ name: `${this.client.guilds.cache.size} Servers` });
