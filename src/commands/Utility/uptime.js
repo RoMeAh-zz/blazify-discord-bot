@@ -46,7 +46,7 @@ class Uptime extends BlazifyClient {
 
     let serverembed = new MessageEmbed()
         .setColor("#f00c0c")
-        .addField('Uptime Bot', uptime)
+        .addField('Uptime client', uptime)
         .setTimestamp()
         .setFooter(`Requested by: ${message.author.tag}`)
 

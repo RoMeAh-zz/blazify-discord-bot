@@ -30,7 +30,7 @@ if(!enableUtility) return message.channel.send("Hmm it seems like the Utility co
         .addField("**Guild Owner:**", `${message.guild.owner}`, true)
         .addField("**Member Count:**", `${message.guild.memberCount}`, true)
         .addField("**Role Count:**", `${message.guild.roles.cache.size}`, true)
-        .setFooter(`Blazify | Footer`, bot.user.displayAvatarURL);
+        .setFooter(`Blazify | Footer`, client.user.displayAvatarURL);
     message.channel.send(sEmbed);
     }
   }

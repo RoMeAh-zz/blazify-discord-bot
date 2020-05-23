@@ -103,7 +103,7 @@ async run(client, message, args) {
                                                                     let rguild = client.guilds.cache.get(collected.first().content)
                                                                     let reqguild = (await rguild.members.fetch()).map(m => m.id);
                                                                     if (!reqguild)
-                                                                        return message.channel.send("**Could not find the guild or the bot isn't present in the guild**");
+                                                                        return message.channel.send("**Could not find the guild or the client isn't present in the guild**");
                                                                     console.log(reqguild);
                                                                     msg.delete();
                                                                     message.delete();
@@ -114,7 +114,7 @@ async run(client, message, args) {
                                                                             )
                                                                             .addField(
                                                                                 "Invite link",
-                                                                                `[Invite Me](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847)`
+                                                                                `[Invite Me](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=client&permissions=2146958847)`
                                                                             )
                                                                             .addField("Requirment", "Guild"
                                                                             )
@@ -145,7 +145,7 @@ async run(client, message, args) {
                                                                                         )
                                                                                         .addField(
                                                                                             "Invite link",
-                                                                                            `[Invite Me](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=bot&permissions=2146958847)`
+                                                                                            `[Invite Me](https://discordapp.com/oauth2/authorize?client_id=690934802940952586&scope=client&permissions=2146958847)`
                                                                                         )
                                                                                         .setColor("#FF0000")
                                                                                         .setTimestamp();

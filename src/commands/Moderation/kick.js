@@ -47,7 +47,7 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
                     .then(m => m.delete({timeout: 5000}));
         }
 
-        // No bot permissions
+        // No client permissions
         if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
             return message.reply("❌ I do not have permissions to kick members. Please contact a staff member")
                     .then(m => m.delete({timeout: 5000}));

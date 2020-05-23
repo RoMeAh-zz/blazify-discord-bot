@@ -23,7 +23,7 @@ async run(client, message, args) {
     const {enableEconomy} = guildSettings;
 if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
     let allUsers = message.guild.members.cache
-      .filter(m => !m.user.bot)
+      .filter(m => !m.user.client)
       .map(m => m.user.id);
 
     Coins.find({ userID: allUsers })

@@ -35,7 +35,7 @@ class Clear extends BlazifyClient {
                 return message.reply("Yeah.... That's not a numer? I also can't delete 0 messages by the way.").then(m => m.delete({timeout: 5000}));
             }
 
-            // Maybe the bot can't delete messages
+            // Maybe the client can't delete messages
             if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
                 return message.reply("Sorryy... I can't delete messages.").then(m => m.delete({ timeout: 5000 }))
             }

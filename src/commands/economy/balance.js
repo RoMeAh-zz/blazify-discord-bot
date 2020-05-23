@@ -26,8 +26,8 @@ if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy co
     if (args[0]) {
       let member = message.mentions.members.first();
 
-      if (member.user.bot)
-        return message.channel.send("You can't check the balance of a bot");
+      if (member.user.client)
+        return message.channel.send("You can't check the balance of a client");
 
       await Coins.findOne({ userID: member.user.id }, (err, coins) => {
         if (err) console.log(err);

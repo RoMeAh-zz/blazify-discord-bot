@@ -56,7 +56,7 @@ async run(client, message, args) {
 
             const embed = new MessageEmbed()
                 .setColor(cyan)
-                .setAuthor(player.username, bot.user.displayAvatarURL)
+                .setAuthor(player.username, client.user.displayAvatarURL)
                 .setDescription(`Stats for the **${region}** region on ${platform}.`)
                 .setThumbnail(current.image)
                 .addField("General:", stripIndents`
@@ -83,7 +83,7 @@ async run(client, message, args) {
                     **Playtime:** ${Math.round(pve.general.playtime / 3600)} hours
                 `)
                 .setTimestamp()
-                .setFooter(bot.user.username);
+                .setFooter(client.user.username);
 
             message.channel.send(embed).catch((e) => message.channel.send(`There was an error: ${e.message}`));
     }

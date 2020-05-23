@@ -30,10 +30,10 @@ async run(client, message, args) {
 
             let embed = new MessageEmbed()
             .setColor(cyan)
-            .setAuthor(`${bot.user.username} Llama!`, message.guild.iconURL)
+            .setAuthor(`${client.user.username} Llama!`, message.guild.iconURL)
             .setImage(body.data.file)
             .setTimestamp()
-            .setFooter(bot.user.username.toUpperCase(), bot.user.displayAvatarURL)
+            .setFooter(client.user.username.toUpperCase(), client.user.displayAvatarURL)
 
                 msg.edit(embed)
         })

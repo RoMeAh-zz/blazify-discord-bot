@@ -37,10 +37,10 @@ async run(client, message, args) {
     const m = await message.channel.send(embed);
     const reacted = await promptMessage(m, message.author, 30, chooseArr);
 
-    const botChoice = chooseArr[Math.floor(Math.random() * chooseArr.length)];
+    const clientChoice = chooseArr[Math.floor(Math.random() * chooseArr.length)];
 
-    const result = await getResult(reacted, botChoice);
-    embed.setDescription("").addField(result, `${reacted} vs ${botChoice}`);
+    const result = await getResult(reacted, clientChoice);
+    embed.setDescription("").addField(result, `${reacted} vs ${clientChoice}`);
 
     m.edit(embed);
 

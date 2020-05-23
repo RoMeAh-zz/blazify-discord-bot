@@ -22,7 +22,7 @@ async run(client, message, args) {
   const {enableXPCoins} = guildSettings;
 if(!enableXPCoins) return message.channel.send("Hmm it seems like the XPCoins commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
     let allUsers = message.guild.members.cache
-      .filter(m => !m.user.bot)
+      .filter(m => !m.user.client)
       .map(m => m.user.id);
 
     Money.find({ userID: allUsers, serverID: message.guild.id })

@@ -6,12 +6,12 @@ let os = require('os')
 let cpuStat = require("cpu-stat")
 const ms = require("ms")
 const BlazifyClient = require("../../base/Command");
-class BotInfo extends BlazifyClient {
+class clientInfo extends BlazifyClient {
   constructor(client) {
     super(client, {
-      name: "botinfo",
-      description: "Displays the bot stats",
-      usage: "b3botinfo",
+      name: "clientinfo",
+      description: "Displays the client stats",
+      usage: "b3clientinfo",
       category: "Utility",
       cooldown: 1000,
       aliases: ["bio"],
@@ -41,9 +41,9 @@ async run(client, message, args) {
      .addField("� Arch", `\`${os.arch()}\``, true)
      .addField("� Platform", `\`\`${os.platform()}\`\``, true)
      .addField("API Latency", `${Math.round(client.ws.ping)}ms`)
-     .setDescription(`[![Discord Bots](https://top.gg/api/widget/696756322825404416.svg)](https://top.gg/bot/696756322825404416)`)
+     .setDescription(`[![Discord clients](https://top.gg/api/widget/696756322825404416.svg)](https://top.gg/client/696756322825404416)`)
      message.channel.send(embedStats)
    });
  }
 }
-module.exports = BotInfo;
+module.exports = clientInfo;

@@ -3,7 +3,7 @@ class Ping extends BlazifyClient {
     constructor(client) {
       super(client, {
         name: "ping",
-        description: "Shows the Ping of the bot",
+        description: "Shows the Ping of the client",
         usage: "b3ping",
         category: "Utility",
         cooldown: 1000,

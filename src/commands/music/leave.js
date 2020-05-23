@@ -27,7 +27,7 @@ async run(client, message, args) {
       );
 
     const voiceChannel = message.member.voice.channel;
-    const player = bot.lava.players.get(message.guild.id);
+    const player = client.lava.players.get(message.guild.id);
 
     if (!player)
       return message.channel.send("No song/s currently playing in this guild.");
@@ -36,7 +36,7 @@ async run(client, message, args) {
         "You need to be in a voice channel to use the leave command."
       );
 
-    bot.lava.leave(player.guild);
+    client.lava.leave(player.guild);
     return message.channel.send("Successfully stopped the music.");
   }
 };

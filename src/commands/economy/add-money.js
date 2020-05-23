@@ -15,7 +15,7 @@ class AddMoney extends BlazifyClient {
       cooldown: 1000,
       aliases: ["bc", "blck"],
       permLevel: 1,
-      permission: "READ_MESSAGES"
+      permission: "MANAGE_SERVER"
     });
   }
 async run(client, message, args) {
@@ -36,7 +36,7 @@ if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy co
 
       if (err) console.log(err);
 
-      coins.coins = +coins.coins + +amt
+      coins.coins = coins.coins + +amt
       coins.save().catch(err => console.log(err));
 
       return message.channel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} ${amt} coins.`);

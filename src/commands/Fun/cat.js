@@ -22,7 +22,7 @@ async run(client, message, args) {
     });
     const {enableFun} = guildSettings;
   if(!enableFun) return message.channel.send("Hmm it seems like the Fun commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
-        g = await message.channel.send("Generating...")
+      let msg = await message.channel.send("Generating...")
 
     fetch(`http://aws.random.cat/meow`)
     .then(res => res.json()).then(body => {
@@ -30,12 +30,12 @@ async run(client, message, args) {
 
         let cEmbed = new MessageEmbed()
         .setColor(cyan)
-        .setAuthor(`${bot.user.username} CATS!`, message.guild.iconURL)
+        .setAuthor(`${client.user.username} CATS!`, message.guild.iconURL)
         .setImage(body.file)
         .setTimestamp()
-        .setFooter(bot.user.username.toUpperCase(), bot.user.displayAvatarURL)
+        .setFooter(client.user.username.toUpperCase(), client.user.displayAvatarURL)
 
-            message.channel.send(cEmbed)
+           msg.edit(cEmbed)
         })
     }
 }
