@@ -10,7 +10,7 @@ class Rob extends BlazifyClient {
       name: "rob",
       description: "Steals money from a certain user",
       usage: "b3rob @Noob",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["steal"],
       permLevel: 1,

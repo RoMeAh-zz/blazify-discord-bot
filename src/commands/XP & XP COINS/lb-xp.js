@@ -8,7 +8,7 @@ class Leaderboard extends BlazifyClient {
       name: "leaderboard-xpcoins",
       description: "Shows the XPCoins Leaderboard",
       usage: "b3lb-xp",
-      category: "Levelling",
+      category: "XP & XP COINS",
       cooldown: 1000,
       aliases: ["lb-xp"],
       permLevel: 1,

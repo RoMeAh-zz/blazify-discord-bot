@@ -9,7 +9,7 @@ class Coins extends BlazifyClient {
       name: "xpcoins",
       description: "Shows the XPCoins of a user",
       usage: "b3xpcoins",
-      category: "Levelling",
+      category: "XP & XP COINS",
       cooldown: 1000,
       aliases: ["xp"],
       permLevel: 1,

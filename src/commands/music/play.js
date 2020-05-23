@@ -9,7 +9,7 @@ class Play extends BlazifyClient {
       name: "play",
       description: "Play a Song",
       usage: "b3play Feel Invincible",
-      category: "Music",
+      category: "music",
       cooldown: 1000,
       aliases: ["p", "pplay"],
       permLevel: 1,

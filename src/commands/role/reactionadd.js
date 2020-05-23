@@ -9,7 +9,7 @@ class React extends BlazifyClient {
       name: "rolemenusetup",
       description: "Play a Song",
       usage: "b3react <messageID>",
-      category: "Reaction Role",
+      category: "role",
       cooldown: 1000,
       aliases: ["react"],
       permLevel: 1,

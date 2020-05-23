@@ -7,7 +7,7 @@ class Eval extends BlazifyClient {
       name: "eval",
       description: "Evaluates a JavaScript Code.",
       usage: "b3eval message.author.id",
-      category: "BOT-OWNER-ONLY",
+      category: "Bot-Owner-only",
       cooldown: 1000,
       aliases: ["evaluate", "evl"],
       permLevel: 4,

@@ -9,7 +9,7 @@ class Queue extends BlazifyClient {
       name: "queue",
       description: "Displays the Songs in Queue",
       usage: "b3queue",
-      category: "Music",
+      category: "music",
       cooldown: 1000,
       aliases: ["que"],
       permLevel: 1,

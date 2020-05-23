@@ -6,7 +6,7 @@ class Leave extends BlazifyClient {
       name: "leave",
       description: "Stop a Song",
       usage: "b3leave",
-      category: "Music",
+      category: "music",
       cooldown: 1000,
       aliases: ["stop"],
       permLevel: 1,

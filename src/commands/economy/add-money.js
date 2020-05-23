@@ -11,7 +11,7 @@ class AddMoney extends BlazifyClient {
       name: "add-money",
       description: "Adds money to a user",
       usage: "b3add-money 100 @RoMeAh#2064",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["bc", "blck"],
       permLevel: 1,

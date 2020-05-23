@@ -11,7 +11,7 @@ class NP extends BlazifyClient {
       name: "nowplaying",
       description: "Tells which song is being played in the server.",
       usage: "b3nowplaying",
-      category: "Music",
+      category: "music",
       cooldown: 1000,
       aliases: ["np"],
       permLevel: 1,

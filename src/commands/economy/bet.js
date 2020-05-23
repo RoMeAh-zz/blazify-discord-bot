@@ -9,7 +9,7 @@ class Bet extends BlazifyClient {
       name: "bet",
       description: "Bets some amount, to possibly double it.",
       usage: "b3bet 100",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["gamble"],
       permLevel: 1,

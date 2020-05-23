@@ -9,7 +9,7 @@ class GIVEAWAY extends BlazifyClient {
       name: "giveaway-start",
       description: "Starts a Giveaway",
       usage: "b3giveaway-start",
-      category: "Giveaway",
+      category: "giveaways",
       cooldown: 1000,
       aliases: ["gc", "start"],
       permLevel: 1,

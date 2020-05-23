@@ -11,7 +11,7 @@ class Profile extends BlazifyClient {
       name: "profile",
       description: "Shows the Profile of a user",
       usage: "b3profile",
-      category: "Levelling",
+      category: "XP & XP COINS",
       cooldown: 1000,
       aliases: ["pf"],
       permLevel: 1,
