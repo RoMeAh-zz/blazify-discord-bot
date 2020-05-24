@@ -3,7 +3,7 @@ const BlazifyClient = require("../../base/Command");
 class Avatar extends BlazifyClient {
   constructor(client) {
     super(client, {
-      name: "Avatar",
+      name: "avatar",
       description: "Shows the Avatar of a user",
       usage: "b3avatar @moo",
       category: "Utility",

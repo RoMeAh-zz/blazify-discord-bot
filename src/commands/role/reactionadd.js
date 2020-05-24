@@ -7,7 +7,7 @@ class React extends BlazifyClient {
   constructor(client) {
     super(client, {
       name: "rolemenusetup",
-      description: "Play a Song",
+      description: "Setup Reaction Role",
       usage: "b3react <messageID>",
       category: "role",
       cooldown: 1000,

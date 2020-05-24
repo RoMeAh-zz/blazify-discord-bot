@@ -8,7 +8,7 @@ class Help extends BlazifyClient {
     super(client, {
       name: "help",
       description: "Shows all the commands and how to use them",
-      usage: "b3avatar @moo",
+      usage: "b3help",
       category: "Utility",
       cooldown: 1000,
       aliases: ["h"],
