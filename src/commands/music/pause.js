@@ -6,7 +6,7 @@ class Pause extends BlazifyClient {
       name: "pause",
       description: "Pause a Song",
       usage: "b3pause",
-      category: "Music",
+      category: "music",
       cooldown: 1000,
       aliases: ["pp"],
       permLevel: 1,

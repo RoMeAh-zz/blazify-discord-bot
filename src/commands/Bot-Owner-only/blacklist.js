@@ -6,7 +6,7 @@ class Blacklist1 extends BlazifyClient {
       name: "blacklist",
       description: "Blacklists a user or server in the bot.",
       usage: "b3blacklist [serverID/userID] [true/false]",
-      category: "BOT-OWNER-ONLY",
+      category: "Bot-Owner-only",
       cooldown: 1000,
       aliases: ["bc", "blck"],
       permLevel: 4,

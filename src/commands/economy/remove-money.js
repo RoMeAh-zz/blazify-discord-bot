@@ -10,7 +10,7 @@ class RemoveMoney extends BlazifyClient {
       name: "rob",
       description: "Removes money from a certain user",
       usage: "b3remove-money 100 @user",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["steal"],
       permLevel: 1,

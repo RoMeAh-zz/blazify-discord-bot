@@ -7,7 +7,7 @@ class UNReact extends BlazifyClient {
       name: "reactedit",
       description: "Play a Song",
       usage: "b3unreact <messageID>",
-      category: "Reaction Role",
+      category: "role",
       cooldown: 1000,
       aliases: ["redit"],
       permLevel: 1,

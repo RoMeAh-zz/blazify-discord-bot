@@ -8,7 +8,7 @@ class Work extends BlazifyClient {
       name: "work",
       description: "Generates a Random Word and after typing it, getting coins.",
       usage: "b3work",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["hardwork"],
       permLevel: 1,

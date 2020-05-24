@@ -6,7 +6,7 @@ class Volume extends BlazifyClient {
       name: "volume",
       description: "Adjusts the volume of music",
       usage: "b3volume 20",
-      category: "Music",
+      category: "music",
       cooldown: 1000,
       aliases: ["v", "vol"],
       permLevel: 1,

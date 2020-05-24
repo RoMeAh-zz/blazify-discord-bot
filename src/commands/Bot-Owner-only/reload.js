@@ -6,7 +6,7 @@ class Reload extends BlazifyClient {
       name: "reload",
       description: "Reloads a Command of bot",
       usage: "b3reload play",
-      category: "BOT-OWNER-ONLY",
+      category: "Bot-Owner-only",
       cooldown: 1000,
       aliases: ["rld"],
       permLevel: 4,

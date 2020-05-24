@@ -6,7 +6,7 @@ class Shutdown extends BlazifyClient {
       name: "restart",
       description: "Restarts the Bot",
       usage: "b3restart",
-      category: "BOT-OWNER-ONLY",
+      category: "Bot-Owner-only",
       cooldown: 1000,
       aliases: ["rs"],
       permLevel: 4,

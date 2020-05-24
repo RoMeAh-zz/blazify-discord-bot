@@ -9,7 +9,7 @@ class Inventory extends BlazifyClient {
       name: "inventory",
       description: "Shows the Inventery of a user",
       usage: "b3inventory",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["inv"],
       permLevel: 1,

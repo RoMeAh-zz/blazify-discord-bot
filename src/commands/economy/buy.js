@@ -8,7 +8,7 @@ class Buy extends BlazifyClient {
       name: "buy",
       description: "Buy some item from shop",
       usage: "b3buy book 10",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["bal"],
       permLevel: 1,

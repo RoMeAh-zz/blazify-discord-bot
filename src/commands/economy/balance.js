@@ -10,7 +10,7 @@ class Balance extends BlazifyClient {
       name: "balance",
       description: "Shows the Economy Balance of a user",
       usage: "b3balance",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["bal"],
       permLevel: 1,

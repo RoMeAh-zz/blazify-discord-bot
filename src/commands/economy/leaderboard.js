@@ -9,7 +9,7 @@ class Leaderboard extends BlazifyClient {
       name: "leaderboard-coins",
       description: "Shows the leaderboard of Economy Coins",
       usage: "b3leaderboard-coins",
-      category: "Economy",
+      category: "economy",
       cooldown: 1000,
       aliases: ["top-c", "lb-c"],
       permLevel: 1,

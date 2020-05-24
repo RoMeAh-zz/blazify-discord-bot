@@ -6,7 +6,7 @@ class Skip extends BlazifyClient {
       name: "skip",
       description: "Skips a Song",
       usage: "b3skip",
-      category: "Music",
+      category: "music",
       cooldown: 1000,
       aliases: ["sk"],
       permLevel: 1,
