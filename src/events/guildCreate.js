@@ -8,14 +8,14 @@ class guildCreate {
   }
  async run(client, guild) {   // This event triggers when the client joins a guild.
   console.log(
-    `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`
+    `New guild joined: ${this.guild.name} (id: ${this.guild.id}). This guild has ${this.guild.memberCount} members!`
   );
   const WoW = new MessageEmbed()
     .setTitle("Yahoo, I joined a new guild")
     .setDescription(
-      `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`
+      `New guild joined: ${this.guild.name} (id: ${this.guild.id}). This guild has ${this.guild.memberCount} members!`
     );
-  const channel = client.channels.cache.get("705693639225114661");
+  const channel = this.client.channels.cache.get("705693639225114661");
   channel.send(WoW);
 
   await Settings.findOne({ guildID: guild.id }, async (err, guild) => {

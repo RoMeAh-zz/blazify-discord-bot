@@ -28,7 +28,7 @@ if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy co
 
     let user = message.mentions.members.first() || message.author;
 
-    if (isNaN(args[0])) return message.channel.send("That isn't a valid amount");
+    if (!args[0]) return message.channel.send("That isn't a valid amount");
 
     let amt = Math.round(args[0]);
 

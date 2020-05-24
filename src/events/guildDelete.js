@@ -5,13 +5,13 @@ class guildDelete {
   }
   
  async run(client, guild) {  // this event triggers when the client is removed from a guild.
-  console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+  console.log(`I have been removed from: ${this.guild.name} (id: ${this.guild.id})`);
   const WoW = new MessageEmbed()
     .setTitle("Sad, I have been kicked from a  guild")
     .setDescription(
-      `I have been removed from: ${guild.name} (id: ${guild.id})`
+      `I have been removed from: ${this.guild.name} (id: ${this.guild.id})`
     );
-  const channel = client.channels.cache.get("705693642706255924");
+  const channel = this.client.channels.cache.get("705693642706255924");
   channel.send(WoW);
 };
 }
