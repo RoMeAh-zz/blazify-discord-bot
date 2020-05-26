@@ -6,12 +6,16 @@ const XP = require("../models/xp.js");
 const PerGuildLogandWelcome = require("../models/perguildlogandwelcome.js");
 const Blacklist = require("../models/blacklist.js");
 
+
+const Server = require("../../web/server/server.js")
 class Ready {
   constructor(client) {
     this.client = client;
   }
   
  async run() {
+
+   Server(this.client)
   await this.client.lava.init(this.client.user.id)
     this.client.channels.cache
       .get("707274207112724480")
