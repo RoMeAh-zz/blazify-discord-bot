@@ -1,6 +1,6 @@
 const Route = require("../lib/Route");
-const ConfigSettings = require("../../src/models/configsetting");
-const Prefix = require("../../src/models/prefix");
+const ConfigSettings = require("../../../src/models/configsetting");
+const Prefix = require("../../../src/models/prefix");
 module.exports = class extends Route {
   constructor() {
     super("/api/config/:id", "put");

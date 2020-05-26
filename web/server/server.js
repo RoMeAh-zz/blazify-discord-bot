@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const {json} = require("body-parser");
 const {readdirSync} = require("fs");
-const {secret} = require("../src/config.json")
+const {secret} = require("../../src/config.json")
 const Oauth = require("discord-oauth2");
 
 module.exports = async (bot) => {

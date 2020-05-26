@@ -17,15 +17,15 @@ class Ready {
 
    Server(this.client)
   await this.client.lava.init(this.client.user.id)
-    this.client.channels.cache
-      .get("707274207112724480")
-      .edit({ name: `${this.client.guilds.cache.size} Servers` });
-    this.client.channels.cache
-      .get("707274245423628410")
-      .edit({ name: `${this.client.users.cache.size} Members` });
-    this.client.channels.cache
-      .get("707274279032717313")
-      .edit({ name: `${this.client.channels.cache.size} Channels` });
+//    this.client.channels.cache
+//      .get("707274207112724480")
+//      .edit({ name: `${this.client.guilds.cache.size} Servers` });
+//    this.client.channels.cache
+//      .get("707274245423628410")
+//      .edit({ name: `${this.client.users.cache.size} Members` });
+//    this.client.channels.cache
+//      .get("707274279032717313")
+//      .edit({ name: `${this.client.channels.cache.size} Channels` });
   
 
   console.log(

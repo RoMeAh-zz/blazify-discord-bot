@@ -1,5 +1,5 @@
 const Route = require("../lib/Route");
-const ConfigSettings = require("../../src/models/configsetting");
+const ConfigSettings = require("../../../src/models/configsetting");
 
 module.exports = class extends Route {
   constructor() {
