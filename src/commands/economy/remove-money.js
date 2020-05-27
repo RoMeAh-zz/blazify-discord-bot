@@ -7,7 +7,7 @@ const BlazifyClient = require("../../base/Command");
 class RemoveMoney extends BlazifyClient {
   constructor(client) {
     super(client, {
-      name: "rob",
+      name: "remove-money",
       description: "Removes money from a certain user",
       usage: "b3remove-money 100 @user",
       category: "economy",

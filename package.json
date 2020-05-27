@@ -23,6 +23,7 @@
     "@lavalink/encoding": "^0.1.1",
     "apextab-api": "^1.0.5",
     "ascii-table": "0.0.9",
+    "cheerio": "^1.0.0-rc.3",
     "common-tags": "^1.8.0",
     "cors": "^2.8.5",
     "cpu-stat": "^2.0.1",
@@ -43,6 +44,7 @@
     "r6api.js": "^1.3.0",
     "random-puppy": "^1.1.0",
     "randomstring": "^1.1.5",
+    "request": "^2.88.2",
     "simple-fortnite-api": "^0.1.9",
     "superagent": "^5.2.2"
   }

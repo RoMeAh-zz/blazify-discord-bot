@@ -15,7 +15,7 @@ class Blacklist1 extends BlazifyClient {
   }
 async run(client, message, args) {
     if(message.author.id != "560805847517888512")
-  return message.channel.send("You are not the bot the owner!")
+  return message.channel.send("You are not the owner of the bot!")
 let blacklistid = args[0]
 if(!args[0])return message.channel.send("No user ID was given for the blacklist command")
 let boolean = args[1]

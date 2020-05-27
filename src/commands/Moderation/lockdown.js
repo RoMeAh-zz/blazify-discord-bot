@@ -19,7 +19,7 @@ class Lockdown extends BlazifyClient {
 async run(client, message, args) {
     if(args.length !== 2)
       return message.channel.send('No Role ID and true or false not provided');
-    let [ roleId, flag ] = args.split(' ');
+    let [ roleId, flag ] = args;
     if(!isNaN(roleId) && validateFlag(flag.toLowerCase())) {
       if(message.guild.roles.cache.has(roleId)) {
         flag = flag.toLowerCase() === 'true' ? true : (flag.toLowerCase() === 'false' ? false : null);

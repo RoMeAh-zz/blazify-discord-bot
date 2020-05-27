@@ -26,6 +26,7 @@ async run(client, message, args) {
             var room;
             var title;
             var duration;
+            var prize;
             var currentTime = new Date(),
                 hours = currentTime.getHours() + 3,
                 minutes = currentTime.getMinutes(),
@@ -131,11 +132,12 @@ async run(client, message, args) {
                                                                         let re = m.react("🎉");
                                                                          setTimeout(() => {
                                                                                     let guild = reqguild
-                                                                                    let users = m.reactions.cache.get("🎉").users
-                                                                                    for (const user of users.cache.array()) {
+                                                                                    let users = m.reactions.cache.get("🎉").users.cache.filter(u => !u.bot);
+                                                                                    console.log(users);
+                                                                                    for (const user of users.array()) {
                                                                                         if (!rguild.members.cache.get(user.id)) users.remove(user)
                                                                                     }
-                                                                                    const gFilter = users.cache.random();
+                                                                                    const gFilter = users.random();
                                                                                     let endEmbed = new MessageEmbed()
                                                                                         .setAuthor(message.author.username, message.author.avatarURL)
                                                                                         .setTitle("**Item:** " + prize)

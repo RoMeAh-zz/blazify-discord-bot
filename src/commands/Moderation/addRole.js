@@ -28,10 +28,13 @@ async run(client, message, args) {
 if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
     if(!message.member.hasPermission(["MANAGE_ROLES", "ADMINISTRATOR"])) return message.channel.send("You dont have permission to perform this command!")
 
-    let rMember = message.mentions.members.first() || message.guild.members.find(m => m.user.tag === args[0]) || message.guild.members.get(args[0])
-    if(!rMember) return message.channel.send("Please provide a user to add a role too.")
+    if (!args[0]) return message.channel.send("You need to mention a user!");
+    if (!args[1]) return message.channel.send("You need to mention the role or provide the role id or name!");
+
+    let rMember = message.mentions.members.first() || message.guild.members.cache.find(m => m.user.tag === args[0]) || message.guild.members.cache.get(args[0])
+    if(!rMember) return message.channel.send("I was unable to find that user!");
     let role = message.guild.roles.cache.find(r => r.name == args[1]) || message.guild.roles.cache.find(r => r.id == args[1]) || message.mentions.roles.first()
-    if(!role) return message.channel.send("Please provide a role to add to said user.")
+    if(!role) return message.channel.send("I was unable to find that role!")
     let reason = args.slice(2).join(" ")
     if(!reason) return message.channel.send("Please provide a reason")
 
@@ -51,7 +54,7 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
     .addField("Moderator:", message.author.username)
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
-const log = message.guild.channels.get(logChannel.id)
+const log = message.guild.channels.cache.get(logChannel.id)
 if(!log) {
   return message.channel.send(embed)
 } else {

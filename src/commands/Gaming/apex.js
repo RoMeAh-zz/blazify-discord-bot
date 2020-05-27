@@ -56,7 +56,7 @@ async run(client, message, args) {
                         message.channel.send(embed)
                 }
         } catch(err) {
-            return message.channel.send("Can't find a player by that")
+            return message.channel.send("Can't find a player by that name")
         }
     }
   }

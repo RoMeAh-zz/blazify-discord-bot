@@ -55,7 +55,7 @@ async run(client, message, args) {
                 coins.coins = coins.coins - totalPrice;
                 await coins.save().catch(err => console.log(err));
 
-                message.channel.send(`You bought ${itemAmt} ${itemName} for ${totalPrice}`);
+                message.channel.send(`You bought ${itemAmt} ${itemName} for ${totalPrice} coins`);
             });
         });
 

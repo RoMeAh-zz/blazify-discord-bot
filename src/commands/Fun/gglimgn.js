@@ -1,4 +1,6 @@
 const Settings = require("../../models/configsetting.js");
+const request = require("request");
+const cheerio = require("cheerio");
 
 const BlazifyClient = require("../../base/Command");
 class GGLIMGN extends BlazifyClient {
@@ -44,7 +46,7 @@ async run(client, message, args) {
           return;
         }
 
-        $ = cheerio.load(responseBody);
+        let $ = cheerio.load(responseBody);
 
         var links = $(".image a.link");
 

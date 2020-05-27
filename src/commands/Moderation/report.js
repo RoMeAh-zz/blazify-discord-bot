@@ -28,7 +28,7 @@ async run(client, message, args) {
     if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
               if (message.deletable) message.delete();
 
-              let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
+              let rMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
               if (!rMember)
                   return message.reply("Couldn't find that person?")
@@ -53,7 +53,7 @@ async run(client, message, args) {
             **> Reported by:** ${message.member}
             **> Reported in:** ${message.channel}
             **> Reason:** ${args.slice(1).join(" ")}`);
-            const log = message.guild.channels.get(reportChannel.id)
+            const log = message.guild.channels.cache.get(reportChannel.id)
             if(!log) {
               return message.channel.send(embed)
             } else {
