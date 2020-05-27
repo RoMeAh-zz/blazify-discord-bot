@@ -4,14 +4,14 @@ const BlazifyClient = require("../../base/Command");
 class RandomBall extends BlazifyClient {
   constructor(client) {
     super(client, {
-      name: "8ball",
-      description: "Randomly answers to a question",
-      usage: "b38ball Are you a noob?",
-      category: "Fun",
-      cooldown: 1000,
-      aliases: ["question"],
-      permLevel: 1,
-      permission: "READ_MESSAGES"
+      "name": "8ball",
+      "description": "Randomly answers to a question",
+      "usage": "b38ball Are you a noob?",
+      "category": "Fun",
+      "cooldown": 1000,
+      "aliases": ["question"],
+      "permLevel": 1,
+      "permission": "READ_MESSAGES"
     });
   }
 async run(client, message, args) {
