@@ -14,7 +14,7 @@ class Shutdown extends BlazifyClient {
     });
   }
 async run(client, message, args) {
-        if(message.author.id != "560805847517888512") return message.channel.send("You are not the bot the owner!")
+        if(message.author.id != "712607705184862278") return message.channel.send("You are not the bot the owner!")
 
     try {
        await message.channel.send("Bot is restarting...").then(m => {

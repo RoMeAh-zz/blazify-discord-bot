@@ -14,7 +14,7 @@ class Reload extends BlazifyClient {
     });
   }
 async run(client, message, args) {
-    if(message.author.id != "560805847517888512")
+    if(message.author.id != "712607705184862278")
   return message.channel.send("You are not the bot the owner!")
 
     if(!args[0]) return message.channel.send("Please provide a command to reload!")

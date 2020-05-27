@@ -1,4 +1,4 @@
-2020-05-22 11:55:47.850  INFO 6684 --- [main] lavalink.server.Launcher                 : 
+2020-05-27 17:31:01.381  INFO 3668 --- [main] lavalink.server.Launcher                 : 
 
 [32m       .  [31m _                  _ _       _    [32m__ _ _
 [32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
@@ -16,24 +16,26 @@
 	JVM:            13
 	Lavaplayer      1.3.38
 
-2020-05-22 11:55:48.950  WARN 6684 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
-2020-05-22 11:55:49.202  INFO 6684 --- [main] lavalink.server.Launcher                 : Starting Launcher on DESKTOP-MR8GL0C with PID 6684 (C:\Users\runar\Desktop\blazify\lavalink\Lavalink.jar started by runar in C:\Users\runar\Desktop\blazify\lavalink)
-2020-05-22 11:55:49.206  INFO 6684 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
-2020-05-22 11:55:55.609  WARN 6684 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
-2020-05-22 11:55:55.845  INFO 6684 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
-2020-05-22 11:55:55.929  INFO 6684 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6459 ms
-2020-05-22 11:55:57.615  WARN 6684 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
-2020-05-22 11:55:57.671  INFO 6684 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Windows 10, Arch: amd64
-2020-05-22 11:55:57.671  INFO 6684 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
-2020-05-22 11:55:57.707  INFO 6684 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
-2020-05-22 11:55:57.715  INFO 6684 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
-2020-05-22 11:56:00.084  INFO 6684 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
-2020-05-22 11:56:01.821  INFO 6684 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-05-22 11:56:03.549  INFO 6684 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
-2020-05-22 11:56:03.641  INFO 6684 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
-2020-05-22 11:56:05.249  INFO 6684 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
-2020-05-22 11:56:05.281  INFO 6684 --- [main] lavalink.server.Launcher                 : Started Launcher in 21.272 seconds (JVM running for 23.994)
-2020-05-22 18:32:51.093  INFO 12900 --- [main] lavalink.server.Launcher                 : 
+2020-05-27 17:31:02.767  INFO 3668 --- [main] lavalink.server.Launcher                 : Starting Launcher on DESKTOP-MR8GL0C with PID 3668 (C:\Users\runar\Desktop\blazify\lavalink\Lavalink.jar started by runar in C:\Users\runar\Desktop\blazify\lavalink)
+2020-05-27 17:31:02.785  INFO 3668 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2020-05-27 17:31:03.330  WARN 3668 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-05-27 17:31:22.024  WARN 3668 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2020-05-27 17:31:22.217  INFO 3668 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2020-05-27 17:31:22.218  INFO 3668 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 18748 ms
+2020-05-27 17:31:24.668  WARN 3668 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2020-05-27 17:31:24.735  INFO 3668 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Windows 10, Arch: amd64
+2020-05-27 17:31:24.737  INFO 3668 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
+2020-05-27 17:31:24.738  INFO 3668 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
+2020-05-27 17:31:24.740  INFO 3668 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
+2020-05-27 17:31:34.785  INFO 3668 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2020-05-27 17:31:36.947  INFO 3668 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-27 17:31:38.860  INFO 3668 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2020-05-27 17:31:38.971  INFO 3668 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2020-05-27 17:31:40.180  INFO 3668 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
+2020-05-27 17:31:40.206  INFO 3668 --- [main] lavalink.server.Launcher                 : Started Launcher in 42.069 seconds (JVM running for 50.675)
+2020-05-27 20:13:53.568  INFO 3668 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-27 20:13:54.959  INFO 3668 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2020-05-27 20:14:51.568  INFO 7908 --- [main] lavalink.server.Launcher                 : 
 
 [32m       .  [31m _                  _ _       _    [32m__ _ _
 [32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
@@ -51,20 +53,28 @@
 	JVM:            13
 	Lavaplayer      1.3.38
 
-2020-05-22 18:32:51.948  INFO 12900 --- [main] lavalink.server.Launcher                 : Starting Launcher on DESKTOP-MR8GL0C with PID 12900 (C:\Users\runar\Desktop\blazify\lavalink\Lavalink.jar started by runar in C:\Users\runar\Desktop\blazify\lavalink)
-2020-05-22 18:32:51.955  INFO 12900 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
-2020-05-22 18:32:52.401  WARN 12900 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
-2020-05-22 18:33:02.567  WARN 12900 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
-2020-05-22 18:33:02.698  INFO 12900 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
-2020-05-22 18:33:02.700  INFO 12900 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 10332 ms
-2020-05-22 18:33:04.813  WARN 12900 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
-2020-05-22 18:33:04.898  INFO 12900 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Windows 10, Arch: amd64
-2020-05-22 18:33:04.899  INFO 12900 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
-2020-05-22 18:33:04.901  INFO 12900 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
-2020-05-22 18:33:04.901  INFO 12900 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
-2020-05-22 18:33:08.716  INFO 12900 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
-2020-05-22 18:33:10.674  INFO 12900 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-05-22 18:33:12.506  INFO 12900 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
-2020-05-22 18:33:12.668  INFO 12900 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
-2020-05-22 18:33:13.980  INFO 12900 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
-2020-05-22 18:33:14.003  INFO 12900 --- [main] lavalink.server.Launcher                 : Started Launcher in 28.257 seconds (JVM running for 43.192)
+2020-05-27 20:14:52.195  INFO 7908 --- [main] lavalink.server.Launcher                 : Starting Launcher on DESKTOP-MR8GL0C with PID 7908 (C:\Users\runar\Desktop\blazify\lavalink\Lavalink.jar started by runar in C:\Users\runar\Desktop\blazify\lavalink)
+2020-05-27 20:14:52.199  WARN 7908 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-05-27 20:14:52.201  INFO 7908 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2020-05-27 20:15:05.735  WARN 7908 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2020-05-27 20:15:05.880  INFO 7908 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2020-05-27 20:15:05.883  INFO 7908 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 13378 ms
+2020-05-27 20:15:09.015  WARN 7908 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2020-05-27 20:15:09.105  INFO 7908 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Windows 10, Arch: amd64
+2020-05-27 20:15:09.112  INFO 7908 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
+2020-05-27 20:15:09.185  INFO 7908 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
+2020-05-27 20:15:09.188  INFO 7908 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
+2020-05-27 20:15:13.670  INFO 7908 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2020-05-27 20:15:16.686  INFO 7908 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-27 20:15:18.397  INFO 7908 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2020-05-27 20:15:18.459  INFO 7908 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2020-05-27 20:15:19.927  INFO 7908 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
+2020-05-27 20:15:19.967  INFO 7908 --- [main] lavalink.server.Launcher                 : Started Launcher in 33.433 seconds (JVM running for 36.282)
+2020-05-27 20:27:13.081  INFO 7908 --- [XNIO-1 task-1] io.undertow.servlet                      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-27 20:27:13.085  INFO 7908 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-27 20:27:13.129  INFO 7908 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 41 ms
+2020-05-27 20:27:13.314  INFO 7908 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:52505
+2020-05-27 20:27:14.529  INFO 7908 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:52505
+2020-05-27 20:27:14.645  INFO 7908 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : {"op":"configureResuming","timeout":60,"key":"0.jwo5hiznr6o"}
+2020-05-27 20:36:20.990  INFO 7908 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:52505 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key 0.jwo5hiznr6o
+2020-05-27 20:37:21.057  INFO 7908 --- [pool-2-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.

@@ -47,7 +47,7 @@ class Message {
         if (err) console.log(err);
 
         if (!xp) {
-          const newXP = new XP({
+          let newXP = new XP({
             userID: message.author.id,
             guildID: message.guild.id,
             userName: message.author.username,

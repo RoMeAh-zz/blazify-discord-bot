@@ -34,9 +34,9 @@ async run(client, message, args) {
                   return message.reply("Couldn't find that person?")
                             .then(m => m.delete({timeout: 5000}));;
 
-              if (rMember.hasPermission("BAN_MEMBERS") || rMember.user.client)
+              if (rMember.hasPermission("BAN_MEMBERS") || rMember.user.bot)
                   return message.channel.send("Can't report that member")
-                            .then(m => m.delete({timeout: 5000}));;
+                            .then(m => m.delete({timeout: 5000}));
 
               if (!args[1])
                   return message.channel.send("Please provide a reason for the report")

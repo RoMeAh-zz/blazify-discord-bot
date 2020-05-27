@@ -16,7 +16,7 @@ class Eval extends BlazifyClient {
   }
 async run(client, message, args) {
     if (
-      ["560805847517888512", "396096412116320258"].includes(message.author.id)
+      ["712607705184862278"].includes(message.author.id)
     ) {
       try {
         let toEval = args.join(" ");
