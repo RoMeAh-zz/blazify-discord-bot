@@ -1,5 +1,5 @@
 node_modules/
 lavalink/logs
-src/config.json
+config.json
 captcha
 .idea
