@@ -15,6 +15,19 @@ class Message {
   if (!message.member)
     message.member = (await message.guild.members.fetch(message.author));
 
+  if (this.client.afk.has(message.author.id)) {
+    message.channel.send(`Welcome back ${message.author}! You are no longer afking`);
+    this.client.afk.delete(message.author.id);
+  };
+
+  if (message.mentions.users.first()) {
+    const user = message.mentions.users.first();
+
+    if (this.client.afk.has(user.id)) {
+      message.channel.send(`Hey! ${user} is AFK! Reason: **${this.client.afk.get(user.id).reason}**`);
+    }
+  }
+
   const guildPrefix = (await Prefix.findOne({ guildID: message.guild.id }));
   const prefix = (guildPrefix ? guildPrefix.prefix : "b3") || "b3";
 
@@ -41,8 +54,10 @@ class Message {
             xp: addXP,
             level: 1,
           });
+          newXP = xp;
           newXP.save().catch((err) => console.log(err));
-        } else {
+        };
+
           xp.xp = xp.xp + addXP;
           let nextLevel = xp.level * 300;
 
@@ -57,8 +72,10 @@ class Message {
             return channel.send(
               `${message.author.tag} has hit level ${xp.level}`
             );
-          }
-        }
+          };
+
+          xp.save().catch(err => console.log(err));
+        
       }
     );
   }

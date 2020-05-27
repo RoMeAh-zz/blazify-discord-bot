@@ -14,7 +14,7 @@ class Bug extends BlazifyClient {
       });
     }
   async run(client, message, args) {
-  const apa = client.channels.cache.get("705693646623604788")
+  const apa = client.guilds.cache.get("694506752603062304").channels.cache.get("714809229143179305")
 
         const g = args.join(" ")
         if (!g) return message.reply(`Please put the message/bug`)

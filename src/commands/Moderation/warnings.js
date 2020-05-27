@@ -24,23 +24,27 @@ async run(client, message, args) {
   const {enableModeration} = guildSettings;
 if(!enableModeration) return message.channel.send("Hmm it seems like the moderation commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
     if (args[0]) {
-        let member = message.mentions.members.first();
+        let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
+        if (!member) return message.channel.send("I was unable to find that user!");
 
         await Warn.findOne({ userID: member.user.id, guildID: message.guild.id }, (err, warns) => {
           if (err) console.log(err);
 
           if (!warns) {
             const newWarn = new Warn({
-              userName: message.author.username,
-              userID: message.author.id,
+              userName: member.user.username,
+              userID: member.id,
               guildID: message.guild.id,
-              warns: warns.warns,
+              warns: 0,
               });
+            
+            newWarn.save().catch(err => console.log(err));
+            warns = newWarn;
           }
 
           let embed = new MessageEmbed()
-            .setTitle(`${user.username}'s Warnings`)
+            .setTitle(`${member.user.username}'s Warnings`)
             .setColor('#ed0e0e')
             if(!warns) {
               embed.addField("Warnings", "The warnings will be shown down below", true);
@@ -59,8 +63,9 @@ if(!enableModeration) return message.channel.send("Hmm it seems like the moderat
               userID: message.author.id,
               userName: message.author.username,
               guildID: message.guild.id,
-              warns: warns.warns,
+              warns: 0,
             });
+            warns = newWarn;
             newWarn.save().catch(err => console.log(err));
           }
 

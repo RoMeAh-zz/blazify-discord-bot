@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { cyan } = require("../../colours.json");
 const { stripIndents } = require("common-tags");
-const fortnite = require("simple-fortnite-api"), client = new fortnite("fd14160a-8e5b-4091-b72d-8b386f7846df");
+const fortnite = require("simple-fortnite-api"), fnclient = new fortnite("fd14160a-8e5b-4091-b72d-8b386f7846df");
 const Settings = require("../../models/configsetting.js");
 const BlazifyClient = require("../../base/Command");
 class Fortnite extends BlazifyClient {
@@ -26,7 +26,7 @@ async run(client, message, args) {
         if(!args[0]) return message.channel.send("Please supply a username.");
         if(args[1] && !["lifetime", "solo", "duo", "squad"].includes(args[1])) return message.channel.send("Usage: `!fortnite <username> <gametype>`\nGameTypes: Lifetime, Solo, Duo, Squad");
         let gametype = args[1] ? args[1].toLowerCase() : "lifetime";
-        let data = await client.find(args[0])
+        let data = await fnclient.find(args[0])
         if(data && data.code === 404) return message.channel.send("Unable to find a user with that username.")
             const { image, url, username } = data;
             const { scorePerMin, winPercent, kills, score, wins, kd, matches } = data[gametype]

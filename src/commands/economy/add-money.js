@@ -26,20 +26,34 @@ async run(client, message, args) {
 if(!enableEconomy) return message.channel.send("Hmm it seems like the Economy commands are not enabled if you want to enable them please go to the dashboard. Click [here](http://localhost:8080)");
     if (!args[0]) return message.channel.send("You need to specify an amount");
 
-    let user = message.mentions.members.first() || message.author;
+    let user = message.mentions.users.first() || message.author;
 
-    if (!args[0]) return message.channel.send("That isn't a valid amount");
+    if (!args[0]) return message.channel.send("You need to provide an amount");
+
+    if (!args[1]) return message.channel.send("You need to mention a user");
 
     let amt = Math.round(args[0]);
 
-    await Coins.findOne({ userID: user.id }, (err, coins) => {
+    if (isNaN(amt)) return message.channel.send("That isn't a number!");
+
+    await Coins.findOne({ userID: user.id }, async (err, coins) => {
 
       if (err) console.log(err);
+
+      if (!coins) {
+        const newCoins = await Coins.create({
+          userName: user.username,
+          userID: user.id,
+          coins: parseInt(amt)
+        });
+
+        coins = newCoins;
+      };
 
       coins.coins = coins.coins + +amt
       coins.save().catch(err => console.log(err));
 
-      return message.channel.send(`Gave ${message.mentions.members.first() ? user.user.username : user.username} ${amt} coins.`);
+      return message.channel.send(`Gave ${user.username} ${amt} coins.`);
     });
   }
 }
