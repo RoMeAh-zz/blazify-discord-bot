@@ -4,7 +4,7 @@
   "description": "a multi-purpose client",
   "main": "./src/index.js",
   "scripts": {
-    "blazify": "node ./src/index.js"
+    "blazify": "nodemon ./Src/index.js"
   },
   "repository": {
     "type": "git",

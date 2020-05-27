@@ -2,3 +2,4 @@ node_modules/
 lavalink/logs
 src/config.json
 captcha
+.idea

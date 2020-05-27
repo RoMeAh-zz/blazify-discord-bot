@@ -1,0 +1,16 @@
+{
+  "token": "Njk2NzU2MzIyODI1NDA0NDE2.XsQErw.ynxwBu_m9GO80TPNs3Y4rZEmdPY" ,
+  "paths": {
+    "events": "./Bot/Events"
+  } ,
+  "secret": "48BWgqo8dgeRZ0TmiHheqM0IcaWc9t90" ,
+  "nodes": [
+    {
+      "name": "main" ,
+      "address": "localhost" ,
+      "port": 2333 ,
+      "password": "youshallnotpass"
+    }
+  ] ,
+  "baseurl": "http://localhost:8080"
+}
