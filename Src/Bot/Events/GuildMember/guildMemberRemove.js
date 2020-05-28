@@ -1,5 +1,5 @@
-const PerGuildLogandWelcome = require("../../Lib/Database/models/perguildlogandwelcome.js");
-const Settings = require("../../Lib/Database/models/configsetting.js");
+const PerGuildLogandWelcome = require("../../../Lib/Database/models/perguildlogandwelcome.js");
+const Settings = require("../../../Lib/Database/models/configsetting.js");
 class guildMemberRemove {
   constructor(member) {
     this.member = member;

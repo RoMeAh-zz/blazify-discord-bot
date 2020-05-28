@@ -1,4 +1,4 @@
-const MessageModel = require('../../Lib/Database/models/message.js');
+const MessageModel = require('../../../Lib/Database/models/message.js');
 const discord = require("discord.js")
 const client = new discord.Client({ partials: ['MESSAGE', 'REACTION']});
 class messageReactionAdd {

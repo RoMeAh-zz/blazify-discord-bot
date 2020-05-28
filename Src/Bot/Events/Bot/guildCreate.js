@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
-const Settings = require("../../Lib/Database/models/configsetting.js");
-const Prefix = require("../../Lib/Database/models/prefix.js");
-const PerGuildLogandWelcome = require("../../Lib/Database/models/perguildlogandwelcome.js");
+const Settings = require("../../../Lib/Database/models/configsetting.js");
+const Prefix = require("../../../Lib/Database/models/prefix.js");
+const PerGuildLogandWelcome = require("../../../Lib/Database/models/perguildlogandwelcome.js");
 class guildCreate {
   constructor(guild) {
     this.guild = guild;

@@ -1,8 +1,8 @@
-const Blacklist = require("../../Lib/Database/models/blacklist.js");
-const Money = require("../../Lib/Database/models/money.js");
-const Prefix = require("../../Lib/Database/models/prefix.js");
-const XP = require("../../Lib/Database/models/xp.js");
-const Settings = require("../../Lib/Database/models/configsetting.js");
+const Blacklist = require("../../../Lib/Database/models/blacklist.js");
+const Money = require("../../../Lib/Database/models/money.js");
+const Prefix = require("../../../Lib/Database/models/prefix.js");
+const XP = require("../../../Lib/Database/models/xp.js");
+const Settings = require("../../../Lib/Database/models/configsetting.js");
 class Message {
   constructor(client) {
     this.client = client;

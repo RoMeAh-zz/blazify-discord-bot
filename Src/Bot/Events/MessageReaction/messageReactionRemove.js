@@ -1,5 +1,5 @@
 const cachedMessageReactions = new Map();
-const MessageModel = require("../../Lib/Database/models/message.js");
+const MessageModel = require("../../../Lib/Database/models/message.js");
 
 class messageReactionRemove {
   constructor(client) {

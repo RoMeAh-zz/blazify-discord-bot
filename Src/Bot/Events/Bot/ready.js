@@ -1,13 +1,13 @@
 /** Database */
-const Coins = require("../../Lib/Database/models/coin.js");
-const Prefix = require("../../Lib/Database/models/prefix.js");
-const Settings = require("../../Lib/Database/models/configsetting.js");
-const XP = require("../../Lib/Database/models/xp.js");
-const PerGuildLogandWelcome = require("../../Lib/Database/models/perguildlogandwelcome.js");
-const Blacklist = require("../../Lib/Database/models/blacklist.js");
+const Coins = require("../../../Lib/Database/models/coin.js");
+const Prefix = require("../../../Lib/Database/models/prefix.js");
+const Settings = require("../../../Lib/Database/models/configsetting.js");
+const XP = require("../../../Lib/Database/models/xp.js");
+const PerGuildLogandWelcome = require("../../../Lib/Database/models/perguildlogandwelcome.js");
+const Blacklist = require("../../../Lib/Database/models/blacklist.js");
 
 
-const Server = require("../../Server/server.js")
+const Server = require("../../../Server/server.js")
 class Ready {
   constructor(client) {
     this.client = client;

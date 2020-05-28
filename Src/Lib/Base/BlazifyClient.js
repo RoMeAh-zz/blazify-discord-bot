@@ -1,5 +1,5 @@
 const { Client, Collection } = require("discord.js");
-const { readdir, readdirSync } = require ( "fs" );
+const { readdirSync } = require ( "fs" );
 const { nodes } = require ( "../../../config.json" );
 const { Manager } = require ( "lavaclient" );
 const ascii = require("ascii-table");
@@ -16,12 +16,6 @@ class BlazifyClient extends Client {
       console.log ( `Client initialised. You are using node ${process.version}.` );
       this.mongoose = require ( "../Database/mongoose.js" );
       this.afk = new Map ();
-      this.levels = new Map ( [
-          ["none", 0],
-          ["low", 0.25],
-          ["medium", 0.5],
-          ["high", 0.75],
-      ] );
       this.mongoose.init ();
          this.lava = new Manager(nodes, {
          shards: this.shard ? this.shard.count : 1,
@@ -34,7 +28,7 @@ class BlazifyClient extends Client {
        this.ws.on("VOICE_SERVER_UPDATE", _ => this.lava.serverUpdate(_));
        this.ws.on("VOICE_STATE_UPDATE", _ => this.lava.stateUpdate(_));
   }
-  login(token) {
+  this.login(token) {
     super.login(token);
    return this;
   }
@@ -58,19 +52,19 @@ loadCommands() {
 console.log(table.toString());
   return this;
 }
-loadEvents(path) {
+loadEvents() {
   let table1 = new ascii("Event");
   table1.setHeading("Event", "Load status");
-  readdir(path, (err, files) => {
-      if (err) console.log(err);
-      files.forEach(evt => {
-          const event = new (require(`../.${path}/${evt}`))(this);
-        super.on(evt.split(".")[0], (...args) => event.run(...args));
-        table1.addRow(evt, '✅')
-      });
-      console.log(table1.toString());
+    readdirSync("./Bot/Events/").forEach(dir => {
+        const events = readdirSync(`./Bot/Events/${dir}/`).filter(file => file.endsWith(".js"));
+        for (let file of events) {
+            const event = new (require(`../../Bot/Events/${dir}/${file}`))(this);
+            super.on (file.split ("." )[0], (...args) => event.run ( ...args ) );
+            table1.addRow ( file, '✅' )
+        }
   });
-  return this;
+    console.log(table1.toString());
+    return this;
   }
 }
 module.exports = BlazifyClient;

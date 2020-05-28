@@ -1,9 +1,9 @@
 require("dotenv").config();
 const { Client } = require("discord.js");
-const createCaptcha = require("./captcha.js");
+const createCaptcha = require("../Captcha/captcha.js");
 const fs = require("fs").promises;
-const PerGuildLogandWelcome = require("../../Lib/Database/models/perguildlogandwelcome.js");
-const Settings = require("../../Lib/Database/models/configsetting.js");
+const PerGuildLogandWelcome = require("../../../Lib/Database/models/perguildlogandwelcome.js");
+const Settings = require("../../../Lib/Database/models/configsetting.js");
 
 class guildMemberAdd {
   constructor(member) {

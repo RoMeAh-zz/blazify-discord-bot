@@ -7,13 +7,13 @@
     export default {
         name: "Home",
         methods: {
-            login() {
-                fetch("http://localhost:8080/api/auth")
-                    .then(res => res.json())
-                    .then(body => {
-                        if (!body.success) return alert("An error occured!");
+            login : function () {
+                fetch ( "http://localhost:8080/api/auth" )
+                    .then ( res => res.json () )
+                    .then ( body => {
+                        if (!body.success) return alert ( "An error occured!" );
                         location.href = body.redirect;
-                    });
+                    } );
             }
         }
     }
