@@ -9,7 +9,7 @@ class Help extends BlazifyClient {
       name: "help",
       description: "Shows all the commands and how to use them",
       usage: "b3help",
-      category: "Utility",
+      category: "None",
       cooldown: 1000,
       aliases: ["h"],
       permLevel: 1,
@@ -44,13 +44,13 @@ async run(client, message, args) {
       message.channel.send(embed);
     } else {
 
-      const dir = readdirSync("./commands");
+      const dir = readdirSync("./Bot/Commands/");
 
       let embed = new MessageEmbed()
       .setTitle(`All commands for ${client.user.username}`)
-      .setAuthor("Blaze 3 Bot - The Ultimate All in One (Version 7)")
+      .setAuthor("Blazify - The Ultimate All in One (Version 7)")
       .setThumbnail(client.user.displayAvatarURL())
-      .setColor("#FF0000")
+      .setColor("#ff0000")
       .setFooter(`Ensure that you use the prefix in front of commands. The prefix is ${prefix}. If you discover any bugs, please report them using ${prefix}contact <bug>`);
   
       dir.forEach(category => {
@@ -59,7 +59,7 @@ async run(client, message, args) {
         embed.addField(category , commands.map(x => x.help.name).join(", "));
       });
   
-      embed.addField("Other", "[Support Server](https://discord.gg/YtJ6pYu) | [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=696756322825404416&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://www.paypal.me/roahgaming)")
+      embed.addField("Other", "[Support Server](https://discord.gg/YtJ6pYu) | [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=696756322825404416&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://paypal.me/roahgaming)")
       message.channel.send(embed);
 
     };

@@ -11,7 +11,7 @@ class guildDelete {
     .setDescription(
       `I have been removed from: ${this.guild.name} (id: ${this.guild.id})`
     );
-  const channel = this.client.channels.cache.get("705693642706255924");
+  const channel = this.client.channels.cache.get("715462262499967026");
   channel.send(WoW);
 };
 }

@@ -14,7 +14,7 @@ class createCaptcha {
   const textHeight = Jimp.measureTextHeight(font, captcha);
   image.print(font, w / 2 - textWidth / 2, h / 2 - textHeight / 2, captcha);
   image.write(
-    `C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`
+    `captchas/${captcha}.png`
 );
   return captcha;
 };

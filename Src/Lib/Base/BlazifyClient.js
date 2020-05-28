@@ -49,7 +49,7 @@ loadCommands() {
             this.commands.set(command.help.name, command);
             table.addRow(file, '✅');
         } else {
-            table.addRow(file, `❌  -> missing a help.name, or help.name is not a string.`);
+            table.addRow(file, `❌  -> Classes not used properly.`);
             continue;
         }
         if (command.conf.aliases && Array.isArray(command.conf.aliases)) command.conf.aliases.forEach(alias => this.aliases.set(alias, command.help.name))

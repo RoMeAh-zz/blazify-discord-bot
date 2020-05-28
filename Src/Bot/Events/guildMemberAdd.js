@@ -38,7 +38,7 @@ class guildMemberAdd {
       const msg = await member.send("You have 5 Minutes to solve the captcha", {
         files: [
           {
-            attachment: `C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`,
+            attachment: `captchas/${captcha}.png`,
             name: `${captcha}.png`,
           },
         ],
@@ -62,7 +62,7 @@ class guildMemberAdd {
           await member.roles.add(verifyRole.id);
           await fs
             .unlink(
-              `C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`
+              `captchas/${captcha}.png`
             )
             .catch((err) => console.log(err));
         }
@@ -74,7 +74,7 @@ class guildMemberAdd {
         await member.kick();
         await fs
           .unlink(
-            `C:/Users/Romeah but no gaming/Documents/captchas/${captcha}.png`
+            `captchas/${captcha}.png`
           )
           .catch((err) => console.log(err));
       }

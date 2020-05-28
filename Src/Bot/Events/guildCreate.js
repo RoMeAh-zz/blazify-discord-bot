@@ -15,15 +15,15 @@ class guildCreate {
     .setDescription(
       `New guild joined: ${this.guild.name} (id: ${this.guild.id}). This guild has ${this.guild.memberCount} members!`
     );
-  const channel = this.client.channels.cache.get("705693639225114661");
+  const channel = client.channels.cache.get("715462262499967026");
   channel.send(WoW);
 
-  await Settings.findOne({ guildID: guild.id }, async (err, guild) => {
+  await Settings.findOne({ guildID: this.guild.id }, async (err, guild) => {
     if (err) console.log(err);
 
     if (!guild) {
       const newGuild = new Settings({
-        guildID: guild.id,
+        guildID: this.guild.id,
         enableXPCoins: false,
         enableXP: false,
         enableCaptcha: false,
@@ -39,32 +39,32 @@ class guildCreate {
         enableWelcome: false,
       });
       await newGuild.save().catch((err) => console.log(err));
-      console.log(`Added the guild: ${guild} to the database`);
+      console.log(`Added the guild: ${this.guild} to the database`);
     }
   });
 
-  await Prefix.findOne({ guildID: guild.id }, (err, prefix) => {
+  await Prefix.findOne({ guildID: this.guild.id }, (err, prefix) => {
     if (err) console.log(err);
 
     if (!prefix) {
       const newPrefix = new Prefix({
-        guildID: guild.id,
+        guildID: this.guild.id,
         prefix: "b3",
       });
       newPrefix.save().catch((err) => console.log(err));
       console.log(
-        `The guild: '${guild}' has been added to the prefix database`
+        `The guild: '${this.guild}' has been added to the prefix database`
       );
     }
   });
   await PerGuildLogandWelcome.findOne(
-    { guildID: guild.id },
+    { guildID: this.guild.id },
     (err, perguildlogandwelcome) => {
       if (err) console.log(err);
 
       if (!perguildlogandwelcome) {
         const newPerGuildLogandWelcome = new PerGuildLogandWelcome({
-          guildID: guild.id,
+          guildID: this.guild.id,
           logChannel: "logs",
           reportChannel: "reports",
           welcomeChannel: "welcome",
@@ -76,7 +76,7 @@ class guildCreate {
         });
         newPerGuildLogandWelcome.save().catch((err) => console.log(err));
         console.log(
-          `The guild: '${guild}' has been added to the per guild logging, welcoming and leaving database`
+          `The guild: '${this.guild}' has been added to the per guild logging, welcoming and leaving database`
         );
       }
     }

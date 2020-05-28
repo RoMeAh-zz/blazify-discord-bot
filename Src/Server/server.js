@@ -27,7 +27,7 @@ module.exports = async (bot) => {
         app[route.method](route.path, route.run.bind(null, bot, app));
     })
     app.get("*", (req, res) => {
-        res.sendFile(require("path").resolve(__dirname + "/../client/dist/index.html"));
+        res.sendFile(require("path").resolve(__dirname + "../../../Web/client/dist/index.html"));
     });
-    app.listen(8080, () => console.log("Started on port 8080"));
+    app.listen(8081, () => console.log("Started on port 8080"));
 }; 

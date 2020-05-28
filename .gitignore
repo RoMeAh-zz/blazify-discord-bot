@@ -1,5 +1,5 @@
 node_modules/
-lavalink/logs
+Lavalink/logs
 config.json
-captcha
+Src/Bot/Events/captchas
 .idea
