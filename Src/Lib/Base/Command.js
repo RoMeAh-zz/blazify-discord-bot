@@ -1,5 +1,5 @@
 class Command {
-    constructor(client, options) {
+    constructor(options) {
         this.help = {
             name: options.name || null,
             description: options.description || "No information specified.",
@@ -15,18 +15,21 @@ class Command {
         };
         this.cooldown = new Set();
     }
+
     startCooldown(user) {
         this.cooldown.add(user);
         setTimeout(() => {
             this.cooldown.delete(user);
         }, this.conf.cooldown);
     }
+
     setMessage(message) {
         this.message = message;
     }
+
     respond(message) {
         this.message.channel.send(message);
     }
 }
 
-module.exports = Command;
+module.exports = Command
