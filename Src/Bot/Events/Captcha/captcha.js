@@ -1,10 +1,6 @@
 const Jimp = require("jimp");
 
-class createCaptcha {
-  constructor(client) {
-    this.client = client;
-  }
- async run(client, reaction, user) {
+async function scrapeProduct ( url ) {
   const captcha = Math.random().toString(36).slice(2, 8);
   const image = new Jimp(175, 50, "white");
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
@@ -18,5 +14,4 @@ class createCaptcha {
 );
   return captcha;
 };
-}
 module.exports =  createCaptcha;
