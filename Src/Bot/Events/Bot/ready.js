@@ -16,7 +16,7 @@ class Ready {
  async run() {
 
    Server(this.client)
-  await this.client.lava.init(this.client.user.id);
+  await this.client.lava.init(this.client.id);
    console.log("Successfully Created a Lavalink Node.")
 //    this.client.channels.cache
 //      .get("707274207112724480")

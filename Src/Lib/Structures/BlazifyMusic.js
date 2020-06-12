@@ -1,7 +1,7 @@
-const { Plugin, Structures } = require("lavaclient");
-const fetch = require("node-fetch");
-const { decode } = require("@lavalink/encoding");
-const Utils = require("./functions");
+import { Plugin, Structures } from "lavaclient";
+import fetch from "node-fetch";
+import { decode } from "@lavalink/encoding";
+import { formatTime } from "./functions";
 
 class BlazifyMusicPlugin extends Plugin {
   preRegister() {
@@ -52,7 +52,7 @@ class BlazifyMusicPlugin extends Plugin {
             const { title, length } = decode(this.current.song);
             return this.textChannel
               .send(
-                `Now playing: **${title}** \`${Utils.formatTime(
+                `Now playing: **${title}** \`${formatTime(
                   Number(length),
                   true
                 )}\``
@@ -79,4 +79,4 @@ class BlazifyMusicPlugin extends Plugin {
     };
   }
 };
-module.exports = BlazifyMusicPlugin;
+export default BlazifyMusicPlugin;
