@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "./Blazify",
+    "lib": [
+      "ESNext",
+      "ESNext.Array",
+      "ESNext.AsyncIterable",
+      "ESNext.Intl",
+      "ESNext.Symbol",
+      "dom"
+    ],
+    "sourceMap": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "removeComments": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "allowJs": true,
+    "declaration": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
+  },
+  "include": [
+    "Src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "Src/Lib/LavaJS/**/*",
+    "lavalink"
+  ]
+}

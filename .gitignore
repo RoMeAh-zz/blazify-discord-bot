@@ -1,5 +1,9 @@
+.idea/
+
+LavaJS/
+
 node_modules/
-Lavalink/logs
-config.json
-Src/Bot/Events/captchas
-.idea
+
+ZodiacBot/
+
+json.sqlite
