@@ -1,7 +1,7 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
 import {  Message } from "discord.js";
 import { join } from "path";
-import { prefix, ownerID } from "../../Config";
+import {prefix , ownerID , dbName} from "../../Config";
 import { Connection } from "typeorm"
 import Database  from "../Database/Database"
 import rss from "rss-parser";
@@ -69,7 +69,6 @@ export default class BlazifyClient extends AkairoClient {
         this.commandHandler.loadAll();
         this.listnerHandler.loadAll();
 
-        this.request = new (rss)();
 
         this.db = Database.get();
         await this.db.connect();
