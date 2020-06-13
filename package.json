@@ -25,6 +25,7 @@
     "discord-akairo": "github:1Computer1/discord-akairo",
     "discord.js": "github:discordjs/discord.js",
     "lavaclient": "^2.0.6",
+    "mongodb": "^3.5.9",
     "ms": "^2.1.2",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.0",

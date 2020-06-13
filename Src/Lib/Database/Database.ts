@@ -1,17 +1,17 @@
 import { ConnectionManager } from "typeorm";
-import { dbName } from "../../Config";
+import { Giveaways } from "./Models/Giveaways";
+import { Warns } from "./Models/Warns";
 
 const connectionManager: ConnectionManager = new ConnectionManager();
 connectionManager.create({
-    type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: "root",
-    password: "password",
-    database: dbName,
-    entities: [
-        __dirname + "/Models/*.js"
-    ],
+    type: "mongodb",
+    url: "mongodb+srv://blazify:blazifyisbest@cluster0-pjlza.mongodb.net/blazify",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
     synchronize: true,
-});
+    entities: [
+        Giveaways,
+        Warns
+    ]
+})
 export default connectionManager;

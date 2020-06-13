@@ -6,7 +6,7 @@ import { Giveaways } from "../Database/Models/Giveaways";
 export class GiveawayManager {
     static start =  async function (end : number , time : number , item : string, giveawayRepo : Repository<Giveaways> , message : Message) {
         // @ts-ignore
-        const msg: Message = await message.util.send(new MessageEmbed()
+        const msg: Message = await message.util?.send(new MessageEmbed()
             .setAuthor(`Giveaway | Ends at ${end}`)
             .setColor("RANDOM")
             .setTitle(`\`${item}\` is been given away!`)

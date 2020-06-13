@@ -5,6 +5,7 @@ import {prefix , ownerID , dbName} from "../../Config";
 import { Connection } from "typeorm"
 import Database  from "../Database/Database"
 import rss from "rss-parser";
+import connectionManager from "../Database/Database";
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -71,7 +72,10 @@ export default class BlazifyClient extends AkairoClient {
 
 
         this.db = Database.get();
-        await this.db.connect();
+        await this.db.connect()
+            .then(connected => {
+            if(connected) console.log("[Database: MongoDB] => Connected")
+        })
         await this.db.synchronize();
     }
     public async start(): Promise<string> {

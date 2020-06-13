@@ -1,19 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity , Column , PrimaryColumn , ObjectID , Entity , ObjectIdColumn } from "typeorm";
 
-@Entity("giveaway")
-export class Giveaways {
-    @PrimaryGeneratedColumn()
-    id!: number
+@Entity("Giveaways")
+export class Giveaways extends BaseEntity {
+    @ObjectIdColumn({name: "_id"})
+    public _id?: ObjectID;
 
-    @Column({type: "varchar", length: 22})
-    channel!: string
+    @PrimaryColumn("message")
+    public message?: string
 
-    @Column({ type: "varchar", length: 22 })
-    message!: string
+    @Column("channel")
+    public channel?: string
 
-    @Column({ type: "varchar", length: 22 })
-    end!: number
+    @Column("end")
+     public end?: number
 
-    @Column({ type: "varchar", length: 22 })
-    time!: number
+    @Column("time")
+    public time?: number
 }

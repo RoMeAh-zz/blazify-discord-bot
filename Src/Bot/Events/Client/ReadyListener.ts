@@ -6,8 +6,6 @@ import { Giveaways } from "../../../Lib/Database/Models/Giveaways";
 import { LavaClient } from "@anonymousg/lavajs";
 
 import  { GiveawayManager }  from "../../../Lib/Structures/GiveawayManager";
-import { channel_id, discord_channel, ytwatchInterval, messageTemplate } from "../../../Config";
-import { handleUploads } from "../../../Lib/Structures/YouTubeVideoNotifier"
 export default class ReadyListener extends Listener {
     public constructor() {
         super ("ready" , {
@@ -32,11 +30,11 @@ export default class ReadyListener extends Listener {
 
         const giveawayRepo : Repository<Giveaways> = this.client.db.getRepository (Giveaways);
 
-        console.log (`${this!.client!.user!.tag} is online and ready`);
+        console.log (`[Bot: Blazify] => Connected`);
 
         setInterval (async () => {
             const giveaways : Giveaways[] = await giveawayRepo.find ();
-            giveaways.filter (g => g.end <= Date.now ()).map (async g => {
+            giveaways.filter (g => g.end!  <= Date!.now()).map (async g => {
                 // @ts-ignore
                 const msg : Message = await (this.client.channels.cache.get (g.channel) as TextChannel).messages.fetch ()
                     .catch (() => null);
@@ -44,6 +42,7 @@ export default class ReadyListener extends Listener {
                 await GiveawayManager.end (giveawayRepo , msg)
             });
         } , 3e5)
-        handleUploads(this.client, channel_id, discord_channel, ytwatchInterval, messageTemplate)
+
+
     }
 }

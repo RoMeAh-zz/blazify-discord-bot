@@ -1,19 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import {Entity , Column , PrimaryGeneratedColumn , ObjectIdColumn , ObjectID} from "typeorm";
 
 @Entity("warns")
 export class Warns {
-    @PrimaryGeneratedColumn()
-    id!: number
+    @ObjectIdColumn({name: "_id"})
+    public _id?: ObjectID;
 
-    @Column({type: "varchar", length: 22})
-    guild!: string
+    @Column("guild")
+    public guild?: string
 
-    @Column({ type: "varchar", length: 22 })
-    user!: string
+    @Column("user")
+    public user?: string
 
-    @Column({ type: "varchar", length: 22 })
-    moderator!: string
+    @Column("moderator")
+    public moderator?: string
 
-    @Column({ type: "text"})
-    reason!: string
+    @Column("reason")
+    public reason?: string
 }
