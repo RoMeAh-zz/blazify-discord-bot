@@ -16,18 +16,6 @@ export default class ReadyListener extends Listener {
     }
 
     public async exec() : Promise<void> {
-        const nodes = [
-            {
-                host: "localhost",
-                port: 2333,
-                password: "youshallnotpass"
-            }
-        ]
-
-         // @ts-ignore
-        this.client.music = new LavaClient(this.client, nodes, 0)
-
-
         const giveawayRepo : Repository<Giveaways> = this.client.db.getRepository (Giveaways);
 
         console.log (`[Bot: Blazify] => Connected`);
@@ -42,7 +30,5 @@ export default class ReadyListener extends Listener {
                 await GiveawayManager.end (giveawayRepo , msg)
             });
         } , 3e5)
-
-
     }
 }

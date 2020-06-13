@@ -49,7 +49,7 @@ export default class Eval extends Command {
                     depth: 0
                 } );
             }
-            if (evaluated.length > 2000) {
+            if (evaluated.length >= 1024) {
                 const {key} = await (
                     await fetch ( "https://hasteb.in/documents" , {
                         body: evaluated ,

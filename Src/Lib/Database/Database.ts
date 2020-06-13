@@ -1,6 +1,4 @@
 import { ConnectionManager } from "typeorm";
-import { Giveaways } from "./Models/Giveaways";
-import { Warns } from "./Models/Warns";
 
 const connectionManager: ConnectionManager = new ConnectionManager();
 connectionManager.create({
@@ -10,8 +8,7 @@ connectionManager.create({
     useUnifiedTopology: true,
     synchronize: true,
     entities: [
-        Giveaways,
-        Warns
+        __dirname + "/Models/*.js"
     ]
 })
 export default connectionManager;

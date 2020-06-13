@@ -4,15 +4,16 @@ import { join } from "path";
 import {prefix , ownerID , dbName} from "../../Config";
 import { Connection } from "typeorm"
 import Database  from "../Database/Database"
-import rss from "rss-parser";
-import connectionManager from "../Database/Database";
+
+import { LavaClient } from "@anonymousg/lavajs/dist/managers/LavaClient";
+
 
 declare module "discord-akairo" {
     interface AkairoClient {
         commandHandler: CommandHandler
         listnerHandler: ListenerHandler
         db: Connection;
-        request: rss;
+        lava: LavaClient;
     }
 }
 interface BotOptions{
@@ -24,7 +25,7 @@ interface BotOptions{
 export default class BlazifyClient extends AkairoClient {
     public config: BotOptions;
     public db!: Connection;
-    public request!: rss;
+    public lava!: LavaClient;
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "../" + "..", "Bot/Events/")
     })
@@ -66,16 +67,35 @@ export default class BlazifyClient extends AkairoClient {
             listnerHandler: this.listnerHandler,
             process
         });
-
         this.commandHandler.loadAll();
         this.listnerHandler.loadAll();
 
+        this.on("ready", async () => {
+            const nodes = [{
+                    host: "localhost",
+                    port: 2333,
+                    password: "youshallnotpass"
+                }]
+            this.lava = new LavaClient(this, nodes, 0)
+            this.lava.on( "nodeSuccess", async (node) =>
+                console.log ( `[Lavalink ${node.options.port}: LavaJS] => Connected` )
+            );
+            this.lava.on("nodeError", console.error);
+            this.lava.on("trackPlay", (track, player) => {
+                const { title, length, uri } = track;
+                player.options.textChannel.send( `Now playing [${title}](${uri}) - \`${length}\`!` );
+            });
+            this.lava.on("queueOver", (player) => {
+                player.options.textChannel.send( `Your current queue has ended. Leaving voice channel!`);
+                player.destroy(player.options.guild.id);
+            });
+        });
 
         this.db = Database.get();
         await this.db.connect()
             .then(connected => {
             if(connected) console.log("[Database: MongoDB] => Connected")
-        })
+        }).catch(err => console.log(err))
         await this.db.synchronize();
     }
     public async start(): Promise<string> {

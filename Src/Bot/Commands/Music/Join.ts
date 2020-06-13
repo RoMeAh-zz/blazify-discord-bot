@@ -18,8 +18,7 @@ export default class Join extends Command {
     }
     public async exec(message : Message) : Promise<any> {
         if(!message.member?.voice.channel) return message.util?.send(`${message.author} you are not present in any voice channel.`)
-        //@ts-ignore
-        await this.client.music?.spawnPlayer(LavaClient, {
+        let Player = await this.client.lava?.spawnPlayer(LavaClient, {
             guild: message.guild?.id,
             voiceChannel: message.member.voice.channel,
             textChannel: message.channel,
@@ -37,5 +36,16 @@ export default class Join extends Command {
             \`Voice Channel\`: ${message.member?.voice.channel}\n
             \`Guild Name\`: ${message.guild?.name}`)
         )
+        let Song = Player.lavaSearch("Alone", true, message.member).catch((err: any) => {
+            // @ts-ignore
+            return ! (! Player.destroy ( message.guild?.id ) || ! console.log ( err ));
+        })
+        console.log(Song)
+        if (!Player.playing) {
+            setTimeout ( async () => {
+                Player.destroy (message.guild?.id)
+                await message.channel.send ( "I was too long in the Voice Channel and no Song was Played" )
+            }, 10000 )
+        }
     }
 }
