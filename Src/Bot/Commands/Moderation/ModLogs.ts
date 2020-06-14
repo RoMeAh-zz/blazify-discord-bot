@@ -31,7 +31,7 @@ export default class ModLogs extends Command {
         // @ts-ignore
         const warns: Warns[] = await warnRepo.find({ user: member.id, guild: message.guild.id });
 
-        if(!warns.length) { // @ts-ignore
+        if(!warns.length) {
             // @ts-ignore
             return message.util.send("No Mod Logs found about this user");
         }
@@ -46,12 +46,8 @@ export default class ModLogs extends Command {
             }
         }));
 
-        // @ts-ignore
-        // @ts-ignore
-        // @ts-ignore
-        // @ts-ignore
-        // @ts-ignore
-        return message.util.send(new MessageEmbed()
+
+        return message.util!.send(new MessageEmbed()
             .setAuthor(`ModLogs`, member.user.displayAvatarURL({dynamic: true}))
             .setColor("#FF0000")
             //@ts-ignore

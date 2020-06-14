@@ -1,4 +1,4 @@
-import {Collection , Message , MessageEmbed , MessageReaction , Snowflake , User} from "discord.js";
+import { Message , MessageEmbed , MessageReaction  , User} from "discord.js";
 import { Repository } from "typeorm";
 import { Giveaways } from "../Database/Models/Giveaways";
 
@@ -32,7 +32,9 @@ export class GiveawayManager {
     static edit = async function (end : number , time : number , item : string , giveawayRepo : Repository<Giveaways> , msg : Message) {
         let fetchedRepo = await giveawayRepo.findOne ({message: msg.id})
         // @ts-ignore
-        fetchedRepo.end = end;
+        fetchedRepo?.end = end;
+        // @ts-ignore
+        fetchedRepo?.time = time;
         // @ts-ignore
         await giveawayRepo.save(fetchedRepo);
         const embed: MessageEmbed = msg.embeds[0];
@@ -46,6 +48,10 @@ export class GiveawayManager {
         await msg.edit (embed)
 
         await msg.channel.send("Giveaway Edited Successfully")
+
+        setTimeout(() => {
+            GiveawayManager.end( giveawayRepo , msg )
+        }, time);
 
     }
     static reroll = async function(giveawayRepo: Repository<Giveaways>, msg: Message) {
@@ -65,6 +71,9 @@ export class GiveawayManager {
     static end = async function (giveawayRepo : Repository<Giveaways> , msg : Message) {
 
         if(!msg) return ;
+
+        let repo = await giveawayRepo.findOne ( {message: msg.id} )
+        if(!repo) return ;
         await giveawayRepo.delete ({message: msg.id});
 
         // @ts-ignore

@@ -1,10 +1,11 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
 import {  Message } from "discord.js";
 import { join } from "path";
-import {prefix , ownerID , dbName} from "../../Config";
+import {prefix , ownerID , secret} from "../../Config";
 import { Connection } from "typeorm"
 import Database  from "../Database/Database"
 
+import Oauth from "discord-oauth2";
 import { LavaClient } from "@anonymousg/lavajs/dist/managers/LavaClient";
 
 
@@ -14,6 +15,8 @@ declare module "discord-akairo" {
         listnerHandler: ListenerHandler
         db: Connection;
         lava: LavaClient;
+        oauth: Oauth;
+        oauthURL: any;
     }
 }
 interface BotOptions{
@@ -26,11 +29,13 @@ export default class BlazifyClient extends AkairoClient {
     public config: BotOptions;
     public db!: Connection;
     public lava!: LavaClient;
+    public oauth!: Oauth;
+    public oauthURL!: any;
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
-        directory: join(__dirname, "../" + "..", "Bot/Events/")
+        directory: join(__dirname, "..", "..", "Bot/Events/")
     })
     public commandHandler: CommandHandler = new CommandHandler(this, {
-        directory: join(__dirname, "../" + "..", "Bot/Commands/"),
+        directory: join(__dirname, "..", "..", "Bot/Commands/"),
         prefix: prefix,
         allowMention: true,
         handleEdits: true,
@@ -67,8 +72,10 @@ export default class BlazifyClient extends AkairoClient {
             listnerHandler: this.listnerHandler,
             process
         });
-        this.commandHandler.loadAll();
-        this.listnerHandler.loadAll();
+        await this.commandHandler.loadAll();
+        console.log(`[Commands: Command Handler] => Loaded`)
+         await this.listnerHandler.loadAll();
+        console.log(`[Events: Listener Handler] => Loaded`)
 
         this.on("ready", async () => {
             const nodes = [{
@@ -77,20 +84,19 @@ export default class BlazifyClient extends AkairoClient {
                     password: "youshallnotpass"
                 }]
             this.lava = new LavaClient(this, nodes, 0)
-            this.lava.on( "nodeSuccess", async (node) =>
+            this.lava.on( "nodeSuccess", async (node) => {
                 console.log ( `[Lavalink ${node.options.port}: LavaJS] => Connected` )
-            );
+            });
             this.lava.on("nodeError", console.error);
-            this.lava.on("trackPlay", (track, player) => {
-                const { title, length, uri } = track;
-                player.options.textChannel.send( `Now playing [${title}](${uri}) - \`${length}\`!` );
-            });
-            this.lava.on("queueOver", (player) => {
-                player.options.textChannel.send( `Your current queue has ended. Leaving voice channel!`);
-                player.destroy(player.options.guild.id);
-            });
         });
 
+        this.oauth = new Oauth({
+        clientSecret: secret,
+            clientId: "712607705184862278",
+            redirectUri: "http://localhost:8080/api/callback"})
+        this.oauthURL = this.oauth.generateAuthUrl({
+            scope: ["guilds", "identity"]
+        })
         this.db = Database.get();
         await this.db.connect()
             .then(connected => {

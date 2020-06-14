@@ -18,7 +18,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "removeComments": false,
+    "removeComments": true,
     "strict": true,
     "strictNullChecks": true,
     "noImplicitThis": true,

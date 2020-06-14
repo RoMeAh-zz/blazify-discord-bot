@@ -35,16 +35,10 @@ export default class Eval extends Command {
         let returnEmbed;
 
         try {
-            // we declare d as the Date timestamp when the evaluation started
             let d = Date.now ();
-
-            // here we evaluate the input
             let evaluated = await eval ( `${code}` );
-
             const evalType = evaluated ? evaluated.constructor.name : undefined;
-
             if (typeof evaluated !== "string") {
-                // we format the output as string
                 evaluated = inspect ( evaluated , {
                     depth: 0
                 } );
@@ -59,7 +53,6 @@ export default class Eval extends Command {
 
                 evaluated = `https://hasteb.in/${key}`;
             }
-
             returnEmbed = new MessageEmbed ()
                 .setTitle ( "Evaluation Output" )
                 .addField ( "Input" , toJS ( code ) )
@@ -78,10 +71,10 @@ export default class Eval extends Command {
                 .addField ( "Error" , toJS ( e ) );
         }
 
-        return message.channel.send ( returnEmbed );
+        return message.util?.send ( returnEmbed );
     }
 };
 
 function toJS(input: string): string {
-    return `\`\`\`js\n${input}\`\`\``;
+    return `\`\`\`ts\n${input}\`\`\``;
 }

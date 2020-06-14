@@ -1,8 +1,4 @@
-export let token: string = "NzE5NDgyMzkxMjIzMjA1OTE4.Xt5vPg.TjyOHheaZt6SBih26jmw9ADBrNM";
+export let token: string = "Njk2NzU2MzIyODI1NDA0NDE2.XuXy4A.Obdm-wB_rnqrqjtrDfMzg13QHL8";
 export let prefix: string = "<<";
-export let ownerID: Array<string> = ["712607705184862278"];
-export let dbName: string = "ZodiacDBts";
-export let channel_id: string = "UC9sg8SXNE3PE_cZAfJ_NiuQ";
-export let discord_channel: string = "718324385760673794";
-export let ytwatchInterval: number = 3e5;
-export let messageTemplate: string = "Hello @everyone, **{author}** just now uploaded a video **{title}**!\\n{url}";
+export let ownerID: Array<string> = [ '712607705184862278', '312149319769784321', '413620315508178955' ];
+export let secret: string = "8x8DCRNFAeoDcsr58JmBLUvgPqGlJ9lJ";

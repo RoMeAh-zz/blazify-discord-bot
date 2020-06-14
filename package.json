@@ -5,7 +5,7 @@
   "main": "Blazify/Bot.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/Bot.js"
+    "start": "nodemon Blazify/Bot.js"
   },
   "repository": {
     "type": "git",
@@ -18,24 +18,24 @@
   },
   "homepage": "https://github.com/Blazify/zodiac-discord-bot#readme",
   "dependencies": {
-    "@anonymousg/lavajs": "^2.0.1",
-    "@lavalink/encoding": "^0.1.1",
+    "@anonymousg/lavajs": "^2.0.4",
+    "@types/cors": "^2.8.6",
     "@types/ms": "^0.7.31",
     "@types/node": "^14.0.11",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "discord-akairo": "github:1Computer1/discord-akairo",
+    "discord-oauth2": "^2.2.0",
     "discord.js": "github:discordjs/discord.js",
-    "lavaclient": "^2.0.6",
+    "express": "^4.17.1",
     "mongodb": "^3.5.9",
     "ms": "^2.1.2",
-    "mysql": "^2.18.1",
     "node-fetch": "^2.6.0",
-    "quick.db": "^7.1.1",
-    "rss-parser": "^3.8.0",
-    "sqlite": "^4.0.11",
-    "sqlite3": "^4.2.0",
+    "nodemon": "^2.0.4",
     "typeorm": "^0.2.25"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.5.7"
+    "@types/node-fetch": "^2.5.7",
+    "erela.js": "^1.1.8"
   }
 }
