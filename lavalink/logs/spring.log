@@ -1467,3 +1467,821 @@ org.json.JSONException: JSONObject["guildId"] not found.
 2020-06-15 05:06:12.205  INFO 4167 --- [XNIO-1 task-18] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
 2020-06-15 05:06:13.047  INFO 4167 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
 2020-06-15 05:06:13.101  INFO 4167 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 05:09:33.515  INFO 4167 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 05:12:44.274  INFO 4167 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-15 05:12:44.288  INFO 4167 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2020-06-15 05:12:44.420  INFO 4167 --- [Thread-1] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-06-15 05:12:44.474 ERROR 4167 --- [XNIO-1 I/O-2] org.xnio.listener                        : XNIO001007: A channel event listener threw an exception
+
+java.util.concurrent.RejectedExecutionException: XNIO007007: Thread is terminating
+	at org.xnio.nio.WorkerThread.execute(WorkerThread.java:590) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.websockets.jsr.UndertowSession$3.handleEvent(UndertowSession.java:396) ~[undertow-websockets-jsr-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.jsr.UndertowSession$3.handleEvent(UndertowSession.java:388) ~[undertow-websockets-jsr-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameCloseListener.handleEvent(AbstractFramedChannel.java:1063) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameCloseListener.handleEvent(AbstractFramedChannel.java:978) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.conduits.WriteReadyHandler$ChannelListenerHandler.terminated(WriteReadyHandler.java:70) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.writeTerminated(NioSocketConduit.java:234) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.terminateWrites(NioSocketConduit.java:223) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.truncateWrites(NioSocketConduit.java:228) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.conduits.IdleTimeoutConduit.truncateWrites(IdleTimeoutConduit.java:387) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.conduits.ConduitStreamSinkChannel.close(ConduitStreamSinkChannel.java:186) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.IoUtils.safeClose(IoUtils.java:134) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.conduits.WriteReadyHandler$ChannelListenerHandler.forceTermination(WriteReadyHandler.java:57) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.forceTermination(NioSocketConduit.java:107) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.WorkerThread.run(WorkerThread.java:494) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+
+2020-06-15 05:17:24.804  INFO 5945 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        a47a7a46c291390d82bb405abc8c2035de4f28e4-SNAPSHOT
+	Build:          1064
+	Build time:     12.06.2020 18:16:09 UTC
+	Branch          master
+	Commit:         a47a7a4
+	Commit time:    12.06.2020 18:05:54 UTC
+	JVM:            11.0.7
+	Lavaplayer      1.3.49
+
+2020-06-15 05:17:25.597  INFO 5945 --- [main] lavalink.server.Launcher                 : Starting Launcher on romeah-HP-15-Notebook-PC with PID 5945 (/home/romeah/Desktop/blazify-discord-bot/lavalink/Lavalink.jar started by romeah in /home/romeah/Desktop/blazify-discord-bot/lavalink)
+2020-06-15 05:17:25.604  INFO 5945 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2020-06-15 05:17:25.961  WARN 5945 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-06-15 05:17:31.566  WARN 5945 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2020-06-15 05:17:31.768  INFO 5945 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2020-06-15 05:17:31.771  INFO 5945 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5749 ms
+2020-06-15 05:17:33.361  WARN 5945 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2020-06-15 05:17:33.430  INFO 5945 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Linux, Arch: amd64
+2020-06-15 05:17:33.431  INFO 5945 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
+2020-06-15 05:17:33.432  INFO 5945 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
+2020-06-15 05:17:33.433  INFO 5945 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
+2020-06-15 05:17:35.347  INFO 5945 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2020-06-15 05:17:37.405  INFO 5945 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-15 05:17:39.074  INFO 5945 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2020-06-15 05:17:39.166  INFO 5945 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2020-06-15 05:17:39.552  INFO 5945 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
+2020-06-15 05:17:39.576  INFO 5945 --- [main] lavalink.server.Launcher                 : Started Launcher in 18.511 seconds (JVM running for 25.824)
+2020-06-15 05:17:58.069  INFO 5945 --- [XNIO-1 task-1] io.undertow.servlet                      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-15 05:17:58.109  INFO 5945 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-15 05:17:58.198  INFO 5945 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 87 ms
+2020-06-15 05:17:58.687  INFO 5945 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59754
+2020-06-15 05:18:00.965  INFO 5945 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59754
+2020-06-15 05:18:02.187  INFO 5945 --- [XNIO-1 task-2] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:18:03.951  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"d45cbe9870d0207210ff550dd0b052c7","guildId":"714874374070599720","event":{"token":"f2f2be4262109524","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:18:09.116  INFO 5945 --- [parallel-2] com.jcabi.manifests.Manifests            : 73 attributes loaded from 84 stream(s) in 4s, 73 saved, 1240 ignored: ["Ant-Version", "Archiver-Version", "Automatic-Module-Name", "Bnd-LastModified", "Build-Jdk", "Build-Jdk-Spec", "Build-Time", "Built-By", "Bundle-ActivationPolicy", "Bundle-Activator", "Bundle-Category", "Bundle-Description", "Bundle-DocURL", "Bundle-License", "Bundle-ManifestVersion", "Bundle-Name", "Bundle-NativeCode", "Bundle-RequiredExecutionEnvironment", "Bundle-SymbolicName", "Bundle-Vendor", "Bundle-Version", "Copyright", "Created-By", "Export-Package", "Extension-Name", "Git-Revision", "Implementation-Build", "Implementation-Build-Date", "Implementation-Title", "Implementation-URL", "Implementation-Vendor", "Implementation-Vendor-Id", "Implementation-Version", "Import-Package", "Include-Resource", "JCabi-Build", "JCabi-Date", "JCabi-Version", "Jar-Name", "Jar-Version", "Java-Vendor", "Java-Version", "Kotlin-Runtime-Component", "Kotlin-Version", "Log4jReleaseKey", "Log4jReleaseManager", "Log4jReleaseVersion", "Magma-Version", "Main-Class", "Manifest-Version", "Multi-Release", "Originally-Created-By", "Os-Arch", "Os-Name", "Os-Version", "Private-Package", "Provide-Capability", "Require-Bundle", "Require-Capability", "Scm-Connection", "Scm-Revision", "Scm-Url", "Specification-Title", "Specification-Vendor", "Specification-Version", "Spring-Boot-Classes", "Spring-Boot-Lib", "Spring-Boot-Version", "Start-Class", "Tool", "X-Compile-Source-JDK", "X-Compile-Target-JDK", "url"]
+2020-06-15 05:18:12.594  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Yalgaar
+2020-06-15 05:18:12.775  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAiAIAI1lBTEdBQVIgLSBDQVJSWU1JTkFUSSBYIFdpbHkgRnJlbnp5AAtDYXJyeU1pbmF0aQAAAAAAAvm4AAt6endSYktJMnBuNAABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXp6d1JiS0kycG40AAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 05:21:28.197  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 05:21:38.615  INFO 5945 --- [XNIO-1 task-4] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:21:39.275  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"d45cbe9870d0207210ff550dd0b052c7","guildId":"714874374070599720","event":{"token":"7ce44d45a057e808","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:21:39.522  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Zindagi
+2020-06-15 05:21:39.593  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAiAIAI1ppbmRhZ2kgLSBDQVJSWU1JTkFUSSBYIFdpbHkgRnJlbnp5AAtDYXJyeU1pbmF0aQAAAAAAA19IAAswQ3l2aHoxR21SSQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PTBDeXZoejFHbVJJAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 05:25:21.017  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 05:25:34.608  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59754 -- CloseStatus[code=1006, reason=]
+2020-06-15 05:25:34.609  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 05:26:11.558  INFO 5945 --- [XNIO-1 task-6] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59824
+2020-06-15 05:26:11.588  INFO 5945 --- [XNIO-1 task-6] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59824
+2020-06-15 05:26:17.966  INFO 5945 --- [XNIO-1 task-7] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:26:18.615  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"79e3c276fd82e5007f192fd70a09d542","guildId":"714874374070599720","event":{"token":"e48d24fd5f981671","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:26:18.804  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 05:26:29.199  INFO 5945 --- [XNIO-1 task-9] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:26:29.925  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: legends never die
+2020-06-15 05:26:29.957  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 05:29:50.163  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59824 -- CloseStatus[code=1006, reason=]
+2020-06-15 05:29:50.163  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 05:30:08.464  INFO 5945 --- [XNIO-1 task-11] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59890
+2020-06-15 05:30:08.498  INFO 5945 --- [XNIO-1 task-11] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59890
+2020-06-15 05:30:18.467  INFO 5945 --- [XNIO-1 task-12] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:30:19.132  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"68d0c59ecdc02a7d68bc67289a5bc63a","guildId":"714874374070599720","event":{"token":"e48d24fd5f981671","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:30:19.151  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends Never Die Remix
+2020-06-15 05:30:19.195  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAtwIATExlZ2VuZHMgTmV2ZXIgRGllOiBSZW1peCAoZnQuIEFsYW4gV2Fsa2VyKSB8IFdvcmxkcyAyMDE3IC0gTGVhZ3VlIG9mIExlZ2VuZHMAEUxlYWd1ZSBvZiBMZWdlbmRzAAAAAAACjFgAC2VFS2ZXVnZBRGlRAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9ZUVLZldWdkFEaVEAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 05:33:33.461  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59890 -- CloseStatus[code=1006, reason=]
+2020-06-15 05:33:33.462  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 05:33:55.773  INFO 5945 --- [XNIO-1 task-14] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59972
+2020-06-15 05:33:55.820  INFO 5945 --- [XNIO-1 task-14] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59972
+2020-06-15 05:33:59.730  INFO 5945 --- [XNIO-1 task-15] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:34:00.374  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"08fcab255c36c036f4ac1bb696cf6f51","guildId":"714874374070599720","event":{"token":"e48d24fd5f981671","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:34:00.380  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Courtsey call
+2020-06-15 05:34:00.421  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjgIALUNvdXJ0ZXN5IENhbGwgLSBUaG91c2FuZCBGb290IEtydXRjaCAoTHlyaWNzKQAHQnVybm91dAAAAAAAA6GwAAtoeHFXMUVxMGlQNAABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWh4cVcxRXEwaVA0AAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 05:38:25.401  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59972 -- CloseStatus[code=1006, reason=]
+2020-06-15 05:38:25.579  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 05:38:54.308  INFO 5945 --- [XNIO-1 task-17] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:59998
+2020-06-15 05:38:54.385  INFO 5945 --- [XNIO-1 task-17] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:59998
+2020-06-15 05:39:03.729  INFO 5945 --- [XNIO-1 task-18] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:39:04.353  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"9af4319b28f486d3b2b19318f55c4903","guildId":"714874374070599720","event":{"token":"e48d24fd5f981671","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:39:04.619  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: feel invincible
+2020-06-15 05:39:04.674  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAkwIAMlNraWxsZXQgLSAiRmVlbCBJbnZpbmNpYmxlIiBbT2ZmaWNpYWwgTXVzaWMgVmlkZW9dAAdTa2lsbGV0AAAAAAADeqAAC1F6dzZBMldDNVFvAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9UXp3NkEyV0M1UW8AB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 05:43:17.333  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:59998 -- CloseStatus[code=1006, reason=]
+2020-06-15 05:43:17.334  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 05:43:34.201  INFO 5945 --- [XNIO-1 task-20] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60030
+2020-06-15 05:43:34.238  INFO 5945 --- [XNIO-1 task-20] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60030
+2020-06-15 05:43:34.905  INFO 5945 --- [XNIO-1 task-21] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:43:35.566  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"3b1524b75bcf3db328020875006dd02a","guildId":"714874374070599720","event":{"token":"e48d24fd5f981671","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:43:37.240  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Indila
+2020-06-15 05:43:37.263  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAiAIAKEluZGlsYSAtIERlcm5pw6hyZSBEYW5zZSAoQ2xpcCBPZmZpY2llbCkABkluZGlsYQAAAAAAA0fYAAtLNUtBYzVDb0N1awABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PUs1S0FjNUNvQ3VrAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 05:47:13.031  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 05:51:55.603  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60030 -- CloseStatus[code=1006, reason=]
+2020-06-15 05:51:55.604  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 05:52:06.978  INFO 5945 --- [XNIO-1 task-23] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60082
+2020-06-15 05:52:07.009  INFO 5945 --- [XNIO-1 task-23] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60082
+2020-06-15 05:52:25.554  INFO 5945 --- [XNIO-1 task-24] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:52:26.202  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"e31d019cc912da04d372fbcdca91a012","guildId":"714874374070599720","event":{"token":"10a8a22013d104b1","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:52:26.339  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Neefex Never Give Up
+2020-06-15 05:52:26.381  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjgIALk5FRkZFWCAtIE5ldmVyIEdpdmUgVXAg4pid77iPIFtDb3B5cmlnaHQgRnJlZV0ABk5FRkZFWAAAAAAAA9hgAAtfNzBRLVhqM3JFbwABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PV83MFEtWGozckVvAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 05:56:37.956  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 05:58:35.548  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60082 -- CloseStatus[code=1006, reason=]
+2020-06-15 05:58:35.548  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 05:59:30.708  INFO 5945 --- [XNIO-1 task-26] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60194
+2020-06-15 05:59:30.720  INFO 5945 --- [XNIO-1 task-26] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60194
+2020-06-15 05:59:53.572  INFO 5945 --- [XNIO-1 task-27] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 05:59:55.265  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2321e1adab98a80c7e27d36a18892d33","guildId":"714874374070599720","event":{"token":"32544c91f50d9502","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 05:59:55.333  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Neefex Cold
+2020-06-15 05:59:55.355  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAhAIAJE5FRkZFWCAtIENvbGQg4p2E77iPW0NvcHlyaWdodCBGcmVlXQAGTkVGRkVYAAAAAAAC2ngAC1d6UUJBYzhpNzNFAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9V3pRQkFjOGk3M0UAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 06:02:35.799  INFO 5945 --- [XNIO-1 task-29] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:02:36.492  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends Never Die
+2020-06-15 06:02:36.524  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAhAIAJE5FRkZFWCAtIENvbGQg4p2E77iPW0NvcHlyaWdodCBGcmVlXQAGTkVGRkVYAAAAAAAC2ngAC1d6UUJBYzhpNzNFAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9V3pRQkFjOGk3M0UAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 06:02:36.543  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 06:02:36.551  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 06:02:58.642  INFO 5945 --- [XNIO-1 task-31] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:02:59.381  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2321e1adab98a80c7e27d36a18892d33","guildId":"714874374070599720","event":{"token":"8d9c7c6b36313d5f","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 06:02:59.454  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 06:03:08.690  INFO 5945 --- [XNIO-1 task-1] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:03:09.484  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends Never Die
+2020-06-15 06:03:09.526  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 06:06:08.732  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 06:13:04.370  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60194 -- CloseStatus[code=1006, reason=]
+2020-06-15 06:13:04.488  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 06:13:27.857  INFO 5945 --- [XNIO-1 task-3] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60422
+2020-06-15 06:13:28.335  INFO 5945 --- [XNIO-1 task-3] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60422
+2020-06-15 06:13:31.017  INFO 5945 --- [XNIO-1 task-4] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:13:31.670  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"651f6c99bda26b93341d3eb48f55dbaa","guildId":"714874374070599720","event":{"token":"db9ce86cb6c9a5bc","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 06:13:32.080  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 06:13:43.053  INFO 5945 --- [parallel-4] s.n.m.impl.connections.AudioWebSocket    : Websocket to wss://india251.discord.media/?v=4 closed with code 4014 and reason Disconnected.
+2020-06-15 06:13:43.066  INFO 5945 --- [parallel-4] s.n.m.impl.connections.AudioWebSocket    : Closing
+2020-06-15 06:14:08.602  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60422 -- CloseStatus[code=1006, reason=]
+2020-06-15 06:14:08.603  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 06:14:33.383  INFO 5945 --- [XNIO-1 task-6] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60440
+2020-06-15 06:14:33.524  INFO 5945 --- [XNIO-1 task-6] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60440
+2020-06-15 06:14:37.761  INFO 5945 --- [XNIO-1 task-7] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:14:39.155  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"6a8a6cc2afe744d1f0022d26409709f6","guildId":"714874374070599720","event":{"token":"c898e12f45edf1ff","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 06:14:39.282  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends Never Die
+2020-06-15 06:14:39.301  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 06:14:44.111  INFO 5945 --- [XNIO-1 task-9] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:14:44.739  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 06:15:35.585  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60440 -- CloseStatus[code=1006, reason=]
+2020-06-15 06:15:35.586  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 1 playing players.
+2020-06-15 06:15:54.469  INFO 5945 --- [XNIO-1 task-11] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60472
+2020-06-15 06:15:54.499  INFO 5945 --- [XNIO-1 task-11] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60472
+2020-06-15 06:15:57.690  INFO 5945 --- [XNIO-1 task-12] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:15:58.350  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"32b9b564d4cb466795a40debf4498495","guildId":"714874374070599720","event":{"token":"c898e12f45edf1ff","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 06:15:58.454  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 06:16:05.525  INFO 5945 --- [XNIO-1 task-14] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:16:06.288  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends Never Die
+2020-06-15 06:16:06.342  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 06:16:31.755  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60472 -- CloseStatus[code=1006, reason=]
+2020-06-15 06:16:31.756  INFO 5945 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 1 playing players.
+2020-06-15 06:16:46.177  INFO 5945 --- [XNIO-1 task-16] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60490
+2020-06-15 06:16:46.188  INFO 5945 --- [XNIO-1 task-16] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60490
+2020-06-15 06:16:49.824  INFO 5945 --- [XNIO-1 task-17] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 06:16:50.739  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"1cc10af6bda14bf23dc6d27e8a8df2e1","guildId":"714874374070599720","event":{"token":"c898e12f45edf1ff","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 06:16:50.772  INFO 5945 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends Never Die
+2020-06-15 06:16:50.792  INFO 5945 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 06:19:30.446 ERROR 5945 --- [XNIO-13 I/O-1] s.n.m.impl.connections.AudioWebSocket    : Exception in websocket connection, closing. Channel state is Websocket Channel is null
+
+java.io.IOException: Connection reset by peer
+	at java.base/sun.nio.ch.FileDispatcherImpl.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at org.xnio.nio.NioSocketConduit.read(NioSocketConduit.java:319) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.protocols.ssl.SslConduit.doUnwrap(SslConduit.java:703) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.protocols.ssl.SslConduit.read(SslConduit.java:567) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.conduits.IdleTimeoutConduit.read(IdleTimeoutConduit.java:202) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.conduits.ConduitStreamSourceChannel.read(ConduitStreamSourceChannel.java:127) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel.receive(AbstractFramedChannel.java:371) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:38) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:33) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:951) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:932) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.conduits.ReadReadyHandler$ChannelListenerHandler.readReady(ReadReadyHandler.java:66) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.protocols.ssl.SslConduit$SslReadReadyHandler.readReady(SslConduit.java:1176) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.nio.NioSocketConduit.handleReady(NioSocketConduit.java:88) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.WorkerThread.run(WorkerThread.java:561) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: Assembly site of producer [reactor.core.publisher.MonoPeek] is identified by light checkpoint [wss://india251.discord.media/?v=4 [ClosingUndertowWebSocketClient]].
+
+2020-06-15 06:19:30.446 ERROR 5945 --- [parallel-4] reactor.core.publisher.Operators         : Operator called default onErrorDropped
+
+reactor.core.Exceptions$ErrorCallbackNotImplemented: java.io.IOException: Connection reset by peer
+	Suppressed: java.io.IOException: Connection reset by peer
+		at java.base/sun.nio.ch.FileDispatcherImpl.read0(Native Method) ~[na:na]
+		at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+		at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+		at org.xnio.nio.NioSocketConduit.read(NioSocketConduit.java:319) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.protocols.ssl.SslConduit.doUnwrap(SslConduit.java:703) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.protocols.ssl.SslConduit.read(SslConduit.java:567) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.conduits.IdleTimeoutConduit.read(IdleTimeoutConduit.java:202) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.conduits.ConduitStreamSourceChannel.read(ConduitStreamSourceChannel.java:127) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.server.protocol.framed.AbstractFramedChannel.receive(AbstractFramedChannel.java:371) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:38) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:33) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:951) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:932) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at org.xnio.conduits.ReadReadyHandler$ChannelListenerHandler.readReady(ReadReadyHandler.java:66) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.protocols.ssl.SslConduit$SslReadReadyHandler.readReady(SslConduit.java:1176) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.nio.NioSocketConduit.handleReady(NioSocketConduit.java:88) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+		at org.xnio.nio.WorkerThread.run(WorkerThread.java:561) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+		Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: Assembly site of producer [reactor.core.publisher.MonoPeek] is identified by light checkpoint [wss://india251.discord.media/?v=4 [ClosingUndertowWebSocketClient]].
+Caused by: java.io.IOException: Connection reset by peer
+	at java.base/sun.nio.ch.FileDispatcherImpl.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at org.xnio.nio.NioSocketConduit.read(NioSocketConduit.java:319) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.protocols.ssl.SslConduit.doUnwrap(SslConduit.java:703) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.protocols.ssl.SslConduit.read(SslConduit.java:567) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.conduits.IdleTimeoutConduit.read(IdleTimeoutConduit.java:202) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.conduits.ConduitStreamSourceChannel.read(ConduitStreamSourceChannel.java:127) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel.receive(AbstractFramedChannel.java:371) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:38) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:33) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:951) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:932) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.conduits.ReadReadyHandler$ChannelListenerHandler.readReady(ReadReadyHandler.java:66) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.protocols.ssl.SslConduit$SslReadReadyHandler.readReady(SslConduit.java:1176) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.nio.NioSocketConduit.handleReady(NioSocketConduit.java:88) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.WorkerThread.run(WorkerThread.java:561) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: Assembly site of producer [reactor.core.publisher.MonoPeek] is identified by light checkpoint [wss://india251.discord.media/?v=4 [ClosingUndertowWebSocketClient]].
+
+2020-06-15 06:19:30.479 ERROR 5945 --- [parallel-4] reactor.core.scheduler.Schedulers        : Scheduler worker in group main failed with an uncaught exception
+
+reactor.core.Exceptions$ErrorCallbackNotImplemented: java.io.IOException: Connection reset by peer
+	Suppressed: java.io.IOException: Connection reset by peer
+		at java.base/sun.nio.ch.FileDispatcherImpl.read0(Native Method) ~[na:na]
+		at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+		at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+		at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+		at org.xnio.nio.NioSocketConduit.read(NioSocketConduit.java:319) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.protocols.ssl.SslConduit.doUnwrap(SslConduit.java:703) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.protocols.ssl.SslConduit.read(SslConduit.java:567) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.conduits.IdleTimeoutConduit.read(IdleTimeoutConduit.java:202) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.conduits.ConduitStreamSourceChannel.read(ConduitStreamSourceChannel.java:127) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.server.protocol.framed.AbstractFramedChannel.receive(AbstractFramedChannel.java:371) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:38) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:33) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:951) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:932) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at org.xnio.conduits.ReadReadyHandler$ChannelListenerHandler.readReady(ReadReadyHandler.java:66) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+		at io.undertow.protocols.ssl.SslConduit$SslReadReadyHandler.readReady(SslConduit.java:1176) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+		at org.xnio.nio.NioSocketConduit.handleReady(NioSocketConduit.java:88) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+		at org.xnio.nio.WorkerThread.run(WorkerThread.java:561) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+		Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: Assembly site of producer [reactor.core.publisher.MonoPeek] is identified by light checkpoint [wss://india251.discord.media/?v=4 [ClosingUndertowWebSocketClient]].
+Caused by: java.io.IOException: Connection reset by peer
+	at java.base/sun.nio.ch.FileDispatcherImpl.read0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358) ~[na:na]
+	at org.xnio.nio.NioSocketConduit.read(NioSocketConduit.java:319) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.protocols.ssl.SslConduit.doUnwrap(SslConduit.java:703) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.protocols.ssl.SslConduit.read(SslConduit.java:567) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.conduits.IdleTimeoutConduit.read(IdleTimeoutConduit.java:202) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.conduits.ConduitStreamSourceChannel.read(ConduitStreamSourceChannel.java:127) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel.receive(AbstractFramedChannel.java:371) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:38) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.core.AbstractReceiveListener.handleEvent(AbstractReceiveListener.java:33) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:951) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameReadListener.handleEvent(AbstractFramedChannel.java:932) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.conduits.ReadReadyHandler$ChannelListenerHandler.readReady(ReadReadyHandler.java:66) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.protocols.ssl.SslConduit$SslReadReadyHandler.readReady(SslConduit.java:1176) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.nio.NioSocketConduit.handleReady(NioSocketConduit.java:88) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.WorkerThread.run(WorkerThread.java:561) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: Assembly site of producer [reactor.core.publisher.MonoPeek] is identified by light checkpoint [wss://india251.discord.media/?v=4 [ClosingUndertowWebSocketClient]].
+
+2020-06-15 06:20:29.301  INFO 5945 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-15 06:20:29.316  INFO 5945 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2020-06-15 06:20:29.372  WARN 5945 --- [lava-daemon-pool-playback-1-thread-6] c.s.d.l.t.p.LocalAudioTrackExecutor      : Suspicious exception for playback of r6zIGXun57U
+
+com.sedmelluq.discord.lavaplayer.tools.FriendlyException: The track was unexpectedly terminated.
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.handlePlaybackInterrupt(LocalAudioTrackExecutor.java:348) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.executeProcessingLoop(LocalAudioTrackExecutor.java:292) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.executeProcessingLoop(LocalAudioTrackExecutor.java:250) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaAudioTrack.process(MatroskaAudioTrack.java:39) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.DelegatedAudioTrack.processDelegate(DelegatedAudioTrack.java:25) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack.processStatic(YoutubeAudioTrack.java:57) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack.process(YoutubeAudioTrack.java:49) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.execute(LocalAudioTrackExecutor.java:105) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.lambda$executeTrack$1(DefaultAudioPlayerManager.java:349) ~[lavaplayer-1.3.49.jar!/:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.lang.InterruptedException: null
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2056) ~[na:na]
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2090) ~[na:na]
+	at java.base/java.util.concurrent.ArrayBlockingQueue.put(ArrayBlockingQueue.java:367) ~[na:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.AllocatingAudioFrameBuffer.consume(AllocatingAudioFrameBuffer.java:179) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.common.OpusPacketRouter.passThrough(OpusPacketRouter.java:169) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.common.OpusPacketRouter.process(OpusPacketRouter.java:99) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaOpusTrackConsumer.consume(MatroskaOpusTrackConsumer.java:47) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.processFrameInBlock(MatroskaStreamingFile.java:372) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.parseClusterSimpleBlock(MatroskaStreamingFile.java:336) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.parseNextCluster(MatroskaStreamingFile.java:321) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.provideFrames(MatroskaStreamingFile.java:297) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaAudioTrack.lambda$process$0(MatroskaAudioTrack.java:40) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.executeProcessingLoop(LocalAudioTrackExecutor.java:276) ~[lavaplayer-1.3.49.jar!/:na]
+	... 10 common frames omitted
+
+2020-06-15 06:20:29.372  WARN 5945 --- [lava-daemon-pool-playback-1-thread-2] c.s.d.l.t.p.LocalAudioTrackExecutor      : Suspicious exception for playback of r6zIGXun57U
+
+com.sedmelluq.discord.lavaplayer.tools.FriendlyException: The track was unexpectedly terminated.
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.handlePlaybackInterrupt(LocalAudioTrackExecutor.java:348) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.executeProcessingLoop(LocalAudioTrackExecutor.java:292) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.executeProcessingLoop(LocalAudioTrackExecutor.java:250) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaAudioTrack.process(MatroskaAudioTrack.java:39) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.DelegatedAudioTrack.processDelegate(DelegatedAudioTrack.java:25) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack.processStatic(YoutubeAudioTrack.java:57) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack.process(YoutubeAudioTrack.java:49) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.execute(LocalAudioTrackExecutor.java:105) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.lambda$executeTrack$1(DefaultAudioPlayerManager.java:349) ~[lavaplayer-1.3.49.jar!/:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.lang.InterruptedException: null
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2056) ~[na:na]
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2090) ~[na:na]
+	at java.base/java.util.concurrent.ArrayBlockingQueue.put(ArrayBlockingQueue.java:367) ~[na:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.AllocatingAudioFrameBuffer.consume(AllocatingAudioFrameBuffer.java:179) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.common.OpusPacketRouter.passThrough(OpusPacketRouter.java:169) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.common.OpusPacketRouter.process(OpusPacketRouter.java:99) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaOpusTrackConsumer.consume(MatroskaOpusTrackConsumer.java:47) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.processFrameInBlock(MatroskaStreamingFile.java:372) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.parseClusterSimpleBlock(MatroskaStreamingFile.java:336) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.parseNextCluster(MatroskaStreamingFile.java:321) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaStreamingFile.provideFrames(MatroskaStreamingFile.java:297) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.container.matroska.MatroskaAudioTrack.lambda$process$0(MatroskaAudioTrack.java:40) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor.executeProcessingLoop(LocalAudioTrackExecutor.java:276) ~[lavaplayer-1.3.49.jar!/:na]
+	... 10 common frames omitted
+
+2020-06-15 06:20:29.454  INFO 5945 --- [Thread-1] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2020-06-15 06:20:29.478 ERROR 5945 --- [XNIO-1 I/O-2] org.xnio.listener                        : XNIO001007: A channel event listener threw an exception
+
+java.util.concurrent.RejectedExecutionException: XNIO007007: Thread is terminating
+	at org.xnio.nio.WorkerThread.execute(WorkerThread.java:590) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.websockets.jsr.UndertowSession$3.handleEvent(UndertowSession.java:396) ~[undertow-websockets-jsr-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.websockets.jsr.UndertowSession$3.handleEvent(UndertowSession.java:388) ~[undertow-websockets-jsr-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameCloseListener.handleEvent(AbstractFramedChannel.java:1063) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at io.undertow.server.protocol.framed.AbstractFramedChannel$FrameCloseListener.handleEvent(AbstractFramedChannel.java:978) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.ChannelListeners.invokeChannelListener(ChannelListeners.java:92) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.conduits.WriteReadyHandler$ChannelListenerHandler.terminated(WriteReadyHandler.java:70) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.writeTerminated(NioSocketConduit.java:234) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.terminateWrites(NioSocketConduit.java:223) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.truncateWrites(NioSocketConduit.java:228) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at io.undertow.conduits.IdleTimeoutConduit.truncateWrites(IdleTimeoutConduit.java:387) ~[undertow-core-2.0.26.Final.jar!/:2.0.26.Final]
+	at org.xnio.conduits.ConduitStreamSinkChannel.close(ConduitStreamSinkChannel.java:186) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.IoUtils.safeClose(IoUtils.java:134) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.conduits.WriteReadyHandler$ChannelListenerHandler.forceTermination(WriteReadyHandler.java:57) ~[xnio-api-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.NioSocketConduit.forceTermination(NioSocketConduit.java:107) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+	at org.xnio.nio.WorkerThread.run(WorkerThread.java:494) ~[xnio-nio-3.3.8.Final.jar!/:3.3.8.Final]
+
+2020-06-15 06:20:40.493  INFO 9691 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        a47a7a46c291390d82bb405abc8c2035de4f28e4-SNAPSHOT
+	Build:          1064
+	Build time:     12.06.2020 18:16:09 UTC
+	Branch          master
+	Commit:         a47a7a4
+	Commit time:    12.06.2020 18:05:54 UTC
+	JVM:            11.0.7
+	Lavaplayer      1.3.49
+
+2020-06-15 06:20:41.114  INFO 9691 --- [main] lavalink.server.Launcher                 : Starting Launcher on romeah-HP-15-Notebook-PC with PID 9691 (/home/romeah/Desktop/blazify-discord-bot/lavalink/Lavalink.jar started by romeah in /home/romeah/Desktop/blazify-discord-bot/lavalink)
+2020-06-15 06:20:41.119  INFO 9691 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2020-06-15 06:20:41.707  WARN 9691 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-06-15 06:20:48.712  WARN 9691 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2020-06-15 06:20:48.873  INFO 9691 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2020-06-15 06:20:48.876  INFO 9691 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 7409 ms
+2020-06-15 06:20:50.872  WARN 9691 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2020-06-15 06:20:50.939  INFO 9691 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Linux, Arch: amd64
+2020-06-15 06:20:50.940  INFO 9691 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
+2020-06-15 06:20:50.941  INFO 9691 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
+2020-06-15 06:20:50.942  INFO 9691 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
+2020-06-15 06:20:53.521  INFO 9691 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2020-06-15 06:20:55.616  INFO 9691 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-15 06:20:57.018  INFO 9691 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2020-06-15 06:20:57.087  INFO 9691 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2020-06-15 06:20:57.422  INFO 9691 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
+2020-06-15 06:20:57.446  INFO 9691 --- [main] lavalink.server.Launcher                 : Started Launcher in 20.433 seconds (JVM running for 25.521)
+2020-06-15 06:21:20.546  INFO 9691 --- [XNIO-1 task-1] io.undertow.servlet                      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-15 06:21:20.548  INFO 9691 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-15 06:21:20.589  INFO 9691 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 40 ms
+2020-06-15 06:21:20.670  INFO 9691 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60606
+2020-06-15 06:21:21.285  INFO 9691 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60606
+2020-06-15 07:16:04.528  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60606 -- CloseStatus[code=1006, reason=]
+2020-06-15 07:16:04.648  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 07:16:28.000  INFO 9691 --- [XNIO-1 task-2] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:32884
+2020-06-15 07:16:28.129  INFO 9691 --- [XNIO-1 task-2] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:32884
+2020-06-15 07:35:12.071  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:32884 -- CloseStatus[code=1006, reason=]
+2020-06-15 07:35:12.229  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 07:36:20.282  INFO 9691 --- [XNIO-1 task-3] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33300
+2020-06-15 07:36:20.626  INFO 9691 --- [XNIO-1 task-3] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33300
+2020-06-15 07:44:08.861  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33300 -- CloseStatus[code=1006, reason=]
+2020-06-15 07:44:09.371  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 07:44:38.158  INFO 9691 --- [XNIO-1 task-4] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33390
+2020-06-15 07:44:38.666  INFO 9691 --- [XNIO-1 task-4] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33390
+2020-06-15 07:46:02.165  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33390 -- CloseStatus[code=1006, reason=]
+2020-06-15 07:46:02.166  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 07:46:20.510  INFO 9691 --- [XNIO-1 task-5] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33426
+2020-06-15 07:46:20.526  INFO 9691 --- [XNIO-1 task-5] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33426
+2020-06-15 07:46:47.065  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33426 -- CloseStatus[code=1006, reason=]
+2020-06-15 07:46:47.066  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 07:47:05.408  INFO 9691 --- [XNIO-1 task-6] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33438
+2020-06-15 07:47:05.439  INFO 9691 --- [XNIO-1 task-6] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33438
+2020-06-15 07:49:17.506  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33438 -- CloseStatus[code=1006, reason=]
+2020-06-15 07:49:17.643  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 07:49:48.637  INFO 9691 --- [XNIO-1 task-7] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33476
+2020-06-15 07:49:49.181  INFO 9691 --- [XNIO-1 task-7] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33476
+2020-06-15 07:50:44.535  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33476 -- CloseStatus[code=1006, reason=]
+2020-06-15 07:50:44.536  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 07:51:06.326  INFO 9691 --- [XNIO-1 task-8] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33500
+2020-06-15 07:51:06.900  INFO 9691 --- [XNIO-1 task-8] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33500
+2020-06-15 08:07:33.083  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33500 -- CloseStatus[code=1006, reason=]
+2020-06-15 08:07:33.084  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 08:09:02.920  INFO 9691 --- [XNIO-1 task-9] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33618
+2020-06-15 08:09:02.932  INFO 9691 --- [XNIO-1 task-9] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33618
+2020-06-15 09:04:09.349  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33618 -- CloseStatus[code=1006, reason=]
+2020-06-15 09:04:09.350  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 09:04:38.322  INFO 9691 --- [XNIO-1 task-10] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33822
+2020-06-15 09:04:38.349  INFO 9691 --- [XNIO-1 task-10] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33822
+2020-06-15 09:07:30.460  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33822 -- CloseStatus[code=1006, reason=]
+2020-06-15 09:07:30.461  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 09:07:46.637  INFO 9691 --- [XNIO-1 task-11] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:33856
+2020-06-15 09:07:47.164  INFO 9691 --- [XNIO-1 task-11] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:33856
+2020-06-15 09:11:20.953  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:33856 -- CloseStatus[code=1006, reason=]
+2020-06-15 09:11:20.953  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 09:29:11.997  INFO 9691 --- [XNIO-1 task-12] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34000
+2020-06-15 09:29:12.034  INFO 9691 --- [XNIO-1 task-12] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34000
+2020-06-15 09:30:37.722  INFO 9691 --- [XNIO-1 task-13] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 09:30:38.132  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"bcf90575f7549da30387dbd83502ba0b","guildId":"714874374070599720","event":{"token":"66858301b77dd925","guild_id":"714874374070599720","endpoint":"india251.discord.media:80"}}
+2020-06-15 09:30:40.677  INFO 9691 --- [parallel-1] com.jcabi.manifests.Manifests            : 73 attributes loaded from 84 stream(s) in 2s, 73 saved, 1240 ignored: ["Ant-Version", "Archiver-Version", "Automatic-Module-Name", "Bnd-LastModified", "Build-Jdk", "Build-Jdk-Spec", "Build-Time", "Built-By", "Bundle-ActivationPolicy", "Bundle-Activator", "Bundle-Category", "Bundle-Description", "Bundle-DocURL", "Bundle-License", "Bundle-ManifestVersion", "Bundle-Name", "Bundle-NativeCode", "Bundle-RequiredExecutionEnvironment", "Bundle-SymbolicName", "Bundle-Vendor", "Bundle-Version", "Copyright", "Created-By", "Export-Package", "Extension-Name", "Git-Revision", "Implementation-Build", "Implementation-Build-Date", "Implementation-Title", "Implementation-URL", "Implementation-Vendor", "Implementation-Vendor-Id", "Implementation-Version", "Import-Package", "Include-Resource", "JCabi-Build", "JCabi-Date", "JCabi-Version", "Jar-Name", "Jar-Version", "Java-Vendor", "Java-Version", "Kotlin-Runtime-Component", "Kotlin-Version", "Log4jReleaseKey", "Log4jReleaseManager", "Log4jReleaseVersion", "Magma-Version", "Main-Class", "Manifest-Version", "Multi-Release", "Originally-Created-By", "Os-Arch", "Os-Name", "Os-Version", "Private-Package", "Provide-Capability", "Require-Bundle", "Require-Capability", "Scm-Connection", "Scm-Revision", "Scm-Url", "Specification-Title", "Specification-Vendor", "Specification-Version", "Spring-Boot-Classes", "Spring-Boot-Lib", "Spring-Boot-Version", "Start-Class", "Tool", "X-Compile-Source-JDK", "X-Compile-Target-JDK", "url"]
+2020-06-15 09:30:44.334  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 09:32:53.871  INFO 9691 --- [XNIO-1 task-15] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 09:32:55.035  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone
+2020-06-15 09:33:03.800  INFO 9691 --- [XNIO-1 task-17] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 09:33:05.126  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone(edited)
+2020-06-15 09:33:12.870  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34000 -- CloseStatus[code=1006, reason=]
+2020-06-15 09:33:12.870  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 09:39:42.208  INFO 9691 --- [XNIO-1 task-19] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34120
+2020-06-15 09:39:42.252  INFO 9691 --- [XNIO-1 task-19] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34120
+2020-06-15 09:53:41.021  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34120 -- CloseStatus[code=1006, reason=]
+2020-06-15 09:53:41.149  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 09:54:14.284  INFO 9691 --- [XNIO-1 task-20] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34282
+2020-06-15 09:54:15.002  INFO 9691 --- [XNIO-1 task-20] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34282
+2020-06-15 09:54:24.769  INFO 9691 --- [XNIO-1 task-21] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 09:54:25.289 ERROR 9691 --- [lava-daemon-pool-info-loader-2-thread-1] c.s.d.l.p.DefaultAudioPlayerManager      : Error in loading item ytsearch:alone
+
+com.sedmelluq.discord.lavaplayer.tools.FriendlyException: Something went wrong when looking up the track
+	at com.sedmelluq.discord.lavaplayer.tools.ExceptionTools.wrapUnfriendlyExceptions(ExceptionTools.java:43) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.dispatchItemLoadFailure(DefaultAudioPlayerManager.java:237) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.lambda$createItemLoader$0(DefaultAudioPlayerManager.java:226) ~[lavaplayer-1.3.49.jar!/:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.lang.RuntimeException: javax.net.ssl.SSLException: Connection reset
+	at com.sedmelluq.discord.lavaplayer.tools.ExceptionTools.wrapUnfriendlyExceptions(ExceptionTools.java:57) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider.loadSearchResult(YoutubeSearchProvider.java:71) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager$LoadingRoutes.search(YoutubeAudioSourceManager.java:254) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager$LoadingRoutes.search(YoutubeAudioSourceManager.java:220) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.DefaultYoutubeLinkRouter.route(DefaultYoutubeLinkRouter.java:34) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager.loadItemOnce(YoutubeAudioSourceManager.java:188) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager.loadItem(YoutubeAudioSourceManager.java:127) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.checkSourcesForItemOnce(DefaultAudioPlayerManager.java:437) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.checkSourcesForItem(DefaultAudioPlayerManager.java:419) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.lambda$createItemLoader$0(DefaultAudioPlayerManager.java:218) ~[lavaplayer-1.3.49.jar!/:na]
+	... 4 common frames omitted
+Caused by: javax.net.ssl.SSLException: Connection reset
+	at java.base/sun.security.ssl.Alert.createSSLException(Alert.java:127) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:326) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:269) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:264) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.handleException(SSLSocketImpl.java:1306) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:832) ~[na:na]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface.execute(HttpInterface.java:72) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider.loadSearchResult(YoutubeSearchProvider.java:61) ~[lavaplayer-1.3.49.jar!/:na]
+	... 12 common frames omitted
+	Suppressed: java.net.SocketException: Broken pipe (Write failed)
+		at java.base/java.net.SocketOutputStream.socketWrite0(Native Method) ~[na:na]
+		at java.base/java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:110) ~[na:na]
+		at java.base/java.net.SocketOutputStream.write(SocketOutputStream.java:150) ~[na:na]
+		at java.base/sun.security.ssl.SSLSocketOutputRecord.encodeAlert(SSLSocketOutputRecord.java:81) ~[na:na]
+		at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:357) ~[na:na]
+		... 34 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:186) ~[na:na]
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:448) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:68) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1096) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:816) ~[na:na]
+	... 30 common frames omitted
+
+2020-06-15 09:54:25.295 ERROR 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Load failed
+
+com.sedmelluq.discord.lavaplayer.tools.FriendlyException: Something went wrong when looking up the track
+	at com.sedmelluq.discord.lavaplayer.tools.ExceptionTools.wrapUnfriendlyExceptions(ExceptionTools.java:43) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.dispatchItemLoadFailure(DefaultAudioPlayerManager.java:237) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.lambda$createItemLoader$0(DefaultAudioPlayerManager.java:226) ~[lavaplayer-1.3.49.jar!/:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.lang.RuntimeException: javax.net.ssl.SSLException: Connection reset
+	at com.sedmelluq.discord.lavaplayer.tools.ExceptionTools.wrapUnfriendlyExceptions(ExceptionTools.java:57) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider.loadSearchResult(YoutubeSearchProvider.java:71) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager$LoadingRoutes.search(YoutubeAudioSourceManager.java:254) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager$LoadingRoutes.search(YoutubeAudioSourceManager.java:220) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.DefaultYoutubeLinkRouter.route(DefaultYoutubeLinkRouter.java:34) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager.loadItemOnce(YoutubeAudioSourceManager.java:188) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager.loadItem(YoutubeAudioSourceManager.java:127) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.checkSourcesForItemOnce(DefaultAudioPlayerManager.java:437) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.checkSourcesForItem(DefaultAudioPlayerManager.java:419) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager.lambda$createItemLoader$0(DefaultAudioPlayerManager.java:218) ~[lavaplayer-1.3.49.jar!/:na]
+	... 4 common frames omitted
+Caused by: javax.net.ssl.SSLException: Connection reset
+	at java.base/sun.security.ssl.Alert.createSSLException(Alert.java:127) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:326) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:269) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:264) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.handleException(SSLSocketImpl.java:1306) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:832) ~[na:na]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.12.jar!/:4.4.12]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface.execute(HttpInterface.java:72) ~[lavaplayer-1.3.49.jar!/:na]
+	at com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider.loadSearchResult(YoutubeSearchProvider.java:61) ~[lavaplayer-1.3.49.jar!/:na]
+	... 12 common frames omitted
+	Suppressed: java.net.SocketException: Broken pipe (Write failed)
+		at java.base/java.net.SocketOutputStream.socketWrite0(Native Method) ~[na:na]
+		at java.base/java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:110) ~[na:na]
+		at java.base/java.net.SocketOutputStream.write(SocketOutputStream.java:150) ~[na:na]
+		at java.base/sun.security.ssl.SSLSocketOutputRecord.encodeAlert(SSLSocketOutputRecord.java:81) ~[na:na]
+		at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:357) ~[na:na]
+		... 34 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:186) ~[na:na]
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:448) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:68) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1096) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:816) ~[na:na]
+	... 30 common frames omitted
+
+2020-06-15 09:54:25.423  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"b46ddc1ff041c29999ce18c19b7b17cf","guildId":"722085979745288295","event":{"token":"abf99de0f869f002","guild_id":"722085979745288295","endpoint":"india950.discord.media:80"}}
+2020-06-15 09:54:37.926  INFO 9691 --- [XNIO-1 task-23] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 09:54:39.894  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone
+2020-06-15 10:00:27.370  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34282 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:00:27.511  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 10:00:56.946  INFO 9691 --- [XNIO-1 task-25] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34470
+2020-06-15 10:00:57.598  INFO 9691 --- [XNIO-1 task-25] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34470
+2020-06-15 10:01:00.481  INFO 9691 --- [XNIO-1 task-26] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:01:01.076  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"7d607fef332edf1e1636e32eb57cf5df","guildId":"722085979745288295","event":{"token":"abf99de0f869f002","guild_id":"722085979745288295","endpoint":"india950.discord.media:80"}}
+2020-06-15 10:01:03.147  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 10:01:09.080  INFO 9691 --- [XNIO-1 task-28] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:01:10.192  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone
+2020-06-15 10:01:16.468  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"722085979745288295","volume":100}
+2020-06-15 10:01:33.210  WARN 9691 --- [japp-2] lavalink.server.player.EventEmitter      : Marshmello - Alone (Official Music Video) got stuck! Threshold surpassed: 10000
+2020-06-15 10:01:33.952  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34470 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:01:33.953  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 1 playing players.
+2020-06-15 10:04:26.228  INFO 9691 --- [XNIO-1 task-30] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34496
+2020-06-15 10:04:26.364  INFO 9691 --- [XNIO-1 task-30] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34496
+2020-06-15 10:04:42.950  INFO 9691 --- [XNIO-1 task-31] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:04:43.624  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"69359870c21e833a8aa253fe055d22a8","guildId":"722085979745288295","event":{"token":"290d085f0ee3af98","guild_id":"722085979745288295","endpoint":"india950.discord.media:80"}}
+2020-06-15 10:04:43.961  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 10:04:48.721  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34496 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:04:48.722  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 10:04:53.871  WARN 9691 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 0] [Bucket 20 = 0] [Bucket 50 = 2] [Bucket 200 = 0] [Bucket 500 = 0] [Bucket 2000 = 0] 
+2020-06-15 10:06:20.699  INFO 9691 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34510
+2020-06-15 10:06:20.819  INFO 9691 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34510
+2020-06-15 10:06:23.424  INFO 9691 --- [XNIO-1 task-2] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:06:26.035  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"6167f59377513d4bd8c82a7e69a0c73d","guildId":"722085979745288295","event":{"token":"3a3190a91bc4dd6f","guild_id":"722085979745288295","endpoint":"india950.discord.media:80"}}
+2020-06-15 10:06:26.297  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 10:06:28.883  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34510 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:06:28.883  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 10:08:14.189  INFO 9691 --- [XNIO-1 task-4] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34534
+2020-06-15 10:08:14.510  INFO 9691 --- [XNIO-1 task-4] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34534
+2020-06-15 10:08:22.980  INFO 9691 --- [XNIO-1 task-5] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:08:24.566  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"db2122ece254530ba57e1a5d09399adf","guildId":"714874374070599720","event":{"token":"5e1a5d0049ecb215","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 10:08:24.624  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 10:08:31.036  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34534 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:08:31.037  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 10:23:27.314  INFO 9691 --- [XNIO-1 task-7] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34674
+2020-06-15 10:23:28.484  INFO 9691 --- [XNIO-1 task-7] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34674
+2020-06-15 10:23:52.015  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"919112d924453be5fbe51c07e7ccf7fc","guildId":"714874374070599720","event":{"token":"87ab89c70e54eae7","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 10:25:54.746  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34674 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:25:55.031  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 10:26:16.955  INFO 9691 --- [XNIO-1 task-8] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34724
+2020-06-15 10:26:17.933  INFO 9691 --- [XNIO-1 task-8] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34724
+2020-06-15 10:29:35.203  INFO 9691 --- [XNIO-1 task-9] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:29:35.836  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2088caa96f652d7b6f252d270356acc8","guildId":"714874374070599720","event":{"token":"cf8a9e73a1cca779","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 10:29:36.947  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone
+2020-06-15 10:29:39.907  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34724 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:29:39.908  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 10:33:55.367  INFO 9691 --- [XNIO-1 task-11] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34846
+2020-06-15 10:33:55.821  INFO 9691 --- [XNIO-1 task-11] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34846
+2020-06-15 10:34:03.531  INFO 9691 --- [XNIO-1 task-12] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:34:03.687  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"66e59f4c5ca9e94f4eb1df4dc48c9134","guildId":"722085979745288295","event":{"token":"c586536365aeabba","guild_id":"722085979745288295","endpoint":"india666.discord.media:80"}}
+2020-06-15 10:34:05.198  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 10:34:14.283  INFO 9691 --- [XNIO-1 task-14] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:34:15.495  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 10:34:33.066  INFO 9691 --- [XNIO-1 task-16] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:34:34.052  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone
+2020-06-15 10:34:39.760  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"722085979745288295","volume":100}
+2020-06-15 10:35:36.242  INFO 9691 --- [XNIO-1 task-18] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:35:39.728  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: feel invincibe
+2020-06-15 10:38:01.558  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAkwIAMlNraWxsZXQgLSAiRmVlbCBJbnZpbmNpYmxlIiBbT2ZmaWNpYWwgTXVzaWMgVmlkZW9dAAdTa2lsbGV0AAAAAAADeqAAC1F6dzZBMldDNVFvAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9UXp3NkEyV0M1UW8AB3lvdXR1YmUAAAAAAAAAAA==","guildId":"722085979745288295","volume":100}
+2020-06-15 10:41:49.980  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"722085979745288295"}
+2020-06-15 10:45:06.744  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34846 -- CloseStatus[code=1006, reason=]
+2020-06-15 10:45:06.745  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 10:45:35.996  INFO 9691 --- [XNIO-1 task-20] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:34990
+2020-06-15 10:45:37.044  INFO 9691 --- [XNIO-1 task-20] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34990
+2020-06-15 10:46:09.106  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2aaa7ee2e994af30637af8ea2e5db66d","guildId":"722085979745288295","event":{"token":"44136885b28e6687","guild_id":"722085979745288295","endpoint":"india666.discord.media:80"}}
+2020-06-15 10:46:21.351  INFO 9691 --- [XNIO-1 task-21] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:46:22.922  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: ncs cartoon
+2020-06-15 10:46:28.007  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAngIAM0NhcnRvb24gLSBPbiAmIE9uIChmZWF0LiBEYW5pZWwgTGV2aSkgW05DUyBSZWxlYXNlXQARTm9Db3B5cmlnaHRTb3VuZHMAAAAAAAMsgAALSzREeUJVRzI0MmMAAQAraHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1LNER5QlVHMjQyYwAHeW91dHViZQAAAAAAAAAA","guildId":"722085979745288295","volume":100}
+2020-06-15 10:49:56.745  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"722085979745288295"}
+2020-06-15 10:51:04.935  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2aaa7ee2e994af30637af8ea2e5db66d","guildId":"714874374070599720","event":{"token":"bb928e511c15200d","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 10:51:15.930  INFO 9691 --- [XNIO-1 task-23] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 10:51:17.531  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: legends never die
+2020-06-15 10:51:21.053  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 10:54:20.478  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 11:31:53.938  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2aaa7ee2e994af30637af8ea2e5db66d","guildId":"714874374070599720","event":{"token":"f9ea752cfa3dc409","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 11:31:56.931  INFO 9691 --- [XNIO-1 task-25] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 11:31:59.726  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Ignite
+2020-06-15 11:32:02.931  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAmgIAO0stMzkxICYgQWxhbiBXYWxrZXIgLSBJZ25pdGUgKGZlYXQuIEp1bGllIEJlcmdhbiAmIFNldW5ncmkpAAVLLTM5MQAAAAAAA4JwAAtBei1tR1ItQ2VoWQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PUF6LW1HUi1DZWhZAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 11:32:17.378  INFO 9691 --- [XNIO-1 task-27] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 11:32:18.744  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends never Die
+2020-06-15 11:35:55.701  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 11:38:55.777  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:17:06.804  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2aaa7ee2e994af30637af8ea2e5db66d","guildId":"714874374070599720","event":{"token":"44f1dc42a6109a48","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:17:16.829  INFO 9691 --- [XNIO-1 task-29] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:17:17.716  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Courtsey call
+2020-06-15 12:17:20.320  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjgIALUNvdXJ0ZXN5IENhbGwgLSBUaG91c2FuZCBGb290IEtydXRjaCAoTHlyaWNzKQAHQnVybm91dAAAAAAAA6GwAAtoeHFXMUVxMGlQNAABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWh4cVcxRXEwaVA0AAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 12:18:53.852  WARN 9691 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 0] [Bucket 20 = 0] [Bucket 50 = 0] [Bucket 200 = 1] [Bucket 500 = 0] [Bucket 2000 = 0] 
+2020-06-15 12:21:18.752  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:21:38.845  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34990 -- CloseStatus[code=1006, reason=]
+2020-06-15 12:21:38.845  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 12:22:06.898  INFO 9691 --- [XNIO-1 task-31] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:35436
+2020-06-15 12:22:07.191  INFO 9691 --- [XNIO-1 task-31] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:35436
+2020-06-15 12:22:10.986  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2cebe9d4fae651d43af18243eba6a78f","guildId":"714874374070599720","event":{"token":"11c6ce5211e872a6","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:23:10.339  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:24:18.507  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"2cebe9d4fae651d43af18243eba6a78f","guildId":"714874374070599720","event":{"token":"6c7342f4b40aab69","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:24:26.116  INFO 9691 --- [XNIO-1 task-32] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:24:33.422  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 12:24:39.573  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAigIAJUFsYW4gV2Fsa2VyICYgQXZhIE1heCAtIEFsb25lLCBQdC4gSUkAC0FsYW4gV2Fsa2VyAAAAAAADwPAAC0hoakhZa1BROEYwAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9SGhqSFlrUFE4RjAAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:24:49.685  WARN 9691 --- [japp-13] lavalink.server.player.EventEmitter      : Alan Walker & Ava Max - Alone, Pt. II got stuck! Threshold surpassed: 10000
+2020-06-15 12:24:49.714  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:35436 -- CloseStatus[code=1006, reason=]
+2020-06-15 12:24:49.715  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 1 playing players.
+2020-06-15 12:25:39.481  INFO 9691 --- [XNIO-1 task-2] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:35468
+2020-06-15 12:25:39.540  INFO 9691 --- [XNIO-1 task-2] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:35468
+2020-06-15 12:26:02.822  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"396d3b345659f86e8b26579e4edbe3d9","guildId":"714874374070599720","event":{"token":"6c7342f4b40aab69","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:26:07.096  INFO 9691 --- [XNIO-1 task-3] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:26:10.584  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone
+2020-06-15 12:26:15.847  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAigIAJUFsYW4gV2Fsa2VyICYgQXZhIE1heCAtIEFsb25lLCBQdC4gSUkAC0FsYW4gV2Fsa2VyAAAAAAADwPAAC0hoakhZa1BROEYwAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9SGhqSFlrUFE4RjAAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:27:02.185  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:27:33.022  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"396d3b345659f86e8b26579e4edbe3d9","guildId":"714874374070599720","event":{"token":"99ef689d525c626a","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:27:36.440  INFO 9691 --- [XNIO-1 task-5] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:27:38.025  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 12:27:39.693  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAigIAJUFsYW4gV2Fsa2VyICYgQXZhIE1heCAtIEFsb25lLCBQdC4gSUkAC0FsYW4gV2Fsa2VyAAAAAAADwPAAC0hoakhZa1BROEYwAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9SGhqSFlrUFE4RjAAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:28:31.837  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:28:40.296  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:35468 -- CloseStatus[code=1006, reason=]
+2020-06-15 12:28:40.297  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 12:29:00.928  INFO 9691 --- [XNIO-1 task-7] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:35566
+2020-06-15 12:29:00.968  INFO 9691 --- [XNIO-1 task-7] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:35566
+2020-06-15 12:29:52.981  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:35566 -- CloseStatus[code=1006, reason=]
+2020-06-15 12:29:52.982  INFO 9691 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 12:30:12.337  INFO 9691 --- [XNIO-1 task-8] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:35588
+2020-06-15 12:30:12.403  INFO 9691 --- [XNIO-1 task-8] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:35588
+2020-06-15 12:30:16.736  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"a347f36126a688a22d08e2da0cc3259f","guildId":"714874374070599720","event":{"token":"9907ab299c5c051a","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:30:21.272  INFO 9691 --- [XNIO-1 task-9] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:30:22.928  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 12:30:26.924  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAigIAJUFsYW4gV2Fsa2VyICYgQXZhIE1heCAtIEFsb25lLCBQdC4gSUkAC0FsYW4gV2Fsa2VyAAAAAAADwPAAC0hoakhZa1BROEYwAAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9SGhqSFlrUFE4RjAAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:32:53.852  WARN 9691 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 0] [Bucket 20 = 0] [Bucket 50 = 2] [Bucket 200 = 0] [Bucket 500 = 0] [Bucket 2000 = 0] 
+2020-06-15 12:34:33.693  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:34:56.015  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"a347f36126a688a22d08e2da0cc3259f","guildId":"714874374070599720","event":{"token":"e91658cadf8e9fe5","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:34:58.383  INFO 9691 --- [parallel-2] s.n.m.impl.connections.AudioWebSocket    : Websocket to wss://india392.discord.media/?v=4 closed with code 4006 and reason Session is no longer valid.
+2020-06-15 12:34:58.427  WARN 9691 --- [parallel-2] s.n.m.impl.connections.AudioWebSocket    : Connection closed due to [4006 SESSION_NO_LONGER_VALID] Session is no longer valid.. This could indicate an issue with the magma library or your usage of it. Please get in touch. https://github.com/napstr/Magma/issues
+2020-06-15 12:34:58.428  INFO 9691 --- [parallel-2] s.n.m.impl.connections.AudioWebSocket    : Closing
+2020-06-15 12:35:00.449  INFO 9691 --- [XNIO-1 task-11] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:35:02.209  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 12:35:05.635  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:35:18.454  INFO 9691 --- [XNIO-1 task-13] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:35:20.016  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Neefex Soldier
+2020-06-15 12:36:13.776  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAiAIAKE5FRkZFWCAtIFNvbGRpZXIg7aC97bSlIFtDb3B5cmlnaHQgRnJlZV0ABk5FRkZFWAAAAAAAA0vAAAtDY3NoXy1DdWNsNAABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PUNjc2hfLUN1Y2w0AAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 12:37:23.776  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:37:41.648  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"a347f36126a688a22d08e2da0cc3259f","guildId":"714874374070599720","event":{"token":"7734329edaec71dd","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:37:42.148  INFO 9691 --- [parallel-1] s.n.m.impl.connections.AudioWebSocket    : Websocket to wss://india392.discord.media/?v=4 closed with code 4006 and reason Session is no longer valid.
+2020-06-15 12:37:42.149  WARN 9691 --- [parallel-1] s.n.m.impl.connections.AudioWebSocket    : Connection closed due to [4006 SESSION_NO_LONGER_VALID] Session is no longer valid.. This could indicate an issue with the magma library or your usage of it. Please get in touch. https://github.com/napstr/Magma/issues
+2020-06-15 12:37:42.149  INFO 9691 --- [parallel-1] s.n.m.impl.connections.AudioWebSocket    : Closing
+2020-06-15 12:37:48.197  INFO 9691 --- [XNIO-1 task-15] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:37:48.925  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 12:37:51.082  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:38:53.774  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:40:36.551  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:35588 -- CloseStatus[code=1006, reason=]
+2020-06-15 12:40:36.552  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 12:41:41.393  INFO 9691 --- [XNIO-1 task-17] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:35656
+2020-06-15 12:41:41.441  INFO 9691 --- [XNIO-1 task-17] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:35656
+2020-06-15 12:42:02.746  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"6d0fad40641764877aa3ed915a16c73e","guildId":"714874374070599720","event":{"token":"472f1a574affc2f1","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:42:08.865  INFO 9691 --- [XNIO-1 task-18] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:42:09.774  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 12:42:11.570  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:42:31.050  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 12:42:43.434  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"6d0fad40641764877aa3ed915a16c73e","guildId":"714874374070599720","event":{"token":"74f9e16096e4d7ab","guild_id":"714874374070599720","endpoint":"india392.discord.media:80"}}
+2020-06-15 12:42:47.469  INFO 9691 --- [XNIO-1 task-20] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:42:48.108  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 12:43:07.208  INFO 9691 --- [XNIO-1 task-22] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:43:07.972  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Alone
+2020-06-15 12:43:10.865  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 12:45:56.047  INFO 9691 --- [XNIO-1 task-24] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 12:45:57.818  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Legends Never Die
+2020-06-15 12:46:31.610  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAuAIATUxlZ2VuZHMgTmV2ZXIgRGllIChmdC4gQWdhaW5zdCBUaGUgQ3VycmVudCkgfCBXb3JsZHMgMjAxNyAtIExlYWd1ZSBvZiBMZWdlbmRzABFMZWFndWUgb2YgTGVnZW5kcwAAAAAAArs4AAtyNnpJR1h1bjU3VQABACtodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PXI2eklHWHVuNTdVAAd5b3V0dWJlAAAAAAAAAAA=","guildId":"714874374070599720","volume":100}
+2020-06-15 12:49:31.319  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"destroy","guildId":"714874374070599720"}
+2020-06-15 13:16:44.881  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:35656 -- CloseStatus[code=1006, reason=]
+2020-06-15 13:16:44.991  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-15 13:19:43.044  INFO 9691 --- [XNIO-1 task-26] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:36080
+2020-06-15 13:19:45.109  INFO 9691 --- [XNIO-1 task-26] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:36080
+2020-06-15 13:19:49.758  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"voiceUpdate","sessionId":"15b25fdba2e9d6774900b13926084b46","guildId":"714874374070599720","event":{"token":"e65c91f08698d4a8","guild_id":"714874374070599720","endpoint":"india666.discord.media:80"}}
+2020-06-15 13:20:01.060  INFO 9691 --- [XNIO-1 task-27] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 13:20:01.891  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 13:20:21.035  INFO 9691 --- [XNIO-1 task-29] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 13:20:21.652  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: you said you love me
+2020-06-15 13:20:26.874  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAsAIATE1hcnNobWVsbG8gJiBBbm5lLU1hcmllIC0gRlJJRU5EUyAoTXVzaWMgVmlkZW8pICpPRkZJQ0lBTCBGUklFTkRaT05FIEFOVEhFTSoACk1hcnNobWVsbG8AAAAAAAOKQAALanpEX3l5RWNwME0AAQAraHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1qekRfeXlFY3AwTQAHeW91dHViZQAAAAAAAAAA","guildId":"714874374070599720","volume":100}
+2020-06-15 13:21:13.915  INFO 9691 --- [XNIO-1 task-31] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 13:21:14.674  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : No matches found
+2020-06-15 13:21:23.104  INFO 9691 --- [XNIO-1 task-1] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 13:21:23.752  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: alone
+2020-06-15 13:21:42.079  INFO 9691 --- [XNIO-1 task-3] l.server.player.AudioLoaderRestHandler   : GET /loadtracks
+2020-06-15 13:21:42.807  INFO 9691 --- [lava-daemon-pool-info-loader-2-thread-1] lavalink.server.player.AudioLoader       : Loaded playlist Search results for: Friends
+2020-06-15 13:24:20.292  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAjQIAKU1hcnNobWVsbG8gLSBBbG9uZSAoT2ZmaWNpYWwgTXVzaWMgVmlkZW8pAApNYXJzaG1lbGxvAAAAAAADDUAAC0FMWkhGNVVxblU0AAEAK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9QUxaSEY1VXFuVTQAB3lvdXR1YmUAAAAAAAAAAA==","guildId":"714874374070599720","volume":100}
+2020-06-15 13:27:40.235  INFO 9691 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : {"op":"play","track":"QAAAsAIATE1hcnNobWVsbG8gJiBBbm5lLU1hcmllIC0gRlJJRU5EUyAoTXVzaWMgVmlkZW8pICpPRkZJQ0lBTCBGUklFTkRaT05FIEFOVEhFTSoACk1hcnNobWVsbG8AAAAAAAOKQAALanpEX3l5RWNwME0AAQAraHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1qekRfeXlFY3AwTQAHeW91dHViZQAAAAAAAAAA","guildId":"714874374070599720","volume":100}
