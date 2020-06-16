@@ -26,7 +26,12 @@ export default class Join extends Command{
 
         if(!player.playState) return message.util?.send("No Song is Present in Queue.")
 
-        const np = Object.assign({ user: player.queue[0].user.user.username, title: player.queue[0].title, uri: player.queue[0].uri, length: player.queue[0].length  }, decode(player.queue[0]));
+        const np = Object.assign(
+            { user: player.queue[0].user.user.username,
+                title: player.queue[0].title,
+                uri: player.queue[0].uri,
+                length: player.queue[0].length  },
+            decode(player.queue[0]));
         const embed = new MessageEmbed()
             .setAuthor(
                 `Current Queue for ${message.guild?.name}`,
@@ -34,7 +39,7 @@ export default class Join extends Command{
             .setThumbnail(np.uri)
             .setDescription(stripIndents`
             ${
-                player.playing ? "▶️" : "⏸️"
+                player.playState ? "▶️" : "⏸️"
             } **[${np.title}](${np.uri})** \`${formatTime(
                 Number(np.length),
                 true

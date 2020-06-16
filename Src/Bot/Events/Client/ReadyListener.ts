@@ -3,7 +3,7 @@ import { TextChannel, Message } from "discord.js";
 import { Repository } from "typeorm";
 import { Giveaways } from "../../../Lib/Database/Models/Giveaways";
 import { ErelaClient, Utils } from "erela.js";
-import  Server  from "../../../Server/server"
+import  Server  from "../../../Web/Server/server"
 
 import  { GiveawayManager }  from "../../../Lib/Structures/GiveawayManager";
 export default class ReadyListener extends Listener {

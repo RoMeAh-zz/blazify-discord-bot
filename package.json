@@ -35,10 +35,14 @@
     "ms": "^2.1.2",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.4",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.25",
+    "typescript": "^3.9.5"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.7",
-    "erela.js": "^1.1.8"
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
+    "erela.js": "^1.1.8",
+    "eslint-plugin-vue": "^6.2.2"
   }
 }

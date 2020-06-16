@@ -3,6 +3,8 @@
 
 node_modules/
 
+Src/Web/Client/dist/
+
 Blazify/
 
 json.sqlite

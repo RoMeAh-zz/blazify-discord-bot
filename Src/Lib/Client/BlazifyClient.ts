@@ -4,7 +4,6 @@ import { join } from "path";
 import {prefix , ownerID , secret} from "../../Config";
 import { Connection } from "typeorm"
 import Database  from "../Database/Database"
-
 import Oauth from "discord-oauth2";
 import { LavaClient } from "@anonymousg/lavajs/dist/managers/LavaClient";
 import {formatTime} from "../Structures/formatTime";
@@ -130,7 +129,6 @@ export default class BlazifyClient extends AkairoClient {
                 player.destroy(player.guild)
             })
         });
-
         this.oauth = new Oauth({
         clientSecret: secret,
             clientId: this.user?.id,

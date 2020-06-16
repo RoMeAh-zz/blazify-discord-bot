@@ -21,6 +21,7 @@ export default class Join extends Command{
         if(!message.member?.voice.channel) return message.util?.send(`${message.author} you are not present in any voice channel.`)
         // @ts-ignore
         if(!this.client.lava.playerCollection.get(message.guild?.id)) {
+            // @ts-ignore
             let player = await this.client.lava?.spawnPlayer ( this.client.lava , {
                 guild: message.guild ,
                 voiceChannel: message.member?.voice.channel ,
