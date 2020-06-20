@@ -23,11 +23,15 @@
 
 * **This is a Project of a Discord Bot named Blazify that how it works and contributing to it if there is any kind of bugs. You can't clone and run your own instance Licensed under [Apache 2.0](https://github.com/Blazify/blazify-discord-bot/blob/Typescript_Version/LICENSE)**
 
+# What is Blazify?
+
+* **Blazify is a Multi-purpose Discord Bot which helps out people to run their server amd enjoy their time in discord. Currently the bot is present in 71 servers so please invite the bot so that we Verified Developers**
+
 # Important
 * **[Support Server](https://discord.gg/UDuBXKW)**
 * **[Invite Bot](https://discord.com/api/oauth2/authorize?client_id=696756322825404416&permissions=8&scope=bot)**
-* **We neither support self hosting or will allow it. This Project is public just for a reason if you want to contribute or want to know how actually Blazify Works.**
 * **[Website](https://blazify-bot.glitch.me)**
+* **We neither support self hosting or will allow it. This Project is public just for a reason if you want to contribute or want to know how actually Blazify Works.**
 * **If Any Token or Client Secret has been pushed to the project don't try to push it as it will be regenerated**
 
 
