@@ -27,7 +27,6 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: npm install -g pm2
-    - run: cd Blazify
-    - run: pm2 start Bot.js
+    - run: pm2 start pm2.yml
 
 
