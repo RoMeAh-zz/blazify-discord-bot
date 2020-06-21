@@ -25,7 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd lavalink
-    - run: java -jar Lavalink.jar
+    - run: ls
+    - run: java -version
     - run: cd ..
     - run: npm install
     - run: npm run build
