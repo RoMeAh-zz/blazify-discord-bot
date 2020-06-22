@@ -1,5 +1,6 @@
 class Command {
-    constructor(options) {
+    constructor(options, client) {
+this.client = client
         this.help = {
             name: options.name || null,
             description: options.description || "No information specified.",
