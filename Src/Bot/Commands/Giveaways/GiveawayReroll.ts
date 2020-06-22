@@ -8,7 +8,7 @@ import {GiveawayManager} from "../../../Lib/Structures/GiveawayManager"
 export default class GiveawayReroll extends Command{
     public constructor() {
         super ("giveaway-reroll" , {
-            aliases: ["gr" , "reroll-giveaway"] ,
+            aliases: ["giveaway-reroll" , "reroll-giveaway"] ,
             category: "Utility" ,
             description: {
                 content: "Rerolls a Giveaway" ,

@@ -7,7 +7,7 @@ import {formatTime} from "../../../Lib/Structures/formatTime";
 export default class Join extends Command{
     public constructor() {
         super ( "nowplaying" , {
-            aliases: ["np"] ,
+            aliases: ["nowplaying"] ,
             category: "Music" ,
             description: {
                 content: "Shows the Current Played Song" ,

@@ -25,7 +25,7 @@ export default class AvatarCommand extends Command {
                 },
                 {
                     id: "size",
-                    type: (_: Message, str: String): null | Number => {
+                    type: (_: Message, str: string): null | Number => {
                         if(str && !isNaN(Number(str)) && [16, 32, 64, 128, 256, 512, 1024, 2048].includes(Number(str))) return Number(str);
                         return null;
                     },

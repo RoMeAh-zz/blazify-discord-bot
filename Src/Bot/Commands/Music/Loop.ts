@@ -5,7 +5,7 @@ import { Message } from "discord.js";
 export default class Join extends Command{
     public constructor() {
         super ( "loop" , {
-            aliases: ["lt" , "loop"] ,
+            aliases: ["loop"] ,
             category: "Music" ,
             description: {
                 content: "Stops Music" ,

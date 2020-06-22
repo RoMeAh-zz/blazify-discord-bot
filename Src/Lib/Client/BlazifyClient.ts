@@ -1,14 +1,11 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
-import {Message , MessageEmbed} from "discord.js";
+import { Message } from "discord.js";
 import { join } from "path";
-import {prefix , ownerID , secret} from "../../Config";
+import { prefix , ownerID , secret } from "../../Config";
 import { Connection } from "typeorm"
 import Database  from "../Database/Database"
 import Oauth from "discord-oauth2";
 import LavaJS  from "../Structures/LavaJS"
-import { LavaClient } from "@anonymousg/lavajs";
-import { formatTime } from "../Structures/formatTime";
-
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -17,8 +14,7 @@ declare module "discord-akairo" {
         db: Connection;
         lava: LavaJS;
         oauth: Oauth;
-        oauthURL: any;
-        commands: any;
+        oauthURL: string;
     }
 }
 interface BotOptions{
@@ -32,8 +28,7 @@ export default class BlazifyClient extends AkairoClient {
     public db!: Connection;
     public lava!: LavaJS;
     public oauth!: Oauth;
-    public oauthURL!: any;
-    public commands!: any;
+    public oauthURL!: string;
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Events/")
     })
@@ -82,15 +77,15 @@ export default class BlazifyClient extends AkairoClient {
         
         this.lava = new LavaJS(this)
 
-        this.commands = this.commandHandler.categories.map;
         this.oauth = new Oauth({
         clientSecret: secret,
             clientId: this.user?.id,
-            redirectUri: "http://localhost:8080/api/callback"})
+            redirectUri: "http://localhost:8080/api/callback"
+        })
         this.oauthURL = this.oauth.generateAuthUrl({
             scope: ["guilds", "identity"]
         })
-        this.db = Database.get();
+        this.db = Database;
         await this.db.connect()
             .then(connected => {
             if(connected) console.log("[Database: MongoDB] => Connected")

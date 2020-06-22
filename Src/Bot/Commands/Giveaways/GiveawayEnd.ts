@@ -8,7 +8,7 @@ import {GiveawayManager} from "../../../Lib/Structures/GiveawayManager"
 export default class GiveawayEnd extends Command {
     public constructor() {
         super("giveaway-end", {
-            aliases: ["gen", "end-giveaway"],
+            aliases: ["giveaway-end", "end-giveaway"],
             category: "Utility",
             description: {
                 content: "Edits a Giveaway",

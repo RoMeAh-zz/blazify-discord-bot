@@ -39,6 +39,6 @@ export default class Server {
         new Callback;
         new Auth;
         new Guilds;
-        createServer(this.server).listen(8080, (): void => console.log("Server Running on Port 8080"))
+        createServer(this.server).listen(8080, (): void => console.log("[Server: Express] => Connected"))
     }
 };

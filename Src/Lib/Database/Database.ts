@@ -1,9 +1,10 @@
 import { ConnectionManager } from "typeorm";
+import { mongodburl } from "../../Config";
 
 const connectionManager: ConnectionManager = new ConnectionManager();
-connectionManager.create({
+export default connectionManager.create({
     type: "mongodb",
-    url: "mongodb+srv://blazify:blazifyisbest@cluster0-pjlza.mongodb.net/blazify",
+    url: mongodburl,
     useNewUrlParser: true,
     useUnifiedTopology: true,
     synchronize: true,
@@ -11,4 +12,3 @@ connectionManager.create({
         __dirname + "/Models/*.js"
     ]
 })
-export default connectionManager;
