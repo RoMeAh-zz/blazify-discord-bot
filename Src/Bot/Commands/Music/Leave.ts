@@ -24,7 +24,7 @@ export default class Join extends Command{
         if(!player) {
             return message.util?.send ( "No Song is Played in the server" )
         }  else {
-            player.destroy(message.guild)
+            player.destroy()
         }
     }
 }

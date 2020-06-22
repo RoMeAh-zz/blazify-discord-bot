@@ -48,6 +48,6 @@ export default class Warn extends Command{
             reason: reason
         })
 
-        return message!.util!.send(`**${member.user.tag}** has been warned by **${message.author.tag}** for \`${reason}\``);
+        return message.util!.send(`**${member.user.tag}** has been warned by **${message.author.tag}** for \`${reason}\``);
     }
 }

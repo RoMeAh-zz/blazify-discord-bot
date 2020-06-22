@@ -5,8 +5,9 @@ import {prefix , ownerID , secret} from "../../Config";
 import { Connection } from "typeorm"
 import Database  from "../Database/Database"
 import Oauth from "discord-oauth2";
-import { LavaClient } from "@anonymousg/lavajs/dist/managers/LavaClient";
-import {formatTime} from "../Structures/formatTime";
+import LavaJS  from "../Structures/LavaJS"
+import { LavaClient } from "@anonymousg/lavajs";
+import { formatTime } from "../Structures/formatTime";
 
 
 declare module "discord-akairo" {
@@ -14,9 +15,10 @@ declare module "discord-akairo" {
         commandHandler: CommandHandler
         listnerHandler: ListenerHandler
         db: Connection;
-        lava: LavaClient;
+        lava: LavaJS;
         oauth: Oauth;
         oauthURL: any;
+        commands: any;
     }
 }
 interface BotOptions{
@@ -28,9 +30,10 @@ interface BotOptions{
 export default class BlazifyClient extends AkairoClient {
     public config: BotOptions;
     public db!: Connection;
-    public lava!: LavaClient;
+    public lava!: LavaJS;
     public oauth!: Oauth;
     public oauthURL!: any;
+    public commands!: any;
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Events/")
     })
@@ -76,59 +79,10 @@ export default class BlazifyClient extends AkairoClient {
         console.log(`[Commands: Command Handler] => Loaded`)
          await this.listnerHandler.loadAll();
         console.log(`[Events: Listener Handler] => Loaded`)
+        
+        this.lava = new LavaJS(this)
 
-        this.on("ready", async () => {
-            const nodes = [{
-                    host: "localhost",
-                    port: 2333,
-                    password: "youshallnotpass"
-                }]
-            this.lava = new LavaClient(this, nodes, 0)
-            this.lava.on( "nodeSuccess", async (node) => {
-                console.log ( `[Lavalink ${node.options.port}: LavaJS] => Connected` )
-            });
-            this.lava.on("nodeClose", async(node, error) => {
-                console.log(`[Lavalink ${node}: LavaJS] => Disconnected\n`+ error)
-            })
-            this.lava.on("nodeError", async(node, error) => {
-                console.log(`[Lavalink ${node}: LavaJS] => Errored\n`+ error)
-            })
-            this.lava.on("nodeReconnect", async(node) => {
-                console.log(`[Lavalink ${node}: LavaJS] => Reconnected\n`)
-            })
-            this.lava.on("createPlayer", async(player) => {
-                player.options.textChannel.send(new MessageEmbed()
-                    .setAuthor("*Joined Voice Channel and I am ready..*")
-                    .setColor("GREEN")
-                    .setDescription(`\n
-            \`Text Channel\`: ${player.options.textChannel}\n
-            \`Voice Channel\`: ${player.options.voiceChannel}\n
-            \`Guild Name\`: ${player.options.guild.name}`)
-                );
-            })
-            this.lava.on("destroyPlayer", (player) => {
-                player.options.textChannel.send("Ok Bye. I left the Channel....")
-            } )
-            this.lava.on("trackPlay",async (track, player) => {
-                 player.options.textChannel.send(new MessageEmbed()
-                    .setAuthor(track.author)
-                    .setDescription(`[${track.title}](${track.uri}). Time: ${formatTime(track.length)}\n Requested by ${track.user.user.username}`)
-                    .setImage(track.thumbnail.max)
-                    .setThumbnail(track.user.user.displayAvatarURL( {dynamic: true} ))
-                )
-            })
-            this.lava.on("trackOver",async (track, player) => {
-                player.options.textChannel.send(new MessageEmbed()
-                    .setAuthor(track.author)
-                    .setDescription(`[${track.title}](${track.uri}).\n Requested by ${track.user.user.username} has end`)
-                    .setImage(track.thumbnail.max)
-                    .setThumbnail(track.user.displayAvatarURL( {dynamic: true} ))
-                )
-            })
-            this.lava.on("queueOver", async (player) => {
-                player.destroy(player.guild)
-            })
-        });
+        this.commands = this.commandHandler.categories.map;
         this.oauth = new Oauth({
         clientSecret: secret,
             clientId: this.user?.id,

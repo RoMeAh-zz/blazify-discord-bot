@@ -1,6 +1,6 @@
 import Route from "../lib/Route";
 import { Permissions } from "discord.js";
-module.exports = class extends Route {
+export default class Guilds extends Route {
     constructor() {
         super("/api/guilds");
     }

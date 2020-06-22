@@ -31,7 +31,7 @@ export default class Play extends Command {
         let player = await this.client.lava.playerCollection.get(message.guild.id)
         if(!player) return message.util?.send("Please use the <<join Command before using this command. K thnx...")
         let queue = player.queue;
-        let Song = await player.lavaSearch(song, message.member, true)
+        let Song = await player.lavaSearch(song, message.author, true)
         if(!Song) message.util?.send("No Results Found")
         if (Song && Array.isArray(Song)) {
             let index = 1;
@@ -48,13 +48,12 @@ export default class Play extends Command {
                 if (/cancel/i.test(m.content)) return collector.stop("cancelled")
                 const track = tracks[Number(m.content) - 1];
                 queue.add(track);
-                if(!player.playState) player.play();
+                if(!player?.playState) player?.play();
             });
             collector.on("end", (_, reason) => {
                 if(["time", "cancelled"].includes(reason)) return message.channel.send("Cancelled selection.")
             });
         } else {
-            queue.add(Song);
             if(!player.playState) player.play();
         }
     }

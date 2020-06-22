@@ -25,23 +25,21 @@ export default class Join extends Command{
 
         let index = 1;
         let string = "";
-        if(!player.queue) return message.util?.send("No Song is Present in Queue.")
+        if(!player?.queue) return message.util?.send("No Song is Present in Queue.")
 
-        const next = player.queue.map(
+        const next = player?.queue.map(
             (t: { user: any; title: string; uri: string;}) =>
                 Object.assign(
                     { user: t.user.user.username ,
                         title: t.title,
-                        uri: t.uri},
-                    decode(player.queue.slice(1))));
+                        uri: t.uri}));
         const np = Object.assign({
-            user: player.queue[0].user.user.username,
-            title: player.queue[0].title,
-                uri: player.queue[0].uri },
-            decode(player.queue[0]));
+            user: player?.queue.first.user.username,
+            title: player?.queue.first.title,
+                uri: player?.queue.first.uri });
         if (np)
             string += `__**Currently Playing**__\n [${np.title}](${np.uri}) - **Requested by ${np.user}**. \n`;
-        if (next[1])
+        if (next)
             string += `__**Rest of queue:**__\n ${next
                 .slice(1, 10)
                 .map(

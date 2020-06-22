@@ -2,8 +2,7 @@ import { Listener } from "discord-akairo";
 import { TextChannel, Message } from "discord.js";
 import { Repository } from "typeorm";
 import { Giveaways } from "../../../Lib/Database/Models/Giveaways";
-import { ErelaClient, Utils } from "erela.js";
-import  Server  from "../../../Web/Server/server"
+import  Server  from "../../../Web/Server/Server"
 
 import  { GiveawayManager }  from "../../../Lib/Structures/GiveawayManager";
 export default class ReadyListener extends Listener {
@@ -16,7 +15,7 @@ export default class ReadyListener extends Listener {
     }
 
     public async exec() : Promise<void> {
-        await Server (this.client)
+        await new Server(this.client).start()
         const giveawayRepo : Repository<Giveaways> = this.client.db.getRepository (Giveaways);
 
         console.log (`[Discord Bot: Blazify] => Connected`);

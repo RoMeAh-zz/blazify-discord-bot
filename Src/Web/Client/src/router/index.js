@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-const {baseurl} = require("../../../../config.json")
+const {baseurl} = require("../../../../../Blazify/Config")
 Vue.use(VueRouter)
 
 const routes = [

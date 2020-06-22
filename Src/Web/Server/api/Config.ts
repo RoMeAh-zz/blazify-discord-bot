@@ -1,7 +1,7 @@
 import Route from "../lib/Route";
 //const ConfigSettings = require("../../Lib/Database/models/configsetting");
 //const Prefix = require("../../Lib/Database/models/prefix.js");
-module.exports = class extends Route {
+export default class Config extends Route {
     constructor() {
         super("/api/config/:id", "put");
     }
