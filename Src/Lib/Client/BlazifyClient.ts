@@ -1,11 +1,12 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
 import { Message } from "discord.js";
 import { join } from "path";
-import { prefix , ownerID , secret } from "../../Config";
-import { Connection } from "typeorm"
+import { ownerID , secret, prefix } from "../../Config";
+import { Connection, Any, Repository } from "typeorm"
 import Database  from "../Database/Database"
 import Oauth from "discord-oauth2";
 import LavaJS  from "../Structures/LavaJS"
+import { GuildSettings } from "../Database/Models/GuildSettings";
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -15,6 +16,7 @@ declare module "discord-akairo" {
         lava: LavaJS;
         oauth: Oauth;
         oauthURL: string;
+        prefix: string;
     }
 }
 interface BotOptions{
@@ -29,12 +31,13 @@ export default class BlazifyClient extends AkairoClient {
     public lava!: LavaJS;
     public oauth!: Oauth;
     public oauthURL!: string;
+    public prefix!: string;
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Events/")
     })
     public commandHandler: CommandHandler = new CommandHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Commands/"),
-        prefix: prefix,
+        prefix: this.prefix,
         allowMention: true,
         handleEdits: true,
         commandUtil: true,
@@ -77,6 +80,14 @@ export default class BlazifyClient extends AkairoClient {
         
         this.lava = new LavaJS(this)
 
+        this.on("message", async (message) => {
+            if(!message.guild) return message.util?.send("Commands not allowed in DMs")
+            const guildSetting: Repository<GuildSettings> =  this.db.getRepository(GuildSettings)
+            var repo = await guildSetting.findOne({ guild: message.guild?.id })
+            this.prefix = repo!.prefix || "b3";
+            this.commandHandler.prefix = this.prefix;
+            this.commandHandler.handle(message)
+        })
         this.oauth = new Oauth({
         clientSecret: secret,
             clientId: this.user?.id,

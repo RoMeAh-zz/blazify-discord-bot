@@ -25,8 +25,13 @@ export default class ReadyListener extends Listener {
         let allGuilds = this.client.guilds.cache.array();
 
         for (let i = 0; i < allGuilds.length; i++) {
+            if(i == undefined) return console.log(i);
+            
+            console.log(i)
 
-        let exists = guildSetting.findOne({guild: allGuilds[i].id})
+            console.log(allGuilds[i].name)
+
+        let exists = await guildSetting.findOne({guild: allGuilds[i].id})
 
         if(!exists) {
 
@@ -57,6 +62,8 @@ export default class ReadyListener extends Listener {
         verifyRole: "Verified"
 
         })
+
+        console.log(`${allGuilds[i].name} guild has been added to database`)
     }
     }
         setInterval (async () => {
