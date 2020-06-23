@@ -4,7 +4,7 @@ import { Repository } from "typeorm";
 import { Giveaways } from "../../../Lib/Database/Models/Giveaways";
 import  Server  from "../../../Web/Server/Server"
 
-import  { GiveawayManager }  from "../../../Lib/Structures/GiveawayManager";
+import  { GiveawayManager }  from "../../../Lib/Managers/GiveawayManager";
 import { GuildSettings } from "../../../Lib/Database/Models/GuildSettings";
 export default class ReadyListener extends Listener {
     public constructor() {

@@ -22,7 +22,7 @@ export default class Join extends Command{
         // @ts-ignore
         if(!this.client.lava.playerCollection.get(message.guild?.id)) {
             // @ts-ignore
-            let player = await this.client.lava?.spawnPlayer ( this.client.lava , {
+            let player = await this.client.lava?.spawnPlayer ({
                 guild: message.guild ,
                 voiceChannel: message.member?.voice.channel ,
                 textChannel: message.channel ,

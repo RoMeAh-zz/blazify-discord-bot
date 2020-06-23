@@ -3,7 +3,7 @@ import {Message , TextChannel} from "discord.js";
 
 import {Repository} from "typeorm";
 import {Giveaways} from "../../../Lib/Database/Models/Giveaways";
-import {GiveawayManager} from "../../../Lib/Structures/GiveawayManager"
+import {GiveawayManager} from "../../../Lib/Managers/GiveawayManager"
 
 export default class GiveawayReroll extends Command{
     public constructor() {

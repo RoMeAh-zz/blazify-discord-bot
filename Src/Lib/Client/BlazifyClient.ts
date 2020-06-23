@@ -5,15 +5,16 @@ import { ownerID , secret, prefix } from "../../Config";
 import { Connection, Any, Repository } from "typeorm"
 import Database  from "../Database/Database"
 import Oauth from "discord-oauth2";
-import LavaJS  from "../Structures/LavaJS"
+import LavaJSManager  from "../Managers/LavaJSManager"
 import { GuildSettings } from "../Database/Models/GuildSettings";
+import PrefixManager from "../Managers/PrefixManager";
 
 declare module "discord-akairo" {
     interface AkairoClient {
         commandHandler: CommandHandler
         listnerHandler: ListenerHandler
         db: Connection;
-        lava: LavaJS;
+        lava: LavaJSManager;
         oauth: Oauth;
         oauthURL: string;
         prefix: string;
@@ -28,7 +29,7 @@ interface BotOptions{
 export default class BlazifyClient extends AkairoClient {
     public config: BotOptions;
     public db!: Connection;
-    public lava!: LavaJS;
+    public lava!: LavaJSManager;
     public oauth!: Oauth;
     public oauthURL!: string;
     public prefix!: string;
@@ -78,16 +79,11 @@ export default class BlazifyClient extends AkairoClient {
          await this.listnerHandler.loadAll();
         console.log(`[Events: Listener Handler] => Loaded`)
         
-        this.lava = new LavaJS(this)
+        this.lava = new LavaJSManager(this)
 
-        this.on("message", async (message) => {
-            if(!message.guild) return message.util?.send("Commands not allowed in DMs")
-            const guildSetting: Repository<GuildSettings> =  this.db.getRepository(GuildSettings)
-            var repo = await guildSetting.findOne({ guild: message.guild?.id })
-            this.prefix = repo!.prefix || "b3";
-            this.commandHandler.prefix = this.prefix;
-            this.commandHandler.handle(message)
-        })
+        new PrefixManager(this)
+
+
         this.oauth = new Oauth({
         clientSecret: secret,
             clientId: this.user?.id,
@@ -96,6 +92,8 @@ export default class BlazifyClient extends AkairoClient {
         this.oauthURL = this.oauth.generateAuthUrl({
             scope: ["guilds", "identity"]
         })
+
+        
         this.db = Database;
         await this.db.connect()
             .then(connected => {

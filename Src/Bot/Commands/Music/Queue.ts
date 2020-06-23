@@ -1,6 +1,6 @@
 import { Command } from "discord-akairo";
 import {Message , MessageEmbed} from "discord.js";
-import {formatTime} from "../../../Lib/Structures/formatTime";
+import {formatTime} from "../../../Lib/Utils/formatTime";
 import {decode} from "querystring";
 
 export default class Join extends Command{

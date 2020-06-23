@@ -2,7 +2,7 @@ import { Command } from "discord-akairo";
 import {Message , MessageEmbed} from "discord.js";
 import {decode} from "querystring";
 import { stripIndents } from "common-tags";
-import {formatTime} from "../../../Lib/Structures/formatTime";
+import {formatTime} from "../../../Lib/Utils/formatTime";
 
 export default class Join extends Command{
     public constructor() {
