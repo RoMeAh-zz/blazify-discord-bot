@@ -2,7 +2,7 @@ import { Command} from "discord-akairo";
 import {Message, GuildMember} from "discord.js";
 import { Repository } from "typeorm";
 
-import { Warns } from "../../../Lib/Database/Models/Warns"
+import { Warns } from "../../../Lib"
 
 export default class Warn extends Command{
     public constructor() {

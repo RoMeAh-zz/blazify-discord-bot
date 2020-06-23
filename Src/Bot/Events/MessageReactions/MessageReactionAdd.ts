@@ -2,7 +2,7 @@ import { Listener } from "discord-akairo";
 import { MessageReaction } from "discord.js";
 import { User } from "discord.js";
 import { Repository } from "typeorm";
-import { RoleReaction } from "../../../Lib/Database/Models/RoleReaction";
+import { RoleReaction } from "../../../Lib";
 
 export default class MessageReactionAdd extends Listener {
     constructor() {

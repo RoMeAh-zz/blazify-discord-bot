@@ -1,8 +1,9 @@
 import { ConnectionManager } from "typeorm";
 import { mongodburl } from "../../Config";
 
-const connectionManager: ConnectionManager = new ConnectionManager();
-export default connectionManager.create({
+export let Database: ConnectionManager = new ConnectionManager();
+// @ts-ignore
+this.db = Database.create({
     type: "mongodb",
     url: mongodburl,
     useNewUrlParser: true,
@@ -11,4 +12,7 @@ export default connectionManager.create({
     entities: [
         __dirname + "/Models/*.js"
     ]
-})
+}) .connect()
+    .then(() => {
+        console.log("[Database: MongoDB] => Connected")
+    }).catch((err: string) => console.log(err))

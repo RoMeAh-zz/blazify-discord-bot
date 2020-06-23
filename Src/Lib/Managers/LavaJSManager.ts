@@ -1,8 +1,8 @@
 import { LavaClient } from "@anonymousg/lavajs"
 import { MessageEmbed } from "discord.js";
-import { formatTime } from "../Utils/formatTime";
+import { formatTime } from "..";
 
-export default class LavaJSManager  {
+export class LavaJSManager  {
     constructor(client: any) {
         client = client
         client.on("ready", () => {

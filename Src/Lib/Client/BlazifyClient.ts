@@ -1,11 +1,11 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
 import { Message } from "discord.js";
 import { join } from "path";
-import { ownerID , secret, prefix } from "../../Config";
-import { Connection, Any, Repository } from "typeorm"
-import Database  from "../Database/Database"
+import { ownerID , secret, } from "../../Config";
+import {Connection} from "typeorm"
+import {Database}  from ".."
 import Oauth from "discord-oauth2";
-import LavaJSManager  from "../Managers/LavaJSManager"
+import {LavaJSManager}  from ".."
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -24,7 +24,7 @@ interface BotOptions{
 }
 
 
-export default class BlazifyClient extends AkairoClient {
+export class BlazifyClient extends AkairoClient {
     public config: BotOptions;
     public db!: Connection;
     public lava!: LavaJSManager;
@@ -87,13 +87,6 @@ export default class BlazifyClient extends AkairoClient {
             scope: ["guilds", "identity"]
         })
 
-        
-        this.db = Database;
-        await this.db.connect()
-            .then(connected => {
-            if(connected) console.log("[Database: MongoDB] => Connected")
-        }).catch(err => console.log(err))
-        await this.db.synchronize();
     }
     public async start(): Promise<string> {
         await this._init();

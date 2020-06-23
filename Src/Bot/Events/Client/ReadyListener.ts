@@ -1,11 +1,11 @@
 import { Listener } from "discord-akairo";
 import { TextChannel, Message } from "discord.js";
 import { Repository } from "typeorm";
-import { Giveaways } from "../../../Lib/Database/Models/Giveaways";
+import { Giveaways } from "../../../Lib";
 import  Server  from "../../../Web/Server/Server"
 
-import  { GiveawayManager }  from "../../../Lib/Managers/GiveawayManager";
-import { GuildSettings } from "../../../Lib/Database/Models/GuildSettings";
+import  { GiveawayManager }  from "../../../Lib";
+import { GuildSettings } from "../../../Lib";
 export default class ReadyListener extends Listener {
     public constructor() {
         super ("ready" , {
@@ -25,10 +25,9 @@ export default class ReadyListener extends Listener {
         let allGuilds = this.client.guilds.cache.array();
 
         for (let i = 0; i < allGuilds.length; i++) {
-        if(i == undefined) return ;
 
 
-        let exists = await guildSetting.findOne({guild: allGuilds[i].id})
+            let exists = await guildSetting.findOne({guild: allGuilds[i].id})
 
         if(!exists) {
 

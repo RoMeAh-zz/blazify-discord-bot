@@ -2,8 +2,8 @@ import {Command} from "discord-akairo";
 import {Message , TextChannel} from "discord.js";
 
 import {Repository} from "typeorm";
-import {Giveaways} from "../../../Lib/Database/Models/Giveaways";
-import {GiveawayManager} from "../../../Lib/Managers/GiveawayManager"
+import {Giveaways} from "../../../Lib";
+import {GiveawayManager} from "../../../Lib"
 
 export default class GiveawayReroll extends Command{
     public constructor() {

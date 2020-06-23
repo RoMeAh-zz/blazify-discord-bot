@@ -3,7 +3,7 @@ import { Message } from "discord.js";
 import { MessageCollector } from "discord.js";
 import { TextChannel } from "discord.js";
 import { Repository } from "typeorm";
-import { RoleReaction } from "../../../Lib/Database/Models/RoleReaction";
+import { RoleReaction } from "../../../Lib";
 import { User } from "discord.js";
 
 export default class PingCommand extends Command {

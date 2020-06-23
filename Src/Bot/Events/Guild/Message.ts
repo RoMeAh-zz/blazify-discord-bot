@@ -1,8 +1,8 @@
 import { Listener } from "discord-akairo";
 import { Message } from "discord.js";
 import { Repository } from "typeorm";
-import { GuildSettings } from "../../../Lib/Database/Models/GuildSettings";
-import { UserXP } from "../../../Lib/Database/Models/UserXP";
+import { GuildSettings } from "../../../Lib";
+import { UserXP } from "../../../Lib";
 
 export default class MessageListener extends Listener {
     public constructor() {
@@ -28,15 +28,14 @@ export default class MessageListener extends Listener {
               if (err) console.log(err);
       
               if (!xp) {
-                let newXP = XP.insert({
-                  user: message.author.id,
-                  guild: message.guild?.id,
-                  xp: addXP,
-                  level: 1,
-                });
-                newXP = xp;
-              };
-      
+                  await XP.insert({
+                      user: message.author.id,
+                      guild: message.guild?.id,
+                      xp: addXP,
+                      level: 1,
+                  });
+              }
+
                 xp.xp = xp.xp + addXP;
                 let nextLevel = xp.level * 300;
       

@@ -1,8 +1,8 @@
 import { Command } from "discord-akairo";
-import { Message, GuildMember, User, MessageEmbed } from "discord.js";
+import { Message, GuildMember} from "discord.js";
 import { Repository  } from "typeorm";
 
-import { Warns } from "../../../Lib/Database/Models/Warns";
+import { Warns } from "../../../Lib";
 
 export default class ModLogs extends Command {
     public constructor() {

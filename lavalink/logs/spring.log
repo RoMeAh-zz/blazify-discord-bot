@@ -30,3 +30,15 @@
 2020-06-23 12:25:24.794  INFO 3678 --- [XNIO-1 task-16] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:34882
 2020-06-23 13:58:29.522  INFO 3678 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:34882 -- CloseStatus[code=1006, reason=]
 2020-06-23 13:58:29.711  INFO 3678 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-23 15:15:44.094  INFO 3678 --- [XNIO-1 task-17] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:36944
+2020-06-23 15:15:45.127  INFO 3678 --- [XNIO-1 task-17] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:36944
+2020-06-23 15:20:03.138  INFO 3678 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:36944 -- CloseStatus[code=1006, reason=]
+2020-06-23 15:20:03.152  INFO 3678 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-23 15:21:09.492  INFO 3678 --- [XNIO-1 task-18] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:37116
+2020-06-23 15:21:09.716  INFO 3678 --- [XNIO-1 task-18] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:37116
+2020-06-23 15:28:38.466  WARN 3678 --- [lava-daemon-pool-manager-3-thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : Suspicious GC results for the last 2 minutes: [Bucket 0 = 0] [Bucket 20 = 0] [Bucket 50 = 0] [Bucket 200 = 1] [Bucket 500 = 0] [Bucket 2000 = 0] 
+2020-06-23 15:30:49.940  INFO 3678 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:37116 -- CloseStatus[code=1006, reason=]
+2020-06-23 15:30:50.875  INFO 3678 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-06-23 15:31:13.247  INFO 3678 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-23 15:31:17.790  INFO 3678 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2020-06-23 15:31:24.407  INFO 3678 --- [Thread-1] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'
