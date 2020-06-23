@@ -1,6 +1,6 @@
 import {Entity , Column , PrimaryGeneratedColumn , ObjectIdColumn , ObjectID} from "typeorm";
 
-@Entity("warns")
+@Entity("guildsettings")
 export class GuildSettings {
     @ObjectIdColumn({name: "_id"})
     public _id?: ObjectID;

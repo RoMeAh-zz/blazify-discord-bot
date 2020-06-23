@@ -6,8 +6,6 @@ import { Connection, Any, Repository } from "typeorm"
 import Database  from "../Database/Database"
 import Oauth from "discord-oauth2";
 import LavaJSManager  from "../Managers/LavaJSManager"
-import { GuildSettings } from "../Database/Models/GuildSettings";
-import PrefixManager from "../Managers/PrefixManager";
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -38,7 +36,6 @@ export default class BlazifyClient extends AkairoClient {
     })
     public commandHandler: CommandHandler = new CommandHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Commands/"),
-        prefix: this.prefix,
         allowMention: true,
         handleEdits: true,
         commandUtil: true,
@@ -80,9 +77,6 @@ export default class BlazifyClient extends AkairoClient {
         console.log(`[Events: Listener Handler] => Loaded`)
         
         this.lava = new LavaJSManager(this)
-
-        new PrefixManager(this)
-
 
         this.oauth = new Oauth({
         clientSecret: secret,

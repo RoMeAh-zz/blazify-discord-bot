@@ -25,11 +25,8 @@ export default class ReadyListener extends Listener {
         let allGuilds = this.client.guilds.cache.array();
 
         for (let i = 0; i < allGuilds.length; i++) {
-            if(i == undefined) return console.log(i);
-            
-            console.log(i)
+        if(i == undefined) return ;
 
-            console.log(allGuilds[i].name)
 
         let exists = await guildSetting.findOne({guild: allGuilds[i].id})
 

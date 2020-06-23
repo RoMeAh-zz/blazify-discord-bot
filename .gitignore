@@ -8,3 +8,5 @@ Src/Web/Client/dist/
 Blazify/
 
 json.sqlite
+
+.vscode

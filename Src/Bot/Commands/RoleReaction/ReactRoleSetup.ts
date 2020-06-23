@@ -40,10 +40,6 @@ export default class PingCommand extends Command {
     public async exec(message: Message, { msg }: { msg: string }): Promise<any> {
         let msgCollectorFilter = (newMsg: { author: { id: string; }; }, originalMsg: { author: { id: string; }; }) => newMsg.author.id === originalMsg.author.id;
         const MessageModel: Repository<RoleReaction> =  this.client.db.getRepository(RoleReaction)
-        if(msg.length !== 1) {
-            let msg = await message.channel.send("Too many arguments. Must only provide 1 message id");
-            await msg.delete({ timeout: 3500 }).catch(err => console.log(err));
-        } else {
              try {
                  let fetchedMessage = await message.channel.messages.fetch(msg);
                  if(fetchedMessage) {
@@ -102,4 +98,4 @@ export default class PingCommand extends Command {
              }
          }
 
-    }}
+    }
