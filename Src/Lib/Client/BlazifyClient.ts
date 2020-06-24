@@ -1,4 +1,4 @@
-import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
+import {AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler} from "discord-akairo";
 import { Message } from "discord.js";
 import { join } from "path";
 import { ownerID } from "../../Config";
@@ -32,6 +32,9 @@ export class BlazifyClient extends AkairoClient {
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Events/")
     })
+    public inhibitorHandler: InhibitorHandler = new InhibitorHandler(this, {
+        directory: join(__dirname, "..", "..", "Bot/Inhibitors/")
+    })
     public commandHandler: CommandHandler = new CommandHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Commands/"),
         allowMention: true,
@@ -56,7 +59,8 @@ export class BlazifyClient extends AkairoClient {
     });
     public constructor(config: BotOptions) {
         super({
-            ownerID: config.ownerID
+            ownerID: config.ownerID,
+            disableMentions: "everyone"
         });
 
         this.config = config;
@@ -64,11 +68,15 @@ export class BlazifyClient extends AkairoClient {
 
     private async _init(): Promise<void> {
         this.commandHandler.useListenerHandler(this.listnerHandler);
+        this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
         this.listnerHandler.setEmitters({
             commandHandler: this.commandHandler,
+            inhibitorHandler: this.inhibitorHandler,
             listnerHandler: this.listnerHandler,
             process
         });
+        await this.inhibitorHandler.loadAll();
+        console.log(`[Inhibitor: Inhibitor Handler] => Loaded`)
         await this.commandHandler.loadAll();
         console.log(`[Commands: Command Handler] => Loaded`)
          await this.listnerHandler.loadAll();

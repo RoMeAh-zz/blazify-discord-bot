@@ -8,7 +8,6 @@ export class DatabaseManager {
             .then(() => {
                 console.log("[Database: MongoDB] => Connected")
             }).catch(console.error)
-        client.db.synchronize(true)
     }
 
 }

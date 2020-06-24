@@ -1,7 +1,7 @@
 import {Entity , Column , PrimaryGeneratedColumn , ObjectIdColumn , ObjectID} from "typeorm";
 
 @Entity("warns")
-export class UserXP {
+export class UserGuild {
     @ObjectIdColumn({name: "_id"})
     public _id?: ObjectID;
 
@@ -19,4 +19,10 @@ export class UserXP {
 
     @Column("xpcoins")
     public xpcoins?: number
+
+    @Column("banned")
+    public banned?: number
+
+    @Column("kicked")
+    public kicked?: number
 }

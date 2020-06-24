@@ -2,7 +2,7 @@ import { Listener } from "discord-akairo";
 import { Message } from "discord.js";
 import { Repository } from "typeorm";
 import { GuildSettings } from "../../../Lib";
-import { UserXP } from "../../../Lib";
+import { UserGuild } from "../../../Lib";
 
 export default class MessageListener extends Listener {
     public constructor() {
@@ -16,7 +16,7 @@ export default class MessageListener extends Listener {
     public async exec(message: Message): Promise<any> {
         if (!message.guild) return message.util?.send("Commands not allowed in DMs")
         const guildSetting: Repository<GuildSettings> = this.client.db.getRepository(GuildSettings)
-        const XP: Repository<UserXP> = this.client.db.getRepository(UserXP)
+        const XP: Repository<UserGuild> = this.client.db.getRepository(UserGuild)
         const exp = guildSetting.findOne({guild: message.guild.id, enableXP: true})
         const expcoins = guildSetting.findOne({guild: message.guild.id, enableXPCoins: true})
 
