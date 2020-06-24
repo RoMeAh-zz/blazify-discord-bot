@@ -4,7 +4,6 @@ import { formatTime } from "..";
 
 export class LavaJSManager  {
     constructor(client: any) {
-        client = client
         client.on("ready", () => {
             const nodes = [{
                 host: "localhost",

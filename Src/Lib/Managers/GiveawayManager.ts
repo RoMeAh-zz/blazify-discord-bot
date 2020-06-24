@@ -1,6 +1,6 @@
 import { Message , MessageEmbed , MessageReaction  , User} from "discord.js";
 import { Repository } from "typeorm";
-import { Giveaways } from "../Database/Models/Giveaways";
+import { Giveaways } from "..";
 
 
 export class GiveawayManager {

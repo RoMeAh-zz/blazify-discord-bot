@@ -22,8 +22,7 @@ export default class PingCommand extends Command {
                 {
                         id: "msg",
                         type: async (message : Message , str : string) => {
-                                // @ts-ignore
-                            let rawmsg = await (message.guild.channels.cache.get ( message.channel.id ) as TextChannel).messages.fetch ( (str) , true )
+                            let rawmsg = await (message.guild?.channels.cache.get ( message.channel.id ) as TextChannel).messages.fetch ( (str) , true )
                                     .catch ( () => null );
                                     return rawmsg?.id
                         },

@@ -5,8 +5,10 @@ node_modules/
 
 Src/Web/Client/dist/
 
+Src/Config.ts
+
+
 Blazify/
 
-json.sqlite
 
 .vscode

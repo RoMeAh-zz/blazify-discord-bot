@@ -1,11 +1,10 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from "discord-akairo";
 import { Message } from "discord.js";
 import { join } from "path";
-import { ownerID , secret, } from "../../Config";
+import { ownerID } from "../../Config";
 import {Connection} from "typeorm"
-import {Database}  from ".."
 import Oauth from "discord-oauth2";
-import {LavaJSManager}  from ".."
+import {DatabaseManager, LavaJSManager, Oauth2Manager} from ".."
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -22,7 +21,6 @@ interface BotOptions{
     token? : string
     ownerID? : string | Array<string>
 }
-
 
 export class BlazifyClient extends AkairoClient {
     public config: BotOptions;
@@ -76,16 +74,9 @@ export class BlazifyClient extends AkairoClient {
          await this.listnerHandler.loadAll();
         console.log(`[Events: Listener Handler] => Loaded`)
         
-        this.lava = new LavaJSManager(this)
-
-        this.oauth = new Oauth({
-        clientSecret: secret,
-            clientId: this.user?.id,
-            redirectUri: "http://localhost:8080/api/callback"
-        })
-        this.oauthURL = this.oauth.generateAuthUrl({
-            scope: ["guilds", "identity"]
-        })
+        new LavaJSManager(this)
+        new Oauth2Manager(this)
+        new DatabaseManager(this)
 
     }
     public async start(): Promise<string> {

@@ -1,4 +1,4 @@
-const Jimp = require("jimp");
+import Jimp from "jimp";
 
 export async function createCaptcha () {
   const captcha = Math.random().toString(36).slice(2, 8);
@@ -7,7 +7,7 @@ export async function createCaptcha () {
   const w = image.bitmap.width;
   const h = image.bitmap.height;
   const textWidth = Jimp.measureText(font, captcha);
-  const textHeight = Jimp.measureTextHeight(font, captcha);
+  const textHeight = Jimp.measureTextHeight(font, captcha, 20);
   image.print(font, w / 2 - textWidth / 2, h / 2 - textHeight / 2, captcha);
   image.write(
     `captchas/${captcha}.png`
