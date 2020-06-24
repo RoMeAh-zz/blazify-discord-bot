@@ -12,17 +12,18 @@ export default class MessageReactionAdd extends Listener {
             category: "MessageReactions"
         })
     }
-    public async exec(messageReaction: MessageReaction, user: User): Promise<any> {
-        const message = messageReaction.message;
+    public async exec(reaction: MessageReaction, user: User): Promise<any> {
+        this.client.logger.info("Event?")
+        const message = reaction.message;
         const RoleRepo: Repository<RoleReaction> =  this.client.db.getRepository(RoleReaction)
        const roleDocument = await RoleRepo.findOne({ message: message.id });
 
        if (!roleDocument) return;
 
-       const emojiID: number = Number(messageReaction.emoji?.id);
+       const emojiID = reaction.emoji?.id;
 
-       if (roleDocument?.emojiRoleMappings?.hasOwnProperty(emojiID)) {
-        const roleID = roleDocument.emojiRoleMappings[emojiID];
+       if (roleDocument?.emojiRoleMappings![0] === emojiID) {
+        const roleID = roleDocument?.emojiRoleMappings![1];
         const addRole = message.guild?.roles.cache.get(roleID);
 
         if (!addRole) return;

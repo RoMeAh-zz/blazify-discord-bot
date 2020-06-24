@@ -19,10 +19,10 @@ export default class MessageReactionAdd extends Listener {
 
        if (!roleDocument) return;
 
-       const emojiID: number = Number(messageReaction.emoji?.id);
+       const emojiID = messageReaction.emoji?.id;
 
-       if (roleDocument?.emojiRoleMappings?.hasOwnProperty(emojiID)) {
-        const roleID = roleDocument.emojiRoleMappings[emojiID];
+       if (roleDocument?.emojiRoleMappings![0] === emojiID) {
+        const roleID = roleDocument.emojiRoleMappings[1];
         const addRole = message.guild?.roles.cache.get(roleID);
 
         if (!addRole) return;

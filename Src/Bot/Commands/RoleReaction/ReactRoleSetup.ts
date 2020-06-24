@@ -68,9 +68,9 @@ export default class PingCommand extends Command {
                              return;
                          }
                          fetchedMessage.react(emoji)
-                             .then(emoji => this.client.logger.info("Reacted."))
+                             .then(emoji => this.client.logger.info("Reacted." + emoji))
                              .catch(err => this.client.logger.info(err));
-                         emojiRoleMappings.push(emoji.id, role.id);
+                         emojiRoleMappings = [emoji.id, role.id];
                      });
                      collector.on('end', async (collected: any, reason: any) => {
                          let findMsgDocument = await MessageModel

@@ -110,7 +110,7 @@ function handleCollector(fetchedMessage: Message, author: User, channel: TextCha
                 fetchedMessage.react(emoji)
                     .then((emoji: any) => console.log("Reacted."))
                     .catch((err: any) => console.log(err));
-                emojiRoleMappings.push(emoji.id, role.id);
+                emojiRoleMappings = [emoji.id, role.id];
             }
         });
         collector.on('end', () => {
