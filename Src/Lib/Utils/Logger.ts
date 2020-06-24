@@ -25,12 +25,15 @@ export class Logger {
 
     async write(content: string, { color = 'grey', tag = 'Log', error = false } = {}) {
         let text;
+        let type;
         const timestamp = chalk.cyan(`[${moment().format('MM-DD-YYYY HH:mm:ss')}]:`);
         const levelTag = chalk.bold(`[${tag}]:`);
-        // @ts-ignore
-        text = chalk[color](content);
+        //@ts-ignore
+        text = chalk[color](content)
+        //@ts-ignore
+        type = chalk[color](this.clean(content));
         const stream = error ? process.stderr : process.stdout;
-        stream.write(`${timestamp} ${levelTag} ${text}\n`);
+        stream.write(`${timestamp} ${levelTag} ${text} ${type}\n`);
     }
 
     async clean (item: string) {

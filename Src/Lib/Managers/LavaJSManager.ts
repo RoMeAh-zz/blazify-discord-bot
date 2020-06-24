@@ -15,10 +15,10 @@ export class LavaJSManager  {
                 client.logger.info ( `[Lavalink ${node.options.port}: LavaJS] => Connected` )
             });
             client.lava.on("nodeClose", async(node: object, error: string) => {
-                client.logger.info(`[Lavalink ${node}: LavaJS] => Disconnected\n`+ error)
+                client.logger.error(`[Lavalink ${node}: LavaJS] => Disconnected\n`+ error)
             })
             client.lava.on("nodeError", async(node: object, error: string) => {
-                client.logger.info(`[Lavalink ${node}: LavaJS] => Errored\n`+ error)
+                client.logger.error(`[Lavalink ${node}: LavaJS] => Errored\n`+ error)
             })
             client.lava.on("nodeReconnect", async(node: object) => {
                 client.logger.info(`[Lavalink ${node}: LavaJS] => Reconnected\n`)

@@ -7,7 +7,9 @@ export class DatabaseManager {
         client.db.connect()
             .then(() => {
                 client.logger.info("[Database: MongoDB] => Connected")
-            }).catch(console.error)
+            }).catch(err => {
+                client.logger.error(err)
+            })
     }
 
 }
