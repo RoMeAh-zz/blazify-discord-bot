@@ -5,6 +5,7 @@ import { TextChannel } from "discord.js";
 import { Repository } from "typeorm";
 import { RoleReaction } from "../../../Lib";
 import { User } from "discord.js";
+import { AkairoClient } from "discord-akairo";
 
 export default class PingCommand extends Command {
     public constructor() {
@@ -23,8 +24,7 @@ export default class PingCommand extends Command {
                 {
                         id: "msg",
                         type: async (message : Message , str : string) => {
-                                // @ts-ignore
-                            let rawmsg = await (message.guild.channels.cache.get ( message.channel.id ) as TextChannel).messages.fetch ( (str) , true )
+                            let rawmsg = await (message.guild?.channels.cache.get ( message.channel.id ) as TextChannel).messages.fetch ( (str) , true )
                                     .catch ( () => null );
                                     return rawmsg?.id
                         },
@@ -56,9 +56,9 @@ export default class PingCommand extends Command {
                     try {
                         let awaitMsgOps = { max: 1, time: 4000, errors: ['time'] };
                         let choice = (await channel.awaitMessages(filter, awaitMsgOps)).first();
-                        if(choice?.content === "add") {
+                        if(choice?.content === `${this.client.commandHandler.prefix}add`) {
                             let addMsgPrompt = await channel.send("Enter an emoji name followed by the corresponding role name, separated with a comma. e.g: some_emoji, some_role");
-                            let collectorResult = await handleCollector(fetchedMessage, author, channel, msgModel!.emojiRoleMappings, msg);
+                            let collectorResult = await handleCollector(fetchedMessage, author, channel, msgModel!.emojiRoleMappings, msg, this.client);
                             console.log(collectorResult);
                         }
                         else {
@@ -70,7 +70,7 @@ export default class PingCommand extends Command {
                     }
                 }
                 else {
-                    message.channel.send("There is no configuration for that message. Please use ?addreactions on a message to set up Role Reactions on that message.")
+                    return message.util?.send("There is no configuration for that message. Please use ?addreactions on a message to set up Role Reactions on that message.")
                 }
             }
         }
@@ -79,13 +79,13 @@ export default class PingCommand extends Command {
         }
     }
 }
-function handleCollector(fetchedMessage: Message, author: User, channel: TextChannel | import("discord.js").DMChannel | import("discord.js").NewsChannel, msgModel: string[] | undefined, message: any) {
+function handleCollector(fetchedMessage: Message, author: User, channel: TextChannel | import("discord.js").DMChannel | import("discord.js").NewsChannel, msgModel: string[] | undefined, message: any, client: AkairoClient) {
     return new Promise((resolve, reject) => {
         let collectorFilter = (m: { author: { id: any; }; }) => m.author.id === author.id;
         let collector = new MessageCollector(channel as TextChannel, collectorFilter);
         let emojiRoleMappings: Array<string>;
         collector.on('collect', msg => {
-            if(msg.content.toLowerCase() === '?done') {
+            if(msg.content.toLowerCase() === `${client.commandHandler.prefix}done`) {
                 collector.stop();
                 resolve();
             }

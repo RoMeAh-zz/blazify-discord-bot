@@ -53,6 +53,6 @@ export default class Join extends Command{
             )
             .setDescription(string);
 
-        return message.channel.send(embed);
+        return return message.util?.send(embed);
     }
 }

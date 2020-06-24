@@ -40,7 +40,7 @@ export default class Play extends Command {
                 .setAuthor("Song Selection.", message.author.displayAvatarURL({dynamic: true}))
                 .setDescription(tracks.map(video => `**${index++} -** ${video.title}`))
                 .setFooter("Your response time closes within the next 30 seconds. Type 'cancel' to cancel the selection");
-            await message.channel.send(embed);
+            await return message.util?.send(embed);
             const collector = message.channel.createMessageCollector(m => {
                 return m.author.id === message.author.id && new RegExp(`^([1-5]|cancel)$`, "i").test(m.content)
             }, { time: 30000, max: 1});
@@ -51,7 +51,7 @@ export default class Play extends Command {
                 if(!player?.playState) player?.play();
             });
             collector.on("end", (_, reason) => {
-                if(["time", "cancelled"].includes(reason)) return message.channel.send("Cancelled selection.")
+                if(["time", "cancelled"].includes(reason)) return return message.util?.send("Cancelled selection.")
             });
         } else {
             if(!player.playState) player.play();

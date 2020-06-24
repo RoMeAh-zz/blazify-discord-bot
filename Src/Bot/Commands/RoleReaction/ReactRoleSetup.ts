@@ -78,7 +78,7 @@ export default class PingCommand extends Command {
                              .catch((err: any) => this.client.logger.info(err));
                          if(findMsgDocument) {
                              this.client.logger.info("The message exists.. Don't save...");
-                             message.channel.send("A role reaction set up exists for this message already...");
+                             return message.util?.send("A role reaction set up exists for this message already...");
                          }
                          else {
                               MessageModel.insert({
@@ -91,8 +91,8 @@ export default class PingCommand extends Command {
              }
              catch(err) {
                  this.client.logger.info(err);
-                 let msg = await message.channel.send("Invalid id. Message was not found.");
-                 await msg.delete({ timeout: 3500 }).catch(err => this.client.logger.info(err));
+                 let msg = await message.util?.send("Invalid id. Message was not found.");
+                 await msg?.delete({ timeout: 3500 }).catch(err => this.client.logger.info(err));
              }
          }
 
