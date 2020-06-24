@@ -19,7 +19,7 @@ export default class ReadyListener extends Listener {
         await new Server(this.client).start()
         const giveawayRepo : Repository<Giveaways> = this.client.db.getRepository (Giveaways);
         const guildSetting: Repository<GuildSettings> =  this.client.db.getRepository(GuildSettings)
-        console.log (`[Discord Bot: Blazify] => Connected`);
+        this.client.logger.info (`[Discord Bot: Blazify] => Connected`);
 
         
         let allGuilds = this.client.guilds.cache.array();
@@ -59,7 +59,7 @@ export default class ReadyListener extends Listener {
 
         })
 
-        console.log(`${allGuilds[i].name} guild has been added to database`)
+        this.client.logger.info(`${allGuilds[i].name} guild has been added to database`)
     }
     }
         setInterval (async () => {

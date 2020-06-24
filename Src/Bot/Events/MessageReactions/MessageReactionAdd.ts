@@ -33,7 +33,7 @@ export default class MessageReactionAdd extends Listener {
             return;
         } else {
             await addto?.roles.add(addRole.id);
-            console.log("added");
+            this.client.logger.info("added");
         };
        };
     }

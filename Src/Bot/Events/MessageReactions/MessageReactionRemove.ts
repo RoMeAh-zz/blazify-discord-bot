@@ -31,7 +31,7 @@ export default class MessageReactionAdd extends Listener {
         
         if (addto?.roles.cache.has(addRole.id)) {
             await addto?.roles.remove(addRole.id);
-            console.log("removed");
+            this.client.logger.info("removed");
           } else {
             return;
           };

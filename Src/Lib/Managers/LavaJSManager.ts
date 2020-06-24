@@ -12,16 +12,16 @@ export class LavaJSManager  {
             }]
             client.lava = new LavaClient(client, nodes)
             client.lava.on( "nodeSuccess", async (node: { options: { port: number; }; }) => {
-                console.log ( `[Lavalink ${node.options.port}: LavaJS] => Connected` )
+                client.logger.info ( `[Lavalink ${node.options.port}: LavaJS] => Connected` )
             });
             client.lava.on("nodeClose", async(node: object, error: string) => {
-                console.log(`[Lavalink ${node}: LavaJS] => Disconnected\n`+ error)
+                client.logger.info(`[Lavalink ${node}: LavaJS] => Disconnected\n`+ error)
             })
             client.lava.on("nodeError", async(node: object, error: string) => {
-                console.log(`[Lavalink ${node}: LavaJS] => Errored\n`+ error)
+                client.logger.info(`[Lavalink ${node}: LavaJS] => Errored\n`+ error)
             })
             client.lava.on("nodeReconnect", async(node: object) => {
-                console.log(`[Lavalink ${node}: LavaJS] => Reconnected\n`)
+                client.logger.info(`[Lavalink ${node}: LavaJS] => Reconnected\n`)
             })
             client.lava.on("createPlayer", async(player: { options: { textChannel: { send: (arg0: any) => void; }; voiceChannel: any; guild: { name: any; }; }; }) => {
                 player.options.textChannel.send(new MessageEmbed()

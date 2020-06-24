@@ -6,7 +6,7 @@ export class DatabaseManager {
         client.db = Database.get();
         client.db.connect()
             .then(() => {
-                console.log("[Database: MongoDB] => Connected")
+                client.logger.info("[Database: MongoDB] => Connected")
             }).catch(console.error)
     }
 

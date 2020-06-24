@@ -57,28 +57,27 @@ export default class PingCommand extends Command {
                          if(!emoji) {
                              msg.channel.send("Emoji does not exist. Try again.")
                                  .then((msg: { delete: (arg0: { timeout: number; }) => any; }) => msg.delete({ timeout: 2000 }))
-                                 .catch((err: any) => console.log(err));
+                                 .catch((err: any) => this.client.logger.info(err));
                              return;
                          }
                          let role = msg.guild.roles.cache.find((role: { name: string; }) => role.name.toLowerCase() === roleName.toLowerCase());
                          if(!role) {
                              msg.channel.send("Role does not exist. Try again.")
                                  .then((msg: { delete: (arg0: { timeout: number; }) => any; }) => msg.delete({ timeout: 2000 }))
-                                 .catch((err: any) => console.log(err));
+                                 .catch((err: any) => this.client.logger.info(err));
                              return;
                          }
-                         console.log(fetchedMessage);
                          fetchedMessage.react(emoji)
-                             .then(emoji => console.log("Reacted."))
-                             .catch(err => console.log(err));
+                             .then(emoji => this.client.logger.info("Reacted."))
+                             .catch(err => this.client.logger.info(err));
                          emojiRoleMappings.push(emoji.id, role.id);
                      });
                      collector.on('end', async (collected: any, reason: any) => {
                          let findMsgDocument = await MessageModel
                              .findOne({ message: fetchedMessage.id })
-                             .catch((err: any) => console.log(err));
+                             .catch((err: any) => this.client.logger.info(err));
                          if(findMsgDocument) {
-                             console.log("The message exists.. Don't save...");
+                             this.client.logger.info("The message exists.. Don't save...");
                              message.channel.send("A role reaction set up exists for this message already...");
                          }
                          else {
@@ -91,9 +90,9 @@ export default class PingCommand extends Command {
                  }
              }
              catch(err) {
-                 console.log(err);
+                 this.client.logger.info(err);
                  let msg = await message.channel.send("Invalid id. Message was not found.");
-                 await msg.delete({ timeout: 3500 }).catch(err => console.log(err));
+                 await msg.delete({ timeout: 3500 }).catch(err => this.client.logger.info(err));
              }
          }
 

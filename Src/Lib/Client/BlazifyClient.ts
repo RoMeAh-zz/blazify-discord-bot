@@ -4,7 +4,7 @@ import { join } from "path";
 import { ownerID } from "../../Config";
 import {Connection} from "typeorm"
 import Oauth from "discord-oauth2";
-import {DatabaseManager, LavaJSManager, Oauth2Manager} from ".."
+import {DatabaseManager, LavaJSManager, Oauth2Manager, Logger} from ".."
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -15,6 +15,7 @@ declare module "discord-akairo" {
         oauth: Oauth;
         oauthURL: string;
         prefix: string;
+        logger: Logger
     }
 }
 interface BotOptions{
@@ -29,6 +30,7 @@ export class BlazifyClient extends AkairoClient {
     public oauth!: Oauth;
     public oauthURL!: string;
     public prefix!: string;
+    public logger!: Logger
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Events/")
     })
@@ -75,12 +77,14 @@ export class BlazifyClient extends AkairoClient {
             listnerHandler: this.listnerHandler,
             process
         });
-        await this.inhibitorHandler.loadAll();
-        console.log(`[Inhibitor: Inhibitor Handler] => Loaded`)
-        await this.commandHandler.loadAll();
-        console.log(`[Commands: Command Handler] => Loaded`)
-         await this.listnerHandler.loadAll();
-        console.log(`[Events: Listener Handler] => Loaded`)
+        this.logger = new Logger();
+
+        this.inhibitorHandler.loadAll();
+        this.logger.info(`[Inhibitor: Inhibitor Handler] => Loaded`)
+        this.commandHandler.loadAll();
+        this.logger.info(`[Commands: Command Handler] => Loaded`)
+         this.listnerHandler.loadAll();
+        this.logger.info(`[Events: Listener Handler] => Loaded`)
         
         new LavaJSManager(this)
         new Oauth2Manager(this)
