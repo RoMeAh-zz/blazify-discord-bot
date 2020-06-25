@@ -12,7 +12,7 @@ export default class MessageReactionAdd extends Listener {
             category: "MessageReactions"
         })
     }
-    public async exec(messageReaction: MessageReaction, user: User): Promise<any> {
+    public async exec(messageReaction: MessageReaction, user: User): Promise<void> {
         const message = messageReaction.message;
         const RoleRepo: Repository<RoleReaction> =  this.client.db.getRepository(RoleReaction)
        const roleDocument = await RoleRepo.findOne({ message: message.id });

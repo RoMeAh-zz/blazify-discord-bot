@@ -13,8 +13,8 @@ export default class MessageListener extends Listener {
         })
     }
 
-    public async exec(message: Message): Promise<any> {
-        if (!message.guild) return message.util?.send("Commands not allowed in DMs")
+    public async exec(message: Message): Promise<Message> {
+        if (!message.guild) return message.util!.send("Commands not allowed in DMs")
         const guildSetting: Repository<GuildSettings> = this.client.db.getRepository(GuildSettings)
         const XP: Repository<UserGuild> = this.client.db.getRepository(UserGuild)
         const exp = guildSetting.findOne({guild: message.guild.id, enableXP: true})
@@ -39,7 +39,7 @@ export default class MessageListener extends Listener {
             if (nextLevel <= xp!.xp) {
                 xp!.level = xp?.level! + 1;
 
-                return message.util?.send(
+                return message.util!.send(
                     `${message.author.tag} has hit level ${xp?.level}`
                 );
             }
@@ -64,5 +64,6 @@ export default class MessageListener extends Listener {
         const repo = await guildSetting.findOne({guild: message.guild?.id});
         this.client.prefix = repo!.prefix || "b3";
         this.client.commandHandler.prefix = this.client.prefix;
+    return message;
     }
 }

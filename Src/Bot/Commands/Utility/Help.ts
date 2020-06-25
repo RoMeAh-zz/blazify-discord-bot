@@ -27,7 +27,7 @@ export default class Help extends Command {
         });
     }
 
-    public async exec(message: Message, { helpcmd }: {helpcmd: string}): Promise<any> {
+    public async exec(message: Message, { helpcmd }: {helpcmd: string}): Promise<Message> {
 
 if (helpcmd) {
 
@@ -64,7 +64,7 @@ if (helpcmd) {
     })
 
     embed.addField("Other", "[Support Server](https://discord.gg/YtJ6pYu) | [Invite to your server](https://discordapp.com/oauth2/authorize?client_id=696756322825404416&scope=bot&permissions=2146958847) |  [Vote the Bot](https://glennbotlist.xyz/bot/690934802940952586/vote) | [Donate](https://paypal.me/roahgaming)")
-    return message.util?.send(embed);
+    return message.util!.send(embed);
 
   };
 }

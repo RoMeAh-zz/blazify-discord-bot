@@ -28,14 +28,12 @@ export default class ModLogs extends Command {
     }
     public async exec(message: Message, { member }: { member: GuildMember }): Promise<Message> {
         const warnRepo: Repository<Warns> = this.client.db.getRepository(Warns)
-        // @ts-ignore
-        const warns: Warns[0] = await warnRepo.find({ user: member.id, guild: message.guild.id });
+        const warns = await warnRepo.findOne({ user: member.id, guild: message.guild?.id });
 
-        if(!warns.length) {
-            // @ts-ignore
-            return message.util.send("No Mod Logs found about this user");
+        if(!warns) {
+            return message.util!.send("No Mod Logs found about this user");
         } else {
-            await warnRepo.delete ( warns )
+            await warnRepo.delete (warns)
         }
         return message.util!.send(`${message.author} Cleared Warns of ${member.user.username}`)
     }

@@ -5,13 +5,14 @@ import { ownerID } from "../../Config";
 import {Connection} from "typeorm"
 import Oauth from "discord-oauth2";
 import {DatabaseManager, LavaJSManager, Oauth2Manager, Logger} from ".."
+import { LavaClient } from "@anonymousg/lavajs";
 
 declare module "discord-akairo" {
     interface AkairoClient {
         commandHandler: CommandHandler
         listnerHandler: ListenerHandler
         db: Connection;
-        lava: LavaJSManager;
+        lava: LavaClient;
         oauth: Oauth;
         oauthURL: string;
         prefix: string;
@@ -26,7 +27,7 @@ interface BotOptions{
 export class BlazifyClient extends AkairoClient {
     public config: BotOptions;
     public db!: Connection;
-    public lava!: LavaJSManager;
+    public lava!: LavaClient;
     public oauth!: Oauth;
     public oauthURL!: string;
     public prefix!: string;

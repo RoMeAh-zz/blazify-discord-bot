@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import { Message, MessageEmbed } from "discord.js";
 import { inspect } from "util";
 import { Command } from "discord-akairo";
@@ -71,7 +69,7 @@ export default class Eval extends Command {
                 .addField ( "Error" , toJS ( e ) );
         }
 
-        return message.util?.send ( returnEmbed );
+        return message.util!.send ( returnEmbed );
     }
 };
 

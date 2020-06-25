@@ -1,10 +1,11 @@
 import Route from "../lib/Route";
+import { AkairoClient } from "discord-akairo";
 export default class extends Route {
     constructor() {
         super("/api/callback");
     }
 
-    async run(client: { oauth: { tokenRequest: (arg0: { code: any; scope: string; grantType: string; }) => any; generateAuthUrl: (arg0: { scope: string[]; }) => any; }; } , app : any , req : { query : { code : any; }; } , res: { json: (arg0: { success: boolean; error: string; }) => any; redirect: (arg0: string) => void; }) {
+    async run(client: AkairoClient, app : string , req : { query : { code : string; }; } , res: { json: (arg0: { success: boolean; error: string; }) => void; redirect: (arg0: string) => void; }) {
         const { code } = req.query;
         if (!code) return res.json({ success: false, error: "Code not found!" });
         let token;
@@ -16,7 +17,7 @@ export default class extends Route {
             });
         } catch (e) {
             res.redirect(
-                client.oauth.generateAuthUrl({ scope: ["identify", "guilds"] })
+                await client.oauth.generateAuthUrl({ scope: ["identify", "guilds"] })
             );
         }
         if (!token || !token.access_token)

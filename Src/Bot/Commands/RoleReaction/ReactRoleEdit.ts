@@ -38,7 +38,7 @@ export default class PingCommand extends Command {
         });
     }
 
-    public async exec(message: Message, { msg }: { msg: string }): Promise<any> {
+    public async exec(message: Message, { msg }: { msg: string }): Promise<Message> {
         // Check if the message exists.
         const { channel, author } = message;
         const MessageModel: Repository<RoleReaction> =  this.client.db.getRepository(RoleReaction)
@@ -70,18 +70,19 @@ export default class PingCommand extends Command {
                     }
                 }
                 else {
-                    return message.util?.send("There is no configuration for that message. Please use ?addreactions on a message to set up Role Reactions on that message.")
+                    return message.util!.send("There is no configuration for that message. Please use ?addreactions on a message to set up Role Reactions on that message.")
                 }
             }
         }
         catch(err) {
             console.log(err);
         }
+        return message.delete()
     }
 }
-function handleCollector(fetchedMessage: Message, author: User, channel: TextChannel | import("discord.js").DMChannel | import("discord.js").NewsChannel, msgModel: string[] | undefined, message: any, client: AkairoClient) {
+function handleCollector(fetchedMessage: Message, author: User, channel: TextChannel | import("discord.js").DMChannel | import("discord.js").NewsChannel, msgModel: string[] | undefined, message: string, client: AkairoClient) {
     return new Promise((resolve, reject) => {
-        let collectorFilter = (m: { author: { id: any; }; }) => m.author.id === author.id;
+        let collectorFilter = (m: { author: { id: string; }; }) => m.author.id === author.id;
         let collector = new MessageCollector(channel as TextChannel, collectorFilter);
         let emojiRoleMappings: Array<string>;
         collector.on('collect', msg => {
@@ -96,20 +97,24 @@ function handleCollector(fetchedMessage: Message, author: User, channel: TextCha
                 let emoji = cache.find((emoji: { name: string; }) => emoji.name.toLowerCase() === emojiName.toLowerCase());
                 if(!emoji) {
                     msg.channel.send("Emoji does not exist. Try again.")
-                        .then((msg: { delete: (arg0: { timeout: number; }) => any; }) => msg.delete({ timeout: 2000 }))
-                        .catch((err: any) => console.log(err));
+                        .then((msg: { delete: (arg0: { timeout: number; }) => void; }) => msg.delete({ timeout: 2000 }))
+                        .catch((err: string) => {
+                            client.logger.error(err)}
+                            );
                     return;
                 }
                 let role = msg.guild.roles.cache.find((role: { name: string; }) => role.name.toLowerCase() === roleName.toLowerCase());
                 if(!role) {
                     msg.channel.send("Role does not exist. Try again.")
-                        .then((msg: { delete: (arg0: { timeout: number; }) => any; }) => msg.delete({ timeout: 2000 }))
-                        .catch((err: any) => console.log(err));
+                        .then((msg: { delete: (arg0: { timeout: number; }) => void; }) => msg.delete({ timeout: 2000 }))
+                        .catch((err: string) => {
+                            client.logger.error(err)
+                        });
                     return;
                 }
                 fetchedMessage.react(emoji)
-                    .then((emoji: any) => console.log("Reacted."))
-                    .catch((err: any) => console.log(err));
+                    .then(() => console.log("Reacted."))
+                    .catch((err: string) => console.log(err));
                 emojiRoleMappings = [emoji.id, role.id];
             }
         });

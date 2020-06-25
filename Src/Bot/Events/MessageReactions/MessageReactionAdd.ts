@@ -12,7 +12,7 @@ export default class MessageReactionAdd extends Listener {
             category: "MessageReactions"
         })
     }
-    public async exec(reaction: MessageReaction, user: User): Promise<any> {
+    public async exec(reaction: MessageReaction, user: User): Promise<void> {
         this.client.logger.info("Event?")
         const message = reaction.message;
         const RoleRepo: Repository<RoleReaction> =  this.client.db.getRepository(RoleReaction)

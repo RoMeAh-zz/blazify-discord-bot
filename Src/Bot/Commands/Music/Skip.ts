@@ -17,14 +17,14 @@ export default class Skip extends Command{
         } );
     }
 
-    public async exec(message : Message) : Promise<any> {
-        if(!message.member?.voice.channel) return message.util?.send(`${message.author} you are not present in any voice channel.`)
-        // @ts-ignore
-        let player = this.client.lava.playerCollection.get(message.guild?.id)
+    public async exec(message : Message) : Promise<Message> {
+        if(!message.member?.voice.channel) return message.util!.send(`${message.author} you are not present in any voice channel.`)
+        let player = this.client.lava.playerCollection.get(message.guild!.id)
         if(!player) {
-            return message.util?.send ( "No Song is Played in the server" )
+            return message.util!.send ( "No Song is Played in the server" )
         }  else {
             player.stop();
         }
+        return message.delete()
     }
 }

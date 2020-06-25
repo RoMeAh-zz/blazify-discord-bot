@@ -42,7 +42,7 @@ export default class GiveawayStart extends Command {
         });
     }
 
-    public async exec(message: Message, { time, item }: { time: number , item: string }): Promise<any> {
+    public async exec(message: Message, { time, item }: { time: number , item: string }): Promise<void> {
         const giveawayRepo: Repository<Giveaways> = this.client.db.getRepository(Giveaways);
         const end: number = Date.now() + time;
         await GiveawayManager.start(end, time, item, giveawayRepo, message)

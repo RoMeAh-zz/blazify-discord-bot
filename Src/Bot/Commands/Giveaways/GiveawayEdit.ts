@@ -23,8 +23,7 @@ export default class GiveawayEnd extends Command {
                 {
                     id: "msg",
                     type: async (message : Message , str : string) => {
-                            // @ts-ignore
-                        return await (message.guild.channels.cache.get ( message.channel.id ) as TextChannel).messages.fetch ( (str) , true )
+                        return await (message.guild?.channels.cache.get ( message.channel.id ) as TextChannel).messages.fetch ( (str) , true )
                                 .catch ( () => null );
                     },
                     prompt: {
@@ -54,9 +53,9 @@ export default class GiveawayEnd extends Command {
         });
     }
 
-    public async exec(message: Message, { time, item, msg }: { time: number, item: string, msg: Message}): Promise<any> {
+    public async exec(message: Message, { time, item, msg }: { time: number, item: string, msg: Message}): Promise<void> {
         const giveawayRepo: Repository<Giveaways> = this.client.db.getRepository(Giveaways);
         const end: number = Date.now() + time;
-        await GiveawayManager.edit(end, time, item, giveawayRepo, msg)
+        return GiveawayManager.edit(end, time, item, giveawayRepo, msg)
     }
 };

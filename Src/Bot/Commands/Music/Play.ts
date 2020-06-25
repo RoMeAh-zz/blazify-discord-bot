@@ -25,11 +25,10 @@ export default class Play extends Command {
             ]
         });
     }
-    public async exec(message : Message, { song }: { song: string }) : Promise<any> {
-        if(!message.member?.voice.channel) return message.util?.send(`${message.author} you are not present in any voice channel.`)
-        // @ts-ignore
-        let player = await this.client.lava.playerCollection.get(message.guild.id)
-        if(!player) return message.util?.send("Please use the <<join Command before using this command. K thnx...")
+    public async exec(message : Message, { song }: { song: string }) : Promise<Message> {
+        if(!message.member?.voice.channel) return message.util!.send(`${message.author} you are not present in any voice channel.`)
+        let player = await this.client.lava.playerCollection.get(message.guild!.id)
+        if(!player) return message.util!.send("Please use the <<join Command before using this command. K thnx...")
         let queue = player.queue;
         let Song = await player.lavaSearch(song, message.author, true)
         if(!Song) message.util?.send("No Results Found")
@@ -56,5 +55,6 @@ export default class Play extends Command {
         } else {
             if(!player.playState) player.play();
         }
+        return message.delete()
     }
 }

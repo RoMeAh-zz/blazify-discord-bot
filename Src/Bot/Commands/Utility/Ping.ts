@@ -19,7 +19,6 @@ export default class PingCommand extends Command {
 
     public exec(message: Message): Promise<Message> {
         let Pong: number = Date.now() - message.createdTimestamp
-        // @ts-ignore
-        return message.util.send(`Pong! **Response Time:** \`${Pong}\`ms. **Discord API Latency:** \`${this.client.ws.ping}\`ms`);
+        return message.util!.send(`Pong! **Response Time:** \`${Pong}\`ms. **Discord API Latency:** \`${this.client.ws.ping}\`ms`);
     };
 };

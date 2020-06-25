@@ -22,8 +22,7 @@ export default class GiveawayReroll extends Command{
                 {
                     id: "msg" ,
                     type: async (message : Message , str : string) => {
-                        // @ts-ignore
-                        return await (message.guild.channels.cache.get (message.channel.id) as TextChannel).messages.fetch ((str) , true)
+                        return await (message.guild?.channels.cache.get (message.channel.id) as TextChannel).messages.fetch ((str) , true)
                             .catch (() => null);
                     } ,
                     prompt: {
@@ -35,7 +34,7 @@ export default class GiveawayReroll extends Command{
         });
     }
 
-    public async exec(_message : Message , {msg} : { msg : Message }) : Promise<any> {
+    public async exec(_message : Message , {msg} : { msg : Message }) : Promise<void> {
         const giveawayRepo : Repository<Giveaways> = this.client.db.getRepository (Giveaways);
             await GiveawayManager.reroll(giveawayRepo , msg)
     }

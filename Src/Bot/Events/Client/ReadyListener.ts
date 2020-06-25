@@ -65,8 +65,7 @@ export default class ReadyListener extends Listener {
         setInterval (async () => {
             const giveaways : Giveaways[] = await giveawayRepo.find ();
             giveaways.filter (g => g.end!  <= Date!.now()).map (async g => {
-                // @ts-ignore
-                const msg : Message = await (this.client.channels.cache.get (g.channel) as TextChannel).messages.fetch ()
+                const msg = await (this.client.channels.cache.get (g.channel!) as TextChannel).messages.fetch(g.message!, true)
                     .catch (() => null);
                 if (! msg) return giveawayRepo.delete (g);
                 await GiveawayManager.end (giveawayRepo , msg)

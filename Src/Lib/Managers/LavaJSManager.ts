@@ -1,9 +1,12 @@
-import { LavaClient } from "@anonymousg/lavajs"
+import { LavaClient, Track, Player } from "@anonymousg/lavajs"
 import { MessageEmbed } from "discord.js";
 import { formatTime } from "..";
+import { AkairoClient } from "discord-akairo";
+import { VoiceChannel } from "discord.js";
+import { TextChannel } from "discord.js";
 
 export class LavaJSManager  {
-    constructor(client: any) {
+    constructor(client: AkairoClient) {
         client.on("ready", () => {
             const nodes = [{
                 host: "localhost",
@@ -23,8 +26,8 @@ export class LavaJSManager  {
             client.lava.on("nodeReconnect", async(node: object) => {
                 client.logger.info(`[Lavalink ${node}: LavaJS] => Reconnected\n`)
             })
-            client.lava.on("createPlayer", async(player: { options: { textChannel: { send: (arg0: any) => void; }; voiceChannel: any; guild: { name: any; }; }; }) => {
-                player.options.textChannel.send(new MessageEmbed()
+            client.lava.on("createPlayer", async(player: { options: { textChannel: { send: (arg0: MessageEmbed) => void; }; voiceChannel: VoiceChannel; guild: { name: string; }; }; }) => {
+                return player.options.textChannel.send(new MessageEmbed()
                     .setAuthor("*Joined Voice Channel and I am ready..*")
                     .setColor("GREEN")
                     .setDescription(`\n
@@ -36,24 +39,24 @@ export class LavaJSManager  {
             client.lava.on("destroyPlayer", (player: { options: { textChannel: { send: (arg0: string) => void; }; }; }) => {
                 player.options.textChannel.send("Ok Bye. I left the Channel....")
             } )
-            client.lava.on("trackPlay",async (track: { author: any; title: any; uri: any; length: any; user: { user: { username: any; displayAvatarURL: (arg0: { dynamic: boolean; }) => any; }; }; thumbnail: { max: any; }; }, player: { options: { textChannel: { send: (arg0: any) => void; }; }; }) => {
+            client.lava.on("trackPlay",async (track: Track, player: Player) => {
                  player.options.textChannel.send(new MessageEmbed()
                     .setAuthor(track.author)
-                    .setDescription(`[${track.title}](${track.uri}). Time: ${formatTime(track.length)}\n Requested by ${track.user.user.username}`)
-                    .setImage(track.thumbnail.max)
-                    .setThumbnail(track.user.user.displayAvatarURL( {dynamic: true} ))
-                )
-            })
-            client.lava.on("trackOver",async (track: { author: any; title: any; uri: any; user: { user: { username: any; }; displayAvatarURL: (arg0: { dynamic: boolean; }) => any; }; thumbnail: { max: any; }; }, player: { options: { textChannel: { send: (arg0: any) => void; }; }; }) => {
-                player.options.textChannel.send(new MessageEmbed()
-                    .setAuthor(track.author)
-                    .setDescription(`[${track.title}](${track.uri}).\n Requested by ${track.user.user.username} has end`)
+                    .setDescription(`[${track.title}](${track.uri}). Time: ${formatTime(track.length)}\n Requested by ${track.user.username}`)
                     .setImage(track.thumbnail.max)
                     .setThumbnail(track.user.displayAvatarURL( {dynamic: true} ))
                 )
             })
-            client.lava.on("queueOver", async (player: { destroy: (arg0: any) => void; guild: any; }) => {
-                player.destroy(player.guild)
+            client.lava.on("trackOver",async (track: Track, player: Player) => {
+                player.options.textChannel.send(new MessageEmbed()
+                    .setAuthor(track.author)
+                    .setDescription(`[${track.title}](${track.uri}).\n Requested by ${track.user.username} has end`)
+                    .setImage(track.thumbnail.max)
+                    .setThumbnail(track.user.displayAvatarURL( {dynamic: true} ))
+                )
+            })
+            client.lava.on("queueOver", async (player: Player) => {
+                player.destroy()
             })
         })
     }

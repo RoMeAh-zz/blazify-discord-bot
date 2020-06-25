@@ -21,9 +21,9 @@ export default class BotInfo extends Command {
         });
     }
 
-    public async exec(message: Message): Promise<any> {
+    public async exec(message: Message): Promise<Message> {
    let cpuLol;
-   cpuStat.usagePercent(function(err: any, percent: number, seconds: any) {
+   cpuStat.usagePercent(function(err: string, percent: number, seconds: number) {
        embedStats.addField("� CPU usage", `\`${percent.toFixed(2)}%\``, true)
    })
      const duration = formatTime(Number(this.client.uptime));
@@ -38,10 +38,10 @@ export default class BotInfo extends Command {
      .addField("� Channels ", `${this.client.channels.cache.size.toLocaleString()}`, true)
      .addField("� Discord.js", `Version - ${version}`, true)
      .addField("� Node", `${process.version}`, true)
-     .addField("� CPU", `\`\`\`md\n${os.cpus().map((i: { model: any; }) => `${i.model}`)[0]}\`\`\``)
+     .addField("� CPU", `\`\`\`md\n${os.cpus().map((i: { model: string; }) => `${i.model}`)[0]}\`\`\``)
      .addField("� Arch", `\`${os.arch()}\``, true)
      .addField("� Platform", `\`\`${os.platform()}\`\``, true)
      .addField("API Latency", `${Math.round(this.client.ws.ping)}ms`)
-     return message.util?.send(embedStats)
+     return message.util!.send(embedStats)
  }
 }

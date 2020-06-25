@@ -1,5 +1,6 @@
 import { Command } from "discord-akairo";
 import {Message , MessageEmbed} from "discord.js";
+import { User } from "discord.js";
 
 export default class Join extends Command{
     public constructor() {
@@ -16,19 +17,18 @@ export default class Join extends Command{
         } );
     }
 
-    public async exec(message : Message) : Promise<any> {
-        if(!message.member?.voice.channel) return message.util?.send(`${message.author} you are not present in any voice channel.`)
-         //@ts-ignore
-        let player = this.client.lava.playerCollection.get(message.guild?.id)
+    public async exec(message : Message) : Promise<Message> {
+        if(!message.member?.voice.channel) return message.util!.send(`${message.author} you are not present in any voice channel`)
+        let player = this.client.lava.playerCollection.get(message.guild?.id || "" )
 
         let index = 1;
         let string = "";
-        if(!player?.queue) return message.util?.send("No Song is Present in Queue.")
+        if(!player?.queue) return message.util!.send("No Song is Present in Queue.")
 
         const next = player?.queue.map(
-            (t: { user: any; title: string; uri: string;}) =>
+            (t: { user: User; title: string; uri: string;}) =>
                 Object.assign(
-                    { user: t.user.user.username ,
+                    { user: t.user.username ,
                         title: t.title,
                         uri: t.uri}));
         const np = Object.assign({
@@ -53,6 +53,6 @@ export default class Join extends Command{
             )
             .setDescription(string);
 
-        return message.util?.send(embed);
+        return message.util!.send(embed);
     }
 }

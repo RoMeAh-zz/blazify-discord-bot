@@ -28,12 +28,12 @@ export class Logger {
         let type;
         const timestamp = chalk.cyan(`[${moment().format('MM-DD-YYYY HH:mm:ss')}]:`);
         const levelTag = chalk.bold(`[${tag}]:`);
-        //@ts-ignore
+        /*Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Chalk & ChalkFunction & { supportsColor: false | ColorSupport; Level: Level; Color: Color; ForegroundColor: ForegroundColor; BackgroundColor: BackgroundColor; Modifiers: Modifiers; stderr: Chalk & { ...; }; }'.
+  No index signature with a parameter of type 'string' was found on type 'Chalk & ChalkFunction & { supportsColor: false | ColorSupport; Level: Level; Color: Color; ForegroundColor: ForegroundColor; BackgroundColor: BackgroundColor; Modifiers: Modifiers; stderr: Chalk & { ...; }; }'.*/ 
         text = chalk[color](content)
-        //@ts-ignore
         type = chalk[color](this.clean(content));
         const stream = error ? process.stderr : process.stdout;
-        stream.write(`${timestamp} ${levelTag} ${text} ${type}\n`);
+        stream.write(`${timestamp} ${levelTag} ${text}: ${type}\n`);
     }
 
     async clean (item: string) {

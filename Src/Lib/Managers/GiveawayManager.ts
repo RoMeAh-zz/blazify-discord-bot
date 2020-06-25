@@ -5,8 +5,7 @@ import { Giveaways } from "..";
 
 export class GiveawayManager {
     static start =  async function (end : number , time : number , item : string, giveawayRepo : Repository<Giveaways> , message : Message) {
-        // @ts-ignore
-        const msg: Message = await message.util?.send(new MessageEmbed()
+        const msg = await message.util?.send(new MessageEmbed()
             .setAuthor(`Giveaway | Ends at ${end}`)
             .setColor("RANDOM")
             .setTitle(`\`${item}\` is been given away!`)
@@ -14,16 +13,15 @@ export class GiveawayManager {
             .setFooter("Giveaway Ends")
             .setTimestamp(end)
         )
-        await msg.react("🎉");
+        await msg?.react("🎉");
         await giveawayRepo.insert ({
-            channel: msg.channel.id ,
-            message: msg.id ,
+            channel: msg?.channel.id ,
+            message: msg?.id ,
             end: end,
             time: time,
         });
-        let fetchedRepo = await giveawayRepo.findOne({ message: msg.id})
-        // @ts-ignore
-        let fetchedTime =  fetchedRepo.time;
+        let fetchedRepo = await giveawayRepo.findOne({ message: msg?.id})
+        let fetchedTime =  fetchedRepo?.time;
         if (!msg) return;
         setTimeout(() => {
             GiveawayManager.end( giveawayRepo , msg )
@@ -31,12 +29,8 @@ export class GiveawayManager {
     }
     static edit = async function (end : number , time : number , item : string , giveawayRepo : Repository<Giveaways> , msg : Message) {
         let fetchedRepo = await giveawayRepo.findOne ({message: msg.id})
-        // @ts-ignore
-        fetchedRepo?.end = end;
-        // @ts-ignore
-        fetchedRepo?.time = time;
-        // @ts-ignore
-        await giveawayRepo.save(fetchedRepo);
+        fetchedRepo!.end = end;
+        fetchedRepo!.time = time;
         const embed: MessageEmbed = msg.embeds[0];
           embed.setAuthor(`Giveaway | Ends at ${end}`)
           embed.setColor("RANDOM")
@@ -60,8 +54,7 @@ export class GiveawayManager {
         if (result) {
             msg.channel.send ( "The giveaway hasn't end yet" )
         } else {
-            // @ts-ignore
-            const reaction: MessageReaction = await msg.reactions.cache.filter(r => r.emoji.name === "🎉").first().fetch();
+            const reaction: MessageReaction = await msg.reactions.cache.filter(r => r.emoji.name === "🎉").first()!.fetch();
             await reaction.users.fetch ();
             const winner : User = reaction.users.cache.filter ( w => ! w.bot ).random ();
 
@@ -76,8 +69,7 @@ export class GiveawayManager {
         if(!repo) return ;
         await giveawayRepo.delete ({message: msg.id});
 
-        // @ts-ignore
-        const reaction: MessageReaction = await msg.reactions.cache.filter(r => r.emoji.name === "🎉").first().fetch();
+        const reaction: MessageReaction = await msg.reactions.cache.filter(r => r.emoji.name === "🎉").first()!.fetch();
         await reaction.users.fetch();
         const winner: User = reaction.users.cache.filter(w => !w.bot ).random();
 

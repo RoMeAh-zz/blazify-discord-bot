@@ -1,4 +1,6 @@
 import Route from "../lib/Route";
+import Guild from "discord.js";
+import { AkairoClient } from "discord-akairo";
 //const ConfigSettings = require("../../Lib/Database/models/configsetting");
 //const Prefix = require("../../Lib/Database/models/prefix.js");
 export default class Config extends Route {
@@ -6,7 +8,7 @@ export default class Config extends Route {
         super("/api/config/:id", "put");
     }
 
-    async run(client: { guilds: { cache: { has: (arg0: any) => any; get: (arg0: any) => any; }; }; oauth: { getUser: (arg0: any) => any; }; } , app : any , req : { params : { id : any; }; query : { access_token : any; type : any; locale : any; }; } , res: { json: (arg0: { success: boolean; data?: { name: any; type: any; } | { name: any; type: any; }; }) => any; }) {
+    async run(client: AkairoClient , app : string , req : { params : { id : string; }; query : { access_token : string; type : string; locale : string; }; } , res: { json: (arg0: { success: boolean; data?: { name: string; type: string; } | { name: string; type: string; }; }) => string; }) {
         const { id } = req.params;
         if (!id || !client.guilds.cache.has(id)) return res.json({ success: false });
 
@@ -16,12 +18,12 @@ export default class Config extends Route {
         if (!access_token || !type || !locale) return res.json({ success: false });
 
         const user = await client.oauth.getUser(access_token);
-        if (!user || guild.members.cache.has(user))
+        if (!user || guild?.members?.cache.has(user.id))
             return res.json({ success: false });
 
-        const member = guild.member(user.id);
+        const member = guild?.member(user.id);
         if (
-            !member.hasPermission("MANAGE_GUILD", {
+            !member?.hasPermission("MANAGE_GUILD", {
                 checkAdmin: true,
                 checkOwner: true,
             })

@@ -28,17 +28,14 @@ export default class ModLogs extends Command {
     }
     public async exec(message: Message, { member }: { member: GuildMember }): Promise<Message> {
         const warnRepo: Repository<Warns> = this.client.db.getRepository(Warns)
-        // @ts-ignore
-        const warns: Warns[] = await warnRepo.find({ user: member.id, guild: message.guild.id });
+        const warns: Warns[] = await warnRepo.find({ user: member.id, guild: message.guild?.id });
 
         if(!warns.length) {
-            // @ts-ignore
-            return message.util.send("No Mod Logs found about this user");
+            return message.util!.send("No Mod Logs found about this user");
         }
 
         const infractions = await Promise.all(warns.map(async  (v: Warns, i: number) => {
-            // @ts-ignore
-            const mod: User = await this.client.users.fetch(v.moderator).catch(() => null);
+            const mod = await this.client.users.fetch(v.moderator!).catch(() => null);
             if(mod) return {
                 index: i + 1,
                 moderator: mod.tag,
@@ -50,8 +47,7 @@ export default class ModLogs extends Command {
         return message.util!.send(new MessageEmbed()
             .setAuthor(`ModLogs`, member.user.displayAvatarURL({dynamic: true}))
             .setColor("#FF0000")
-            //@ts-ignore
-            .setDescription(infractions.map(v => `\`#${v.index}\` | Action: \`Warn\` Moderator: *${v.moderator}*\n Reason: *${v.reason}*\n `))
+            .setDescription(infractions.map(v => `\`#${v?.index}\` | Action: \`Warn\` Moderator: *${v?.moderator}*\n Reason: *${v?.reason}*\n `))
         )
     }
 }

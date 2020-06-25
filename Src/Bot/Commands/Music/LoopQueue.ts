@@ -17,12 +17,11 @@ export default class Join extends Command{
         } );
     }
 
-    public async exec(message : Message) : Promise<any> {
-        if(!message.member?.voice.channel) return message.util?.send(`${message.author} you are not present in any voice channel.`)
-        // @ts-ignore
-        let player = this.client.lava.playerCollection.get(message.guild?.id)
+    public async exec(message : Message) : Promise<Message> {
+        if(!message.member?.voice.channel) return message.util!.send(`${message.author} you are not present in any voice channel.`)
+        let player = this.client.lava.playerCollection.get(message.guild!.id)
         if(!player) {
-            return message.util?.send ( "No Song is Played in the server" )
+            return message.util!.send ( "No Song is Played in the server" )
         }  else {
             if (!player.repeatQueue) {
                 player.repeatQueue = true;
@@ -32,5 +31,6 @@ export default class Join extends Command{
                 message.util?.send("Queue Loop Deactivated")
             }
         }
+        return message.delete()
     }
 }

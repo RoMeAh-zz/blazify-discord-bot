@@ -19,12 +19,11 @@ export default class Join extends Command{
         } );
     }
 
-    public async exec(message : Message) : Promise<any> {
-        if(!message.member?.voice.channel) return message.util?.send(`${message.author} you are not present in any voice channel.`)
-        //@ts-ignore
-        let player = this.client.lava.playerCollection.get(message.guild?.id)
+    public async exec(message : Message) : Promise<Message> {
+        if(!message.member?.voice.channel) return message.util!.send(`${message.author} you are not present in any voice channel.`)
+        let player = this.client.lava.playerCollection.get(message.guild!.id)
 
-        if(!player?.playState) return message.util?.send("No Song is Present in Queue.")
+        if(!player?.playState) return message.util!.send("No Song is Present in Queue.")
 
         const np = Object.assign(
             { user: player?.queue.first.user.username,
@@ -44,6 +43,6 @@ export default class Join extends Command{
                 true
             )}\` by ${np.user}
             `);
-        message.util?.send(embed)
+        return message.util!.send(embed)
     }
     }

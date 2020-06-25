@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
+    "target": "es2018",
     "outDir": "Blazify",
     "lib": [
       "ESNext",
@@ -9,7 +9,6 @@
       "ESNext.AsyncIterable",
       "ESNext.Intl",
       "ESNext.Symbol",
-      "dom"
     ],
     "sourceMap": false,
     "inlineSourceMap": true,
@@ -19,8 +18,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "removeComments": true,
-    "strict": true,
-    "strictNullChecks": true,
+    "strict": false,
+    "strictNullChecks": false,
     "noImplicitThis": true,
     "allowJs": true,
     "declaration": false,

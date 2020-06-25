@@ -5,7 +5,7 @@ export default class extends Route {
         super("/api/auth");
     }
 
-    run(client: { oauthURL: any; } , res: { json: (arg0: { success: boolean; redirect: any; }) => any; }) {
+    run(client: { oauthURL: string; } , res: { json: (arg0: { success: boolean; redirect: string; }) => Promise<void>; }) {
         return res.json({ success: true, redirect: client.oauthURL });
     }
 };
