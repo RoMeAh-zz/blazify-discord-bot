@@ -20,7 +20,7 @@ export default class MessageListener extends Listener {
         const exp = guildSetting.findOne({guild: message.guild.id, enableXP: true})
         const expcoins = guildSetting.findOne({guild: message.guild.id, enableXPCoins: true})
 
-        if (!exp) {
+        if (exp) {
             let addXP = Math.floor(Math.random() * 10 + 1);
             let xp = await XP.findOne(
                 {user: message.author.id, guild: message.guild.id});
@@ -33,13 +33,13 @@ export default class MessageListener extends Listener {
                 });
             }
 
-            xp!.xp = xp?.xp! + addXP;
-            let nextLevel = xp?.level! * 300 * xp?.level!;
+            xp.xp = xp.xp + addXP;
+            let nextLevel = xp?.level! * 300 * xp.level;
 
-            if (nextLevel <= xp!.xp) {
+            if (nextLevel <= xp.xp) {
                 xp!.level = xp?.level! + 1;
 
-                return message.util!.send(
+                return message.util.send(
                     `${message.author.tag} has hit level ${xp?.level}`
                 );
             }
@@ -61,8 +61,9 @@ export default class MessageListener extends Listener {
                 money.xpcoins! += coinstoadd;
             }
         }
-        const repo = await guildSetting.findOne({guild: message.guild?.id});
-        this.client.prefix = repo!.prefix || "b3";
+        const repo = await guildSetting.findOne({ guild: message.guild?.id });
+        this.client.prefix = repo.prefix;
+        if(!this.client.prefix) return ;
         this.client.commandHandler.prefix = this.client.prefix;
     return message;
     }

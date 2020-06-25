@@ -36,9 +36,7 @@ export default class GiveawayDelete extends Command{
 
     public async exec(_message : Message , {msg} : { msg : Message }) : Promise<Message> {
         const giveawayRepo : Repository<Giveaways> = this.client.db.getRepository (Giveaways);
-        setTimeout (() => {
-        return GiveawayManager.delete (giveawayRepo , msg)
-        } , 1)
-        return _message.util!.send("Delted Message from Channel and Database")
+         await GiveawayManager.delete(giveawayRepo, msg)
+        return _message.util!.send("Deleted Message from Channel and Database")
     }
 };

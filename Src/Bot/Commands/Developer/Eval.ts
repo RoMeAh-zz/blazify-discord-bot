@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Message, MessageEmbed } from "discord.js";
 import { inspect } from "util";
 import { Command } from "discord-akairo";
@@ -42,12 +43,12 @@ export default class Eval extends Command {
                 } );
             }
             if (evaluated.length >= 1024) {
-                const {key} = await (
-                    await fetch ( "https://hasteb.in/documents" , {
-                        body: evaluated ,
+                const {key} =  (await (
+                    fetch("https://hasteb.in/documents", {
+                        body: evaluated,
                         method: "POST"
-                    } )
-                ).json ();
+                    })
+                )).json ();
 
                 evaluated = `https://hasteb.in/${key}`;
             }

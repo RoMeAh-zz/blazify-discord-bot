@@ -21,6 +21,7 @@ export default class Join extends Command{
         if(!message.member?.voice.channel) 
         return message.util!.send(`${message.author} you are not present in any voice channel.`)
         if(!this.client.lava.playerCollection.get(message.guild!.id)) {
+            //@ts-ignore
             let player = this.client.lava.spawnPlayer({
                 guild: message.guild ,
                 voiceChannel: message.member?.voice.channel ,
@@ -30,7 +31,7 @@ export default class Join extends Command{
                 queueRepeat: false ,
                 skipOnError: true
             } );
-                setInterval(() => {
+                setTimeout(() => {
                     if(!player.playState) {
                         player.destroy ( message.guild )
                     }

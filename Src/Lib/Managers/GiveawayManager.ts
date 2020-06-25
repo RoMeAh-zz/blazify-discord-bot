@@ -1,12 +1,12 @@
 import { Message , MessageEmbed , MessageReaction  , User} from "discord.js";
 import { Repository } from "typeorm";
-import { Giveaways } from "..";
+import {Giveaways, Utils} from "..";
 
 
 export class GiveawayManager {
     static start =  async function (end : number , time : number , item : string, giveawayRepo : Repository<Giveaways> , message : Message) {
         const msg = await message.util?.send(new MessageEmbed()
-            .setAuthor(`Giveaway | Ends at ${end}`)
+            .setAuthor(`Giveaway | Ends at ${Utils.formatTime({milliseconds: end, minimal: true})}`)
             .setColor("RANDOM")
             .setTitle(`\`${item}\` is been given away!`)
             .setDescription(`${message.author} is giving away **${item}!**`)

@@ -1,6 +1,5 @@
 import { Command } from "discord-akairo";
 import { Message } from "discord.js";
-import { prefix } from "../../../Config";
 import { MessageEmbed } from "discord.js";
 import { readdirSync } from "fs";
 import { join } from "path";
@@ -32,7 +31,7 @@ export default class Help extends Command {
 if (helpcmd) {
 
     const command = this.client.commandHandler.findCommand(helpcmd);
-    if (!command) return message.util!.send(`That doesn't appear to be a valid command. Use the command ${prefix}help to see all available commands`);
+    if (!command) return message.util!.send(`That doesn't appear to be a valid command. Use the command ${this.prefix}help to see all available commands`);
 
     let embed = new MessageEmbed()
     .setTitle(command.aliases[0].charAt(0).toUpperCase() + command.aliases[0].slice(1))
@@ -50,15 +49,14 @@ if (helpcmd) {
   } else {
 
     const cmds = readdirSync(join(__dirname, "..", "..", "Commands")).filter(file => file.endsWith(".js"));;
-    const dir = readdirSync(join(__dirname, "..", "..", "Commands"))
     let embed = new MessageEmbed()
     .setTitle(`All commands for ${this.client.user?.username}`)
     .setAuthor("Blazify - The Ultimate All in One (Version 7)")
     .setThumbnail(this.client.user!.displayAvatarURL())
     .setColor("#ff0000")
-    .setFooter(`Ensure that you use the prefix in front of commands. The prefix is ${prefix}. If you discover any bugs, please report them using ${prefix}contact <bug>`)
+    .setFooter(`Ensure that you use the prefix in front of commands. The prefix is ${this.prefix}. If you discover any bugs, please report them using ${this.prefix}contact <bug>`)
     
-    dir.forEach(folder => {
+    cmds.forEach(folder => {
         for (let file of cmds)
         embed.addField(folder, file)
     })

@@ -2,7 +2,7 @@ import { Command } from "discord-akairo";
 import {Message , MessageEmbed} from "discord.js";
 import {decode} from "querystring";
 import { stripIndents } from "common-tags";
-import {formatTime} from "../../../Lib";
+import {Utils} from "../../../Lib";
 
 export default class Join extends Command{
     public constructor() {
@@ -37,12 +37,9 @@ export default class Join extends Command{
             .setThumbnail(np.uri)
             .setDescription(stripIndents`
             ${
-                player?.playState ? "▶️" : "⏸️"
-            } **[${np.title}](${np.uri})** \`${formatTime(
-                Number(np.length),
-                true
-            )}\` by ${np.user}
-            `);
+                player.playState ? "▶️" : "⏸️"
+            } **[${np.title}](${np.uri})** \`${Utils.formatTime({milliseconds: np.length, minimal: true})}\` by ${np.user}
+           `);
         return message.util!.send(embed)
     }
     }

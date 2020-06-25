@@ -45,16 +45,16 @@ export class BlazifyClient extends AkairoClient {
         commandUtil: true,
         blockBots: true,
         blockClient: true,
-        commandUtilLifetime: 30,
-        defaultCooldown: 60000,
+        commandUtilLifetime: 3e4,
+        defaultCooldown: 6e4,
         argumentDefaults: {
             prompt: {
-                modifyStart: (_:Message, str: string): string => `${str}\n\n Type \`cancel\` to cancel the command`,
-                modifyRetry: (_:Message, str: string): string => `${str}\n\n Type \`cancel\` to cancel the command`,
+                modifyStart: (_:Message, prompt: string): string => `${prompt}\n\n Type \`cancel\` to cancel the command`,
+                modifyRetry: (_:Message, prompt: string): string => `${prompt}\n\n Type \`cancel\` to cancel the command`,
                 timeout: "You took too long to respond to the command",
                 ended: "You exceeded the maximum number of tries",
                 cancel: "This command has been cancelled",
-                retries: 3
+                retries: 5
             },
             otherwise: ""
         },
@@ -81,11 +81,11 @@ export class BlazifyClient extends AkairoClient {
         this.logger = new Logger();
 
         this.inhibitorHandler.loadAll();
-        this.logger.info(`[Inhibitor: Inhibitor Handler] => Loaded`)
+        await this.logger.info(`[Inhibitor: Inhibitor Handler] => Loaded`)
         this.commandHandler.loadAll();
-        this.logger.info(`[Commands: Command Handler] => Loaded`)
+        await this.logger.info(`[Commands: Command Handler] => Loaded`)
          this.listnerHandler.loadAll();
-        this.logger.info(`[Events: Listener Handler] => Loaded`)
+        await this.logger.info(`[Events: Listener Handler] => Loaded`)
         
         new LavaJSManager(this)
         new Oauth2Manager(this)

@@ -14,7 +14,7 @@ export default class GuildCreate extends Listener {
     })
 }
 public async exec(guild: Guild) {
-    this.client.logger.info(`Joined ${guild.name} and has ${guild.members.cache.size}`)
+    await this.client.logger.info(`Joined ${guild.name} and has ${guild.members.cache.size}`)
     const guildRepo: Repository<GuildSettings> = this.client.db.getRepository(GuildSettings);
     let exists = await guildRepo.findOne({guild: guild.id})
 

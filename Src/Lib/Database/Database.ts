@@ -8,8 +8,6 @@ Database.create({
     useNewUrlParser: true,
     useUnifiedTopology: true,
     synchronize: true,
-    entities: [
-        __dirname + "/Models/*.js"
-    ]
+    entities: [__dirname + "/Models/*.js"]
 })
 export default Database;

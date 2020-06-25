@@ -13,7 +13,6 @@ export default class MessageReactionAdd extends Listener {
         })
     }
     public async exec(reaction: MessageReaction, user: User): Promise<void> {
-        this.client.logger.info("Event?")
         const message = reaction.message;
         const RoleRepo: Repository<RoleReaction> =  this.client.db.getRepository(RoleReaction)
        const roleDocument = await RoleRepo.findOne({ message: message.id });
