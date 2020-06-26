@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, {Application, Request, Response} from "express";
 import cors from "cors";
 import { AkairoClient } from "discord-akairo";
 import Callback from "./api/Callback";
@@ -20,11 +20,6 @@ export default class Server {
 
     public constructor(client: AkairoClient) {
         this.client = client
-        this.callback = new Callback
-        this.authorization = new Auth
-        this.config = new Config
-        this.Guild = new Guild
-        this.Guilds = new Guilds
     }
 
     public start(): void {
@@ -34,13 +29,19 @@ export default class Server {
             origin: true,
             credentials: true
         }))
-        new Config;
-        new Guild;
-        new Callback;
-        new Auth;
-        new Guilds;
+
+
+        this.server.use(express.static(__dirname + "/api"))
+        this.server.use(express.static(__dirname + "../Client/dist"))
+
+
+        this.server.get("*", (req: Request , res: Response) => {
+            res.sendFile(require("path").resolve(__dirname + "/../Client/dist/index.html"));	        res.sendFile(require("path").resolve(__dirname + "/../../../Web/client/dist/index.html"));
+        });
+
+
         createServer(this.server).listen(8080, (): void => {
-            this.client.logger.info("[Server: Express] => Connected")
+            this.client.logger.info("[Server: Express] => Connected").then(r => r)
         })
     }
 };

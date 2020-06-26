@@ -1,6 +1,6 @@
 export class Utils {
-    public static formatTime(options: { milliseconds: number, minimal: boolean}) {
-        let { milliseconds, minimal = true } = options
+    public static formatTime(options: { milliseconds: number, minimal:  boolean}) {
+        let { milliseconds, minimal } = options
         if(milliseconds <= 0) throw new RangeError("UtilsClass#formatTime Error! You can only pass numbers more than 0")
         if (milliseconds) {
             const times = {
