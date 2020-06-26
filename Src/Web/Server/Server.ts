@@ -2,6 +2,11 @@ import express, {Application, Request, Response} from "express";
 import cors from "cors";
 import { AkairoClient } from "discord-akairo";
 import { createServer } from "http";
+import Auth from "./api/Auth";
+import Callback from "./api/Callback";
+import Config from "./api/Config";
+import Guild from "./api/Guild";
+import Guilds from "./api/Guilds";
 
 
 export default class Server {
@@ -12,7 +17,7 @@ export default class Server {
         this.client = client
     }
 
-    public start(): void {
+    public async start(): Promise<void> {
         this.server = express();
         this.server.use(express.json());
         this.server.use(cors({
@@ -20,18 +25,21 @@ export default class Server {
             credentials: true
         }))
 
-
-        this.server.use(express.static(__dirname + "/api"))
-        this.server.use(express.static(__dirname + "../Client/dist"))
+        new Auth(this.client, this.server)
+        new Callback(this.client, this.server)
+        new Config(this.client, this.server)
+        new Guild(this.client, this.server)
+        new Guilds(this.client, this.server)
+        this.server.use(express.static(__dirname + "/../../../Src/Web/Client/dist"))
 
 
         this.server.get("*", (req: Request , res: Response) => {
-            res.sendFile(require("path").resolve(__dirname + "/../Client/dist/index.html"));
+            res.sendFile(require("path").resolve(__dirname + "/../../../Src/Web/Client/dist/index.html"));
         });
 
 
         createServer(this.server).listen(8080, (): void => {
-            this.client.logger.info("[Server: Express] => Connected").then(r => r)
+            this.client.logger.info("[Server: Express] => Connected").then(r => r);
         })
     }
 };

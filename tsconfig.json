@@ -9,6 +9,7 @@
       "ESNext.AsyncIterable",
       "ESNext.Intl",
       "ESNext.Symbol",
+      "dom"
     ],
     "sourceMap": false,
     "inlineSourceMap": true,
@@ -33,5 +34,6 @@
     "node_modules",
     "lavalink",
     ".idea",
+    "Src/Web/Client"
   ]
 }
