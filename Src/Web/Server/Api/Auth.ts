@@ -11,7 +11,7 @@ export default class Auth {
         this.router = Router()
         this.app.use(this.router)
 
-        this.router.get("/api/auth", (req: Request, res: Response) => {
+        this.router.get("/Api/auth", (req: Request, res: Response) => {
             res.json({success: true, redirect: client.oauthURL});
         })
     }

@@ -11,7 +11,7 @@ export default class Guilds {
         this.router = Router()
         this.app.use(this.router)
 
-        this.router.get("/api/guilds", async(req: Request, res: Response) => {
+        this.router.get("/Api/guilds", async(req: Request, res: Response) => {
             if (!req.query.access_token) return res.json({success: false});
             try {
                 let guilds: any[] = await client.oauth.getUserGuilds(<string>req.query.access_token);

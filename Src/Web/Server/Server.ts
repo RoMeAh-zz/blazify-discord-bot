@@ -2,11 +2,11 @@ import express, {Application, Request, Response} from "express";
 import cors from "cors";
 import { AkairoClient } from "discord-akairo";
 import { createServer } from "http";
-import Auth from "./api/Auth";
-import Callback from "./api/Callback";
-import Config from "./api/Config";
-import Guild from "./api/Guild";
-import Guilds from "./api/Guilds";
+import Auth from "./Api/Auth";
+import Callback from "./Api/Callback";
+import Config from "./Api/Config";
+import Guild from "./Api/Guild";
+import Guilds from "./Api/Guilds";
 
 
 export default class Server {
@@ -30,6 +30,8 @@ export default class Server {
         new Config(this.client, this.server)
         new Guild(this.client, this.server)
         new Guilds(this.client, this.server)
+
+
         this.server.use(express.static(__dirname + "/../../../Src/Web/Client/dist"))
 
 

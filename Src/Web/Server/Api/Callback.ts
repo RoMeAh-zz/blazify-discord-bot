@@ -11,7 +11,7 @@ export default class Callback {
         this.router = Router()
         this.app.use(this.router)
 
-        this.router.get("/api/callback", async (req: Request, res: Response) => {
+        this.router.get("/Api/callback", async (req: Request, res: Response) => {
             const { code } = req.query;
             console.log(code)
             if (!code || typeof code !== "string") return res.json({success: false, error: "Code not found!"});

@@ -2,7 +2,8 @@ import { Snowflake} from "discord.js";
 import {AkairoClient} from "discord-akairo";
 import {Application, Request, Response, Router} from "express";
 import { GuildSettings } from "../../../Lib";
-import {Repository} from "typeorm";
+import {Column, Repository} from "typeorm";
+import {stringify} from "querystring";
 
 export default class {
     protected client: AkairoClient
@@ -15,7 +16,7 @@ export default class {
         this.app.use(this.router)
 
 
-        this.router.get("/api/guild", async (req: Request, res: Response) => {
+        this.router.get("/Api/guild", async (req: Request, res: Response) => {
             if (!req.query.id || !req.query.access_token)
                 return res.json({success: false});
 
@@ -35,13 +36,6 @@ export default class {
                 return res.json({success: false});
             let ConfigSettings: Repository<GuildSettings> = client.db.getRepository(GuildSettings)
             let config: GuildSettings = await ConfigSettings.findOne({guild: guild.id});
-            const {filter} = Object.entries(Object.values(config)[3]);
-            // @ts-ignore
-            config = filter((x) => {
-                x[0].startsWith("enable")
-            });
-
-
             const data = {guild: {...guild, iconURL: guild.iconURL()}, config};
             return res.json({success: true, data});
         })

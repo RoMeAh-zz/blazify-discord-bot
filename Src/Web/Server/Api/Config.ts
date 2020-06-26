@@ -15,7 +15,7 @@ export default class Config {
         this.router = Router()
         this.app.use(this.router)
 
-        this.router.get("/api/config/:id", async(req: Request, res: Response) => {
+        this.router.get("/Api/config/:id", async(req: Request, res: Response) => {
             const {id} = req.params;
             if (!id || !client.guilds.cache.has(id)) {
                 return res.json({success: false});
