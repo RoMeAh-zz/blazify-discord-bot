@@ -4,7 +4,7 @@ import { Message } from "discord.js";
 import { MessageEmbed, version } from "discord.js" ;
 import os from 'os';
 const cpuStat = require("cpu-stat");
-import { formatTime } from "../../../Lib";
+import { Utils } from "../../../Lib";
 export default class BotInfo extends Command {
     public constructor() {
         super("botinfo", {
@@ -26,7 +26,7 @@ export default class BotInfo extends Command {
    cpuStat.usagePercent(function(err: string, percent: number, seconds: number) {
        embedStats.addField("� CPU usage", `\`${percent.toFixed(2)}%\``, true)
    })
-     const duration = formatTime(Number(this.client.uptime));
+     const duration = Utils.formatTime({milliseconds: this.client.uptime, minimal: false});
      const embedStats = new MessageEmbed()
      .setAuthor(this.client.user?.username)
      .setTitle("__**Stats:**__")

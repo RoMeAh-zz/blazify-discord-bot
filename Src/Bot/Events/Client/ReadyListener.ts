@@ -16,7 +16,6 @@ export default class ReadyListener extends Listener {
     }
 
     public async exec() : Promise<void> {
-        await new Server(this.client).start()
         const giveawayRepo : Repository<Giveaways> = this.client.db.getRepository (Giveaways);
         const guildSetting: Repository<GuildSettings> =  this.client.db.getRepository(GuildSettings)
         await this.client.logger.info(`[Discord Bot: Blazify] => Connected`);

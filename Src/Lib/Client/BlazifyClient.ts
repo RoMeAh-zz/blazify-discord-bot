@@ -6,6 +6,7 @@ import {Connection} from "typeorm"
 import Oauth from "discord-oauth2";
 import {DatabaseManager, LavaJSManager, Oauth2Manager, Logger} from ".."
 import { LavaClient } from "@anonymousg/lavajs";
+import Server from "../../Web/Server/Server";
 
 declare module "discord-akairo" {
     interface AkairoClient {
@@ -90,6 +91,7 @@ export class BlazifyClient extends AkairoClient {
         new LavaJSManager(this)
         new Oauth2Manager(this)
         new DatabaseManager(this)
+        new Server(this).start()
 
     }
     public async start(): Promise<string> {
