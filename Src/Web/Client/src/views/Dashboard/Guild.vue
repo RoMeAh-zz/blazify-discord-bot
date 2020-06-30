@@ -8,7 +8,7 @@
             >
                 <v-list-item two-line class="px-0">
                     <v-list-item-avatar>
-                        <img :src="guild.iconURL">
+                        <img :src="guild.iconURL" alt="Guild Icon">
                     </v-list-item-avatar>
 
                     <v-list-item-content>
@@ -34,7 +34,7 @@
                 grid-list-xl
                 class="elevation-6"
                 style="background: rgba(171,0,0,0.62); border-radius: .5%; margin-right: 2rem;">
-            <h1>Settings</h1>
+            <h1>Guild Settings</h1>
             <v-text-field id="prefix-input" label="Prefix" dark style="width: 50%"></v-text-field>
             <v-btn :loading="loader" :disabled="loader" color="primary" @click="toggle('prefix')">Change Prefix</v-btn>
             <v-layout wrap>
