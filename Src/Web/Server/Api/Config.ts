@@ -2,7 +2,6 @@ import { AkairoClient } from "discord-akairo";
 import {Application, Request, Response, Router} from "express";
 import { GuildSettings } from "../../../Lib";
 import {InsertResult, Repository} from "typeorm";
-import {User} from "discord.js";
 
 
 export default class Config {
@@ -23,11 +22,11 @@ export default class Config {
 
             const guild = client.guilds.cache.get(id);
             const {access_token, type, locale} = req.query;
+            let enable = "enable" + locale;
 
-            if (!access_token || !type || !locale) {
+            if (typeof access_token !== "string" || typeof type !== "string"|| !locale) {
                 return res.json({success: false});
             }
-            if (typeof access_token === "string") {
                 let [user] = await Promise.all([client.oauth.getUser(access_token)]);
                 if (!user || guild?.members?.cache.has(user.id))
                     return res.json({success: false});
@@ -37,15 +36,12 @@ export default class Config {
                     checkOwner: true,
                 }))
                     return res.json({success: false});
-            }
             let ConfigSettings: Repository<GuildSettings> = client.db.getRepository(GuildSettings)
             if (locale !== "prefix") {
                 let config =
-                    (await ConfigSettings.findOne({guild: guild.id})) ||
-                    await ConfigSettings.insert({
-                        guild: guild.id,
-                    });
-                config["enable" + locale] = type !== "disable";
+                    (await ConfigSettings.findOne({guild: guild.id}))
+                let ok = config[0].enable = type;
+                console.log(ok)
                 return res.json({
                     success: true,
                     data: {name: locale, type: config["enable" + locale]},
@@ -56,11 +52,10 @@ export default class Config {
                 (await ConfigSettings.findOne({guild: guild.id})) ||
                 await ConfigSettings.insert({
                     guild: guild.id,
-                    prefix: type.toString(),
+                    prefix: type,
                 });
-
             if (!(prefix instanceof InsertResult)) {
-                prefix.prefix = type.toString();
+                prefix.prefix = type;
             }
             return res.json({success: true, data: {name: locale, type}});
         })
