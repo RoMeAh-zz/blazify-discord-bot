@@ -1,11 +1,12 @@
 <template>
     <v-app class="theme--dark">
-        <router-view/>
+        <h1>More Information About Blazify</h1>
+        <p>Please</p>
     </v-app>
 </template>
 
 <script>
     export default {
-        name: "App"
+        name: "Info"
     }
 </script>

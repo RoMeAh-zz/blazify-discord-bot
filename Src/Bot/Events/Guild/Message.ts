@@ -61,10 +61,6 @@ export default class MessageListener extends Listener {
                 money.xpcoins! += coinstoadd;
             }
         }
-        const repo = await guildSetting.findOne({ guild: message.guild?.id });
-        this.client.prefix = repo.prefix;
-        if(!this.client.prefix) return ;
-        this.client.commandHandler.prefix = this.client.prefix;
     return message;
     }
 }

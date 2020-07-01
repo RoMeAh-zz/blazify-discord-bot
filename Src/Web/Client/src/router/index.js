@@ -12,18 +12,23 @@ const routes = [
     {
         path: "/dashboard",
         name: "Dashboard",
-        component: () => import("../views/Dashboard/Dashboard.vue")
+        component: () => import("../views/Bot/Guilds.vue")
     },
     {
         path: "/dashboard/guild/:id",
         name: "Guild_Dashboard",
-        component: () => import("../views/Dashboard/Guild.vue")
+        component: () => import("../views/Settings/Settings.vue")
+    },
+    {
+        path: "/info",
+        name: "Info",
+        component: () => import("../views/Bot/Info.vue")
     }
 ]
 
 const router = new VueRouter({
     mode: 'history',
-    base: "https://localhost:8080",
+    base: "http://localhost:8080",
     routes
 })
 

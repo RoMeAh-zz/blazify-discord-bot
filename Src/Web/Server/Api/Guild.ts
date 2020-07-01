@@ -39,7 +39,7 @@ export default class {
             let ConfigSettings: Repository<GuildSettings> = client.db.getRepository(GuildSettings)
             let config: any = await ConfigSettings.findOne({guild: guild.id});
 
-            let cfg1 = ["enableXPCoins", config.enableXPCoins]
+                let cfg1 = ["enableXPCoins", config.enableXPCoins]
                 let cfg2 = ["enableXP", config.enableXP]
                 let cfg3 = ["enableCaptcha", config.enableCaptcha]
                 let cfg4 = ["enableVerification", config.enableVerification]
@@ -49,7 +49,7 @@ export default class {
                 let cfg8 = ["enableGiveaway", config.enableGiveaway]
                 let cfg9 = ["enableEconomy", config.enableEconomy]
                 let cfg10 = ["enableMusic", config.enableMusic]
-                let cfg11 =["enableUtility", config.enableUtility]
+                let cfg11 = ["enableUtility", config.enableUtility]
                 let cfg12 = ["enableWelcome", config.enableWelcome]
 
             config = Object.values({cfg1, cfg2, cfg3, cfg4, cfg5, cfg6, cfg7, cfg8, cfg9, cfg10, cfg11, cfg12})

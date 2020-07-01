@@ -1,4 +1,4 @@
-import { Permissions } from "discord.js";
+import { Permissions} from "discord.js";
 import {AkairoClient} from "discord-akairo";
 import {Application, Request, Response, Router} from "express";
 export default class Guilds {

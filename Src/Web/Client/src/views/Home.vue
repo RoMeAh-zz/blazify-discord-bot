@@ -11,7 +11,7 @@
         <div class="container">
             <div class="menu">
                 <ul>
-                    <li class="logo"><img src="../assets/logo.png"></li>
+                    <li class="logo"><img src="../assets/logo.png" alt="logo"></li>
                     <li class="active">Home</li>
                     <li>Bot Info</li>
                     <li>Server Info</li>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="quick-link">
-                <ul>/
+                <ul>
                     <li><i class="fa fa-share-alt"></i><p>Share others</p></li>
                     <li><i class="fa fa-audio-description"></i><p>Chat App</p></li>
                     <li><i class="fa fa-cog"></i><p>System Stats of VPS</p></li>
@@ -296,12 +296,12 @@
     }
     .quick-link ul{
         display: inline-flex;
-        margin: 25px auto;
+        margin: 15px auto;
         text-align: center;
     }
     .quick-link ul li{
         list-style: none;
-        margin: 0 50px;
+        margin: 0 40px;
         cursor: pointer;
     }
     .quick-link ul li .fa{

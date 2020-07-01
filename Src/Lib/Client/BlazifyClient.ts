@@ -4,7 +4,7 @@ import { join } from "path";
 import { ownerID } from "../../Config";
 import {Connection} from "typeorm"
 import Oauth from "discord-oauth2";
-import {DatabaseManager, LavaJSManager, Oauth2Manager, Logger} from ".."
+import {DatabaseManager, LavaJSManager, Oauth2Manager, Logger, GuildSettings} from ".."
 import { LavaClient } from "@anonymousg/lavajs";
 import Server from "../../Web/Server/Server";
 
@@ -16,7 +16,6 @@ declare module "discord-akairo" {
         lava: LavaClient;
         oauth: Oauth;
         oauthURL: string;
-        prefix: string;
         logger: Logger
     }
 }
@@ -31,7 +30,6 @@ export class BlazifyClient extends AkairoClient {
     public lava!: LavaClient;
     public oauth!: Oauth;
     public oauthURL!: string;
-    public prefix!: string;
     public logger!: Logger
     public listnerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Events/")
@@ -41,6 +39,7 @@ export class BlazifyClient extends AkairoClient {
     })
     public commandHandler: CommandHandler = new CommandHandler(this, {
         directory: join(__dirname, "..", "..", "Bot/Commands/"),
+        prefix: async message => (await this.db.getRepository(GuildSettings).findOne({guild: message.guild.id})).prefix,
         allowMention: true,
         handleEdits: true,
         commandUtil: true,
@@ -91,7 +90,7 @@ export class BlazifyClient extends AkairoClient {
         new LavaJSManager(this)
         new Oauth2Manager(this)
         new DatabaseManager(this)
-        new Server(this).start()
+        await new Server(this).start()
 
     }
     public async start(): Promise<string> {
