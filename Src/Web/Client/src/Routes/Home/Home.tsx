@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./Home.css"
-import { Redirect } from "react-router-dom";
-import fetch from "node-fetch";
 
 export default function Home() {
     const [redirect, setRedirect] = useState(false);
@@ -21,18 +19,19 @@ export default function Home() {
         }
     };
 
-    if (redirect) {
-        return <Redirect to={redirectUrl}/>;
+    if (redirect && redirectUrl !== "") {
+        window.location.href = redirectUrl;
     }
         return (
-            <div className={"main"}>
-                <div className={"animation"}>
-                    <div className={"star"}/>
-                    <div className={"star"}/>
-                    <div className={"star"}/>
-                    <div className={"star"}/>
-                    <div className={"star"}/>
+            <div className="main">
+                <div className="animation">
+                    <div className="star"/>
+                    <div className="star"/>
+                    <div className="star"/>
+                    <div className="star"/>
+                    <div className="star"/>
                 </div>
+                <div className="container">
                     <div className="menu">
                         <ul>
                             <li className="active">Home</li>
@@ -44,7 +43,6 @@ export default function Home() {
                     </div>
 
                 <div className="btn">
-                    {login()}
                     <button onClick={() => login()} className="button">Login</button>
                 </div>
 
@@ -76,6 +74,7 @@ export default function Home() {
                             <li><a href="https://instagram.com/b3_romeah_yt"><i className="fa fa-instagram"/></a></li>
                             <li><a href="https://gmail.com"><i className="fa fa-envelope"/></a></li>
                         </ul>
+                    </div>
                     </div>
             </div>
         )

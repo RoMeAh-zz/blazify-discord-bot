@@ -1,5 +1,5 @@
 {
-  "name": "blazify-dashboard-front-end",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,11 +8,11 @@
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.47",
-    "@types/node-fetch": "^2.5.7",
+    "@types/query-string": "^6.3.0",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
-    "node-fetch": "^2.6.0",
+    "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",

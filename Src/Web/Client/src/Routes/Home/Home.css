@@ -179,7 +179,7 @@ button:hover::before, button:focus::before {
 }
 button::after {
     animation: ring 1.5s infinite;
-    width: 30px; height: 30px;
+    width: 35px; height: 30px;
     border-radius: 100%;
     border: 6px solid #002ccb;
     position: absolute;

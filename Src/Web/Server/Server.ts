@@ -32,11 +32,11 @@ export default class Server {
         new Guilds(this.client, this.app)
 
 
-        this.app.use(express.static(__dirname + "/../../../Src/Web/Client/dist"))
+        this.app.use(express.static(__dirname + "/../../../Src/Web/Client/build"))
 
 
         this.app.get("*", (req: Request , res: Response) => {
-            res.sendFile(require("path").resolve(__dirname + "/../../../Src/Web/Client/dist/index.html"));
+            res.sendFile(require("path").resolve(__dirname + "/../../../Src/Web/Client/build/index.html"));
         });
 
 

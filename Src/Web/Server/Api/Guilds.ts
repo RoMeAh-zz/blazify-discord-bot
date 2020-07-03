@@ -25,6 +25,7 @@ export default class Guilds {
                     }));
                 res.json({success: true, data: guilds});
             } catch (e) {
+                console.log(e)
                 res.json({success: false});
             }
         })

@@ -1,5 +1,5 @@
 import { AkairoClient } from "discord-akairo";
-import {Application, Request, Response, Router} from "express";
+import {Application, Request, Response, Router} from "express"
 
 export default class Callback {
     protected client: AkairoClient
@@ -23,13 +23,13 @@ export default class Callback {
                 }).then((token) => {
                     console.log(token)
                     res.redirect(
-                        `/dashboard?access_token=${token.access_token}&refresh_token=${token.refresh_token}`
+                        `/dashboard?access_token=${token.access_token}`
                     );
                 })
             } catch (e) {
                 console.log(e)
                 res.redirect(
-                    client.oauth.generateAuthUrl({scope: ["identify", "guilds"]})
+                    client.oauthURL
                 );
             }
 
