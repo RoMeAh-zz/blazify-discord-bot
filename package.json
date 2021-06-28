@@ -1,54 +1,45 @@
 {
-  "name": "zodiac-discord-bot",
+  "name": "blazify-discord-bot",
   "version": "1.0.0",
-  "description": "a typescript discord bot",
-  "main": "Blazify/Bot.js",
+  "description": "",
+  "main": "dist/index.js",
   "scripts": {
+    "watch": "concurrently \"java -jar lavalink/Lavalink.jar\" \"sleep 15 && nodemon -e .ts --exec 'tsc && node . || exit 1'\"",
     "build": "tsc",
-    "start": "nodemon Blazify/Bot.js"
+    "gen-env": "gen-env-types .env -o src/lib/types/env.d.ts -e . -r .env.example"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Blazify/zodiac-discord-bot.git"
+    "url": "git+https://github.com/BlazifyOrg/blazify-discord-bot.git"
   },
   "author": "romeah",
-  "license": "ISC",
+  "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/Blazify/zodiac-discord-bot/issues"
+    "url": "https://github.com/BlazifyOrg/blazify-discord-bot/issues"
   },
-  "homepage": "https://github.com/Blazify/zodiac-discord-bot#readme",
+  "homepage": "https://github.com/BlazifyOrg/blazify-discord-bot#readme",
   "dependencies": {
-    "@anonymousg/lavajs": "^3.2.6",
-    "@types/common-tags": "^1.8.0",
-    "@types/cors": "^2.8.6",
-    "@types/ms": "^0.7.31",
-    "@types/node": "^14.0.11",
-    "body-parser": "^1.19.0",
-    "chalk": "^4.1.0",
-    "common-tags": "^1.8.0",
-    "cors": "^2.8.5",
-    "cpu-stat": "^2.0.1",
-    "discord-akairo": "github:1Computer1/discord-akairo",
-    "discord-oauth2": "^2.2.0",
-    "discord-paginationembed": "^2.0.0",
-    "discord.js": "github:discordjs/discord.js",
-    "express": "^4.17.1",
-    "fs": "0.0.1-security",
-    "jimp": "^0.13.0",
-    "moment": "^2.27.0",
-    "mongodb": "^3.5.9",
-    "ms": "^2.1.2",
+    "@lavalink/encoding": "^0.1.1",
+    "discord-akairo": "^8.1.0",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "glob": "^7.1.7",
+    "lavaclient": "^3.3.0",
+    "moment": "^2.29.1",
+    "ms": "^2.1.3",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.4",
-    "typeorm": "^0.2.25",
-    "typescript": "^3.9.5"
+    "pg": "^8.6.0",
+    "typeorm": "^0.2.34"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.5.7",
-    "@typescript-eslint/eslint-plugin": "^3.4.0",
-    "@typescript-eslint/parser": "^3.4.0",
-    "erela.js": "^1.1.8",
-    "eslint": "^7.3.0",
-    "eslint-plugin-vue": "^6.2.2"
+    "@kyflx-dev/lavalink-types": "^1.0.2",
+    "@types/glob": "^7.1.3",
+    "@types/ms": "^0.7.31",
+    "@types/node": "^15.12.4",
+    "@types/node-fetch": "^2.5.10",
+    "concurrently": "^6.2.0",
+    "gen-env-types": "^1.3.0",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.4"
   }
 }
