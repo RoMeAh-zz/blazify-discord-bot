@@ -27,19 +27,7 @@ export default class extends Command {
   }
 
   async exec(message: Message, { level }: { level: string }) {
-    const player = this.client.lavaclient.players.get(message.guild?.id!);
-    if (!player || (player && !player.queue.current))
-      return message.util?.send(
-        new MessageEmbed().setColor("RED").setDescription("No player found!")
-      );
-
-    const { channel } = message.member?.voice!;
-    if (!channel || player.channel !== message.member?.voice?.channel?.id)
-      return message.util?.send(
-        new MessageEmbed()
-          .setColor("#f55e53")
-          .setDescription("We're in different vc")
-      );
+    const player = this.client.lavaclient.players.get(message.guild?.id!)!;
 
     if (!level)
       return message.util?.send(

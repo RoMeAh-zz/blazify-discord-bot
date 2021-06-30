@@ -1,5 +1,5 @@
 import { Command } from "discord-akairo";
-import { Message, MessageEmbed } from "discord.js";
+import { Message } from "discord.js";
 
 export default class extends Command {
   public constructor() {
@@ -13,19 +13,7 @@ export default class extends Command {
   }
 
   async exec(message: Message) {
-    const player = this.client.lavaclient.players.get(message.guild?.id!);
-    if (!player || (player && !player.queue.current))
-      return message.util?.send(
-        new MessageEmbed().setColor("RED").setDescription("No Player found!")
-      );
-
-    const { channel } = message.member?.voice!;
-    if (!channel || player.channel !== channel.id)
-      return message.util?.send(
-        new MessageEmbed()
-          .setColor("YELLOW")
-          .setDescription("We're in two different voice channels!")
-      );
+    const player = this.client.lavaclient.players.get(message.guild?.id!)!;
 
     return player.queue.emit("finished", "disconnected");
   }

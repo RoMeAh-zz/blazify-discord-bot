@@ -13,9 +13,9 @@ export default class extends Command {
 
   public exec(message: Message) {
     return message.util?.send(
-      `🏓Latency is ${
+      `API Latency is ${
         Date.now() - message.createdTimestamp
-      }ms. API Latency is ${Math.round(this.client.ws.ping)}ms`
+      }ms. Websocket Latency is ${Math.round(this.client.ws.ping)}ms`
     );
   }
 }

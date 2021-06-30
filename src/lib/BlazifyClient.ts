@@ -1,3 +1,4 @@
+import { InhibitorHandler } from "discord-akairo";
 import {
   AkairoClient,
   CommandHandler,
@@ -13,11 +14,11 @@ export class BlazifyClient extends AkairoClient {
   public config: BotOptions;
   public lavaclient: Manager;
   public listnerHandler: ListenerHandler = new ListenerHandler(this, {
-    directory: join(__dirname, "..", "core/events/"),
+    directory: join(__dirname, "..", "core", "events"),
   });
   public commandHandler: CommandHandler = new CommandHandler(this, {
-    directory: join(__dirname, "..", "core/commands/"),
-    prefix: async (m: Message) => (await m.guild?.entity())?.prefix ?? "b!",
+    directory: join(__dirname, "..", "core", "commands"),
+    prefix: async (m: Message) => (await m.guild?.entity())?.prefix!,
     allowMention: true,
     handleEdits: true,
     commandUtil: true,
@@ -40,16 +41,15 @@ export class BlazifyClient extends AkairoClient {
     },
     ignorePermissions: this.ownerID,
   });
+  public inhibitorHandler: InhibitorHandler = new InhibitorHandler(this, {
+    directory: join(__dirname, "..", "core", "inhibitors"),
+  });
 
   public constructor(config: BotOptions) {
-    super({
-      ownerID: config.ownerID,
-      disableMentions: "everyone",
-      shards: "auto",
-    });
+    super(config);
 
     this.config = config;
-    this.lavaclient = new Manager([this.config.node], {
+    this.lavaclient = new Manager(this.config.nodes, {
       shards: this.shard ? this.shard.count : 1,
       send: (id, payload) => {
         const guild = this.guilds.cache.get(id);
@@ -60,6 +60,8 @@ export class BlazifyClient extends AkairoClient {
 
   private async _init(): Promise<void> {
     this.commandHandler.useListenerHandler(this.listnerHandler);
+    this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
+
     this.listnerHandler.setEmitters({
       commandHandler: this.commandHandler,
       listnerHandler: this.listnerHandler,
@@ -68,10 +70,9 @@ export class BlazifyClient extends AkairoClient {
       process,
     });
 
-    this.commandHandler.loadAll();
-    console.log(`[Commands: Command Handler] => Loaded`);
-    this.listnerHandler.loadAll();
-    console.log(`[Events: Listener Handler] => Loaded`);
+    [this.commandHandler, this.listnerHandler, this.inhibitorHandler].forEach(
+      (x) => x.loadAll()
+    );
 
     this.lavaclient.init(process.env.USER_ID);
     await createConnection({

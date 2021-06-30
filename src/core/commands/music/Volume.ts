@@ -9,9 +9,6 @@ export default class VolumeCommand extends Command {
         {
           id: "amount",
           type: "number",
-          prompt: {
-            start: "Enter a volume between 0 and 201.",
-          },
         },
       ],
       category: "Music",
@@ -22,19 +19,15 @@ export default class VolumeCommand extends Command {
   }
 
   async exec(message: Message, { amount }: { amount: number }) {
-    const player = this.client.lavaclient.players.get(message.guild?.id!);
-    if (!player || (player && !player.queue.current))
-      return message.util?.send(
-        new MessageEmbed().setColor("RED").setDescription("No player found!")
-      );
+    const player = this.client.lavaclient.players.get(message.guild?.id!)!;
 
-    const { channel } = message.member?.voice!;
-    if (!channel || player.channel !== channel.id)
+    if (!amount) {
       return message.util?.send(
         new MessageEmbed()
           .setColor("RED")
-          .setDescription("We're in different Voice channel")
+          .setDescription(`The volume is ${player.volume}`)
       );
+    }
 
     if (isNaN(amount) || amount > 200 || amount < 1)
       return message.util?.send(

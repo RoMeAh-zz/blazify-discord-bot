@@ -65,7 +65,11 @@ export class Queue extends EventEmitter {
           new MessageEmbed()
             .setColor("#f55e53")
             .setDescription(
-              `Unexpected Error! Please report it to our [report centere](https://discord.gg/9bnpjqY})\n\`\`\`js\n${error}\`\`\``
+              `Unexpected Error! Please report it to our [report centere](https://discord.gg/9bnpjqY})\n\`\`\`js\n${JSON.stringify(
+                error,
+                null,
+                4
+              )}\`\`\``
             )
         );
       });
@@ -74,7 +78,7 @@ export class Queue extends EventEmitter {
       if (this.repeat.queue) {
         this.next.push(...this.previous);
         this.previous = [];
-        return this.start(this.message);
+        if (reason != "disconnected") return this.start(this.message);
       }
 
       switch (reason) {

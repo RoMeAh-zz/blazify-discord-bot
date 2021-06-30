@@ -16,4 +16,7 @@ export class MemberEntity extends BaseEntity {
 
   @Column({ default: 0 })
   xp: number;
+
+  @Column({ default: Date.now(), type: "bigint" })
+  lastUpdatedAt: number;
 }

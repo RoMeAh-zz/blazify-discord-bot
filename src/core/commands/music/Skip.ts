@@ -13,19 +13,7 @@ export default class extends Command {
   }
 
   exec(message: Message) {
-    const player = this.client.lavaclient.players.get(message.guild?.id!);
-    if (!player || (player && !player.queue.current))
-      return message.util?.send(
-        new MessageEmbed().setColor("RED").setDescription("No player present")
-      );
-
-    const { channel } = message.member?.voice!;
-    if (!channel || player.channel !== message.member?.voice?.channel?.id)
-      return message.util?.send(
-        new MessageEmbed()
-          .setColor("YELLOW")
-          .setDescription("We're present in two different Voice Channels")
-      );
+    const player = this.client.lavaclient.players.get(message.guild?.id!)!;
 
     player.emit("end");
 

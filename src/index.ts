@@ -10,10 +10,14 @@ config();
 new BlazifyClient({
   token: process.env.TOKEN,
   ownerID: process.env.OWNER_ID.split(", "),
-  node: {
-    id: process.env.LAVALINK_ID,
-    host: process.env.LAVALINK_HOST,
-    port: Number(process.env.LAVALINK_PORT),
-    password: process.env.LAVALINK_PASSWORD,
-  },
+  nodes: [
+    {
+      id: process.env.LAVALINK_ID,
+      host: process.env.LAVALINK_HOST,
+      port: Number(process.env.LAVALINK_PORT),
+      password: process.env.LAVALINK_PASSWORD,
+    },
+  ],
+  shards: "auto",
+  disableMentions: "everyone",
 }).login();

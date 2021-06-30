@@ -1,3 +1,4 @@
+import { ClientOptions } from "discord.js";
 import { Manager, SocketData } from "lavaclient";
 import { GuildEntity } from "../entity/Guild";
 import { MemberEntity } from "../entity/Member";
@@ -18,11 +19,12 @@ declare module "discord.js" {
 }
 
 declare module "discord-akairo" {
-  interface BotOptions {
+  interface BotOptions extends ClientOptions {
     token: string;
     ownerID: Array<string>;
-    node: SocketData;
+    nodes: SocketData[];
   }
+
   interface AkairoClient {
     commandHandler: CommandHandler;
     listnerHandler: ListenerHandler;

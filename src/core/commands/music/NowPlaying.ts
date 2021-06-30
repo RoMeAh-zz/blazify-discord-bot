@@ -15,11 +15,7 @@ export default class extends Command {
   }
 
   exec(message: Message) {
-    const player = this.client.lavaclient.players.get(message.guild?.id!);
-    if (!player || (player && !player.queue.current))
-      return message.util?.send(
-        new MessageEmbed().setColor("RED").setDescription("No player found!")
-      );
+    const player = this.client.lavaclient.players.get(message.guild?.id!)!;
 
     const { title, uri, length, identifier } = decode(
       player.queue.current.track

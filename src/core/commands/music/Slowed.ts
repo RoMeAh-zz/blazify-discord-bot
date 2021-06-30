@@ -13,19 +13,7 @@ export default class SlowedCommand extends Command {
   }
 
   exec(message: Message) {
-    const player = this.client.lavaclient.players.get(message.guild?.id!);
-    if (!player || (player && !player.queue.current))
-      return message.util?.send(
-        new MessageEmbed().setColor("RED").setDescription("No player found!")
-      );
-
-    const { channel } = message.member?.voice!;
-    if (!channel || player.channel !== channel.id)
-      return message.util?.send(
-        new MessageEmbed()
-          .setColor("RED")
-          .setDescription("We're in different Voice channel")
-      );
+    const player = this.client.lavaclient.players.get(message.guild?.id!)!;
 
     if (player.playerFilter === "slowed") {
       player.send("filters", {});

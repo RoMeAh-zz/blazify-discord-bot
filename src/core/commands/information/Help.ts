@@ -40,7 +40,10 @@ export default class extends Command {
       embed.setDescription([
         `**❯ Aliases:** ${
           command.aliases.length
-            ? command.aliases.map((alias) => `\`${alias}\``).join(" ")
+            ? command.aliases
+                .filter((_, i) => i !== 0)
+                .map((alias) => `\`${alias}\``)
+                .join(" ")
             : "No Aliases"
         }`,
         `**❯ Description:** ${command.description}`,
@@ -58,9 +61,9 @@ export default class extends Command {
         this.categoryFilter(message)
       )) {
         embed.addField(
-          `• ${name.replace(/(\b\w)/gi, (str) => str.toUpperCase())} (${
+          `**❯ ${name.replace(/(\b\w)/gi, (str) => str.toUpperCase())} (${
             category.size
-          })`,
+          }):**`,
           category
             .filter((cmd) => (cmd.aliases ? cmd.aliases.length > 0 : false))
             .map((cmd) => `\`${cmd.aliases[0]}\``)
